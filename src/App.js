@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import Header from "./components/Header";
+import Subscription from "./components/Subscription";
+import Footer from './components/Footer'
+import { Route, Routes } from "react-router-dom";
+import LandingPage from "./pages/LandingPage";
+import BooksPage from "./pages/BooksPage"
+import CoursesPage from "./pages/CoursesPage"
+import CourseDetailsPage from "./pages/CourseDetailsPage"
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="bg-white">
+      <Header />
+      <Routes>
+        <Route exact path="/" element={<LandingPage />} />
+        <Route path="/books" element={<BooksPage />} />
+        <Route path="/courses" element={<CoursesPage />} />
+        <Route path="/coursedetails" element={<CourseDetailsPage />} />
+      </Routes>
+      <Subscription />
+      <Footer />
+      
+      
     </div>
   );
 }
-
-export default App;

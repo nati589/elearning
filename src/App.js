@@ -6,11 +6,12 @@ import LandingPage from "./pages/LandingPage";
 import BooksPage from "./pages/BooksPage";
 import CoursesPage from "./pages/CoursesPage";
 import CourseDetailsPage from "./pages/CourseDetailsPage";
-import CourseList from "./components/CourseList";
+import Background from "./components/Background";
 
 export default function App() {
   return (
-    <div className="bg-white">
+    <div>
+      <Background />
       <Header />
       <Routes>
         <Route exact path="/" element={<LandingPage />} />
@@ -18,8 +19,9 @@ export default function App() {
         <Route path="/courses" element={<CoursesPage />} />
         <Route path="/coursedetails" element={<CourseDetailsPage />} />
       </Routes>
-      <CourseList />
+
       <Subscription />
+
       <Footer />
     </div>
   );

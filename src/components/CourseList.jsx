@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "../assets/number-1.png";
+import Background from "./Background.jsx";
 
 function CourseCard() {
   const cardImages = [
@@ -46,13 +47,21 @@ function CourseCard() {
               </blockquote>
               <button
                 type="submit"
-                className="flex-none rounded-md bg-[#9C4DF4] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+                className="border border-indigo-400 text-indigo-400 hover:bg-indigo-400 hover:text-white py-2 px-4 rounded-lg md:bg-slate-200 md:text-slate-200 md:hover:bg-slate-200 md:hover:text-white"
               >
                 Class Details
               </button>
             </div>
           </figure>
         ))}
+      </div>
+      <div className="flex justify-center  px-20">
+        <button
+          type="submit"
+          className="flex-none rounded-md bg-[#20053E] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500 "
+        >
+          Veiw More Class
+        </button>
       </div>
     </div>
   );

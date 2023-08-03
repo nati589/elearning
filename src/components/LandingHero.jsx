@@ -44,9 +44,9 @@ function LandingHero() {
                 />
                 <button
                   type="submit"
-                  className="flex-none rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+                  className="flex-none rounded-md bg-[#0A033C] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
                 >
-                  Subscribe
+                  Sign Up
                 </button>
               </div>
             </div>
@@ -54,7 +54,7 @@ function LandingHero() {
         </div>
         <div className="flex">
           <div className="">
-            <img src={backgroundImage} alt="" className="lg:w-40 sm:w-32" />
+            <img src={backgroundImage} alt="" className="lg:w-60 sm:w-40" />
           </div>
           <div className="">
             <img src={heroimage} alt="" className="lg:w-80 sm:w-64" />

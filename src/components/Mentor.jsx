@@ -1,5 +1,8 @@
 import React from "react";
 import image from "../assets/MentorImage.png";
+import Background from "../assets/mentor-bg-1.png";
+import Background1 from "../assets/mentor-bg-2.png";
+import Background2 from "../assets/mentor-bg-3.png";
 
 const TextComponent = () => {
   return (
@@ -18,7 +21,7 @@ const TextComponent = () => {
       <div className="py-10">
         <a
           href="#"
-          className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 s"
+          className="rounded-md bg-[#0A033C] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 s"
         >
           Career Information
         </a>
@@ -26,11 +29,27 @@ const TextComponent = () => {
     </div>
   );
 };
+
 const Mentor = () => {
   return (
     <div className="flex flex-col lg:flex-row items-center justify-center px-40 ">
       <img
         src={image}
+        alt=""
+        className="lg:w-80 sm:w-64 mb-8 lg:mb-0 lg:mr-8"
+      />
+      <img
+        src={Background}
+        alt=""
+        className="lg:w-80 sm:w-64 mb-8 lg:mb-0 lg:mr-8"
+      />
+      <img
+        src={Background1}
+        alt=""
+        className="lg:w-80 sm:w-64 mb-8 lg:mb-0 lg:mr-8"
+      />
+      <img
+        src={Background2}
         alt=""
         className="lg:w-80 sm:w-64 mb-8 lg:mb-0 lg:mr-8"
       />

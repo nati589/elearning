@@ -1,12 +1,20 @@
+<<<<<<< HEAD
 
 import React from 'react';
+=======
+import React from "react";
+
+>>>>>>> 27fc8d7bb6be53aedd4bffe1aece213032afd6ed
 // import { TwitterIcon, FacebookIcon, InstagramIcon } from '@heroicons/react/24/solid';
 
 function Footer() {
   return (
     <footer className="p-4 flex justify-between">
       <div className="flex justify-between">
+<<<<<<< HEAD
 
+=======
+>>>>>>> 27fc8d7bb6be53aedd4bffe1aece213032afd6ed
         <div className="font-extrabold text-4xl mb-4">LOGO</div>
         {/* <div className="flex space-x-4 mb-4">
         <TwitterIcon className="h-6" />
@@ -27,7 +35,11 @@ function Footer() {
             <li>Offline Courses</li>
           </ul>
         </div>
+<<<<<<< HEAD
       
+=======
+
+>>>>>>> 27fc8d7bb6be53aedd4bffe1aece213032afd6ed
         <div>
           <h2 className="flex-1 mr-4 font-bold">Community</h2>
           <ul>

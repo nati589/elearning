@@ -15,11 +15,12 @@ function OurGoal() {
       <div>
         <img src={Image} />
       </div>
-      <div className=" flex flex-center py-10">
+
+      <div className=" flex flex-center py-5">
         <div className="px-20">
           <button
             type="submit"
-            className="flex-none rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+            className="flex-none rounded-md bg-slate-200 px-3.5 py-2.5 text-sm font-semibold text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
           >
             Audio Classes
           </button>
@@ -27,7 +28,7 @@ function OurGoal() {
         <div>
           <button
             type="submit"
-            className="flex-none rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+            className="flex-none rounded-md bg-slate-200 px-3.5 py-2.5 text-sm font-semibold text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
           >
             Live Classes
           </button>
@@ -35,18 +36,18 @@ function OurGoal() {
         <div className="px-20">
           <button
             type="submit"
-            className="flex-none rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+            className="flex-none rounded-md bg-slate-200 px-3.5 py-2.5 text-sm font-semibold text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
           >
             Record Class
           </button>
         </div>
       </div>
-      <div className="px-20 items-center">
+      <div className="flex justify-center items-center px-20 py-10">
         <button
           type="submit"
           className="flex-none rounded-md bg-[#20053E] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500 "
         >
-          Veiw More Class
+          Visit Courses
         </button>
       </div>
     </div>

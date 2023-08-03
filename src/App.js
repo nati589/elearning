@@ -7,6 +7,7 @@ import BooksPage from "./pages/BooksPage";
 import CoursesPage from "./pages/CoursesPage";
 import CourseDetailsPage from "./pages/CourseDetailsPage";
 import CourseList from "./components/CourseList";
+import CoursesHero from "./components/CoursesHero.jsx"
 
 export default function App() {
   return (

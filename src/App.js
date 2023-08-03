@@ -6,12 +6,11 @@ import LandingPage from "./pages/LandingPage";
 import BooksPage from "./pages/BooksPage";
 import CoursesPage from "./pages/CoursesPage";
 import CourseDetailsPage from "./pages/CourseDetailsPage";
-<<<<<<< HEAD
 import CourseList from "./components/CourseList";
 import CoursesHero from "./components/CoursesHero.jsx"
-=======
+
 import Background from "./components/Background";
->>>>>>> 27fc8d7bb6be53aedd4bffe1aece213032afd6ed
+
 
 export default function App() {
   return (

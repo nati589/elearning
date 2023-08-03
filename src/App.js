@@ -1,11 +1,12 @@
 import Header from "./components/Header";
 import Subscription from "./components/Subscription";
-import Footer from './components/Footer'
+import Footer from "./components/Footer";
 import { Route, Routes } from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
-import BooksPage from "./pages/BooksPage"
-import CoursesPage from "./pages/CoursesPage"
-import CourseDetailsPage from "./pages/CourseDetailsPage"
+import BooksPage from "./pages/BooksPage";
+import CoursesPage from "./pages/CoursesPage";
+import CourseDetailsPage from "./pages/CourseDetailsPage";
+import CourseList from "./components/CourseList";
 
 export default function App() {
   return (
@@ -17,10 +18,9 @@ export default function App() {
         <Route path="/courses" element={<CoursesPage />} />
         <Route path="/coursedetails" element={<CourseDetailsPage />} />
       </Routes>
+      <CourseList />
       <Subscription />
       <Footer />
-      
-      
     </div>
   );
 }

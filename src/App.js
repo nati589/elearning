@@ -1,6 +1,6 @@
 import Header from "./components/Header";
 import Subscription from "./components/Subscription";
-import Footer from "./components/Footer";
+// import Footer from "./components/Footer";
 import { Route, Routes } from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
 import BooksPage from "./pages/BooksPage";
@@ -20,7 +20,7 @@ export default function App() {
       </Routes>
       <CourseList />
       <Subscription />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

@@ -5,10 +5,10 @@ import CoursesList from "../components/CourseList";
 import Mentor from "../components/Mentor";
 
 import Explore from "../components/Explore";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 function LandingPage() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   return (
     <>
       <LandingHero />

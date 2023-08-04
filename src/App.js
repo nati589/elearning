@@ -8,6 +8,7 @@ import CoursesPage from "./pages/CoursesPage";
 import CourseDetailsPage from "./pages/CourseDetailsPage";
 import CourseList from "./components/CourseList";
 import CoursesHero from "./components/CoursesHero.jsx"
+import OtherCourses from "./components/OtherCourses.jsx"
 
 import Background from "./components/Background";
 
@@ -23,9 +24,12 @@ export default function App() {
         <Route path="/courses" element={<CoursesPage />} />
         <Route path="/coursedetails" element={<CourseDetailsPage />} />
       </Routes>
-
+              
+      
+      <CoursesHero/>
+      <CourseList/>
+      <OtherCourses/>
       <Subscription />
-
       <Footer />
     </div>
   );

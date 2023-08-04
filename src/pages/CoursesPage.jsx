@@ -9,13 +9,7 @@ function CoursesPage() {
 
   return (
     <>
-      <button
-        onClick={() => {
-          navigate("/coursedetails");
-        }}
-      >
-        course details
-      </button>
+    
       <CoursesHero />
       <CoursesList />
       <OtherCourses />

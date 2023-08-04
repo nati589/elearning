@@ -1,12 +1,12 @@
 import React from 'react';
-import  Image from "../assets/Image.png"
+import Image from "../assets/CourseHero.png";
 import { Link, useLocation } from 'react-router-dom';
 
 function CoursesHero() {
   const location = useLocation();
 
   return (
-    <div className="w-1280 h-270 bg-efebf5 relative flex flex-col justify-between">
+    <div className="w-1280 h-270 bg-efebf5 relative flex flex-col justify-between overflow-hidden"> {/* Add overflow-hidden */}
       <div className="absolute top-4 left-4 flex space-x-4">
         <Link to="/" className={`text-gray-700 hover:text-gray-900 ${location.pathname === '/' ? 'text-9C4DF4' : ''}`}>Home</Link>
         <Link to="/courses" className={`text-gray-700 hover:text-gray-900 ${location.pathname === '/courses' ? 'text-9C4DF4' : ''}`}>Courses</Link>

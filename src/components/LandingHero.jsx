@@ -4,7 +4,7 @@ import backgroundImage from "../assets/hero-bg-1.png";
 
 function LandingHero() {
   return (
-    <div className="relative px-6 lg:px-8">
+    <div className="relative isolate over px-6 lg:px-8">
       <div
         className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
         aria-hidden="true"

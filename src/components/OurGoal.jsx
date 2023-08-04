@@ -13,10 +13,10 @@ function OurGoal() {
       </p>
 
       <div>
-        <img src={Image} />
+        <img src={Image} alt='' />
       </div>
 
-      <div className=" flex flex-center py-5">
+      <div className=" flex justify-center ">
         <div className="px-20">
           <button
             type="submit"

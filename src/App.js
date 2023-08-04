@@ -7,13 +7,9 @@ import BooksPage from "./pages/BooksPage";
 // import CoursesPage from "./pages/CoursesPage";
 import Course from "./pages/Course";
 import CourseDetailsPage from "./pages/CourseDetailsPage";
-<<<<<<< HEAD
 import CourseList from "./components/CourseList";
 import CoursesHero from "./components/CoursesHero.jsx"
 import OtherCourses from "./components/OtherCourses.jsx"
-
-=======
->>>>>>> 5031ab056b707170be7c67c98c1af0c40cb554d2
 import Background from "./components/Background";
 
 export default function App() {

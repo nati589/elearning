@@ -1,15 +1,27 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import DetailsHero from "../components/DetailsHero";
+import CourseDetails from "../components/CourseDetails";
+import SimilarCourses from "../components/SimilarCourses";
 import CoursesHero from "../components/CoursesHero";
 import CoursesList from "../components/CourseList";
 import OtherCourses from "../components/OtherCourses";
 
-function CoursesPage() {
+function CourseDetailsPage() {
+  const navigate = useNavigate();
+
   return (
     <>
-<<<<<<< HEAD
-    
-=======
->>>>>>> 5031ab056b707170be7c67c98c1af0c40cb554d2
+      <button
+        onClick={() => {
+          navigate("/");
+        }}
+      >
+        home
+      </button>
+      {/* <DetailsHero />
+      <CourseDetails />
+      <SimilarCourses /> */}
       <CoursesHero />
       <CoursesList />
       <OtherCourses />
@@ -17,4 +29,4 @@ function CoursesPage() {
   );
 }
 
-export default CoursesPage;
+export default CourseDetailsPage;

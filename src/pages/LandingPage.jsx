@@ -12,11 +12,9 @@ function LandingPage() {
   return (
     <>
       <LandingHero />
-
       <OurGoal />
       <CoursesList />
       <Mentor />
-
       <Explore />
     </>
   );

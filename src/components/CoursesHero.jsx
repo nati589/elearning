@@ -1,5 +1,5 @@
 import React from 'react';
-import Image from "../assets/CourseHero.png";
+//import Image from "../assets/CourseHero.png";
 import { Link, useLocation } from 'react-router-dom';
 
 function CoursesHero() {

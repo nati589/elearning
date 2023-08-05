@@ -1,298 +1,152 @@
-import ShoppingbagIcon from "./ShoppingbagIcon";
-import Component from "./Component";
-import StarIcon from "./StarIcon";
-
 function OtherCourses() {
+  const courses = [
+    { title: "Ha Geez", image: require("../assets/Cardphoto.png")  },
+    { title: "Hu Cabe", image: require("../assets/Cardphoto2.png") },
+    { title: "Hei Seles", image: require("../assets/Cardphoto3.png") },
+    { title: "Ho Rabe", image: require("../assets/Cardphoto4.png") },
+    { title: "He Hames", image: require("../assets/Cardphoto5.png") },
+    { title: "He Sades", image: require("../assets/Cardphoto6.png") },
+    { title: "Ho Sabe", image: require("../assets/Cardphoto7.png") },
+    { title: "Anbabi", image: require("../assets/Cardphoto8.png") },
+    { title: "Keltafa", image: require("../assets/Cardphoto9.png") },
+    { title: "Mihur", image: require("../assets/Cardphoto10.png") },
+  ];
+
   return (
-    <div className="absolute top-[1677px] left-[78px] w-[1285px] h-[1029px] text-left text-5xl text-tomato font-poppins">
-      <div className="absolute top-[985px] left-[501px] w-[278px] h-11 text-base text-midnightblue-200">
-        <div className="absolute top-[0px] left-[278px] w-11 h-11 [transform:_rotate(180deg)] [transform-origin:0_0]">
-          <div className="absolute top-[0px] left-[0px] rounded-md bg-blueviolet w-11 h-11 [transform:_rotate(180deg)] [transform-origin:0_0]" />
-          <img
-            className="absolute top-[10px] left-[-34px] w-6 h-6 overflow-hidden"
-            alt=""
-            src="/right-arrow--24--outline.png"
-          />
-        </div>
-        <div className="absolute top-[14px] left-[178px] font-medium">
-          of 13
-        </div>
-        <div className="absolute h-full w-[15.83%] top-[0%] right-[41.37%] bottom-[0%] left-[42.81%] text-center text-lg text-darkslategray">
-          <div className="absolute h-full w-full top-[0%] right-[0%] bottom-[0%] left-[0%] rounded-lg bg-white" />
-          <div className="absolute top-[29.55%] left-[40.91%] font-medium">
-            1
-          </div>
-        </div>
-        <div className="absolute top-[14px] left-[64px] font-medium">Page</div>
-        <div className="absolute top-[0px] left-[0px] w-11 h-11">
-          <div className="absolute top-[0px] left-[0px] rounded-md bg-lavender w-11 h-11" />
-          <img
-            className="absolute top-[10px] left-[10px] w-6 h-6 overflow-hidden"
-            alt=""
-            src="/right-arrow--24--outline1.png"
-          />
-        </div>
-      </div>
-      <div className="absolute top-[150px] left-[660px] w-[625px] h-[133px]">
-        <div className="absolute top-[0px] left-[0px] rounded-3xs bg-white w-[620px] h-[133px]" />
-        <div className="absolute top-[69px] left-[556px] w-11 h-11">
-          <div className="absolute top-[0px] left-[44px] rounded-md bg-ghostwhite-200 w-11 h-11 [transform:_rotate(180deg)] [transform-origin:0_0]" />
-          <ShoppingbagIcon/>
-        </div>
-        <div>
-          <Component/>
-        </div>
-        <StarIcon/>
-        <div className="absolute top-[24px] left-[190px] leading-[20px] font-black text-4xl text-midnightblue-200">
-          He Sades
-        </div>
-        <img
-          className="absolute top-[15px] left-[515px] w-[110px] h-[39px] object-cover"
-          alt=""
-          src="./assets/lkjhgfd 2 (1).png"
-        />
-        <img
-          className="absolute top-[15px] left-[15px] rounded-3xs w-40 h-[103px] object-cover"
-          alt=""
-          src="./assets/Cardphoto6.png"
-        />
-      </div>
-      <div className="absolute top-[313px] left-[660px] w-[625px] h-[133px]">
-        <div className="absolute top-[0px] left-[0px] rounded-3xs bg-white w-[620px] h-[133px]" />
-        <div className="absolute top-[69px] left-[556px] w-11 h-11">
-          <div className="absolute top-[0px] left-[44px] rounded-md bg-ghostwhite-200 w-11 h-11 [transform:_rotate(180deg)] [transform-origin:0_0]" />
-          <ShoppingbagIcon/>
-        </div>
-        <div>
-          <Component/>
-        </div>
-        <StarIcon/>
-        <div className="absolute top-[24px] left-[190px] leading-[20px] font-black text-4xl text-midnightblue-200">
-          Ho Sabe
-        </div>
-        <img
-          className="absolute top-[23px] left-[515px] w-[110px] h-[39px] object-cover"
-          alt=""
-          src="./assets/lkjhgfd 2(6).png"
-        />
-        <img
-          className="absolute top-[15px] left-[15px] rounded-3xs w-40 h-[103px] object-cover"
-          alt=""
-          src="./assets/Cardphoto7.png"
-        />
-      </div>
-      <div className="absolute top-[456px] left-[660px] w-[620px] h-[153px]">
-        <div className="absolute top-[20px] left-[0px] rounded-3xs bg-white w-[620px] h-[133px]" />
-        <div className="absolute top-[89px] left-[556px] w-11 h-11">
-          <div className="absolute top-[0px] left-[44px] rounded-md bg-ghostwhite-200 w-11 h-11 [transform:_rotate(180deg)] [transform-origin:0_0]" />
-          <ShoppingbagIcon/>
-        </div>
-        <div>
-          <Component/>
-        </div>
-        <StarIcon/>
-        <div className="absolute top-[44px] left-[190px] leading-[20px] font-black text-4xl text-midnightblue-200">{`Anbabi `}</div>
-        {/* <img
-          className="absolute top-[0px] left-[538px] w-[75px] h-[89px] object-cover"
-          alt=""
-          src="/image1600x800recoveredrecovered-1@2x.png"
-        /> */}
-        <img
-          className="absolute top-[35px] left-[15px] rounded-3xs w-40 h-[103px] object-cover"
-          alt=""
-          src="./assets/Cardphoto8.png"
-        />
-      </div>
-      <div className="absolute top-[619px] left-[660px] w-[622px] h-[153px]">
-        <div className="absolute top-[20px] left-[0px] rounded-3xs bg-white w-[620px] h-[133px]" />
-        <img
-          className="absolute top-[0px] left-[534px] w-[88px] h-[89px] object-cover"
-          alt=""
-          src="/image1600x800recoveredrecovered-11@2x.png"
-        />
-        <div className="absolute top-[89px] left-[556px] w-11 h-11">
-          <div className="absolute top-[0px] left-[44px] rounded-md bg-ghostwhite-200 w-11 h-11 [transform:_rotate(180deg)] [transform-origin:0_0]" />
-          <ShoppingbagIcon/>
-        </div>
-        <div>
-          <Component/>
-        </div>
-        <StarIcon/>
-        <div className="absolute top-[44px] left-[190px] leading-[20px] font-black text-4xl text-midnightblue-200">
-          Keltafa
-        </div>
-        <img
-          className="absolute top-[35px] left-[15px] rounded-3xs w-40 h-[103px] object-cover"
-          alt=""
-          src="./assets/Cardphoto9.png"
-        />
-      </div>
-      <div className="absolute top-[802px] left-[660px] w-[620px] h-[133px]">
-        <div className="absolute top-[0px] left-[0px] rounded-3xs bg-white w-[620px] h-[133px]" />
-        <div className="absolute top-[69px] left-[556px] w-11 h-11">
-          <div className="absolute top-[0px] left-[44px] rounded-md bg-ghostwhite-200 w-11 h-11 [transform:_rotate(180deg)] [transform-origin:0_0]" />
-          <ShoppingbagIcon/>
-        </div>
-        <div>
-          <Component/>
-        </div>
-        <StarIcon/>
-        <div className="absolute top-[24px] left-[190px] leading-[20px] font-black text-4xl text-midnightblue-200">
-          <p className="m-0">Mihur</p>
-        </div>
-        <img
-          className="absolute top-[15px] left-[15px] rounded-3xs w-40 h-[103px] object-cover"
-          alt=""
-          src="./assets/Cardphoto10.png"
-        />
-      </div>
-      <div className="absolute top-[150px] left-[0px] w-[620px] h-[133px]">
-        <div className="absolute top-[0px] left-[0px] rounded-3xs bg-white w-[620px] h-[133px]" />
-        <div className="absolute top-[69px] left-[556px] w-11 h-11">
-          <div className="absolute top-[0px] left-[44px] rounded-md bg-ghostwhite-200 w-11 h-11 [transform:_rotate(180deg)] [transform-origin:0_0]" />
-          <ShoppingbagIcon/>
-        </div>
-        <div>
-          <Component/>
-        </div>
-        <StarIcon/>
-        <div className="absolute top-[24px] left-[190px] leading-[20px] font-black text-4xl text-midnightblue-200">{`Ha Geez `}</div>
-        <img
-          className="absolute top-[15px] left-[15px] rounded-3xs w-40 h-[103px] object-cover"
-      
-          src="src\assets\Cardphoto.png"
-        />
-      </div>
-      <div className="absolute top-[313px] left-[0px] w-[620px] h-[133px]">
-        <div className="absolute top-[0px] left-[0px] rounded-3xs bg-white w-[620px] h-[133px]" />
-        <div className="absolute top-[69px] left-[556px] w-11 h-11">
-          <div className="absolute top-[0px] left-[44px] rounded-md bg-ghostwhite-200 w-11 h-11 [transform:_rotate(180deg)] [transform-origin:0_0]" />
-          <ShoppingbagIcon/>
-        </div>
-        <div>
-          <Component/>
-        </div>
-        <StarIcon/>
-        <div className="absolute top-[24px] left-[190px] leading-[20px] font-black text-4xl text-midnightblue-100">
-          Hu cabe
-        </div>
-        <img
-          className="absolute top-[15px] left-[15px] rounded-3xs w-40 h-[103px] object-cover"
-          alt=""
-          src="./assets/Cardphoto2.png"
-        />
-        <img
-          className="absolute top-[15px] left-[480px] w-[120px] h-[39px] object-cover"
-          alt=""
-          src="/lkjhgfd-22@2x.png"
-        />
-      </div>
-      <div className="absolute top-[639px] left-[0px] w-[620px] h-[133px]">
-        <div className="absolute top-[0px] left-[0px] rounded-3xs bg-white w-[620px] h-[133px]" />
-        <img
-          className="absolute top-[25px] left-[485px] w-[110px] h-[39px] object-cover"
-          alt=""
-          src="/lkjhgfd-23@2x.png"
-        />
-        <div className="absolute top-[69px] left-[556px] w-11 h-11">
-          <div className="absolute top-[0px] left-[44px] rounded-md bg-ghostwhite-200 w-11 h-11 [transform:_rotate(180deg)] [transform-origin:0_0]" />
-          <ShoppingbagIcon/>
-        </div>
-        <div>
-          <Component/>
-        </div>
-        <StarIcon/>
-        <div className="absolute top-[24px] left-[190px] leading-[20px] font-black text-4xl text-midnightblue-200">
-          Ha Rabe
-        </div>
-        <img
-          className="absolute top-[15px] left-[15px] rounded-3xs w-40 h-[103px] object-cover"
-          alt=""
-          src="./assets/Cardphoto4.png"
-        />
-      </div>
-      <div className="absolute top-[802px] left-[0px] w-[620px] h-[133px]">
-        <div className="absolute top-[0px] left-[0px] rounded-3xs bg-white w-[620px] h-[133px]" />
-        <ShoppingbagIcon />
-        <div>
-          <Component/>
-        </div>
-        <StarIcon/>
-        <div className="absolute top-[24px] left-[190px] leading-[20px] font-black text-4xl text-midnightblue-200">
-          He Hames
-        </div>
-        <img
-          className="absolute top-[15px] left-[485px] w-[110px] h-[39px] object-cover"
-          alt=""
-          src="./assets/lkjhgfd 2(5).png"
-        />
-        <img
-          className="absolute top-[15px] left-[15px] rounded-3xs w-40 h-[103px] object-cover"
-          alt=""
-          src="/cardphoto5@2x.png"
-        />
-      </div>
-      <div className="absolute top-[476px] left-[0px] w-[620px] h-[133px]">
-        <div className="absolute top-[0px] left-[0px] rounded-3xs bg-white shadow-[0px_50px_80px_rgba(0,_0,_0,_0.05)] w-[620px] h-[133px]" />
-        <div className="absolute top-[69px] left-[556px] w-11 h-11">
-          <div className="absolute top-[0px] left-[44px] rounded-md bg-blueviolet w-11 h-11 [transform:_rotate(180deg)] [transform-origin:0_0]" />
-          <ShoppingbagIcon/>
-        </div>
-        <Component />
-        <StarIcon />
-        <div className="absolute top-[24px] left-[190px] leading-[20px] text-4xl font-black text-midnightblue-200">
-          Hei Seles
-        </div>
-        <img
-          className="absolute top-[15px] left-[485px] w-[110px] h-[39px] object-cover"
-          alt=""
-          src="./assets/lkjhgfd 2 (3).png"
-        />
-        <img
-          className="absolute top-[15px] left-[15px] rounded-3xs w-40 h-[103px] object-cover"
-          alt=""
-          src="./assets/Cardphoto3.png"
-        />
-      </div>
-      <div className="absolute top-[0px] left-[0px] w-[1280px] h-[110px] text-base text-midnightblue-200">
-        <div className="absolute top-[0px] left-[0px] text-11xl font-black">{`Other Courses For  Beginners `}</div>
-        <div className="absolute top-[50px] left-[880px] w-[400px] h-[60px] text-dimgray-200">
-          <div className="absolute top-[0px] left-[0px] rounded-3xs bg-white w-[400px] h-[60px]" />
-          <img
-            className="absolute top-[17.74px] left-[361px] w-6 h-6 overflow-hidden"
-            alt=""
-            src="/down-arrow--24--outline.png"
-          />
-          <div className="absolute top-[22px] left-[20px] font-medium">
-            <span>{`Sort by: `}</span>
-            <span className="text-midnightblue-200">Latest</span>
-          </div>
-        </div>
-        <div className="absolute top-[50px] left-[0px] w-[840px] h-[60px] text-center text-white font-inter">
-          <div className="absolute top-[0px] left-[0px] rounded-3xs bg-white w-[840px] h-[60px]" />
-          <div className="absolute top-[7px] left-[690px] w-[143px] h-[46px]">
-            <div className="absolute top-[0px] left-[0px] rounded-3xs bg-blueviolet w-[143px] h-[46px]" />
-            <div className="absolute top-[13px] left-[59px] leading-[20px] font-medium">
-              Search
-            </div>
-            <img
-              className="absolute top-[11px] left-[30px] w-6 h-6 overflow-hidden"
-              alt=""
-              src="Outline.png"
+    <div className="my-16">
+      <div>
+      <h3 className="font-bold text-3xl text-center text-[#0A033C] mb-8">Other Courses for Beginners</h3>
+      <div className="flex gap-8 justify-between mx-8">
+          <div class="flex items-center basis-3/4">
+            <input
+              type="text"
+              class="w-full rounded-lg border border-gray-400 p-2"
+              placeholder="Search ..."
             />
+            <button class="ml-2 rounded-lg bg-blue-500 p-2 text-white hover:bg-blue-600">
+              Search
+            </button>
           </div>
-          <div className="flex space-x-4 ml-auto">
-          <input
-            type="text"
-            className="w-60 px-3 py-2 border rounded-lg"
-            placeholder="Search..."
-          />
-          <button className="px-4 py-2 bg-9C4DF4 text-white rounded-lg">Search</button>
-        </div>
+          <div className="flex basis-1/4 items-center">
+            <label htmlFor="sort" className="mr-2">
+              Sort
+            </label>
+            <select name="sort" id="sort" className="rounded-md p-2 w-full">
+              <option value="a">Latest</option>
+              <option value="b">Oldest</option>
+              <option value="c">c</option>
+            </select>
+          </div>
         </div>
       </div>
+      <div className="grid grid-cols-2 gap-4 mx-8 my-4">
+        {courses.map((item) => (
+          <div class="flex flex-col bg-white my-2">
+            <a
+              href="#"
+              class="w-full border-2 border-b-4 border-gray-200 rounded-xl hover:bg-gray-50">
+              <div class="grid grid-cols-6 p-5 gap-y-2">
+                {/* <!-- Profile Picture --> */}
+                <div>
+                  <img
+                    src={item.image}
+                    class="max-w-20 max-h-20 rounded-lg"
+                    alt="kd"
+                  />
+                </div>
+
+                {/* <!-- Description --> */}
+                <div class="col-span-5 md:col-span-4 ml-4">
+                  <p class="text-gray-600 font-bold">
+                    {item.title}
+                    {" "}
+                  </p>
+
+                  <div class="flex items-center w-16">
+                    <svg
+                      class="w-5 h-5 text-yellow-400"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                    <svg
+                      class="w-5 h-5 text-yellow-400"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                    <svg
+                      class="w-5 h-5 text-yellow-400"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                    <svg
+                      class="w-5 h-5 text-yellow-400"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                    <svg
+                      class="w-5 h-5 text-gray-300 dark:text-gray-500"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                  </div>
+                </div>
+
+                {/* <!-- Price --> */}
+                <div class="flex col-start-2 ml-4 md:col-start-auto md:ml-0 md:justify-end">
+                  <p class="rounded-lg text-red-500 font-bold bg-red-100  py-1 px-3 text-sm w-fit h-fit">
+                    {" "}
+                    $40.00{" "}
+                  </p>
+                </div>
+              </div>
+            </a>
+          </div>
+        ))}
+      </div>
+      <div className="w-full mx-auto flex justify-center items-center gap-4 mb-3">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="w-6 h-6">
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M15.75 19.5L8.25 12l7.5-7.5"
+            />
+          </svg>
+          <p className="text-lg items-center text-violet-500">
+          1 of 20
+          </p>
+            
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="w-6 h-6">
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M8.25 4.5l7.5 7.5-7.5 7.5"
+            />
+          </svg>
+        </div>
     </div>
   );
-};
+}
 
 export default OtherCourses;

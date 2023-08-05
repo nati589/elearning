@@ -5,7 +5,7 @@ const ShoppingbagIcon = () => {
       <img
         className="absolute h-[54.55%] w-[54.55%] top-[22.73%] right-[22.73%] bottom-[22.73%] left-[22.73%] max-w-full overflow-hidden max-h-full"
         alt=""
-        src="/shopping-bag--24--outline.svg"
+        src="/assets/shoppingbag.png"
       />
     </div>
   );

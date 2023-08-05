@@ -8,8 +8,7 @@ function CoursesPage() {
     <>
       <CoursesHero />
       <CoursesList />
-    
-      <Footer/>
+      <OtherCourses />
     </>
   );
 }

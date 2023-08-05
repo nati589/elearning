@@ -3,19 +3,6 @@ import Component from "./Component";
 import StarIcon from "./StarIcon";
 
 function OtherCourses() {
-  const courses = [
-    { title: "Ha Geez", image: "./assets/Cardphoto.png" },
-    { title: "Hu Cabe", image: "./assets/Cardphoto2.png" },
-    { title: "Hei Seles", image: "./assets/Cardphoto3.png" },
-    { title: "Ho Rabe", image: "./assets/Cardphoto4.png" },
-    { title: "He Hames", image: "./assets/Cardphoto5.png" },
-    { title: "He Sades", image: "./assets/Cardphoto6.png" },
-    { title: "Ho Sabe", image: "./assets/Cardphoto7.png" },
-    { title: "Anbabi", image: "./assets/Cardphoto8.png" },
-    { title: "Keltafa", image: "./assets/Cardphoto9.png" },
-    { title: "Mihur", image: "./assets/Cardphoto10.png" }
- ];
- 
   return (
     <div className="absolute top-[1677px] left-[78px] w-[1285px] h-[1029px] text-left text-5xl text-tomato font-poppins">
       <div className="absolute top-[985px] left-[501px] w-[278px] h-11 text-base text-midnightblue-200">
@@ -24,7 +11,7 @@ function OtherCourses() {
           <img
             className="absolute top-[10px] left-[-34px] w-6 h-6 overflow-hidden"
             alt=""
-            src="/right-arrow--24--outline.svg"
+            src="/right-arrow--24--outline.png"
           />
         </div>
         <div className="absolute top-[14px] left-[178px] font-medium">
@@ -42,7 +29,7 @@ function OtherCourses() {
           <img
             className="absolute top-[10px] left-[10px] w-6 h-6 overflow-hidden"
             alt=""
-            src="/right-arrow--24--outline1.svg"
+            src="/right-arrow--24--outline1.png"
           />
         </div>
       </div>
@@ -274,7 +261,7 @@ function OtherCourses() {
           <img
             className="absolute top-[17.74px] left-[361px] w-6 h-6 overflow-hidden"
             alt=""
-            src="/down-arrow--24--outline.svg"
+            src="/down-arrow--24--outline.png"
           />
           <div className="absolute top-[22px] left-[20px] font-medium">
             <span>{`Sort by: `}</span>
@@ -291,7 +278,7 @@ function OtherCourses() {
             <img
               className="absolute top-[11px] left-[30px] w-6 h-6 overflow-hidden"
               alt=""
-              src="/magnifier--24--outline.svg"
+              src="Outline.png"
             />
           </div>
           <div className="flex space-x-4 ml-auto">

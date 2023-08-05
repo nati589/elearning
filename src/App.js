@@ -12,6 +12,8 @@ import CourseDetailsPage from "./pages/CourseDetailsPage";
 // import OtherCourses from "./components/OtherCourses.jsx"
 import Background from "./components/Background";
 import CoursesPage from "./pages/CoursesPage";
+import DetailsHero from "./components/DetailsHero";
+import CourseDetails from "./components/CourseDetails";
 
 export default function App() {
   return (
@@ -31,6 +33,8 @@ export default function App() {
       {/* <CoursesHero/>
       <CourseList/>
       <OtherCourses/> */}
+      <DetailsHero/>
+      <CourseDetails/>
       <Subscription />
       <Footer />
     </div>

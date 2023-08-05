@@ -6,8 +6,8 @@ import Image from "../assets/ourgoal-image.png";
 function DetailsHero() {
   const navigate = useNavigate();
   return (
-    <div className="mx-8 bg-violet-50 rounded-3xl px-8 py-2">
-      <div className="">
+    <div className="mx-8 bg-violet-50 rounded-3xl px-8 py-2 mr-20 ml-20">
+      <div>
         <button
           className="text-gray-400"
           onClick={() => {
@@ -34,7 +34,7 @@ function DetailsHero() {
       </div>
       <div className="flex items-center justify-around py-4 flex-wrap-reverse lg:flex-nowrap">
         <>
-        <span className="flex gap-4 ml- 5">
+        <span className="flex items-center gap-96">
           <img src={Image} alt="" className="w-837 h-529" />
         <h2 className="text-4xl sm:text-6xl font-bold">
           {" "}

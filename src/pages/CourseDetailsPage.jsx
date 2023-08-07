@@ -12,19 +12,10 @@ function CourseDetailsPage() {
 
   return (
     <>
-      <button
-        onClick={() => {
-          navigate("/");
-        }}
-      >
-        home
-      </button>
+      
       <DetailsHero />
       <CourseDetails />
-      <SimilarCourses />
-      <CoursesHero />
-      <CoursesList />
-      <OtherCourses />
+    
     </>
   );
 }

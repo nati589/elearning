@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import Image from "../assets/ourgoal-image.png";
+import Image from "../assets/Ourgoal-Image.png";
 
 function DetailsHero() {
   const navigate = useNavigate();
@@ -11,7 +11,8 @@ function DetailsHero() {
           className="text-gray-400"
           onClick={() => {
             navigate("/");
-          }}>
+          }}
+        >
           Home
         </button>
         <span className="text-gray-400"> | </span>
@@ -19,7 +20,8 @@ function DetailsHero() {
           className="text-gray-400"
           onClick={() => {
             navigate("/books");
-          }}>
+          }}
+        >
           Courses
         </button>
         <span className="text-gray-400"> | </span>
@@ -27,7 +29,8 @@ function DetailsHero() {
           className="text-purple-700"
           onClick={() => {
             navigate("/CourseDetails");
-          }}>
+          }}
+        >
           Course Details
         </button>
       </div>

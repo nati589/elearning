@@ -32,7 +32,7 @@ const TextComponent = () => {
 
 const Mentor = () => {
   return (
-    <div className="flex flex-col lg:flex-row items-center justify-center px-40 ">
+    <div className="flex flex-col-4 lg:flex-col-4 items-center justify-center px-40 py-10 ">
       <img
         src={image}
         alt=""
@@ -47,7 +47,7 @@ const Mentor = () => {
           <img
             src={Background}
             alt=""
-            className="lg:w-40 sm:w-32 mb-8 lg:mb-0 lg:mr-8"
+            className="w-24 md:w-32 lg:w-40 mb-8 md:mb-0 lg:mr-8"
           />
         </div>
 
@@ -55,7 +55,7 @@ const Mentor = () => {
           <img
             src={Background1}
             alt=""
-            className="lg:w-40 sm:w-32 mb-8 lg:mb-0 lg:mr-8"
+            className="w-24 md:w-32 lg:w-40 mb-8 md:mb-0 lg:mr-8"
           />
         </div>
 
@@ -63,7 +63,7 @@ const Mentor = () => {
           <img
             src={Background2}
             alt=""
-            className="lg:w-40 sm:w-32 mb-8 lg:mb-0 lg:mr-8"
+            className="w-24 md:w-32 lg:w-40 mb-8 md:mb-0 lg:mr-8"
           />
         </div>
       </div>

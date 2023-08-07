@@ -1,4 +1,6 @@
 import React from 'react';
+import React from "react";
+// import StarIcon from './StarIcon'; // Import your StarIcon component
 
 const Pricecard = () => {
   return (
@@ -30,7 +32,9 @@ const Pricecard = () => {
             <div className="w-[20%] font-black">5</div>
           </div>
           <div className="flex items-center">
-            <div className="flex-1 font-black text-dimgray-100">Certificate</div>
+            <div className="flex-1 font-black text-dimgray-100">
+              Certificate
+            </div>
             <div className="w-[20%] font-black">Yes</div>
           </div>
           <div className="flex items-center">

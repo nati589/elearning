@@ -1,5 +1,5 @@
 import React from "react";
-import Image from "../assets/ourgoal-image.png";
+import Image from "../assets/Ourgoal-Image.png";
 
 function OurGoal() {
   return (
@@ -12,8 +12,8 @@ function OurGoal() {
         make learning Ethiopian languages accessible and enjoyable.
       </p>
 
-      <div>
-        <img src={Image} alt='' />
+      <div className="flex justify-center py-5">
+        <img src={Image} alt="" />
       </div>
 
       <div className=" flex justify-center ">

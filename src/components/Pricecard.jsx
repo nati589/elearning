@@ -1,6 +1,4 @@
 import React from 'react';
-import React from "react";
-// import StarIcon from './StarIcon'; // Import your StarIcon component
 
 const Pricecard = () => {
   return (

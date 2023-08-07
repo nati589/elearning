@@ -38,22 +38,35 @@ const Mentor = () => {
         alt=""
         className="lg:w-80 sm:w-64 mb-8 lg:mb-0 lg:mr-8"
       />
-      <img
-        src={Background}
-        alt=""
-        className="lg:w-80 sm:w-64 mb-8 lg:mb-0 lg:mr-8"
-      />
-      <img
-        src={Background1}
-        alt=""
-        className="lg:w-80 sm:w-64 mb-8 lg:mb-0 lg:mr-8"
-      />
-      <img
-        src={Background2}
-        alt=""
-        className="lg:w-80 sm:w-64 mb-8 lg:mb-0 lg:mr-8"
-      />
-      <TextComponent />
+
+      <div>
+        <TextComponent />
+      </div>
+      <div>
+        <div className="py-5">
+          <img
+            src={Background}
+            alt=""
+            className="lg:w-40 sm:w-32 mb-8 lg:mb-0 lg:mr-8"
+          />
+        </div>
+
+        <div className="py-5 items-end">
+          <img
+            src={Background1}
+            alt=""
+            className="lg:w-40 sm:w-32 mb-8 lg:mb-0 lg:mr-8"
+          />
+        </div>
+
+        <div className="py-5">
+          <img
+            src={Background2}
+            alt=""
+            className="lg:w-40 sm:w-32 mb-8 lg:mb-0 lg:mr-8"
+          />
+        </div>
+      </div>
     </div>
   );
 };

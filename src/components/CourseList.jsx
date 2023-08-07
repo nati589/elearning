@@ -54,10 +54,13 @@ function CourseCard() {
 
   return (
     <div>
-      <h3 className="font-bold text-3xl text-center text-[#0A033C]">Courses</h3>
-      <h3 className="font-bold justify-center flex flex-wrap items-center py-5 text-3xl text-[#0A033C]">
+      <h3 className="font-bold justify-center flex flex-wrap items-center py-2 text-3xl text-[#0A033C]">
         Qualified lessons for students
       </h3>
+      <h3 className="font-bold text-3xl text-center text-[#0A033C] py-2">
+        Courses
+      </h3>
+
       <p className="flex flex-wrap items-center justify-center px-4 sm:px-8 md:px-20 text-xl">
         Explore our range of courses designed to suit your language learning
         needs. Whether you are a beginner or an advanced learner, we have
@@ -65,7 +68,7 @@ function CourseCard() {
         Somali, and more!
       </p>
 
-      <div className="grid grid-cols- md:grid-cols-4 gap-4 md:gap-8 px-4 sm:px-8 md:px-20">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 px-4 sm:px-8 md:px-20">
         {courseData.map((course, index) => (
           <div
             key={index}

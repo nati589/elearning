@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 import React from "react";
 import Image from "../assets/Image.jpg";
 import { Link, useLocation } from "react-router-dom";
+=======
+import React from 'react';
+import Image from "../assets/Image.jpg";
+import { Link, useLocation } from 'react-router-dom';
+>>>>>>> cd33a3b742440baea22a664aac5000966a267518
 
 function CoursesHero() {
   const location = useLocation();

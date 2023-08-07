@@ -12,6 +12,7 @@ function CourseDetailsPage() {
 
   return (
     <>
+<<<<<<< HEAD
       <button
         onClick={() => {
           navigate("/");
@@ -22,6 +23,8 @@ function CourseDetailsPage() {
       {/* <DetailsHero />
       <CourseDetails />
       <SimilarCourses /> */}
+=======
+>>>>>>> cd33a3b742440baea22a664aac5000966a267518
       <CoursesHero />
       <CoursesList />
       <OtherCourses />

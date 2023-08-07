@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 import React from "react";
+=======
+import React from 'react';
+//import Image from "../assets/CourseHero.png";
+>>>>>>> 00cb1e2496142dce125b0f6e4778301ffe17b677
 import Image from "../assets/Image.jpg";
 import { Link, useLocation } from "react-router-dom";
 

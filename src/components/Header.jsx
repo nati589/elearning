@@ -4,10 +4,17 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 const navigation = [
   { name: "Shop", href: "#" },
   { name: "Free Trail", href: "#" },
+<<<<<<< HEAD
   { name: "Books", href: "../pages/BooksPage.jsx" },
   { name: "Pricing", href: "#" },
   { name: "Courses", href: "../pages/CoursePage.jsx" },
   { name: "Cart", href: "../pages/CourseDetailsPage.jsx" },
+=======
+  { name: "Books", href: "/books" },
+  { name: "Pricing", href: "#" },
+  { name: "Courses", href: "/courses" },
+  { name: "Cart", href: "/coursedetails" },
+>>>>>>> 00cb1e2496142dce125b0f6e4778301ffe17b677
   { name: "My Account", href: "#" },
 ];
 

@@ -1,9 +1,8 @@
 import React from 'react';
-import StarIcon from './StarIcon'; // Import your StarIcon component
 
 const Pricecard = () => {
   return (
-    <div className="flex ml-10">
+    <div className="flex flex-col">
       <div className="w-[400px] h-[470px] text-xl text-midnightblue-200 font-poppins bg-white rounded-lg shadow-md p-6">
         <div className="grid gap-y-4 space-y-0">
           <div className="flex items-center">
@@ -16,7 +15,7 @@ const Pricecard = () => {
           </div>
           <div className="flex items-center">
             <div className="flex-1 font-black text-dimgray-100">Ratings</div>
-            <StarIcon /> {/* Replace with your StarIcon component */}
+            <img src="star.png"/> {/* Replace with your StarIcon component */}
           </div>
           <div className="flex items-center">
             <div className="flex-1 font-black text-dimgray-100">Durations</div>
@@ -41,12 +40,12 @@ const Pricecard = () => {
           <div className="flex items-center">
             <div className="flex-1 font-black text-dimgray-100">Access</div>
             <div className="w-[20%] font-black">Lifetime</div>
-            
           </div>
-          
         </div>
         </div>
-        
+        <button className="bg-purple-500 text-white font-bold py-2 px-4 rounded-10 w-[400px] h-[60px] mr-0">
+          Purchase Course
+        </button>
     </div>
   );
 };

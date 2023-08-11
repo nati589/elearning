@@ -12,8 +12,8 @@ function OurGoal() {
         make learning Ethiopian languages accessible and enjoyable.
       </p>
 
-      <div>
-        <img src={Image} alt='' />
+      <div className="flex justify-center py-5">
+        <img src={Image} alt="" />
       </div>
 
       <div className=" flex justify-center ">

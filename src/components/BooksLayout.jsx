@@ -3,11 +3,11 @@ import Recommendations from "./Recommendations";
 
 function BooksLayout() {
   return (
-    <div className="grid grid-cols-4 gap-8 px-8 mt-4">
-      <div className="col-span-1">
+    <div className="grid md:grid-cols-4 gap-8 px-8 mt-4 xs:grid-cols-1">
+      <div className="md:col-span-1 xs:col-span-1">
         <Recommendations />
       </div>
-      <div className="col-span-3">
+      <div className="md:col-span-3 xs:col-span-1">
         {/* Filters  */}
         <div class="">
           <button
@@ -32,7 +32,7 @@ function BooksLayout() {
           </button>
         </div>
         {/* Search  */}
-        <div className="flex w-full m-2 gap-8 justify-between">
+        <div className="flex w-full m-2 gap-8 justify-between xs:flex-wrap">
           <div class="flex items-center basis-1/2">
             <input
               type="text"
@@ -55,7 +55,7 @@ function BooksLayout() {
           </div>
         </div>
         {/* Cards  */}
-        <div className="grid grid-cols-4 gap-4 my-4">
+        <div className="grid lg:grid-cols-4 gap-4 my-4 xs:grid-cols-1 sm:grid-cols-2">
           {[1, 2, 3, 4, 5, 6, 7, 8, 0].map((item) => (
             <div class="flex flex-col justify-center items-center border-2 rounded-xl ">
               <div class="!z-5 relative flex flex-col rounded-[20px] bg-white bg-clip-border shadow-3xl shadow-shadow-500 w-full !p-4 3xl:p-![18px] undefined ">

@@ -3,7 +3,7 @@ import StarIcon from './StarIcon'; // Import your StarIcon component
 
 const Pricecard = () => {
   return (
-    <div className="flex ml-10">
+    <div className="flex justify-end w-full">
       <div className="w-[400px] h-[470px] text-xl text-midnightblue-200 font-poppins bg-white rounded-lg shadow-md p-6">
         <div className="grid gap-y-4 space-y-0">
           <div className="flex items-center">

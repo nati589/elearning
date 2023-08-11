@@ -6,11 +6,7 @@ import LandingPage from "./pages/LandingPage";
 import BooksPage from "./pages/BooksPage";
 import CoursesPage from "./pages/CoursesPage";
 import CourseDetailsPage from "./pages/CourseDetailsPage";
-
-import CourseList from "./components/CourseList";
-import CoursesHero from "./components/CoursesHero.jsx";
-import OtherCourses from "./components/OtherCourses.jsx";
-
+import LoginPage from "./pages/LoginPage";
 import Background from "./components/Background";
 
 export default function App() {
@@ -24,6 +20,8 @@ export default function App() {
         <Route path="/books" element={<BooksPage />} />
         <Route path="/courses" element={<CoursesPage />} />
         <Route path="/coursedetails" element={<CourseDetailsPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        {/* <Route path="/register" element={<RegistrationPage />} /> */}
       </Routes>
               
       

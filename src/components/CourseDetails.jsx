@@ -10,10 +10,13 @@ function CourseDetails() {
     { title: "Ho Rabe", image: require("../assets/Cardphoto4.png") },
   ];
   return (
-    <div className="bg-[#f7f5fa] w-full p-4 md:p-12">
+<div className="bg-[#f7f5fa] w-full p-4 md:p-12">
       <div className="grid md:grid-cols-2 sm:grid-cols-1 gap-8 ">
         <div>
-        <h3 className="font-extrabold text-4xl text-[#0A033C] ml-10">Course Details</h3>   
+        <h3 className="font-extrabold text-4xl text-[#0A033C] ml-10">Course Details</h3>
+        <div className="col-span-1 flex items-end justify-end mr-10 mt-2 md:order-last" style={{ marginTop: "-10px" }}>
+          <Pricecard />
+        </div>   
         <div className="px-4 sm:px-8 md:px-10 text-xl">
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis consectetur adipiscing elit.
@@ -63,14 +66,13 @@ function CourseDetails() {
         </div>
         </div>
         </div>
-        <div className="col-span-1 flex items-end justify-end mr-10 mt-2" style={{ marginTop: "-10px" }}>
+        {/* <div className="col-span-1 flex items-end justify-end mr-10 mt-2" style={{ marginTop: "-10px" }}>
           <Pricecard />
-        </div>
+        </div> */}
        </div>
        
-        
-        <h3 className="font-extrabold text-4xl text-left text-[#0A033C] ml-10">Similar Courses</h3>
-        <div className="grid md:grid-cols-2 gap-4 mx-8 my-4 sm:grid-cols-1">
+       <h3 className="font-extrabold text-4xl text-left text-[#0A033C] ml-10">Similar Courses</h3>
+      <div className="grid md:grid-cols-2 gap-4 mx-8 my-4 sm:grid-cols-1">
          {courses.slice(0, 4).map((item) => (
          <div className="bg-white my-2 p-2 rounded-xl shadow-md">
           <a href="#" className="border-2 border-b-4 border-gray-200 rounded-xl hover:bg-gray-50 block">

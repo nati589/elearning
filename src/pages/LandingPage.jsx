@@ -13,7 +13,6 @@ function LandingPage() {
   return (
     <>
       <LandingHero />
-      {/* <CoursesHero /> */}
       <OurGoal />
       <CoursesList />
       <Mentor />

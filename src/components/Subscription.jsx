@@ -107,7 +107,7 @@ function Subscription() {
               "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)",
           }}
         />
-        {/* <img
+        <img
           src={Image1}
           alt="Round Image 1"
           className="w-16 h-16 rounded-full absolute top-1/2 left-8 transform -translate-y-1/2"
@@ -121,7 +121,7 @@ function Subscription() {
           src={Image3}
           alt="Round Image 3"
           className="w-16 h-16 rounded-full absolute top-1/3 right-1/4 transform -translate-y-1/2"
-        /> */}
+        />
         <img
           src={Image4}
           alt="Round Image 3"

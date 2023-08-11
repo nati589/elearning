@@ -68,7 +68,7 @@ function CourseCard() {
         Somali, and more!
       </p>
 
-      <div className="grid grid-cols-4 md:grid-cols-2 gap-4 md:gap-8 px-4 sm:px-8 md:px-20">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 px-4 sm:px-8 md:px-20">
         {courseData.map((course, index) => (
           <div
             key={index}

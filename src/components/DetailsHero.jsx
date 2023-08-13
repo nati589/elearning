@@ -19,7 +19,7 @@ function DetailsHero() {
         <button
           className="text-gray-400"
           onClick={() => {
-            navigate("/books");
+            navigate("/Course");
           }}
         >
           Courses

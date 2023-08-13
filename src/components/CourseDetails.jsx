@@ -14,9 +14,9 @@ function CourseDetails() {
       <div className="grid md:grid-cols-2 sm:grid-cols-1 gap-8 ">
         <div>
         <h3 className="font-extrabold text-4xl text-[#0A033C] ml-10">Course Details</h3>
-        <div className="col-span-1 flex items-end justify-end mr-10 mt-2 md:order-last" style={{ marginTop: "-10px" }}>
+        <div className="col-span-1 flex items-end justify-end mr-10 mt-2" style={{ marginTop: "-10px" }}>
           <Pricecard />
-        </div>   
+        </div> 
         <div className="px-4 sm:px-8 md:px-10 text-xl">
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis consectetur adipiscing elit.

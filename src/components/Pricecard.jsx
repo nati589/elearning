@@ -1,9 +1,10 @@
 import React from 'react';
+import star from "../assets/star.png";
 
 const Pricecard = () => {
   return (
     <div className="flex flex-col md:p-8">
-      <div className="w-[400px] h-[470px] text-xl text-midnightblue-200 font-poppins bg-white rounded-lg shadow-md p-6">
+      <div className="w-auto h-auto text-xl text-midnightblue-200 font-poppins bg-white rounded-lg shadow-md p-6">
         <div className="grid gap-y-4 space-y-0">
           <div className="flex items-center">
             <div className="flex-1 font-black text-dimgray-100">Price</div>
@@ -15,7 +16,7 @@ const Pricecard = () => {
           </div>
           <div className="flex items-center">
             <div className="flex-1 font-black text-dimgray-100">Ratings</div>
-            <img src="star.png"/> {/* Replace with your StarIcon component */}
+            <img src={star}/> {/* Replace with your StarIcon component */}
           </div>
           <div className="flex items-center">
             <div className="flex-1 font-black text-dimgray-100">Durations</div>

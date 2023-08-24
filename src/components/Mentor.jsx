@@ -20,7 +20,7 @@ const TextComponent = () => {
       </p>
       <div className="py-10">
         <a
-          href="#"
+          href="/"
           className="rounded-md bg-[#0A033C] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-[#9C4DF4] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 s"
         >
           Career Information

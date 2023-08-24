@@ -77,7 +77,7 @@ function CourseCard() {
             <img
               className="w-16 h-16 rounded-full mx-auto"
               src={course.image}
-              alt={`image ${index + 1}`}
+              alt={`images ${index + 1}`}
               width="64"
               height="64"
             />

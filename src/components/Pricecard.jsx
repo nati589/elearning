@@ -16,7 +16,7 @@ const Pricecard = () => {
           </div>
           <div className="flex items-center">
             <div className="flex-1 font-black text-dimgray-100">Ratings</div>
-            <img src={star} /> {/* Replace with your StarIcon component */}
+            <img src={star} alt="star"/> {/* Replace with your StarIcon component */}
           </div>
           <div className="flex items-center">
             <div className="flex-1 font-black text-dimgray-100">Durations</div>

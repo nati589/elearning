@@ -30,7 +30,7 @@ function CoursesHero() {
         <div className="font-extrabold text-4xl mt-0">For All Standards</div>
       </div>
       <div className="absolute top-1/2 right-4 transform -translate-y-1/2">
-        <img src={Image} alt="Image" className="w-40 h-40 object-cover mr-64" />
+        <img src={Image} alt="Images" className="w-40 h-40 object-cover mr-64" />
       </div>
     </div>
   );

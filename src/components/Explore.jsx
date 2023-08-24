@@ -12,7 +12,7 @@ const TextComponent = () => {
       </p>
       <div className="flex justify-center lg:justify-start">
         <a
-          href="#"
+          href="/"
           className="rounded-md bg-[#0A033C] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-[#9C4DF4]"
         >
           Career Information

@@ -10,7 +10,7 @@ function Footer() {
         <div
             class="container flex flex-col flex-wrap px-5 py-24 mx-auto md:items-center lg:items-start md:flex-row md:flex-no-wrap">
             <div class="flex-shrink-0 w-64 mx-auto text-center md:mx-0 md:text-left">
-                <a class="flex items-center justify-center font-medium text-gray-900 title-font md:justify-start">
+                <a class="flex items-center justify-center font-medium text-gray-900 title-font md:justify-start" href='/'>
                     <svg class="w-auto h-5 text-gray-900 fill-current" viewBox="0 0 202 69"
                         xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -20,13 +20,13 @@ function Footer() {
                 <p class="mt-2 text-sm text-gray-500">Design, Code and Ship!</p>
                 <div class="mt-4">
                     <span class="inline-flex justify-center mt-2 sm:ml-auto sm:mt-0 sm:justify-start">
-                        <a class="text-gray-500 cursor-pointer hover:text-gray-700">
+                        <a class="text-gray-500 cursor-pointer hover:text-gray-700" href='/'>
                             <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 class="w-5 h-5" viewBox="0 0 24 24">
                                 <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
                             </svg>
                         </a>
-                        <a class="ml-3 text-gray-500 cursor-pointer hover:text-gray-700">
+                        <a class="ml-3 text-gray-500 cursor-pointer hover:text-gray-700" href='/'>
                             <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 class="w-5 h-5" viewBox="0 0 24 24">
                                 <path
@@ -34,14 +34,14 @@ function Footer() {
                                 </path>
                             </svg>
                         </a>
-                        <a class="ml-3 text-gray-500 cursor-pointer hover:text-gray-700">
+                        <a href='/' class="ml-3 text-gray-500 cursor-pointer hover:text-gray-700">
                             <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                 stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
                                 <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
                                 <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
                             </svg>
                         </a>
-                        <a class="ml-3 text-gray-500 cursor-pointer hover:text-gray-700">
+                        <a href='/' class="ml-3 text-gray-500 cursor-pointer hover:text-gray-700">
                             <svg fill="currentColor" stroke="currentColor" stroke-linecap="round"
                                 stroke-linejoin="round" stroke-width="0" class="w-5 h-5" viewBox="0 0 24 24">
                                 <path stroke="none"
@@ -58,13 +58,13 @@ function Footer() {
                     <h2 class="mb-3 text-sm font-bold tracking-widest text-gray-900 uppercase title-font">About</h2>
                     <nav class="mb-10 list-none">
                         <li class="mt-3">
-                            <a class="text-gray-500 cursor-pointer hover:text-gray-900">Company</a>
+                            <a href='/' class="text-gray-500 cursor-pointer hover:text-gray-900">Company</a>
                         </li>
                         <li class="mt-3">
-                            <a class="text-gray-500 cursor-pointer hover:text-gray-900">Careers</a>
+                            <a href='/' class="text-gray-500 cursor-pointer hover:text-gray-900">Careers</a>
                         </li>
                         <li class="mt-3">
-                            <a class="text-gray-500 cursor-pointer hover:text-gray-900">Blog</a>
+                            <a href='/' class="text-gray-500 cursor-pointer hover:text-gray-900">Blog</a>
                         </li>
                     </nav>
                 </div>
@@ -72,13 +72,13 @@ function Footer() {
                     <h2 class="mb-3 text-sm font-bold tracking-widest text-gray-900 uppercase title-font">Support</h2>
                     <nav class="mb-10 list-none">
                         <li class="mt-3">
-                            <a class="text-gray-500 cursor-pointer hover:text-gray-900">Contact Support</a>
+                            <a href='/' class="text-gray-500 cursor-pointer hover:text-gray-900">Contact Support</a>
                         </li>
                         <li class="mt-3">
-                            <a class="text-gray-500 cursor-pointer hover:text-gray-900">Help Resources</a>
+                            <a href='/' class="text-gray-500 cursor-pointer hover:text-gray-900">Help Resources</a>
                         </li>
                         <li class="mt-3">
-                            <a class="text-gray-500 cursor-pointer hover:text-gray-900">Release Updates</a>
+                            <a href='/' class="text-gray-500 cursor-pointer hover:text-gray-900">Release Updates</a>
                         </li>
                     </nav>
                 </div>
@@ -87,13 +87,13 @@ function Footer() {
                     </h2>
                     <nav class="mb-10 list-none">
                         <li class="mt-3">
-                            <a class="text-gray-500 cursor-pointer hover:text-gray-900">Terms &amp; Privacy</a>
+                            <a href='/' class="text-gray-500 cursor-pointer hover:text-gray-900">Terms &amp; Privacy</a>
                         </li>
                         <li class="mt-3">
-                            <a class="text-gray-500 cursor-pointer hover:text-gray-900">Pricing</a>
+                            <a href='/' class="text-gray-500 cursor-pointer hover:text-gray-900">Pricing</a>
                         </li>
                         <li class="mt-3">
-                            <a class="text-gray-500 cursor-pointer hover:text-gray-900">FAQ</a>
+                            <a href='/' class="text-gray-500 cursor-pointer hover:text-gray-900">FAQ</a>
                         </li>
                     </nav>
                 </div>
@@ -101,13 +101,13 @@ function Footer() {
                     <h2 class="mb-3 text-sm font-bold tracking-widest text-gray-900 uppercase title-font">Contact</h2>
                     <nav class="mb-10 list-none">
                         <li class="mt-3">
-                            <a class="text-gray-500 cursor-pointer hover:text-gray-900">Send a Message</a>
+                            <a href='/' class="text-gray-500 cursor-pointer hover:text-gray-900">Send a Message</a>
                         </li>
                         <li class="mt-3">
-                            <a class="text-gray-500 cursor-pointer hover:text-gray-900">Request a Quote</a>
+                            <a href='/' class="text-gray-500 cursor-pointer hover:text-gray-900">Request a Quote</a>
                         </li>
                         <li class="mt-3">
-                            <a class="text-gray-500 cursor-pointer hover:text-gray-900">+123-456-7890</a>
+                            <a href='/' class="text-gray-500 cursor-pointer hover:text-gray-900">+123-456-7890</a>
                         </li>
                     </nav>
                 </div>

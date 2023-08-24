@@ -35,7 +35,7 @@ function DetailsHero() {
         </button>
       </div>
       <div className="mx-4 ml-20">
-            <img src={Image} className="max-w-12"/>
+            <img src={Image} className="max-w-12" alt="images"/>
       </div>
     </div>
   );

@@ -95,7 +95,7 @@ export default function PricingPage() {
                 </p>
               </div>
               <a
-                href="javascript:void(0)"
+                href="/"
                 class="
                   w-full
                   block
@@ -198,7 +198,7 @@ export default function PricingPage() {
                 </p>
               </div>
               <a
-                href="javascript:void(0)"
+                href="/"
                 class="
                   w-full
                   block
@@ -301,7 +301,7 @@ export default function PricingPage() {
                 </p>
               </div>
               <a
-                href="javascript:void(0)"
+                href="/"
                 class="
                   w-full
                   block

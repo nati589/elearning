@@ -34,17 +34,17 @@ function Subscription() {
             />
             <img
               src={Image1}
-              alt="Round Image 1"
+              alt="Round image_1"
               className="w-16 h-16 rounded-full absolute top-1/2 left-8 transform -translate-y-1/2"
             />
             <img
               src={Image2}
-              alt="Round Image 2"
+              alt="Round image_2"
               className="w-16 h-16 rounded-full absolute top-1/3 left-1/4 transform -translate-y-1/2"
             />
             <img
               src={Image3}
-              alt="Round Image 3"
+              alt="Round image_3"
               className="w-16 h-16 rounded-full absolute top-1/3 right-1/4 transform -translate-y-1/2"
             />
           </div>
@@ -81,7 +81,7 @@ function Subscription() {
               <div key={index} className="aspect-w-3 aspect-h-2 relative">
                 <img
                   src={imagePath}
-                  alt={`Image ${index + 1}`}
+                  alt={`image_${index + 1}`}
                   className={`rounded-lg object-cover absolute ${
                     index === 0 ? "top-4 right-4" : ""
                   } 
@@ -109,32 +109,32 @@ function Subscription() {
         />
         <img
           src={Image1}
-          alt="Round Image 1"
+          alt="Round image_1"
           className="w-16 h-16 rounded-full absolute top-1/2 left-8 transform -translate-y-1/2"
         />
         <img
           src={Image2}
-          alt="Round Image 2"
+          alt="Round image_2"
           className="w-16 h-16 rounded-full absolute top-1/3 left-1/4 transform -translate-y-1/2"
         />
         <img
           src={Image3}
-          alt="Round Image 3"
+          alt="Round image_3"
           className="w-16 h-16 rounded-full absolute top-1/3 right-1/4 transform -translate-y-1/2"
         />
         <img
           src={Image4}
-          alt="Round Image 3"
+          alt="Round image_3"
           className="w-16 h-16 rounded-full absolute top-1/2 right-8 transform -translate-y-1/2"
         />
         <img
           src={Image5}
-          alt="Round Image 3"
+          alt="Round image_3"
           className="w-16 h-16 rounded-full absolute top-1/3 right-1/4 transform -translate-y-1/2"
         />
         <img
           src={Image6}
-          alt="Round Image 3"
+          alt="Round image_3"
           className="w-16 h-16 rounded-full absolute top-1/3 right-1/4 transform -translate-y-1/2"
         />
       </div>

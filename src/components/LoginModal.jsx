@@ -33,7 +33,7 @@ function LoginModal({toggle}) {
                        <div className='w-5/12 justify-center items-center px-1'> <hr className='w-full border-2'/></div>
                     </div>
                     <InputComponent logo={<GoPerson className='relative top-7 left-3  text-gray-500'/>} label='Full name' placeholder='Enter your full name' type='text'/>
-                    <InputComponent logo={<GoMail className='relative top-7 left-3  text-gray-500'/>} label='Email' placeholder='Enter your email' type='text'/>
+                    <InputComponent logo={<GoMail className='relative top-7 left-3  text-gray-500'/>} label='Email' placeholder='Enter your email' type='email'/>
                     <InputComponent logo={<GoLock className='relative top-7 left-3  text-gray-500'/>} label='Password' placeholder='Enter password' type='text'/>
                     <label className='text-grey-500 text-sm'>
                         <input type="checkbox"  className='mx-3 text-edu-purple'/>

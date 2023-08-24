@@ -74,10 +74,11 @@ const LoginForm = () => {
           >
             Login
           </button>
-           <span class="text-sm">or <a href="/RegisterPage" class="text-blue-500"> 
-         register a new account
-      </a>
-   </span>
+          <span class="text-sm">or 
+            <a href="/RegisterPage" class="text-blue-500"> 
+              register a new account
+            </a>
+          </span>
         
         </form>
       </div>

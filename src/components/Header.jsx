@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import logo from "../assets/Logo.png"
+import LoginModal from "./LoginModal";
 const navigation = [
   { name: "Shop", href: "#" },
   { name: "Free Trail", href: "#" },
@@ -15,8 +16,11 @@ const navigation = [
 function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+
   return (
-    <header className="sticky inset-x-0 top-0 z-50 bg-white">
+    <>
+        <LoginModal/>
+        <header className="sticky inset-x-0 top-0 z-30 bg-white">
         {/* <div className="relative isolate px-6 pt-14 lg:px-8"> */}
         <div
           className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
@@ -35,7 +39,7 @@ function Header() {
         className=" text-[#0A033C] flex items-center justify-between p-6 lg:px-8"
         aria-label="Global">
         <div className="flex lg:flex-1">
-          <a href="#" className="-m-1.5 p-1.5">
+          <a href="/" className="-m-1.5 p-1.5">
             <span className="sr-only">Your Company</span>
             <img
               className="h-8 w-auto"
@@ -117,6 +121,8 @@ function Header() {
         </Dialog.Panel>
       </Dialog>
     </header>
+    </>
+
   );
 }
 

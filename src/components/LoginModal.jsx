@@ -21,8 +21,8 @@ function LoginModal() {
                 <img src={DividerVertical} alt='vertical divider' className='h-auto m-auto'/>
                 <div className='flex flex-col flex-nowrap justify-center items-center w-1/2 p-10 pt-10 font-sans'>
                     <div className='flex flex-row justify-center items-center font-mono font-thin bg-opacity-10 border-2 h-auto p-2 pr-3 pl-3 mt-2 mb-3 w-auto rounded-md'>
-                        <img src={GoogleIcon} alt='google icon' className='h-8 m-auto'/>
-                        <span className='font-sans text-base text-gray'>Sign Up with Google</span>
+                        <img src={GoogleIcon} alt='google icon' className='h-8 m-auto mr-2'/>
+                        <span className='font-sans text-base text-gray-500'>Sign Up with Google</span>
                     </div>
                     <InputComponent label='Enter name' placeholder='enter name' type='text'/>
                     <InputComponent label='Enter name2' placeholder='enter name' type='text'/>

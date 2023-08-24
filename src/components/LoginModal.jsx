@@ -3,7 +3,7 @@ import EduviLogo from '../assets/eduvi_logo.svg'
 import LoginImage from '../assets/login_image.svg'
 import DividerVertical from '../assets/divider_line.svg'
 import InputComponent from './InputComponent'
-import GoogleIcon from '../assets/google_icon.svg'
+import GoogleIcon from '../assets/google_icon2.svg'
 
 function LoginModal() {
     
@@ -19,9 +19,10 @@ function LoginModal() {
                     <img src={LoginImage} alt='login asset' className='w-8/12 h-auto m-auto'/>
                 </div>
                 <img src={DividerVertical} alt='vertical divider' className='h-auto m-auto'/>
-                <div className='flex flex-col flex-nowrap justify-center items-left w-1/2 p-10 pt-10 font-sans'>
-                    <div className='flex-row font-mono font-thin bg-opacity-10 border-2 h-10 p-2 pr-3 pl-3 mt-2 w-full rounded-md'>
-                        <img src={GoogleIcon} alt='google icon' className='h-auto m-auto'/>
+                <div className='flex flex-col flex-nowrap justify-center items-center w-1/2 p-10 pt-10 font-sans'>
+                    <div className='flex flex-row justify-center items-center font-mono font-thin bg-opacity-10 border-2 h-auto p-2 pr-3 pl-3 mt-2 mb-3 w-auto rounded-md'>
+                        <img src={GoogleIcon} alt='google icon' className='h-8 m-auto'/>
+                        <span className='font-sans text-base text-gray'>Sign Up with Google</span>
                     </div>
                     <InputComponent label='Enter name' placeholder='enter name' type='text'/>
                     <InputComponent label='Enter name2' placeholder='enter name' type='text'/>

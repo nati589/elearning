@@ -6,7 +6,7 @@ function InputComponent({logo,label, type, placeholder}) {
         <label className='font-sans text-base font-medium leading-4'>
         {label}
         {logo}
-            <input className='flex-row font-sans font-thin text-sm bg-opacity-10 border-2 h-10 pt-2 pb-2 pr-3 pl-9 mb-3 w-11/12 rounded-lg' type={type} placeholder={placeholder}/>
+            <input className='flex-row font-sans font-thin text-sm bg-opacity-10 border-2 h-10 pt-2 pb-2 pr-3 pl-9 mb-3 w-full rounded-lg' type={type} placeholder={placeholder}/>
         </label>
     </div>
   )

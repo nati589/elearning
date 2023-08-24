@@ -4,6 +4,7 @@ import LoginImage from '../assets/login_image.svg'
 import DividerVertical from '../assets/divider_line.svg'
 import InputComponent from './InputComponent'
 import GoogleIcon from '../assets/google_icon2.svg'
+import {GoPerson} from 'react-icons/go' 
 
 function LoginModal() {
     
@@ -24,10 +25,9 @@ function LoginModal() {
                         <img src={GoogleIcon} alt='google icon' className='h-8 m-auto mr-2'/>
                         <span className='font-sans text-base text-gray-500'>Sign Up with Google</span>
                     </div>
-                    <InputComponent label='Enter name' placeholder='enter name' type='text'/>
-                    <InputComponent label='Enter name2' placeholder='enter name' type='text'/>
-                    <InputComponent label='Enter name3' placeholder='enter name' type='text'/>
-                    <InputComponent label='Enter name4' placeholder='enter name' type='text'/>
+                    <InputComponent logo={<GoPerson className='relative top-7 left-3  text-gray-500'/>} label='Enter name' placeholder='enter name' type='text'/>
+                    <InputComponent logo={<GoPerson className='relative top-7 left-3  text-gray-500'/>} label='Enter name2' placeholder='enter name' type='text'/>
+                    <InputComponent logo={<GoPerson className='relative top-7 left-3  text-gray-500'/>} label='Enter name3' placeholder='enter name' type='text'/>
                 </div>
             </div>
         </div>

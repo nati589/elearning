@@ -8,6 +8,7 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "babel-preset-react-app": "^10.0.1",
     "postcss": "^8.4.27",
     "postcss-cli": "^10.1.0",
     "postcss-preset-env": "^9.1.0",
@@ -18,7 +19,7 @@
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
-  "homepage": "https://nati589.github.io/elearning", 
+  "homepage": "https://nati589.github.io/elearning",
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",

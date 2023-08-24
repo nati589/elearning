@@ -102,7 +102,7 @@ function CourseDetails() {
         {courses.slice(0, 4).map((item) => (
           <div className="bg-white my-2 p-2 rounded-xl shadow-md">
             <a
-              href="#"
+              href="/"
               className="border-2 border-b-4 border-gray-200 rounded-xl hover:bg-gray-50 block">
               <div className="grid grid-cols-6 p-2 gap-y-2">
                 <div className="col-span-1">

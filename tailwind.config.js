@@ -2,7 +2,12 @@
 module.exports = {
   content: ["./src/**/*.{html,js,jsx}"],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'edu-purple': '#9C4DF4',
+        'edu-purple-hover': '#822FDE',
+      },
+    },
     fontFamily: {
       'sans': ['Poppins', 'ui-sans-serif', 'system-ui'],
       'serif': ['ui-serif', 'Georgia'],

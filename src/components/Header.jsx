@@ -4,8 +4,6 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import logo from "../assets/Logo.png"
 import LoginModal from "./LoginModal";
 const navigation = [
-  { name: "Shop", href: "#" },
-  { name: "Free Trail", href: "#" },
   { name: "Books", href: "/books" },
   { name: "Pricing", href: "#" },
   { name: "Courses", href: "/courses" },
@@ -15,11 +13,14 @@ const navigation = [
 
 function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [signinModal,setSigninModal] = useState(false);
 
-
+  const toggleModal= ()=>{
+    setSigninModal(!signinModal)
+  }
   return (
     <>
-        <LoginModal/>
+        { signinModal &&(<LoginModal toggle={toggleModal}/>)}
         <header className="sticky inset-x-0 top-0 z-30 bg-white">
         {/* <div className="relative isolate px-6 pt-14 lg:px-8"> */}
         <div
@@ -68,9 +69,9 @@ function Header() {
           ))}
         </div>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <a href="/login" className="text-sm font-semibold leading-6 text-gray-900">
+          <div onClick={toggleModal} className="text-sm font-semibold leading-6 text-gray-900">
             Log in <span aria-hidden="true">&rarr;</span>
-          </a>
+          </div>
         </div>
       </nav>
       <Dialog
@@ -81,7 +82,7 @@ function Header() {
         <div className="fixed inset-0 z-50" />
         <Dialog.Panel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div className="flex items-center justify-between">
-            <a href="#" className="-m-1.5 p-1.5">
+            <a href="/" className="-m-1.5 p-1.5">
               <span className="sr-only">Your Company</span>
               <img
                 className="h-8 w-auto"

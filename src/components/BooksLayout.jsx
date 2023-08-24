@@ -62,7 +62,7 @@ function BooksLayout() {
           ))}
         </div>
         <div className="w-full mx-auto flex justify-center items-center gap-4 mb-3">
-          <svg
+          {/* <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
@@ -91,7 +91,7 @@ function BooksLayout() {
               strokeLinejoin="round"
               d="M8.25 4.5l7.5 7.5-7.5 7.5"
             />
-          </svg>
+          </svg> */}
         </div>
       </div>
     </div>

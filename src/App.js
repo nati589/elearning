@@ -8,6 +8,8 @@ import CoursesPage from "./pages/CoursesPage";
 import CourseDetailsPage from "./pages/CourseDetailsPage";
 import LoginPage from "./pages/LoginPage";
 import RegistrationPage from "./pages/RegistrationPage";
+import CoursePreview from "./pages/CoursePreview";
+import PricingPage from "./pages/PricingPage";
 // import Background from "./components/Background";
 
 export default function App() {
@@ -21,8 +23,10 @@ export default function App() {
         <Route path="/books" element={<BooksPage />} />
         <Route path="/courses" element={<CoursesPage />} />
         <Route path="/coursedetails" element={<CourseDetailsPage />} />
+        <Route path="/coursepreview" element={<CoursePreview />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegistrationPage />} />
+        <Route path="/pricing" element={<PricingPage />} />
       </Routes>
               
       

@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import star from "../assets/star.png";
 
 const Pricecard = () => {
@@ -16,7 +16,7 @@ const Pricecard = () => {
           </div>
           <div className="flex items-center">
             <div className="flex-1 font-black text-dimgray-100">Ratings</div>
-            <img src={star}/> {/* Replace with your StarIcon component */}
+            <img src={star} /> {/* Replace with your StarIcon component */}
           </div>
           <div className="flex items-center">
             <div className="flex-1 font-black text-dimgray-100">Durations</div>
@@ -45,10 +45,10 @@ const Pricecard = () => {
             <div className="w-[20%] font-black">Lifetime</div>
           </div>
         </div>
-        </div>
-        <button className="bg-purple-500 text-white font-bold py-2 px-4 rounded-10 w-[400px] h-[60px] mr-0 mt-4">
-          Purchase Course
-        </button>
+      </div>
+      <button className="bg-purple-500 text-white font-bold py-2 px-4 rounded-10 w-[400px] h-[60px] mr-0 mt-4">
+        <a href="/coursepreview">Purchase Course</a>
+      </button>
     </div>
   );
 };

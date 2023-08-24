@@ -5,15 +5,17 @@ import DividerVertical from '../assets/divider_line.svg'
 import InputComponent from './InputComponent'
 import GoogleIcon from '../assets/google_icon2.svg'
 import {GoLock, GoMail, GoPerson} from 'react-icons/go' 
+import { GoXCircle } from 'react-icons/go'
 
-function LoginModal() {
+function LoginModal({toggle}) {
     
   return (
     <>
-        <div className='modal-overlay h-screen w-full bg-black bg-opacity-60 fixed top-0 bottom-0 left-0 right-0 flex flex-col flex-nowrap justify-center items-center z-50'>
+        <div  className='modal-overlay h-screen w-full bg-black bg-opacity-60 fixed top-0 bottom-0 left-0 right-0 flex flex-col flex-nowrap justify-center items-center z-50'>
+        <GoXCircle onClick={toggle} className='fixed top-10 right-72 text-edu-purple w-8 h-auto z-50'/>
             <div className='modal-body flex flex-row h-fit bg-white fixed w-8/12 rounded-xl p-4'>
                 <div className='flex flex-col flex-nowrap justify-center items-left w-1/2 p-8 pl-12 font-sans'>
-                    <img src={EduviLogo} alt='eduvi logo' className='w-4/12'/>
+                    <img src={EduviLogo} alt='eduvi logo' className='w-2/12'/>
                     <span className='font-black leading-normal text-4xl mb-5'>
                     welcome to <br/> Eduvi online <br/> learning platform
                     </span>
@@ -33,6 +35,15 @@ function LoginModal() {
                     <InputComponent logo={<GoPerson className='relative top-7 left-3  text-gray-500'/>} label='Full name' placeholder='Enter your full name' type='text'/>
                     <InputComponent logo={<GoMail className='relative top-7 left-3  text-gray-500'/>} label='Email' placeholder='Enter your email' type='text'/>
                     <InputComponent logo={<GoLock className='relative top-7 left-3  text-gray-500'/>} label='Password' placeholder='Enter password' type='text'/>
+                    <label className='text-grey-500 text-sm'>
+                        <input type="checkbox"  className='mx-3 text-edu-purple'/>
+                        I agreed to the <a href='/' className='font-bold '>terms and conditions</a>
+                    </label>
+                    <button className='w-9/12 h-10 my-3 bg-edu-purple hover:bg-edu-purple-hover rounded-md text-white'>
+                        Sign Up
+                    </button>
+
+                    <span className='text-sm text-grey-500 font-sans'>Already have an account? <a href='/' className='text-edu-purple '>Sign In</a></span>
                 </div>
             </div>
         </div>

@@ -1,0 +1,36 @@
+{
+  "files": {
+    "main.css": "/elearning/static/css/main.5a83a839.css",
+    "main.js": "/elearning/static/js/main.d72eba10.js",
+    "static/media/Image.jpg": "/elearning/static/media/Image.f7b564c40e198023ad26.jpg",
+    "static/media/heroimage.png": "/elearning/static/media/heroimage.267789d4c3e9ce69935b.png",
+    "static/media/MentorImage.png": "/elearning/static/media/MentorImage.a0c645582c353e6b056b.png",
+    "static/media/ourgoal-image.png": "/elearning/static/media/ourgoal-image.8b5bbbfb887b5079867f.png",
+    "static/media/booksheroimage.jpg": "/elearning/static/media/booksheroimage.94dd6854143e9449b94e.jpg",
+    "static/media/explore-bg.png": "/elearning/static/media/explore-bg.088132e45b36ef1d4dd6.png",
+    "static/media/mentor-bg-2.png": "/elearning/static/media/mentor-bg-2.50b9f0091e1237af46a5.png",
+    "static/media/mentor-bg-1.png": "/elearning/static/media/mentor-bg-1.8d9b1f1ad61fd0ea3a20.png",
+    "static/media/mentor-bg-3.png": "/elearning/static/media/mentor-bg-3.5a91093f6b59dc791e0a.png",
+    "static/media/Cardphoto3.png": "/elearning/static/media/Cardphoto3.0a0cbc90327daadb6e2d.png",
+    "static/media/Cardphoto8.png": "/elearning/static/media/Cardphoto8.2b0df70bc7400ac31c0e.png",
+    "static/media/Cardphoto6.png": "/elearning/static/media/Cardphoto6.2b681c188a62374360cc.png",
+    "static/media/Cardphoto7.png": "/elearning/static/media/Cardphoto7.a431f06aa849f0c98722.png",
+    "static/media/Cardphoto.png": "/elearning/static/media/Cardphoto.f0d677202b2cdbd44670.png",
+    "static/media/Cardphoto4.png": "/elearning/static/media/Cardphoto4.969ebac949f5ce672199.png",
+    "static/media/Cardphoto10.png": "/elearning/static/media/Cardphoto10.1f1138315a7028bb6678.png",
+    "static/media/Cardphoto2.png": "/elearning/static/media/Cardphoto2.b164d514433adeccd774.png",
+    "static/media/Cardphoto5.png": "/elearning/static/media/Cardphoto5.df71d366755a7f7f88ef.png",
+    "static/media/Cardphoto9.png": "/elearning/static/media/Cardphoto9.70159cc9f159e690bea2.png",
+    "static/media/search.png": "/elearning/static/media/search.cadee8cdb0c0afb1a713.png",
+    "static/media/hero-bg-1.png": "/elearning/static/media/hero-bg-1.dda554e12e205995e237.png",
+    "static/media/facebook.png": "/elearning/static/media/facebook.01a470d813915c298403.png",
+    "static/media/apple.png": "/elearning/static/media/apple.1511c3d419cb16aec154.png",
+    "index.html": "/elearning/index.html",
+    "main.5a83a839.css.map": "/elearning/static/css/main.5a83a839.css.map",
+    "main.d72eba10.js.map": "/elearning/static/js/main.d72eba10.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5a83a839.css",
+    "static/js/main.d72eba10.js"
+  ]
+}

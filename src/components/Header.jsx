@@ -4,10 +4,10 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import logo from "../assets/Logo.png"
 import LoginModal from "./LoginModal";
 const navigation = [
-  { name: "Books", href: "/books" },
-  { name: "Pricing", href: "#" },
-  { name: "Courses", href: "/courses" },
-  { name: "Cart", href: "/coursedetails" },
+  { name: "Books", href: "/elearning/books" },
+  { name: "Pricing", href: "/elearning/pricing" },
+  { name: "Courses", href: "/elearning/courses" },
+  { name: "Cart", href: "/elearning/coursedetails" },
   { name: "My Account", href: "#" },
 ];
 

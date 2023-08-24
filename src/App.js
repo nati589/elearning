@@ -19,14 +19,14 @@ export default function App() {
       <Header />
 
       <Routes>
-        <Route exact path="/" element={<LandingPage />} />
-        <Route path="/books" element={<BooksPage />} />
-        <Route path="/courses" element={<CoursesPage />} />
-        <Route path="/coursedetails" element={<CourseDetailsPage />} />
-        <Route path="/coursepreview" element={<CoursePreview />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegistrationPage />} />
-        <Route path="/pricing" element={<PricingPage />} />
+        <Route exact path="/elearning/" element={<LandingPage />} />
+        <Route path="/elearning/books" element={<BooksPage />} />
+        <Route path="/elearning/courses" element={<CoursesPage />} />
+        <Route path="/elearning/coursedetails" element={<CourseDetailsPage />} />
+        <Route path="/elearning/coursepreview" element={<CoursePreview />} />
+        <Route path="/elearning/login" element={<LoginPage />} />
+        <Route path="/elearning/register" element={<RegistrationPage />} />
+        <Route path="/elearning/pricing" element={<PricingPage />} />
       </Routes>
               
       

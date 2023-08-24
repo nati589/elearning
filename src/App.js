@@ -8,12 +8,12 @@ import CoursesPage from "./pages/CoursesPage";
 import CourseDetailsPage from "./pages/CourseDetailsPage";
 import LoginPage from "./pages/LoginPage";
 import RegistrationPage from "./pages/RegistrationPage";
-import Background from "./components/Background";
+// import Background from "./components/Background";
 
 export default function App() {
   return (
     <div>
-      <Background />
+      {/* <Background /> */}
       <Header />
 
       <Routes>

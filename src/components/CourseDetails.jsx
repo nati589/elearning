@@ -9,9 +9,9 @@ function CourseDetails() {
     { title: "Ho Rabe", image: require("../assets/Cardphoto4.png") },
   ];
   return (
-    <div className="bg-[#f7f5fa] max-w-full p-4 md:p-12">
-      <div className="grid md:grid-cols-2 sm:grid-cols-1 gap-8">
-        <div className="px-4 sm:px-8 md:px-10 text-xl max-w-full">
+    <div className="">
+      <div className="flex justify-between gap-8 mx-8 flex-wrap lg:flex-nowrap my-16">
+        <div className="mx-8">
           <h3 className="font-extrabold text-4xl text-[#0A033C] mb-4">
             Course Details
           </h3>
@@ -55,18 +55,10 @@ function CourseDetails() {
             suspendisse ultrices gravida. Risus commodo viverra maecenas
             accumsan lacus vel facilisis consectetur adipiscing elit.
           </p>
-        </div>
-        <div className="col-span-1 flex items-end justify-end mr-10 mt-2">
-          <Pricecard />
-        </div>
-      </div>
-
-      <div className="col-span-1">
-        <div className="flex flex-col">
-          <h3 className="font-extrabold text-4xl text-left text-[#0A033C] ml-10 mb-4">
+          <h3 className="font-extrabold text-4xl text-left text-[#0A033C] mb-4">
             What you'll learn in this course:
           </h3>
-          <ul className="list-none ml-10 text-2x">
+          <ul className="list-none text-2x">
             <li>
               <span className="text-orange-500 text-3xl mr-2">&#9679;</span>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit
@@ -93,6 +85,9 @@ function CourseDetails() {
             </li>
           </ul>
         </div>
+        <div className=" w-full">
+          <Pricecard />
+        </div>
       </div>
 
       <h3 className="font-extrabold text-4xl text-left text-[#0A033C] ml-10">
@@ -100,10 +95,10 @@ function CourseDetails() {
       </h3>
       <div className="grid md:grid-cols-2 gap-4 mx-8 my-4 sm:grid-cols-1">
         {courses.slice(0, 4).map((item) => (
-          <div className="bg-white my-2 p-2 rounded-xl shadow-md">
+          <div className="bg-white my-2 rounded-xl shadow-md">
             <a
               href="/"
-              className="border-2 border-b-4 border-gray-200 rounded-xl hover:bg-gray-50 block">
+              className="border-2  border-gray-200 rounded-xl hover:bg-gray-50 block">
               <div className="grid grid-cols-6 p-2 gap-y-2">
                 <div className="col-span-1">
                   <img

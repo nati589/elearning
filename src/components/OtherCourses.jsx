@@ -1,6 +1,6 @@
 function OtherCourses() {
   const courses = [
-    { title: "Ha Geez", image: require("../assets/Cardphoto.png")  },
+    { title: "Ha Geez", image: require("../assets/Cardphoto.png") },
     { title: "Hu Cabe", image: require("../assets/Cardphoto2.png") },
     { title: "Hei Seles", image: require("../assets/Cardphoto3.png") },
     { title: "Ho Rabe", image: require("../assets/Cardphoto4.png") },
@@ -15,8 +15,11 @@ function OtherCourses() {
   return (
     <div className="my-16">
       <div>
-      <h3 className="font-bold text-3xl text-center text-[#0A033C] mb-8">Other Courses for Beginners</h3>
-      <div className="flex gap-8 justify-between mx-8">
+        <h3 className="font-bold text-3xl text-center text-[#0A033C] mb-8">
+          Other Courses for Beginners
+        </h3>
+        <div className="flex gap-8 justify-between flex-wrap sm:flex-nowrap mx-8">
+          {/* search  */}
           <div class="flex items-center basis-3/4">
             <input
               type="text"
@@ -27,6 +30,7 @@ function OtherCourses() {
               Search
             </button>
           </div>
+          {/* sort  */}
           <div className="flex basis-1/4 items-center">
             <label htmlFor="sort" className="mr-2">
               Sort
@@ -39,11 +43,11 @@ function OtherCourses() {
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-2 gap-4 mx-8 my-4">
+      <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-4 mx-8 my-4">
         {courses.map((item) => (
           <div class="flex flex-col bg-white my-2">
             <a
-              href="/"
+              href="/elearning/coursedetails"
               class="w-full border-2 border-b-4 border-gray-200 rounded-xl hover:bg-gray-50">
               <div class="grid grid-cols-6 p-5 gap-y-2">
                 {/* <!-- Profile Picture --> */}
@@ -57,10 +61,7 @@ function OtherCourses() {
 
                 {/* <!-- Description --> */}
                 <div class="col-span-5 md:col-span-4 ml-4">
-                  <p class="text-gray-600 font-bold">
-                    {item.title}
-                    {" "}
-                  </p>
+                  <p class="text-gray-600 font-bold">{item.title} </p>
 
                   <div class="flex items-center w-16">
                     <svg
@@ -113,38 +114,36 @@ function OtherCourses() {
           </div>
         ))}
       </div>
-      <div className="w-full mx-auto flex justify-center items-center gap-4 mb-3">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="w-6 h-6">
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M15.75 19.5L8.25 12l7.5-7.5"
-            />
-          </svg>
-          <p className="text-lg items-center text-violet-500">
-          1 of 20
-          </p>
-            
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="w-6 h-6">
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M8.25 4.5l7.5 7.5-7.5 7.5"
-            />
-          </svg>
-        </div>
+      {/* <div className="w-full mx-auto flex justify-center items-center gap-4 mb-3">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth={1.5}
+          stroke="currentColor"
+          className="w-6 h-6">
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M15.75 19.5L8.25 12l7.5-7.5"
+          />
+        </svg>
+        <p className="text-lg items-center text-violet-500">1 of 20</p>
+
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth={1.5}
+          stroke="currentColor"
+          className="w-6 h-6">
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M8.25 4.5l7.5 7.5-7.5 7.5"
+          />
+        </svg>
+      </div> */}
     </div>
   );
 }

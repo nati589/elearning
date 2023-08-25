@@ -1,41 +1,45 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import Image from "../assets/ourgoal-image.png";
+import DetailsHeroImage from "../assets/ourgoal-image.png";
 
 function DetailsHero() {
   const navigate = useNavigate();
   return (
-    <div className="bg-[#f7f5fa]" >
-      <div className="bg-violet-50 rounded-3xl ml-20 mb-5 py-8">
+    <div className="mx-8 bg-violet-50 rounded-3xl px-8 py-2 mb-16">
+      <div className="">
         <button
           className="text-gray-400"
           onClick={() => {
-            navigate("/");
-          }}
-        >
+            navigate("/elearning/");
+          }}>
           Home
         </button>
         <span className="text-gray-400"> | </span>
         <button
-          className="text-gray-400"
+          className="text-fuchsia-700"
           onClick={() => {
-            navigate("/Course");
-          }}
-        >
+            navigate("/elearning/courses");
+          }}>
           Courses
         </button>
         <span className="text-gray-400"> | </span>
         <button
-          className="text-purple-700"
+          className="text-fuchsia-700"
           onClick={() => {
-            navigate("/CourseDetails");
-          }}
-        >
+            navigate("/elearning/coursedetails");
+          }}>
           Course Details
         </button>
       </div>
-      <div className="mx-4 ml-20">
-            <img src={Image} className="max-w-12" alt="images"/>
+      <div className="flex items-center justify-around py-4 flex-wrap-reverse lg:flex-nowrap">
+        <>
+          <span className="flex gap-4">
+            <h2 className="text-4xl sm:text-6xl font-bold text-center my-2">
+               <span className="text-fuchsia-500">My Course</span> 
+            </h2>
+          </span>
+        </>
+        <img src={DetailsHeroImage} alt="" className="w-96 rounded-2xl" />
       </div>
     </div>
   );

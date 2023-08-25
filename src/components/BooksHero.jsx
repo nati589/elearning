@@ -11,7 +11,7 @@ function BooksHero() {
         <button
           className="text-gray-400"
           onClick={() => {
-            navigate("/");
+            navigate("/elearning/");
           }}>
           Home
         </button>
@@ -19,7 +19,7 @@ function BooksHero() {
         <button
           className="text-fuchsia-700"
           onClick={() => {
-            navigate("/books");
+            navigate("/elearning/books");
           }}>
           Books
         </button>

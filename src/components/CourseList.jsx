@@ -54,7 +54,7 @@ function CourseList() {
   ];
 
   return (
-    <div>
+    <div className="my-4">
       <h3 className="text-center text-5xl font-bold mx-2">
         Qualified lessons for students
       </h3>

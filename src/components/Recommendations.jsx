@@ -9,7 +9,7 @@ function Recommendations() {
           {[1, 2, 3, 4].map((item) => (
             <div class="flex flex-col bg-white my-2">
               <a
-                href="/"
+                href="/elearning/coursedetails"
                 class="w-full border-2 border-b-4 border-gray-200 rounded-xl hover:bg-gray-50">
                 <div class="grid grid-cols-6 p-5 gap-y-2">
                   {/* <!-- Profile Picture --> */}
@@ -86,7 +86,7 @@ function Recommendations() {
           {[1, 2, 3, 4].map((item) => (
             <div class="flex flex-col bg-white my-2">
               <a
-                href="/"
+                href="/elearning/coursedetails"
                 class="w-full border-2 border-b-4 border-gray-200 rounded-xl hover:bg-gray-50">
                 <div class="grid grid-cols-6 p-5 gap-y-2">
                   {/* <!-- Profile Picture --> */}

@@ -30,7 +30,7 @@ function BooksHero() {
           <img src={booksIcon} alt="Books Icon" className="w-16 h-16" />
         <h2 className="text-4xl sm:text-6xl font-bold">
           {" "}
-          Online <span className="text-fuchsia-500">Books</span> Shop
+          Online <span className="text-fuchsia-500">Learning</span> 
         </h2>
         </span>
         </>

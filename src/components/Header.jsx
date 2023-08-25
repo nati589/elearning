@@ -17,14 +17,27 @@ function Header() {
   const [signinModal,setSigninModal] = useState(false);
   const [signupModal,setSignupModal] = useState(false);
 
+  const disableScroll = ()=>{
+    document.body.style.overflow = 'hidden';
+  }
+
+  const enableScroll = ()=>{
+    document.body.style.overflow = 'auto';
+  }
+
   const toggleSignin= ()=>{
-    setSigninModal(!signinModal)
+    setSigninModal(!signinModal);
     setSignupModal(false)
+
+    !signinModal ? disableScroll() : enableScroll()
   }
 
   const toggleSignup= ()=>{
     setSignupModal(!signupModal)
     setSigninModal(false)
+
+   !signupModal ? disableScroll() : enableScroll()
+
   }
 
   return (

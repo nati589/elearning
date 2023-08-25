@@ -20,13 +20,13 @@ function OtherCourses() {
         </h3>
         <div className="flex gap-8 justify-between flex-wrap sm:flex-nowrap mx-8">
           {/* search  */}
-          <div class="flex items-center basis-3/4">
+          <div className="flex items-center basis-3/4">
             <input
               type="text"
-              class="w-full rounded-lg border border-gray-400 p-2"
+              className="w-full rounded-lg border border-gray-400 p-2"
               placeholder="Search ..."
             />
-            <button class="ml-2 rounded-lg bg-blue-500 p-2 text-white hover:bg-blue-600">
+            <button className="ml-2 rounded-lg bg-blue-500 p-2 text-white hover:bg-blue-600">
               Search
             </button>
           </div>
@@ -45,66 +45,72 @@ function OtherCourses() {
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-4 mx-8 my-4">
         {courses.map((item) => (
-          <div class="flex flex-col bg-white my-2">
+          <div className="flex flex-col bg-white my-2">
             <a
               href="/elearning/coursedetails"
-              class="w-full border-2 border-b-4 border-gray-200 rounded-xl hover:bg-gray-50">
-              <div class="grid grid-cols-6 p-5 gap-y-2">
+              className="w-full border-2 border-b-4 border-gray-200 rounded-xl hover:bg-gray-50"
+            >
+              <div className="grid grid-cols-6 p-5 gap-y-2">
                 {/* <!-- Profile Picture --> */}
                 <div>
                   <img
                     src={item.image}
-                    class="max-w-20 max-h-20 rounded-lg"
+                    className="max-w-20 max-h-20 rounded-lg"
                     alt="kd"
                   />
                 </div>
 
                 {/* <!-- Description --> */}
-                <div class="col-span-5 md:col-span-4 ml-4">
-                  <p class="text-gray-600 font-bold">{item.title} </p>
+                <div className="col-span-5 md:col-span-4 ml-4">
+                  <p className="text-gray-600 font-bold">{item.title} </p>
 
-                  <div class="flex items-center w-16">
+                  <div className="flex items-center w-16">
                     <svg
-                      class="w-5 h-5 text-yellow-400"
+                      className="w-5 h-5 text-yellow-400"
                       fill="currentColor"
                       viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg">
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
                       <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
                     </svg>
                     <svg
-                      class="w-5 h-5 text-yellow-400"
+                      className="w-5 h-5 text-yellow-400"
                       fill="currentColor"
                       viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg">
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
                       <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
                     </svg>
                     <svg
-                      class="w-5 h-5 text-yellow-400"
+                      className="w-5 h-5 text-yellow-400"
                       fill="currentColor"
                       viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg">
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
                       <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
                     </svg>
                     <svg
-                      class="w-5 h-5 text-yellow-400"
+                      className="w-5 h-5 text-yellow-400"
                       fill="currentColor"
                       viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg">
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
                       <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
                     </svg>
                     <svg
-                      class="w-5 h-5 text-gray-300 dark:text-gray-500"
+                      className="w-5 h-5 text-gray-300 dark:text-gray-500"
                       fill="currentColor"
                       viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg">
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
                       <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
                     </svg>
                   </div>
                 </div>
 
                 {/* <!-- Price --> */}
-                <div class="flex col-start-2 ml-4 md:col-start-auto md:ml-0 md:justify-end">
-                  <p class="rounded-lg text-red-500 font-bold bg-red-100  py-1 px-3 text-sm w-fit h-fit">
+                <div className="flex col-start-2 ml-4 md:col-start-auto md:ml-0 md:justify-end">
+                  <p className="rounded-lg text-red-500 font-bold bg-red-100  py-1 px-3 text-sm w-fit h-fit">
                     {" "}
                     $40.00{" "}
                   </p>

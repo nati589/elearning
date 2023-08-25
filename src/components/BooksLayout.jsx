@@ -10,41 +10,41 @@ function BooksLayout() {
       </div>
       <div className="md:col-span-3 xs:col-span-1">
         {/* Filters  */}
-        <div class="">
+        <div className="">
           <button
             type="button"
-            class="border border-red-500 bg-red-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-red-600 focus:outline-none focus:shadow-outline"
+            className="border border-red-500 bg-red-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-red-600 focus:outline-none focus:shadow-outline"
           >
             All Books
           </button>
           <button
             type="button"
-            class="border border-gray-200 bg-gray-200 text-gray-700 rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-gray-300 focus:outline-none focus:shadow-outline"
+            className="border border-gray-200 bg-gray-200 text-gray-700 rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-gray-300 focus:outline-none focus:shadow-outline"
           >
             Fiction
           </button>
           <button
             type="button"
-            class="border border-gray-200 bg-gray-200 text-gray-700 rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-gray-300 focus:outline-none focus:shadow-outline"
+            className="border border-gray-200 bg-gray-200 text-gray-700 rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-gray-300 focus:outline-none focus:shadow-outline"
           >
             Journal
           </button>
           <button
             type="button"
-            class="border border-gray-200 bg-gray-200 text-gray-700 rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-gray-300 focus:outline-none focus:shadow-outline"
+            className="border border-gray-200 bg-gray-200 text-gray-700 rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-gray-300 focus:outline-none focus:shadow-outline"
           >
             Kids
           </button>
         </div>
         {/* Search  */}
         <div className="flex w-full m-2 gap-8 justify-between xs:flex-wrap">
-          <div class="flex items-center basis-1/2">
+          <div className="flex items-center basis-1/2">
             <input
               type="text"
-              class="w-full rounded-lg border border-gray-400 p-2"
+              className="w-full rounded-lg border border-gray-400 p-2"
               placeholder="Search ..."
             />
-            <button class="ml-2 rounded-lg bg-blue-500 p-2 text-white hover:bg-blue-600">
+            <button className="ml-2 rounded-lg bg-blue-500 p-2 text-white hover:bg-blue-600">
               Search
             </button>
           </div>

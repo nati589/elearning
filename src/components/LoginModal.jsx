@@ -22,7 +22,7 @@ function LoginModal({toggle, toggleSignup}) {
                         </span>
                         <img src={LoginImage} alt='login asset' className='w-8/12 h-auto m-auto mb-3 mt-3'/>
                     </div>
-                    <img src={DividerVertical} alt='vertical divider' className='h-auto m-auto'/>
+                    <img src={DividerVertical} alt='vertical divider' className=' h-[500px] m-auto'/>
                     <div className='flex flex-col flex-nowrap justify-center items-center w-1/2 p-8 font-sans'>
                         <a className='flex flex-row justify-center items-center font-thin bg-opacity-10 border-2 h-auto p-2 pr-3 pl-3 mt-2 mb-3 w-auto rounded-lg font-sans text-sm text-gray-500 hover:bg-edu-purple hover:text-white' href='/'>
                             <img src={GoogleIcon} alt='google icon' className='h-8 m-auto mr-2'/>

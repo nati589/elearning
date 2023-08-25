@@ -12,15 +12,17 @@ function CoursesHero() {
           className="text-gray-400"
           onClick={() => {
             navigate("/elearning/");
-          }}>
+          }}
+        >
           Home
         </button>
         <span className="text-gray-400"> | </span>
         <button
-          className="text-fuchsia-700"
+          className="text--indigo-500"
           onClick={() => {
             navigate("/elearning/courses");
-          }}>
+          }}
+        >
           Courses
         </button>
       </div>
@@ -28,7 +30,8 @@ function CoursesHero() {
         <>
           <span className="flex gap-4">
             <h2 className="text-4xl sm:text-6xl font-bold text-center my-2">
-               <span className="text-fuchsia-500">Courses</span> for All Standards
+              <span className="text-fuchsia-500">Courses</span> for All
+              Standards
             </h2>
           </span>
         </>

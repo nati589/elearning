@@ -28,28 +28,28 @@ function OurGoal() {
         <img src={Image} alt="images" className="rounded-lg w-1/2 mx-auto" />
       </div>
       {/* Colored Buttons  */}
-      <div class="w-full">
-        <div class="flex justify-between mx-auto w-full flex-wrap">
-          <div class="m-2 flex-wrap md:px-36 lg:px-56">
+      <div className="w-full">
+        <div className="flex justify-between mx-auto w-full flex-wrap">
+          <div className="m-2 flex-wrap md:px-36 lg:px-56">
             <button
               type="submit"
-              class="w-full rounded-md bg-red-500 px-5  py-2 text-xs font-semibold text-white shadow-sm focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+              className="w-full rounded-md bg-red-500 px-5  py-2 text-xs font-semibold text-white shadow-sm focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
             >
               Audio Classes
             </button>
           </div>
-          <div class="m-2 flex-wrap  ">
+          <div className="m-2 flex-wrap  ">
             <button
               type="submit"
-              class="w-full rounded-md bg-green-400 px-5 py-2 text-xs font-semibold text-white shadow-sm focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+              className="w-full rounded-md bg-green-400 px-5 py-2 text-xs font-semibold text-white shadow-sm focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
             >
               Live Classes
             </button>
           </div>
-          <div class="m-2 flex-wrap md:px-36 lg:px-56">
+          <div className="m-2 flex-wrap md:px-36 lg:px-56">
             <button
               type="submit"
-              class="w-full rounded-md bg-indigo-500 px-5 py-2 text-xs font-semibold text-white shadow-sm focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+              className="w-full rounded-md bg-indigo-500 px-5 py-2 text-xs font-semibold text-white shadow-sm focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
             >
               Record Class
             </button>

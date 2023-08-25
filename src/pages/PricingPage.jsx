@@ -3,7 +3,7 @@ import React from "react";
 export default function PricingPage() {
   return (
     <section
-      class="
+      className="
    bg-white
    pt-20
    lg:pt-[120px]
@@ -14,15 +14,15 @@ export default function PricingPage() {
    overflow-hidden mx-8
    "
     >
-      <div class="container">
-        <div class="flex flex-wrap -mx-4">
-          <div class="w-full px-4">
-            <div class="text-center mx-auto mb-[60px] lg:mb-20 max-w-[510px]">
-              <span class="font-semibold text-lg text-indigo-500 mb-2 block">
+      <div className="container">
+        <div className="flex flex-wrap -mx-4">
+          <div className="w-full px-4">
+            <div className="text-center mx-auto mb-[60px] lg:mb-20 max-w-[510px]">
+              <span className="font-semibold text-lg text-indigo-500 mb-2 block">
                 Pricing Table
               </span>
               <h2
-                class="
+                className="
                   font-bold
                   text-3xl
                   sm:text-4xl
@@ -33,17 +33,17 @@ export default function PricingPage() {
               >
                 Our Pricing Plan
               </h2>
-              <p class="text-base text-body-color">
+              <p className="text-base text-body-color">
                 There are many variations of passages of Lorem Ipsum available
                 but the majority have suffered alteration in some form.
               </p>
             </div>
           </div>
         </div>
-        <div class="flex flex-wrap justify-center -mx-4">
-          <div class="w-full md:w-1/2 lg:w-1/3 px-4">
+        <div className="flex flex-wrap justify-center -mx-4">
+          <div className="w-full md:w-1/2 lg:w-1/3 px-4">
             <div
-              class="
+              className="
                bg-white
                rounded-xl
                relative
@@ -59,17 +59,17 @@ export default function PricingPage() {
                mb-10
                "
             >
-              <span class="text-indigo-500 font-semibold text-lg block mb-4">
+              <span className="text-indigo-500 font-semibold text-lg block mb-4">
                 Personal
               </span>
-              <h2 class="font-bold text-dark mb-5 text-[42px]">
+              <h2 className="font-bold text-dark mb-5 text-[42px]">
                 $59
-                <span class="text-base text-body-color font-medium">
+                <span className="text-base text-body-color font-medium">
                   / year
                 </span>
               </h2>
               <p
-                class="
+                className="
                   text-base text-body-color
                   pb-8
                   mb-8
@@ -78,29 +78,29 @@ export default function PricingPage() {
               >
                 Perfect for using in a personal website or a client project.
               </p>
-              <div class="mb-7">
-                <p class="text-base text-body-color leading-loose mb-1">
+              <div className="mb-7">
+                <p className="text-base text-body-color leading-loose mb-1">
                   1 User
                 </p>
-                <p class="text-base text-body-color leading-loose mb-1">
+                <p className="text-base text-body-color leading-loose mb-1">
                   All UI components
                 </p>
-                <p class="text-base text-body-color leading-loose mb-1">
+                <p className="text-base text-body-color leading-loose mb-1">
                   Lifetime access
                 </p>
-                <p class="text-base text-body-color leading-loose mb-1">
+                <p className="text-base text-body-color leading-loose mb-1">
                   Free updates
                 </p>
-                <p class="text-base text-body-color leading-loose mb-1">
+                <p className="text-base text-body-color leading-loose mb-1">
                   Use on 1 (one) project
                 </p>
-                <p class="text-base text-body-color leading-loose mb-1">
+                <p className="text-base text-body-color leading-loose mb-1">
                   3 Months support
                 </p>
               </div>
               <a
                 href="/"
-                class="
+                className="
                   w-full
                   block
                   text-base
@@ -118,7 +118,7 @@ export default function PricingPage() {
                 Choose Personal
               </a>
               <div>
-                <span class="absolute right-0 top-7 z-[-1]">
+                <span className="absolute right-0 top-7 z-[-1]">
                   <svg
                     width="77"
                     height="172"
@@ -149,9 +149,9 @@ export default function PricingPage() {
               </div>
             </div>
           </div>
-          <div class="w-full md:w-1/2 lg:w-1/3 px-4">
+          <div className="w-full md:w-1/2 lg:w-1/3 px-4">
             <div
-              class="
+              className="
                bg-white
                rounded-xl
                relative
@@ -167,17 +167,17 @@ export default function PricingPage() {
                mb-10
                "
             >
-              <span class="text-indigo-500 font-semibold text-lg block mb-4">
+              <span className="text-indigo-500 font-semibold text-lg block mb-4">
                 Business
               </span>
-              <h2 class="font-bold text-dark mb-5 text-[42px]">
+              <h2 className="font-bold text-dark mb-5 text-[42px]">
                 $199
-                <span class="text-base text-body-color font-medium">
+                <span className="text-base text-body-color font-medium">
                   / year
                 </span>
               </h2>
               <p
-                class="
+                className="
                   text-base text-body-color
                   pb-8
                   mb-8
@@ -186,29 +186,29 @@ export default function PricingPage() {
               >
                 Perfect for using in a Business website or a client project.
               </p>
-              <div class="mb-7">
-                <p class="text-base text-body-color leading-loose mb-1">
+              <div className="mb-7">
+                <p className="text-base text-body-color leading-loose mb-1">
                   5 Users
                 </p>
-                <p class="text-base text-body-color leading-loose mb-1">
+                <p className="text-base text-body-color leading-loose mb-1">
                   All UI components
                 </p>
-                <p class="text-base text-body-color leading-loose mb-1">
+                <p className="text-base text-body-color leading-loose mb-1">
                   Lifetime access
                 </p>
-                <p class="text-base text-body-color leading-loose mb-1">
+                <p className="text-base text-body-color leading-loose mb-1">
                   Free updates
                 </p>
-                <p class="text-base text-body-color leading-loose mb-1">
+                <p className="text-base text-body-color leading-loose mb-1">
                   Use on 3 (Three) project
                 </p>
-                <p class="text-base text-body-color leading-loose mb-1">
+                <p className="text-base text-body-color leading-loose mb-1">
                   4 Months support
                 </p>
               </div>
               <a
                 href="/"
-                class="
+                className="
                   w-full
                   block
                   text-base
@@ -226,7 +226,7 @@ export default function PricingPage() {
                 Choose Business
               </a>
               <div>
-                <span class="absolute right-0 top-7 z-[-1]">
+                <span className="absolute right-0 top-7 z-[-1]">
                   <svg
                     width="77"
                     height="172"
@@ -257,9 +257,9 @@ export default function PricingPage() {
               </div>
             </div>
           </div>
-          <div class="w-full md:w-1/2 lg:w-1/3 px-4">
+          <div className="w-full md:w-1/2 lg:w-1/3 px-4">
             <div
-              class="
+              className="
                bg-white
                rounded-xl
                relative
@@ -275,17 +275,17 @@ export default function PricingPage() {
                mb-10
                "
             >
-              <span class="text-indigo-500 font-semibold text-lg block mb-4">
+              <span className="text-indigo-500 font-semibold text-lg block mb-4">
                 Professional
               </span>
-              <h2 class="font-bold text-dark mb-5 text-[42px]">
+              <h2 className="font-bold text-dark mb-5 text-[42px]">
                 $256
-                <span class="text-base text-body-color font-medium">
+                <span className="text-base text-body-color font-medium">
                   / year
                 </span>
               </h2>
               <p
-                class="
+                className="
                   text-base text-body-color
                   pb-8
                   mb-8
@@ -294,29 +294,29 @@ export default function PricingPage() {
               >
                 Perfect for using in a Professional website or a client project.
               </p>
-              <div class="mb-7">
-                <p class="text-base text-body-color leading-loose mb-1">
+              <div className="mb-7">
+                <p className="text-base text-body-color leading-loose mb-1">
                   Unlimited Users
                 </p>
-                <p class="text-base text-body-color leading-loose mb-1">
+                <p className="text-base text-body-color leading-loose mb-1">
                   All UI components
                 </p>
-                <p class="text-base text-body-color leading-loose mb-1">
+                <p className="text-base text-body-color leading-loose mb-1">
                   Lifetime access
                 </p>
-                <p class="text-base text-body-color leading-loose mb-1">
+                <p className="text-base text-body-color leading-loose mb-1">
                   Free updates
                 </p>
-                <p class="text-base text-body-color leading-loose mb-1">
+                <p className="text-base text-body-color leading-loose mb-1">
                   Use on Unlimited project
                 </p>
-                <p class="text-base text-body-color leading-loose mb-1">
+                <p className="text-base text-body-color leading-loose mb-1">
                   12 Months support
                 </p>
               </div>
               <a
                 href="/"
-                class="
+                className="
                   w-full
                   block
                   text-base
@@ -334,7 +334,7 @@ export default function PricingPage() {
                 Choose Professional
               </a>
               <div>
-                <span class="absolute right-0 top-7 z-[-1]">
+                <span className="absolute right-0 top-7 z-[-1]">
                   <svg
                     width="77"
                     height="172"

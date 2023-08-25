@@ -74,8 +74,8 @@ const LoginForm = () => {
           >
             Login
           </button>
-          <span class="text-sm">or 
-            <a href="/RegisterPage" class="text-blue-500"> 
+          <span className="text-sm">or 
+            <a href="/RegisterPage" className="text-blue-500"> 
               register a new account
             </a>
           </span>

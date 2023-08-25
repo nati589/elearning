@@ -1,12 +1,13 @@
 import React from "react";
+import { Outlet } from 'react-router-dom'
 import BooksHero from "../components/BooksHero";
-import BooksLayout from "../components/BooksLayout";
+
 
 function BooksPage() {
   return (
     <>
       <BooksHero />
-      <BooksLayout />
+      <Outlet/>
     </>
   );
 }

@@ -43,7 +43,7 @@ function LoginModal({toggle, toggleSignup}) {
                         Sign In
                     </button>
 
-                    <span className='text-sm text-grey-500 font-sans'>Don't have an account? <a href='/' className='text-edu-purple '>Sign Up</a></span>
+                    <span className='text-sm text-grey-500 font-sans'>Don't have an account? <span onClick={toggleSignup} className='text-edu-purple '>Sign Up</span></span>
                 </div>
             </div>
         </div>

@@ -4,7 +4,7 @@ import backgroundImage from "../assets/hero-bg-1.png";
 
 function LandingHero() {
   return (
-    <div className="relative isolate over px-4 md:px-6 lg:px-8">    
+    <div className="relative isolate over px-4 md:px-6 lg:px-8">
       <div
         className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
         aria-hidden="true">
@@ -16,8 +16,9 @@ function LandingHero() {
           }}
         />
       </div>
-      <div className="flex flex-wrap-reverse flex-col md:flex-row md:justify-between items-center px-4 md:px-24 py-8 md:py-12 lg:py-40">    
-          <div className=" max-w-2xl py-32 sm:py-12 lg:py-40">
+      {/* Hero Section  */}
+      <div className="flex sm:flex-wrap-reverse lg:flex-nowrap flex-col md:flex-row lg:justify-between items-center px-4 md:px-24 py-8 md:py-12 lg:py-4">
+        <div className=" max-w-2xl py-32 sm:py-12 lg:py-40">
           <div className="">
             <h1 className="text-4xl font-bold tracking-tight text-[#0A033C] sm:text-6xl lg:text-start sm:text-center">
               Learn Ethiopian Languages

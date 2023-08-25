@@ -1,6 +1,7 @@
 import React from "react";
+import CourseCard from "./CourseCard";
 
-function CourseCard() {
+function CourseList() {
   const courseData = [
     {
       title: "Standard One",
@@ -54,61 +55,33 @@ function CourseCard() {
 
   return (
     <div>
-      <h3 className="font-bold justify-center flex flex-wrap items-center py-2 text-3xl text-[#0A033C]">
+      <h3 className="text-center text-5xl font-bold mx-2">
         Qualified lessons for students
       </h3>
-      <h3 className="font-bold text-3xl text-center text-[#0A033C] py-2">
-        Courses
-      </h3>
 
-      <p className="flex flex-wrap items-center justify-center px-4 sm:px-8 md:px-20 text-xl">
+      <p className="text-center py-5 px-20 self-center lg:w-1/2 sm:w-full mx-auto text-md my-2 ">
         Explore our range of courses designed to suit your language learning
         needs. Whether you are a beginner or an advanced learner, we have
         courses that cater to all levels. Choose from Amharic, Oromo, Tigrinya,
         Somali, and more!
       </p>
+      <h4 className="text-center text-4xl font-bold">Courses</h4>
 
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 px-4 sm:px-8 md:px-20">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8 px-4 sm:px-8 md:px-20 my-8">
         {courseData.map((course, index) => (
-          <div
-            key={index}
-            className="bg-slate-100 rounded-xl p-4 dark:bg-[#FFFFFF]"
-          >
-            <img
-              className="w-16 h-16 rounded-full mx-auto"
-              src={course.image}
-              alt={`images ${index + 1}`}
-              width="64"
-              height="64"
-            />
-            <div className="pt-4 text-center space-y-2">
-              <blockquote>
-                <p className="text-sm font-medium">
-                  <h4 className="font-bold text-xl">{course.title}</h4>
-                  {course.description}
-                </p>
-              </blockquote>
-              <button
-                type="submit"
-                className="border border-[#9C4DF4] text-[#9C4DF4] hover:bg-[#9C4DF4] hover:text-white py-2 px-4 rounded-lg md:bg-white md:text-[#9C4DF4] md:hover:bg-[#9C4DF4] md:hover:text-white"
-              >
-                Class Details
-              </button>
-            </div>
-          </div>
+          <CourseCard key={index} course={course} />
         ))}
       </div>
 
-      <div className="flex justify-center px-4 sm:px-8 md:px-20">
-        <button
-          type="submit"
-          className="flex-none rounded-md bg-[#20053E] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-[#9C4DF4] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
-        >
-          View More Class
-        </button>
+      <div className="flex justify-center px-4 sm:px-8 md:px-20 my-4">
+        <a
+          href="/elearning/courses"
+          className="flex-none rounded-md bg-[#20053E] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-[#9C4DF4] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
+          View More Courses
+        </a>
       </div>
     </div>
   );
 }
 
-export default CourseCard;
+export default CourseList;

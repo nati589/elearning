@@ -33,17 +33,19 @@ function LoginModal({toggle, toggleSignup}) {
                             or sign in with your email
                         <div className='w-3/12 justify-center items-center px-1'> <hr className='w-full border-2'/></div>
                         </div>
-                            <InputComponent logo={<GoMail className='relative top-7 left-3  text-gray-500'/>} label='Email' placeholder='Enter your email' type='email' required='required'/>
-                            <InputComponent logo={<GoLock className='relative top-7 left-3  text-gray-500'/>} label='Password' placeholder='Enter password' type='password' required='required'/>
-                        <label className='text-grey-500 text-sm'>
-                            <input type="checkbox"  className='mx-3 text-edu-purple'/>
-                            Keep me signed in &nbsp; <a href='/' className='text-edu-purple '>Forgot password?</a>
-                        </label>
 
-                        <button className='w-9/12 h-10 my-3 bg-edu-purple hover:bg-edu-purple-hover rounded-md text-white'>
-                            Sign In
-                        </button>
+                        <form className='login-form w-full flex flex-col flex-nowrap justify-center items-center' onSubmit={e => e.preventDefault()} >
+                                <InputComponent logo={<GoMail className='relative top-7 left-3  text-gray-500'/>} label='Email' placeholder='Enter your email' type='email' required='required'/>
+                                <InputComponent logo={<GoLock className='relative top-7 left-3  text-gray-500'/>} label='Password' placeholder='Enter password' type='password' required='required'/>
+                                <label className='text-grey-500 text-sm'>
+                                <input type="checkbox"  className='mx-3 text-edu-purple'/>
+                                Keep me signed in &nbsp; <a href='/' className='text-edu-purple '>Forgot password?</a>
+                                </label>
 
+                                <button className='w-9/12 h-10 my-3 bg-edu-purple hover:bg-edu-purple-hover rounded-md text-white'>
+                                Sign In
+                                </button>
+                        </form>
                         <span className='text-sm text-grey-500 font-sans'>Don't have an account? <span onClick={toggleSignup} className='text-edu-purple '>Sign Up</span></span>
                     </div>
                 </div>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Recommendations from "./Recommendations";
 import './BooksLayout.css'
 import BookCard from "./BookCard";
@@ -8,9 +8,18 @@ import { NavLink } from "react-router-dom";
 
 function BooksLayout() {
 
-  const handleClick= (num) => {
-    console.log("clicked by ",num)
-  }
+
+  const [filter, setFilter] = useState('all'); // Initial filter value, 'all' or any default value
+
+  const handleFilterClick = (event, newFilter) => {
+    event.preventDefault();
+    setFilter(newFilter);
+  };
+
+  const isActive = (value) => {
+    return value === filter ? 'books-nav-active' : 'books-nav';
+  };
+
   return (
     <div className="grid md:grid-cols-4 gap-8 px-8 mt-4 xs:grid-cols-1">
       <div className="md:col-span-1 xs:col-span-1">
@@ -19,10 +28,10 @@ function BooksLayout() {
       <div className="md:col-span-3 xs:col-span-1">
         {/* Filters  */}
         <nav className="flex flex-row w-fit my-2">
-        <NavLink to='' className='books-nav' activeclassname="books-nav-active" onClick={handleClick(1)}>All Books</NavLink>
-        <NavLink to='' className='books-nav' activeclassname="books-nav-active" onClick={handleClick(2)}>Fiction</NavLink>
-        <NavLink to='' className='books-nav' activeclassname="books-nav-active" onClick={handleClick(3)}>Journal</NavLink>
-        <NavLink to='' className='books-nav' activeclassname="books-nav-active" onClick={handleClick(4)}>Kids</NavLink>
+        <NavLink to="#" onClick={(e) => handleFilterClick(e, 'all')}  className={isActive('all')}  >All Books</NavLink>
+        <NavLink to="#" onClick={(e) => handleFilterClick(e, 'fiction')} className={isActive('fiction')} >Fiction</NavLink>
+        <NavLink to="#" onClick={(e) => handleFilterClick(e, 'journal')} className={isActive('journal')}  >Journal</NavLink>
+        <NavLink to="#" onClick={(e) => handleFilterClick(e, 'kids')} className={isActive('kids')}  >Kids</NavLink>
         </nav>
         {/* Search  */}
         <div className="flex w-full m-2 gap-8 justify-between xs:flex-wrap">

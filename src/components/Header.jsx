@@ -122,8 +122,7 @@ function Header() {
         </Dialog.Panel>
       </Dialog>
     </header>
-    </>
-
+  </>
   );
 }
 

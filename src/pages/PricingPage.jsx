@@ -280,7 +280,6 @@ export default function PricingPage() {
               <span className="text-indigo-500 font-semibold text-lg block mb-4">
                 Professional
               </span>
-
               <h2 className="font-bold text-dark mb-5 text-[42px]">
                 $256
                 <span className="text-base text-body-color font-medium">

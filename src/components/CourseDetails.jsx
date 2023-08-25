@@ -94,8 +94,8 @@ function CourseDetails() {
         Similar Courses
       </h3>
       <div className="grid md:grid-cols-2 gap-4 mx-8 my-4 sm:grid-cols-1">
-        {courses.slice(0, 4).map((item) => (
-          <div className="bg-white my-2 rounded-xl shadow-md">
+        {courses.slice(0, 4).map((item,index) => (
+          <div key={index} className="bg-white my-2 rounded-xl shadow-md">
             <a
               href="/"
               className="border-2  border-gray-200 rounded-xl hover:bg-gray-50 block"

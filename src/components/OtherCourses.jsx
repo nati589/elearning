@@ -44,12 +44,14 @@ function OtherCourses() {
         </div>
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-4 mx-8 my-4">
-        {courses.map((item) => (
-          <div className="flex flex-col bg-white my-2">
+        {courses.map((item, index) => (
+          <div key={index} className="flex flex-col bg-white my-2">
             <a
               href="/elearning/coursedetails"
               className="w-full border-2 border-b-4 border-gray-200 rounded-xl hover:bg-gray-50"
             >
+              <div className="grid grid-cols-6 p-5 gap-y-2">
+              className="w-full border-2 border-b-4 border-gray-200 rounded-xl hover:bg-gray-50">
               <div className="grid grid-cols-6 p-5 gap-y-2">
                 {/* <!-- Profile Picture --> */}
                 <div>

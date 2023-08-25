@@ -1,8 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import Recommendations from "./Recommendations";
+import "./BooksLayout.css";
 import BookCard from "./BookCard";
 
+import { NavLink } from "react-router-dom";
 function BooksLayout() {
+  const [filter, setFilter] = useState("all"); // Initial filter value, 'all' or any default value
+
+  const handleFilterClick = (event, newFilter) => {
+    event.preventDefault();
+    setFilter(newFilter);
+  };
+
+  const isActive = (value) => {
+    return value === filter ? "books-nav-active" : "books-nav";
+  };
+
   return (
     <div className="grid md:grid-cols-4 gap-8 px-8 mt-4 xs:grid-cols-1">
       <div className="md:col-span-1 xs:col-span-1">
@@ -10,32 +23,36 @@ function BooksLayout() {
       </div>
       <div className="md:col-span-3 xs:col-span-1">
         {/* Filters  */}
-        <div className="">
-          <button
-            type="button"
-            className="border border-red-500 bg-red-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-red-600 focus:outline-none focus:shadow-outline"
+        <nav className="flex flex-row w-fit my-2">
+          <NavLink
+            to="#"
+            onClick={(e) => handleFilterClick(e, "all")}
+            className={isActive("all")}
           >
             All Books
-          </button>
-          <button
-            type="button"
-            className="border border-gray-200 bg-gray-200 text-gray-700 rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-gray-300 focus:outline-none focus:shadow-outline"
+          </NavLink>
+          <NavLink
+            to="#"
+            onClick={(e) => handleFilterClick(e, "fiction")}
+            className={isActive("fiction")}
           >
             Fiction
-          </button>
-          <button
-            type="button"
-            className="border border-gray-200 bg-gray-200 text-gray-700 rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-gray-300 focus:outline-none focus:shadow-outline"
+          </NavLink>
+          <NavLink
+            to="#"
+            onClick={(e) => handleFilterClick(e, "journal")}
+            className={isActive("journal")}
           >
             Journal
-          </button>
-          <button
-            type="button"
-            className="border border-gray-200 bg-gray-200 text-gray-700 rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-gray-300 focus:outline-none focus:shadow-outline"
+          </NavLink>
+          <NavLink
+            to="#"
+            onClick={(e) => handleFilterClick(e, "kids")}
+            className={isActive("kids")}
           >
             Kids
-          </button>
-        </div>
+          </NavLink>
+        </nav>
         {/* Search  */}
         <div className="flex w-full m-2 gap-8 justify-between xs:flex-wrap">
           <div className="flex items-center basis-1/2">
@@ -61,41 +78,9 @@ function BooksLayout() {
         </div>
         {/* Cards  */}
         <div className="grid lg:grid-cols-4 gap-4 my-4 xs:grid-cols-1 sm:grid-cols-2">
-          {[1, 2, 3, 4, 5, 6, 7, 8, 0].map((item) => (
-            <BookCard />
+          {[1, 2, 3, 4, 5, 6, 7, 8, 0].map((index) => (
+            <BookCard key={index} />
           ))}
-        </div>
-        <div className="w-full mx-auto flex justify-center items-center gap-4 mb-3">
-          {/* <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="w-6 h-6">
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M15.75 19.5L8.25 12l7.5-7.5"
-            />
-          </svg>
-          <p className="text-lg items-center text-violet-500">
-          5 of 20
-          </p>
-            
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="w-6 h-6">
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M8.25 4.5l7.5 7.5-7.5 7.5"
-            />
-          </svg> */}
         </div>
       </div>
     </div>

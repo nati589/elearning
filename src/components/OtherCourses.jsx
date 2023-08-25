@@ -51,15 +51,17 @@ function OtherCourses() {
               className="w-full border-2 border-b-4 border-gray-200 rounded-xl hover:bg-gray-50"
             >
               <div className="grid grid-cols-6 p-5 gap-y-2">
-              className="w-full border-2 border-b-4 border-gray-200 rounded-xl hover:bg-gray-50">
-              <div className="grid grid-cols-6 p-5 gap-y-2">
-                {/* <!-- Profile Picture --> */}
-                <div>
-                  <img
-                    src={item.image}
-                    className="max-w-20 max-h-20 rounded-lg"
-                    alt="kd"
-                  />
+                <div className="w-full border-2 border-b-4 border-gray-200 rounded-xl hover:bg-gray-50">
+                  <div className="grid grid-cols-6 p-5 gap-y-2">
+                    {/* <!-- Profile Picture --> */}
+                    <div>
+                      <img
+                        src={item.image}
+                        className="max-w-20 max-h-20 rounded-lg"
+                        alt="kd"
+                      />
+                    </div>
+                  </div>
                 </div>
 
                 {/* <!-- Description --> */}

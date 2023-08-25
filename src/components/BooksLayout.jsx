@@ -4,6 +4,7 @@ import "./BooksLayout.css";
 import BookCard from "./BookCard";
 
 import { NavLink } from "react-router-dom";
+
 function BooksLayout() {
   const [filter, setFilter] = useState("all"); // Initial filter value, 'all' or any default value
 

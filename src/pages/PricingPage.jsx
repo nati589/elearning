@@ -12,12 +12,13 @@ export default function PricingPage() {
    relative
    z-20
    overflow-hidden mx-8
-   ">
+   "
+    >
       <div class="container">
         <div class="flex flex-wrap -mx-4">
           <div class="w-full px-4">
             <div class="text-center mx-auto mb-[60px] lg:mb-20 max-w-[510px]">
-              <span class="font-semibold text-lg text-blue-500 mb-2 block">
+              <span class="font-semibold text-lg text-indigo-500 mb-2 block">
                 Pricing Table
               </span>
               <h2
@@ -28,7 +29,8 @@ export default function PricingPage() {
                   md:text-[40px]
                   text-dark
                   mb-4
-                  ">
+                  "
+              >
                 Our Pricing Plan
               </h2>
               <p class="text-base text-body-color">
@@ -47,7 +49,7 @@ export default function PricingPage() {
                relative
                z-10
                overflow-hidden
-               border border-blue-500 border-opacity-20
+               border border-indigo-500 border-opacity-20
                shadow-pricing
                py-10
                px-8
@@ -55,8 +57,9 @@ export default function PricingPage() {
                lg:py-10 lg:px-6
                xl:p-12
                mb-10
-               ">
-              <span class="text-blue-500 font-semibold text-lg block mb-4">
+               "
+            >
+              <span class="text-indigo-500 font-semibold text-lg block mb-4">
                 Personal
               </span>
               <h2 class="font-bold text-dark mb-5 text-[42px]">
@@ -71,7 +74,8 @@ export default function PricingPage() {
                   pb-8
                   mb-8
                   border-b border-[#F2F2F2]
-                  ">
+                  "
+              >
                 Perfect for using in a personal website or a client project.
               </p>
               <div class="mb-7">
@@ -101,15 +105,16 @@ export default function PricingPage() {
                   block
                   text-base
                   font-semibold
-                  text-blue-500
+                  text-indigo-500
                   bg-transparent
                   border border-[#D4DEFF]
                   rounded-md
                   text-center
                   p-4
-                  hover:text-white hover:bg-blue-500 hover:border-primary
+                  hover:text-white hover:bg-indigo-500 hover:border-primary
                   transition
-                  ">
+                  "
+              >
                 Choose Personal
               </a>
               <div>
@@ -119,7 +124,8 @@ export default function PricingPage() {
                     height="172"
                     viewBox="0 0 77 172"
                     fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
                     <circle cx="86" cy="86" r="86" fill="url(#paint0_linear)" />
                     <defs>
                       <linearGradient
@@ -128,7 +134,8 @@ export default function PricingPage() {
                         y1="0"
                         x2="86"
                         y2="172"
-                        gradientUnits="userSpaceOnUse">
+                        gradientUnits="userSpaceOnUse"
+                      >
                         <stop stop-color="#3056D3" stop-opacity="0.09" />
                         <stop
                           offset="1"
@@ -150,7 +157,7 @@ export default function PricingPage() {
                relative
                z-10
                overflow-hidden
-               border border-blue-500 border-opacity-20
+               border border-indigo-500 border-opacity-20
                shadow-pricing
                py-10
                px-8
@@ -158,8 +165,9 @@ export default function PricingPage() {
                lg:py-10 lg:px-6
                xl:p-12
                mb-10
-               ">
-              <span class="text-blue-500 font-semibold text-lg block mb-4">
+               "
+            >
+              <span class="text-indigo-500 font-semibold text-lg block mb-4">
                 Business
               </span>
               <h2 class="font-bold text-dark mb-5 text-[42px]">
@@ -174,7 +182,8 @@ export default function PricingPage() {
                   pb-8
                   mb-8
                   border-b border-[#F2F2F2]
-                  ">
+                  "
+              >
                 Perfect for using in a Business website or a client project.
               </p>
               <div class="mb-7">
@@ -205,14 +214,15 @@ export default function PricingPage() {
                   text-base
                   font-semibold
                   text-white
-                  bg-blue-500
+                  bg-indigo-500
                   border border-primary
                   rounded-md
                   text-center
                   p-4
                   hover:bg-opacity-90
                   transition
-                  ">
+                  "
+              >
                 Choose Business
               </a>
               <div>
@@ -222,7 +232,8 @@ export default function PricingPage() {
                     height="172"
                     viewBox="0 0 77 172"
                     fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
                     <circle cx="86" cy="86" r="86" fill="url(#paint0_linear)" />
                     <defs>
                       <linearGradient
@@ -231,7 +242,8 @@ export default function PricingPage() {
                         y1="0"
                         x2="86"
                         y2="172"
-                        gradientUnits="userSpaceOnUse">
+                        gradientUnits="userSpaceOnUse"
+                      >
                         <stop stop-color="#3056D3" stop-opacity="0.09" />
                         <stop
                           offset="1"
@@ -253,7 +265,7 @@ export default function PricingPage() {
                relative
                z-10
                overflow-hidden
-               border border-blue-500 border-opacity-20
+               border border-indigo-500 border-opacity-20
                shadow-pricing
                py-10
                px-8
@@ -261,8 +273,9 @@ export default function PricingPage() {
                lg:py-10 lg:px-6
                xl:p-12
                mb-10
-               ">
-              <span class="text-blue-500 font-semibold text-lg block mb-4">
+               "
+            >
+              <span class="text-indigo-500 font-semibold text-lg block mb-4">
                 Professional
               </span>
               <h2 class="font-bold text-dark mb-5 text-[42px]">
@@ -277,7 +290,8 @@ export default function PricingPage() {
                   pb-8
                   mb-8
                   border-b border-[#F2F2F2]
-                  ">
+                  "
+              >
                 Perfect for using in a Professional website or a client project.
               </p>
               <div class="mb-7">
@@ -307,15 +321,16 @@ export default function PricingPage() {
                   block
                   text-base
                   font-semibold
-                  text-blue-500
+                  text-indigo-500
                   bg-transparent
                   border border-[#D4DEFF]
                   rounded-md
                   text-center
                   p-4
-                  hover:text-white hover:bg-blue-500 hover:border-blue-500
+                  hover:text-white hover:bg-indigo-500 hover:border-indigo-500
                   transition
-                  ">
+                  "
+              >
                 Choose Professional
               </a>
               <div>
@@ -325,7 +340,8 @@ export default function PricingPage() {
                     height="172"
                     viewBox="0 0 77 172"
                     fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
                     <circle cx="86" cy="86" r="86" fill="url(#paint0_linear)" />
                     <defs>
                       <linearGradient
@@ -334,7 +350,8 @@ export default function PricingPage() {
                         y1="0"
                         x2="86"
                         y2="172"
-                        gradientUnits="userSpaceOnUse">
+                        gradientUnits="userSpaceOnUse"
+                      >
                         <stop stop-color="#3056D3" stop-opacity="0.09" />
                         <stop
                           offset="1"
@@ -345,7 +362,6 @@ export default function PricingPage() {
                     </defs>
                   </svg>
                 </span>
-                
               </div>
             </div>
           </div>

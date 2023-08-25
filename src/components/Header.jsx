@@ -3,6 +3,7 @@ import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import logo from "../assets/Logo.png"
 import LoginModal from "./LoginModal";
+import SignupModal from "./SignupModal";
 const navigation = [
   { name: "Books", href: "/elearning/books" },
   { name: "Pricing", href: "/elearning/pricing" },
@@ -14,13 +15,23 @@ const navigation = [
 function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [signinModal,setSigninModal] = useState(false);
+  const [signupModal,setSignupModal] = useState(false);
 
-  const toggleModal= ()=>{
+  const toggleSignin= ()=>{
     setSigninModal(!signinModal)
+    setSignupModal(false)
   }
+
+  const toggleSignup= ()=>{
+    setSignupModal(!signupModal)
+    setSigninModal(false)
+  }
+
   return (
     <>
-        { signinModal &&(<LoginModal toggle={toggleModal}/>)}
+        { signinModal &&(<LoginModal toggle={toggleSignin} toggleSignup={toggleSignup}/>)}
+        { signupModal &&(<SignupModal toggle={toggleSignup} toggleSignin={toggleSignin}/>)}
+
         <header className="sticky inset-x-0 top-0 z-30 bg-white">
         {/* <div className="relative isolate px-6 pt-14 lg:px-8"> */}
         <div
@@ -69,7 +80,7 @@ function Header() {
           ))}
         </div>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <div onClick={toggleModal} className="text-sm font-semibold leading-6 text-gray-900">
+          <div onClick={toggleSignin} className="text-sm font-semibold leading-6 text-gray-900">
             Log in <span aria-hidden="true">&rarr;</span>
           </div>
         </div>

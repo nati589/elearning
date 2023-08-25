@@ -55,7 +55,7 @@ function CourseList() {
 
   return (
     <div className="my-4">
-      <h3 className="text-center text-5xl font-bold mx-2">
+      <h3 className="text-center text-5xl text-[#20053E] font-bold mx-2">
         Qualified lessons for students
       </h3>
 
@@ -65,7 +65,7 @@ function CourseList() {
         courses that cater to all levels. Choose from Amharic, Oromo, Tigrinya,
         Somali, and more!
       </p>
-      <h4 className="text-center text-4xl font-bold">Courses</h4>
+      <h4 className="text-center text-4xl font-bold text-[#20053E]">Courses</h4>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8 px-4 sm:px-8 md:px-20 my-8">
         {courseData.map((course, index) => (
@@ -76,7 +76,8 @@ function CourseList() {
       <div className="flex justify-center px-4 sm:px-8 md:px-20 my-4">
         <a
           href="/elearning/courses"
-          className="flex-none rounded-md bg-[#20053E] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-[#9C4DF4] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
+          className="flex-none rounded-md bg-[#20053E] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-[#9C4DF4] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+        >
           View More Courses
         </a>
       </div>

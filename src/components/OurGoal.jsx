@@ -4,7 +4,10 @@ import Image from "../assets/ourgoal-image.png";
 function OurGoal() {
   return (
     <div className="mb-16">
-      <h4 className="text-center text-3xl font-bold "> Our Goal</h4>
+      <h4 className="text-center text-3xl font-bold  text-[#20053E]">
+        {" "}
+        Our Goal
+      </h4>
       <p className="text-center py-5 px-20 self-center lg:w-1/2 sm:w-full mx-auto text-lg">
         As we are passionate about promoting Ethiopian languages and bridging
         the linguistic gap for foreigners. Our team of experienced language
@@ -16,7 +19,8 @@ function OurGoal() {
         <a
           // type="submit"
           href="/elearning/courses"
-          className="flex-none rounded-md bg-[#20053E] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500 ">
+          className="flex-none rounded-md bg-[#20053E] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500 "
+        >
           Visit Courses
         </a>
       </div>
@@ -24,33 +28,34 @@ function OurGoal() {
         <img src={Image} alt="images" className="rounded-lg w-1/2 mx-auto" />
       </div>
       {/* Colored Buttons  */}
-      <div className="w-full">
-
-      <div className="flex justify-between mx-auto w-1/2 flex-wrap">
-        <div className="m-2">
-          <button
-            type="submit"
-            className="flex-none rounded-md bg-red-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
-            Audio Classes
-          </button>
-        </div>
-        <div className="m-2">
-          <button
-            type="submit"
-            className="flex-none rounded-md bg-green-400 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
-            Live Classes
-          </button>
-        </div>
-        <div className="m-2">
-          <button
-            type="submit"
-            className="flex-none rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
-            Record Class
-          </button>
+      <div class="w-full">
+        <div class="flex justify-between mx-auto w-full flex-wrap">
+          <div class="m-2 flex-wrap md:px-36 lg:px-56">
+            <button
+              type="submit"
+              class="w-full rounded-md bg-red-500 px-5  py-2 text-xs font-semibold text-white shadow-sm focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+            >
+              Audio Classes
+            </button>
+          </div>
+          <div class="m-2 flex-wrap  ">
+            <button
+              type="submit"
+              class="w-full rounded-md bg-green-400 px-5 py-2 text-xs font-semibold text-white shadow-sm focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+            >
+              Live Classes
+            </button>
+          </div>
+          <div class="m-2 flex-wrap md:px-36 lg:px-56">
+            <button
+              type="submit"
+              class="w-full rounded-md bg-indigo-500 px-5 py-2 text-xs font-semibold text-white shadow-sm focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+            >
+              Record Class
+            </button>
+          </div>
         </div>
       </div>
-      </div>
-
     </div>
   );
 }

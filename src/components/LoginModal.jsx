@@ -13,7 +13,7 @@ function LoginModal({toggle, toggleSignup}) {
     <>
         <div  className='modal-overlay h-screen w-full bg-black bg-opacity-60 fixed top-0 bottom-0 left-0 right-0 flex flex-col flex-nowrap justify-center items-center z-50'>
             <div className='modal-body flex flex-col h-fit bg-white w-8/12 rounded-xl p-4'>
-                <GoXCircle onClick={toggle} className='block self-end text-edu-purple w-8 h-auto'/>
+                <GoXCircle onClick={toggle} className='block self-end text-edu-purple  hover:text-edu-purple-hover w-8 h-auto'/>
                 <div className='modal-body flex flex-row'>
                     <div className='flex flex-col flex-nowrap justify-center items-left w-1/2 p-8 pl-24 font-sans'>
                         <img src={EduviLogo} alt='eduvi logo' className='w-2/12'/>

@@ -5,7 +5,7 @@ module.exports = {
     extend: {
       colors: {
         'edu-purple': '#9C4DF4',
-        'edu-purple-hover': '#822FDE',
+        'edu-purple-hover': '#754DA2',
       },
     },
     fontFamily: {

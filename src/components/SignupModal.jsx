@@ -28,18 +28,18 @@ function SignupModal({toggle, toggleSignin}) {
                         <img src={GoogleIcon} alt='google icon' className='h-8 m-auto mr-2'/>
                         Sign Up with Google
                     </a>
-                    <div className='flex flex-row flex-nowrap justify-center items-center w-11/12 text-gray-600 font-bold'>
-                    <div className='w-5/12 justify-center items-center px-1 '> <hr className='w-full border-2'/></div>
-                        or
-                    <div className='w-5/12 justify-center items-center px-1'> <hr className='w-full border-2'/></div>
+                    <div className='flex flex-row flex-nowrap justify-center items-center w-11/12 text-gray-600 text-sm font-bold'>
+                        <div className='w-3/12 justify-center items-center px-1 '> <hr className='w-full border-2'/></div>
+                            or sign up with your email
+                        <div className='w-3/12 justify-center items-center px-1'> <hr className='w-full border-2'/></div>
                     </div>
 
-                    <form className='signup-form w-full flex flex-col flex-nowrap justify-center items-center' onSubmit={e => e.preventDefault()} noValidate>
+                    <form className='signup-form w-full flex flex-col flex-nowrap justify-center items-center' onSubmit={e => e.preventDefault()}>
                         <InputComponent logo={<GoPerson className='relative top-7 left-3  text-gray-500'/>} label='Full name' placeholder='Enter your full name' type='text' required='required'/>
                         <InputComponent logo={<GoMail className='relative top-7 left-3  text-gray-500'/>} label='Email' placeholder='Enter your email' type='email' required='required'/>
                         <InputComponent logo={<GoLock className='relative top-7 left-3  text-gray-500'/>} label='Password' placeholder='Enter password' type='password' required='required'/>
                         <label className='text-grey-500 text-sm'>
-                            <input type="checkbox"  className='mx-3 text-edu-purple'/>
+                            <input type="checkbox"  className='mx-3 text-edu-purple' required/>
                             I agreed to the <a href='/' className='font-bold '>terms and conditions</a>
                         </label>
                         <button className='w-9/12 h-10 my-3 bg-edu-purple hover:bg-edu-purple-hover rounded-md text-white'>

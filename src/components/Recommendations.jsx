@@ -7,7 +7,7 @@ function Recommendations() {
         Popular Books
         <div className="flex flex-wrap my-4">
           {[1, 2, 3, 4].map((index) => (
-            <div  key={index} className="flex flex-col bg-white my-2">
+            <div key={index} className="flex flex-col bg-white my-2">
               <a
                 href="/elearning/coursedetails"
                 className="w-full border-2 border-b-4 border-gray-200 rounded-xl hover:bg-gray-50"

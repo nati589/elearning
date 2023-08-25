@@ -1,15 +1,12 @@
 import React, { useState } from "react";
 import Recommendations from "./Recommendations";
-import './BooksLayout.css'
+import "./BooksLayout.css";
 import BookCard from "./BookCard";
-
 
 import { NavLink } from "react-router-dom";
 
 function BooksLayout() {
-
-
-  const [filter, setFilter] = useState('all'); // Initial filter value, 'all' or any default value
+  const [filter, setFilter] = useState("all"); // Initial filter value, 'all' or any default value
 
   const handleFilterClick = (event, newFilter) => {
     event.preventDefault();
@@ -17,7 +14,7 @@ function BooksLayout() {
   };
 
   const isActive = (value) => {
-    return value === filter ? 'books-nav-active' : 'books-nav';
+    return value === filter ? "books-nav-active" : "books-nav";
   };
 
   return (
@@ -28,10 +25,34 @@ function BooksLayout() {
       <div className="md:col-span-3 xs:col-span-1">
         {/* Filters  */}
         <nav className="flex flex-row w-fit my-2">
-        <NavLink to="#" onClick={(e) => handleFilterClick(e, 'all')}  className={isActive('all')}  >All Books</NavLink>
-        <NavLink to="#" onClick={(e) => handleFilterClick(e, 'fiction')} className={isActive('fiction')} >Fiction</NavLink>
-        <NavLink to="#" onClick={(e) => handleFilterClick(e, 'journal')} className={isActive('journal')}  >Journal</NavLink>
-        <NavLink to="#" onClick={(e) => handleFilterClick(e, 'kids')} className={isActive('kids')}  >Kids</NavLink>
+          <NavLink
+            to="#"
+            onClick={(e) => handleFilterClick(e, "all")}
+            className={isActive("all")}
+          >
+            All Books
+          </NavLink>
+          <NavLink
+            to="#"
+            onClick={(e) => handleFilterClick(e, "fiction")}
+            className={isActive("fiction")}
+          >
+            Fiction
+          </NavLink>
+          <NavLink
+            to="#"
+            onClick={(e) => handleFilterClick(e, "journal")}
+            className={isActive("journal")}
+          >
+            Journal
+          </NavLink>
+          <NavLink
+            to="#"
+            onClick={(e) => handleFilterClick(e, "kids")}
+            className={isActive("kids")}
+          >
+            Kids
+          </NavLink>
         </nav>
         {/* Search  */}
         <div className="flex w-full m-2 gap-8 justify-between xs:flex-wrap">
@@ -59,7 +80,7 @@ function BooksLayout() {
         {/* Cards  */}
         <div className="grid lg:grid-cols-4 gap-4 my-4 xs:grid-cols-1 sm:grid-cols-2">
           {[1, 2, 3, 4, 5, 6, 7, 8, 0].map((index) => (
-            <BookCard key={index}/>
+            <BookCard key={index} />
           ))}
         </div>
       </div>

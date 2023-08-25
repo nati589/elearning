@@ -136,10 +136,10 @@ export default function PricingPage() {
                         y2="172"
                         gradientUnits="userSpaceOnUse"
                       >
-                        <stop stop-color="#3056D3" stop-opacity="0.09" />
+                        <stop stop-color="#ff80b5" stop-opacity="0.09" />
                         <stop
                           offset="1"
-                          stop-color="#C4C4C4"
+                          stop-color="#9089fc"
                           stop-opacity="0"
                         />
                       </linearGradient>
@@ -165,6 +165,8 @@ export default function PricingPage() {
                lg:py-10 lg:px-6
                xl:p-12
                mb-10
+               sm:  hover:text-white hover:bg-indigo-500 hover:border-primary
+
                "
             >
               <span className="text-indigo-500 font-semibold text-lg block mb-4">
@@ -247,7 +249,7 @@ export default function PricingPage() {
                         <stop stop-color="#3056D3" stop-opacity="0.09" />
                         <stop
                           offset="1"
-                          stop-color="#C4C4C4"
+                          stop-color="#9089fc"
                           stop-opacity="0"
                         />
                       </linearGradient>
@@ -355,7 +357,7 @@ export default function PricingPage() {
                         <stop stop-color="#3056D3" stop-opacity="0.09" />
                         <stop
                           offset="1"
-                          stop-color="#C4C4C4"
+                          stop-color="#9089fc"
                           stop-opacity="0"
                         />
                       </linearGradient>

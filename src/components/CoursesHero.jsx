@@ -30,8 +30,7 @@ function CoursesHero() {
         <>
           <span className="flex gap-4">
             <h2 className="text-4xl sm:text-6xl font-bold text-center my-2">
-              <span className="text-fuchsia-500">Courses</span> for All
-              Standards
+              <span className="text-[#9C4DF4]">Courses</span> for All Standards
             </h2>
           </span>
         </>

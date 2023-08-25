@@ -12,12 +12,12 @@ function LoginModal({toggle}) {
   return (
     <>
         <div  className='modal-overlay h-screen w-full bg-black bg-opacity-60 fixed top-0 bottom-0 left-0 right-0 flex flex-col flex-nowrap justify-center items-center z-50'>
-        <GoXCircle onClick={toggle} className='fixed top-10 right-72 text-edu-purple w-8 h-auto z-50'/>
+        <GoXCircle onClick={toggle} className='fixed top-12 right-64 text-edu-purple w-8 h-auto z-50'/>
             <div className='modal-body flex flex-row h-fit bg-white fixed w-8/12 rounded-xl p-4'>
                 <div className='flex flex-col flex-nowrap justify-center items-left w-1/2 p-8 pl-24 font-sans'>
                     <img src={EduviLogo} alt='eduvi logo' className='w-2/12'/>
                     <span className=' leading-normal font-black text-4xl mb-5'>
-                    <strong>Welcome to <br/> EthLang online <br/> learning platform</strong>
+                        Welcome to <br/> EthLang online <br/> learning platform
                     </span>
                     <img src={LoginImage} alt='login asset' className='w-8/12 h-auto m-auto mb-3 mt-3'/>
                 </div>

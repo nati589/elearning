@@ -7,7 +7,7 @@ import GoogleIcon from '../assets/google_icon2.svg'
 import {GoLock, GoMail, GoPerson} from 'react-icons/go' 
 import { GoXCircle } from 'react-icons/go'
 
-function SignupModal({toggle}) {
+function SignupModal({toggle, toggleSignin}) {
   return (
     <>
     <div  className='modal-overlay h-screen w-full bg-black bg-opacity-60 fixed top-0 bottom-0 left-0 right-0 flex flex-col flex-nowrap justify-center items-center z-50'>
@@ -33,7 +33,7 @@ function SignupModal({toggle}) {
                 </div>
                 <InputComponent logo={<GoPerson className='relative top-7 left-3  text-gray-500'/>} label='Full name' placeholder='Enter your full name' type='text'/>
                 <InputComponent logo={<GoMail className='relative top-7 left-3  text-gray-500'/>} label='Email' placeholder='Enter your email' type='email'/>
-                <InputComponent logo={<GoLock className='relative top-7 left-3  text-gray-500'/>} label='Password' placeholder='Enter password' type='text'/>
+                <InputComponent logo={<GoLock className='relative top-7 left-3  text-gray-500'/>} label='Password' placeholder='Enter password' type='password'/>
                 <label className='text-grey-500 text-sm'>
                     <input type="checkbox"  className='mx-3 text-edu-purple'/>
                     I agreed to the <a href='/' className='font-bold '>terms and conditions</a>
@@ -42,7 +42,7 @@ function SignupModal({toggle}) {
                     Sign Up
                 </button>
 
-                <span className='text-sm text-grey-500 font-sans'>Already have an account? <a href='/' className='text-edu-purple '>Sign In</a></span>
+                <span className='text-sm text-grey-500 font-sans'>Already have an account? <span onClick={toggleSignin} className='text-edu-purple '>Sign In</span></span>
             </div>
         </div>
     </div>

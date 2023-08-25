@@ -4,10 +4,10 @@ import LoginImage from '../assets/login_image.svg'
 import DividerVertical from '../assets/divider_line.svg'
 import InputComponent from './InputComponent'
 import GoogleIcon from '../assets/google_icon2.svg'
-import {GoLock, GoMail, GoPerson} from 'react-icons/go' 
+import {GoLock, GoMail} from 'react-icons/go' 
 import { GoXCircle } from 'react-icons/go'
 
-function LoginModal({toggle}) {
+function LoginModal({toggle, toggleSignup}) {
     
   return (
     <>
@@ -25,25 +25,25 @@ function LoginModal({toggle}) {
                 <div className='flex flex-col flex-nowrap justify-center items-center w-1/2 p-8 font-sans'>
                     <a className='flex flex-row justify-center items-center font-thin bg-opacity-10 border-2 h-auto p-2 pr-3 pl-3 mt-2 mb-3 w-auto rounded-lg font-sans text-sm text-gray-500 hover:bg-edu-purple hover:text-white' href='/'>
                         <img src={GoogleIcon} alt='google icon' className='h-8 m-auto mr-2'/>
-                        Sign Up with Google
+                        Sign In with Google
                     </a>
-                    <div className='flex flex-row flex-nowrap justify-center items-center w-11/12 text-gray-600 font-bold'>
-                       <div className='w-5/12 justify-center items-center px-1 '> <hr className='w-full border-2'/></div>
-                        or
-                       <div className='w-5/12 justify-center items-center px-1'> <hr className='w-full border-2'/></div>
+                    <div className='flex flex-row flex-nowrap justify-center items-center w-11/12 text-gray-600 text-sm font-bold'>
+                       <div className='w-3/12 justify-center items-center px-1 '> <hr className='w-full border-2'/></div>
+                        or sign in with your email
+                       <div className='w-3/12 justify-center items-center px-1'> <hr className='w-full border-2'/></div>
                     </div>
-                    <InputComponent logo={<GoPerson className='relative top-7 left-3  text-gray-500'/>} label='Full name' placeholder='Enter your full name' type='text'/>
-                    <InputComponent logo={<GoMail className='relative top-7 left-3  text-gray-500'/>} label='Email' placeholder='Enter your email' type='email'/>
-                    <InputComponent logo={<GoLock className='relative top-7 left-3  text-gray-500'/>} label='Password' placeholder='Enter password' type='text'/>
+                        <InputComponent logo={<GoMail className='relative top-7 left-3  text-gray-500'/>} label='Email' placeholder='Enter your email' type='email'/>
+                        <InputComponent logo={<GoLock className='relative top-7 left-3  text-gray-500'/>} label='Password' placeholder='Enter password' type='password'/>
                     <label className='text-grey-500 text-sm'>
                         <input type="checkbox"  className='mx-3 text-edu-purple'/>
-                        I agreed to the <a href='/' className='font-bold '>terms and conditions</a>
+                        Keep me signed in &nbsp; <a href='/' className='text-edu-purple '>Forgot password?</a>
                     </label>
+
                     <button className='w-9/12 h-10 my-3 bg-edu-purple hover:bg-edu-purple-hover rounded-md text-white'>
-                        Sign Up
+                        Sign In
                     </button>
 
-                    <span className='text-sm text-grey-500 font-sans'>Already have an account? <a href='/' className='text-edu-purple '>Sign In</a></span>
+                    <span className='text-sm text-grey-500 font-sans'>Don't have an account? <a href='/' className='text-edu-purple '>Sign Up</a></span>
                 </div>
             </div>
         </div>

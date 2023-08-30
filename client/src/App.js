@@ -15,10 +15,10 @@ export default function App() {
       <Header />
 
       <Routes>
-        <Route exact path="/elearning/" element={<LandingPage />} />
-        <Route path="/elearning/books" element={<BooksPage />} />
-        <Route path="/elearning/courses" element={<CoursesPage />} />
-        <Route path="/elearning/coursedetails" element={<CourseDetailsPage />} />
+        <Route exact path="/" element={<LandingPage />} />
+        <Route path="/books" element={<BooksPage />} />
+        <Route path="/courses" element={<CoursesPage />} />
+        <Route path="/coursedetails" element={<CourseDetailsPage />} />
       </Routes>
               
       

@@ -75,9 +75,8 @@ function CourseList() {
 
       <div className="flex justify-center px-4 sm:px-8 md:px-20 my-4">
         <a
-          href="/elearning/courses"
-          className="flex-none rounded-md bg-[#20053E] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-[#9C4DF4] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
-        >
+          href="  /courses"
+          className="flex-none rounded-md bg-[#20053E] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-[#9C4DF4] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
           View More Courses
         </a>
       </div>

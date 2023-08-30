@@ -11,18 +11,16 @@ function BooksHero() {
         <button
           className="text-gray-400"
           onClick={() => {
-            navigate("/elearning/");
-          }}
-        >
+            navigate("  /");
+          }}>
           Home
         </button>
         <span className="text-gray-400"> | </span>
         <button
           className="text-[#9C4DF4]"
           onClick={() => {
-            navigate("/elearning/books");
-          }}
-        >
+            navigate("  /books");
+          }}>
           Books
         </button>
       </div>

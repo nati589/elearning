@@ -17,7 +17,7 @@ export default function CourseCard({ course }) {
         </p>
         <div className="flex justify-center my-2">
           <a
-            href="/elearning/coursedetails"
+            href="  /coursedetails"
             className="border border-[#9C4DF4] text-[#9C4DF4] hover:bg-[#9C4DF4] hover:text-white py-2 px-4 rounded-lg md:bg-white md:text-[#9C4DF4] md:hover:bg-[#9C4DF4] md:hover:text-white">
             Class Details
           </a>

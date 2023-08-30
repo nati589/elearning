@@ -18,9 +18,8 @@ function OurGoal() {
       <div className="flex justify-center items-center px-20 pt-2 pb-6">
         <a
           // type="submit"
-          href="/elearning/courses"
-          className="flex-none rounded-md bg-[#20053E] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500 "
-        >
+          href="  /courses"
+          className="flex-none rounded-md bg-[#20053E] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500 ">
           Visit Courses
         </a>
       </div>
@@ -33,24 +32,21 @@ function OurGoal() {
           <div className="m-2 flex-wrap md:px-36 lg:px-56">
             <button
               type="submit"
-              className="w-full rounded-md bg-red-500 px-5  py-2 text-xs font-semibold text-white shadow-sm focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
-            >
+              className="w-full rounded-md bg-red-500 px-5  py-2 text-xs font-semibold text-white shadow-sm focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
               Audio Classes
             </button>
           </div>
           <div className="m-2 flex-wrap  ">
             <button
               type="submit"
-              className="w-full rounded-md bg-green-400 px-5 py-2 text-xs font-semibold text-white shadow-sm focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
-            >
+              className="w-full rounded-md bg-green-400 px-5 py-2 text-xs font-semibold text-white shadow-sm focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
               Live Classes
             </button>
           </div>
           <div className="m-2 flex-wrap md:px-36 lg:px-56">
             <button
               type="submit"
-              className="w-full rounded-md bg-indigo-500 px-5 py-2 text-xs font-semibold text-white shadow-sm focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
-            >
+              className="w-full rounded-md bg-indigo-500 px-5 py-2 text-xs font-semibold text-white shadow-sm focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
               Record Class
             </button>
           </div>

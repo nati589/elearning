@@ -10,27 +10,24 @@ function DetailsHero() {
         <button
           className="text-gray-400"
           onClick={() => {
-            navigate("/elearning/");
-          }}
-        >
+            navigate("  /");
+          }}>
           Home
         </button>
         <span className="text-gray-400"> | </span>
         <button
           className="text-fuchsia-700"
           onClick={() => {
-            navigate("/elearning/courses");
-          }}
-        >
+            navigate("  /courses");
+          }}>
           Courses
         </button>
         <span className="text-gray-400"> | </span>
         <button
           className="text-fuchsia-700"
           onClick={() => {
-            navigate("/elearning/coursedetails");
-          }}
-        >
+            navigate("  /coursedetails");
+          }}>
           Course Details
         </button>
       </div>

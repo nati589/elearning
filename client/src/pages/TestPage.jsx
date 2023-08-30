@@ -1,23 +1,12 @@
 import React from "react";
-import LandingHero from "../components/LandingHero";
-import OurGoal from "../components/OurGoal";
-import CoursesList from "../components/CourseList";
-import Mentor from "../components/Mentor";
-// import CoursesHero from "../components/CoursesHero";
-
-import Explore from "../components/Explore";
-// import { useNavigate } from "react-router-dom";
 
 function TestPage() {
-  // const navigate = useNavigate();
   return (
-    <>
-      <LandingHero />
-      <OurGoal />
-      <CoursesList />
-      <Mentor />
-      <Explore />
-    </>
+    <div className="flex flex-col w-full h-screen">
+      <h1 className="text-4xl font-bold tracking-tight text-[#0A033C] sm:text-6xl lg:text-start sm:text-center">
+              Welcome to test page
+      </h1>
+    </div>
   );
 }
 

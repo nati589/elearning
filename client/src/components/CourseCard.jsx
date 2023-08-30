@@ -2,18 +2,20 @@ import React from "react";
 
 export default function CourseCard({ course }) {
   return (
-    <div className="bg-slate-100 rounded-xl p-4 dark:bg-[#FFFFFF] border-2">
+    <div className="bg-slate-100 rounded-xl p-4 dark:bg-[#FFFFFF] border-2 max-w-10/12">
       <img
         className="w-16 h-16 rounded-full mx-auto"
-        src={course.image}
+        // src={course.image}
         alt={`images`}
         width="64"
         height="64"
       />
       <div className="">
-        <h4 className="font-bold text-xl text-center">{course.title}</h4>
+        <h4 className="font-bold text-xl text-center">
+          {/* {course.title} */}
+          </h4>
         <p className="text-sm font-medium mx-4 text-center">
-          {course.description}
+          {/* {course.description} */}
         </p>
         <div className="flex justify-center my-2">
           <a

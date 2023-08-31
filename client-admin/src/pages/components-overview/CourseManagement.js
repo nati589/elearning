@@ -13,6 +13,7 @@ export default function CourseManagement() {
   return (
     <>
       <Typography variant="h5">Courses</Typography>
+      <Typography variant="p">This section is to create and modify courses.</Typography>
       <Grid container sx={{ pl: 2, pr: 2 }}>
         {/* <Typography variant="h4">New Arrival</Typography> */}
         <Grid item xs={12}>
@@ -63,6 +64,7 @@ export default function CourseManagement() {
               </Select>
               <TextField
                 required
+                type="number"
                 id="course_price"
                 label="Course Price"
                 name="course_price"

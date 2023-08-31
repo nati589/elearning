@@ -4,7 +4,12 @@ import { Box } from "@mui/system";
 export default function WebContent() {
   return (
     <>
-      <Typography variant="h5">Web Content</Typography>
+    <Box sx={{ml: 2}}>
+
+      <Typography variant="h4">Web Content</Typography>
+      <Typography variant="p">This section is to modify the text on the home page of the website.</Typography>
+    </Box>
+
       <Grid container sx={{ pl: 2, pr: 2 }}>
         {/* <Typography variant="h4">New Arrival</Typography> */}
         <Grid item xs={12}>
@@ -24,6 +29,7 @@ export default function WebContent() {
               id="hero_detail"
               label="Hero Detail"
               name="hero_detail"
+              multiline
               sx={{ my: 2 }}
 
               // onChange={(event) => setProduct(event.target.value)}
@@ -43,6 +49,7 @@ export default function WebContent() {
               id="goal_detail"
               label="Goal_detail"
               name="goal_detail"
+              multiline
               sx={{ my: 2 }}
               // onChange={(event) => setProduct(event.target.value)}
             />
@@ -61,6 +68,7 @@ export default function WebContent() {
               id="lesson_detail"
               label="Lesson Detail"
               name="lesson_detail"
+              multiline
               sx={{ my: 2 }}
               // onChange={(event) => setProduct(event.target.value)}
             />
@@ -79,6 +87,7 @@ export default function WebContent() {
               id="mentor_detail"
               label="Mentor Detail"
               name="mentor_detail"
+              multiline
               sx={{ my: 2 }}
               // onChange={(event) => setProduct(event.target.value)}
             />
@@ -97,6 +106,7 @@ export default function WebContent() {
               id="action_detail"
               label="Action Detail"
               name="action_detail"
+              multiline
               sx={{ my: 2 }}
               // onChange={(event) => setProduct(event.target.value)}
             />

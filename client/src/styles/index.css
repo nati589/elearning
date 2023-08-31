@@ -38,6 +38,6 @@ code {
 }
 
 .button-component-stroke:hover{
-  @apply  bg-light-purple text-white font-bold ;
+  @apply  bg-light-purple font-bold ;
 }
 

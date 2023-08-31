@@ -22,10 +22,10 @@ function Footer() {
         </div>
         <div className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4  flex flex-col px-4 mb-8  justify-center ">
           <ul className="text-subscribe-purple ml-10">
-            <li className="mb-2 hover:text-medium-purple" style={{ fontSize: '20px' }}><a href="#">FAQ & Help</a></li>
-            <li className="mb-2 hover:text-medium-purple" style={{ fontSize: '20px' }}><a href="#">Courses</a></li>
-            <li className="mb-2 hover:text-medium-purple" style={{ fontSize: '20px' }}><a href="#">Link 3</a></li>
-            <li className="mb-2 hover:text-medium-purple" style={{ fontSize: '20px' }}><a href="#">Link 4</a></li>
+            <li className="mb-2 hover:text-medium-purple" style={{ fontSize: '20px' }}><a href="/">FAQ & Help</a></li>
+            <li className="mb-2 hover:text-medium-purple" style={{ fontSize: '20px' }}><a href="/">Courses</a></li>
+            <li className="mb-2 hover:text-medium-purple" style={{ fontSize: '20px' }}><a href="/">Link 3</a></li>
+            <li className="mb-2 hover:text-medium-purple" style={{ fontSize: '20px' }}><a href="/">Link 4</a></li>
           </ul>
         </div>
         <div className="w-full max-w-xs sm:w-1/2 md:w-1/3 lg:w-1/4 px-4 mb-8">

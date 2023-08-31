@@ -7,6 +7,7 @@ module.exports = {
         'light-purple': '#D2CCFB',
         'medium-purple': '#796BD4',
         'medium-purple-hover': '#754DA2',
+        'subscribe-purple':'#401C6F',
         'dark-purple': '#53389E',
       },
     },

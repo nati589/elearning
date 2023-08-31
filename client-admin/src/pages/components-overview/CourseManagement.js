@@ -1,10 +1,12 @@
+import { Typography } from "@mui/material";
 
 
 
 export default function CourseManagement() {
   return (
     <>
-      course management
+      <Typography variant="h5">Courses</Typography>
+      
     </>
   );
 }

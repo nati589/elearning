@@ -5,10 +5,11 @@ import logo from "../assets/Logo.png";
 import LoginModal from "./LoginModal";
 import SignupModal from "./SignupModal";
 import { NavLink } from "react-router-dom";
+import '../styles/Header.css'
 const navigation = [
-  { name: "Books", href: "  /books" },
-  { name: "Pricing", href: "  /pricing" },
-  { name: "Courses", href: "  /courses" },
+  { name: "Books", to: "  /books" },
+  { name: "Pricing", to: "  /pricing" },
+  { name: "Courses", to: "  /courses" },
 ];
 
 function Header() {
@@ -84,7 +85,7 @@ function Header() {
             {navigation.map((item) => (
               <NavLink
                 key={item.name}
-                to={item.href}
+                to={item.to}
                 className="text-sm font-semibold leading-6 text-gray-900">
                 {item.name}
               </NavLink>
@@ -117,7 +118,7 @@ function Header() {
                   {navigation.map((item) => (
                     <NavLink
                       key={item.name}
-                      to={item.href}
+                      to={item.to}
                       className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
                       {item.name}
                     </NavLink>
@@ -135,9 +136,14 @@ function Header() {
           </Dialog.Panel>
         </Dialog>
         </div>
-        <div className="w-full h-14 bg-light-purple flex flex-row flex-nowrap justify-center items-center">
-
-
+        <div className="w-full h-14 bg-light-purple flex flex-row flex-nowrap justify-center items-center p-0">
+          <nav className="flex flex-row flex-nowrap justify-center items-center h-full p-0">
+            <NavLink exact='true' to='/' className='sub-navs' >All Courses</NavLink>
+            <NavLink exact='true' to='/books' className='sub-navs'> My Books</NavLink>
+            <NavLink exact='true' to='/' className='sub-navs' >Learning</NavLink>
+            <NavLink exact='true' to='/' className='sub-navs' >My Status</NavLink>
+            <NavLink exact='true' to='/courses' className='sub-navs'>My Courses</NavLink>
+          </nav>
         </div>
       </header>
     </>

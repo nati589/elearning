@@ -30,21 +30,10 @@ function LandingHero() {
             </p>
             <div className="mt-10 flex items-center gap-x-6 lg:justify-start sm:justify-center">
               <div className="mt-0 flex max-w-md gap-x-4">
-                <label htmlFor="email-address" className="sr-only">
-                  Email address
-                </label>
-                <input
-                  id="email-address"
-                  name="email"
-                  type="email"
-                  autoComplete="email"
-                  required
-                  className="min-w-0 flex-auto rounded-md border-0 bg-black/5 px-3.5 py-0 text-black shadow-sm ring-white/10 focus:ring-1 focus:ring-black sm:text-sm sm:leading-6"
-                  placeholder="Enter your email"
-                />
+                
                 <button
                   type="submit"
-                  className="flex-none rounded-md bg-[#0A033C] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
+                  className="button-component bg-dark-purple">
                   Sign Up
                 </button>
               </div>

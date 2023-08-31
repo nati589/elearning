@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function CourseCard({ course }) {
+export default function CourseCard({ course_id,  }) {
   return (
     <div className="bg-slate-100 rounded-xl p-4 dark:bg-[#FFFFFF] border-2 max-w-10/12">
       <img

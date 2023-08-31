@@ -5,7 +5,8 @@ import {
   BarcodeOutlined,
   BgColorsOutlined,
   FontSizeOutlined,
-  LoadingOutlined
+  LoadingOutlined,
+  SnippetsOutlined,
 } from '@ant-design/icons';
 
 // icons
@@ -15,14 +16,15 @@ const icons = {
   BarcodeOutlined,
   AntDesignOutlined,
   LoadingOutlined,
-  AppstoreAddOutlined
+  AppstoreAddOutlined,
+  SnippetsOutlined
 };
 
 // ==============================|| MENU ITEMS - UTILITIES ||============================== //
 
-const utilities = {
+const management = {
   id: 'utilities',
-  title: 'Utilities',
+  title: 'Management',
   type: 'group',
   children: [
     {
@@ -30,13 +32,13 @@ const utilities = {
       title: 'Course Management',
       type: 'item',
       url: '/coursemanagement',
-      icon: icons.FontSizeOutlined
+      icon: icons.SnippetsOutlined
     },
     {
       id: 'util-color',
-      title: 'Color',
+      title: 'Web Content Management',
       type: 'item',
-      url: '/color',
+      url: '/webcontent',
       icon: icons.BgColorsOutlined
     },
     {
@@ -57,4 +59,4 @@ const utilities = {
   ]
 };
 
-export default utilities;
+export default management;

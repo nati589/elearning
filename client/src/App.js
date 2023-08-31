@@ -1,3 +1,4 @@
+import React from "react";
 import Header from "./components/Header";
 import Subscription from "./components/Subscription";
 import Footer from "./components/Footer";
@@ -8,6 +9,7 @@ import CoursesPage from "./pages/CoursesPage";
 import CourseDetailsPage from "./pages/CourseDetailsPage";
 import TestPage from "./pages/TestPage";
 // import Background from "./components/Background";
+import './styles/App.css'
 
 export default function App() {
   return (

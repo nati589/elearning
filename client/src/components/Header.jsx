@@ -8,8 +8,6 @@ const navigation = [
   { name: "Books", href: "  /books" },
   { name: "Pricing", href: "  /pricing" },
   { name: "Courses", href: "  /courses" },
-  // { name: "Cart", href: "  /coursedetails" },
-  // { name: "My Account", href: "#" },
 ];
 
 function Header() {
@@ -50,8 +48,9 @@ function Header() {
         <SignupModal toggle={toggleSignup} toggleSignin={toggleSignin} />
       )}
 
-      <header className="sticky inset-x-0 top-0 z-30 bg-white">
-        <div
+      <header className="sticky flex flex-col flex-nowrap inset-x-0 top-0 z-30 bg-white">
+        <div>
+         <div
           className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
           aria-hidden="true">
           <div
@@ -134,6 +133,11 @@ function Header() {
             </div>
           </Dialog.Panel>
         </Dialog>
+        </div>
+        <div className="w-full h-14 bg-light-purple flex flex-row flex-nowrap justify-center items-center">
+
+
+        </div>
       </header>
     </>
   );

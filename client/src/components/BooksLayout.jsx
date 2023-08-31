@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Recommendations from "./Recommendations";
-import "./BooksLayout.css";
+import "../styles/BooksLayout.css";
 import BookCard from "./BookCard";
 
 import { NavLink } from "react-router-dom";

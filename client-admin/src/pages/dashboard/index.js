@@ -85,15 +85,15 @@ const DashboardDefault = () => {
       </Grid>
       <Grid item xs={12} sm={6} md={4} lg={3}>
         <AnalyticEcommerce
-          title="Total Page Views"
-          count="4,42,236"
-          percentage={59.3}
-          extra="35,000"
+          title="Total Users"
+          count={42236}
+          percentage={12.3}
+          extra={4234}
         />
       </Grid>
       <Grid item xs={12} sm={6} md={4} lg={3}>
         <AnalyticEcommerce
-          title="Total Users"
+          title="Total Courses"
           count="78,250"
           percentage={70.5}
           extra="8,900"
@@ -101,22 +101,22 @@ const DashboardDefault = () => {
       </Grid>
       <Grid item xs={12} sm={6} md={4} lg={3}>
         <AnalyticEcommerce
-          title="Total Order"
-          count="18,800"
+          title="Total Books"
+          count={18800}
           percentage={27.4}
-          isLoss
+          // isLoss
           color="warning"
-          extra="1,943"
+          extra={1943}
         />
       </Grid>
       <Grid item xs={12} sm={6} md={4} lg={3}>
         <AnalyticEcommerce
           title="Total Sales"
-          count="$35,078"
+          count={35078}
           percentage={27.4}
-          isLoss
+          // isLoss
           color="warning"
-          extra="$20,395"
+          extra={20395}
         />
       </Grid>
 
@@ -130,7 +130,7 @@ const DashboardDefault = () => {
       <Grid item xs={12} md={7} lg={8}>
         <Grid container alignItems="center" justifyContent="space-between">
           <Grid item>
-            <Typography variant="h5">Unique Visitor</Typography>
+            <Typography variant="h5">Sales</Typography>
           </Grid>
           <Grid item>
             <Stack direction="row" alignItems="center" spacing={0}>

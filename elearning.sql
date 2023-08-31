@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 31, 2023 at 10:31 AM
+-- Generation Time: Aug 31, 2023 at 02:17 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.1.32
 
@@ -228,16 +228,16 @@ CREATE TABLE `user` (
 
 CREATE TABLE `web_content` (
   `web_content_id` varchar(36) NOT NULL,
-  `web_content_goal_title` varchar(1000) DEFAULT NULL,
-  `web_content_hero_title` varchar(1000) DEFAULT NULL,
-  `web_content_goal_detail` varchar(2000) DEFAULT NULL,
-  `web_content_hero_detail` varchar(2000) DEFAULT NULL,
-  `web_content_lesson_title` varchar(1000) DEFAULT NULL,
-  `web_content_lesson_detail` varchar(2000) DEFAULT NULL,
-  `web_content_action_title` varchar(1000) DEFAULT NULL,
-  `web_content_action_detail` varchar(2000) DEFAULT NULL,
-  `web_content_mentor_title` varchar(1000) DEFAULT NULL,
-  `web_content_mentor_detail` varchar(2000) DEFAULT NULL
+  `goal_title` varchar(1000) DEFAULT NULL,
+  `hero_title` varchar(1000) DEFAULT NULL,
+  `goal_detail` varchar(2000) DEFAULT NULL,
+  `hero_detail` varchar(2000) DEFAULT NULL,
+  `lesson_title` varchar(1000) DEFAULT NULL,
+  `lesson_detail` varchar(2000) DEFAULT NULL,
+  `action_title` varchar(1000) DEFAULT NULL,
+  `action_detail` varchar(2000) DEFAULT NULL,
+  `mentor_title` varchar(1000) DEFAULT NULL,
+  `mentor_detail` varchar(2000) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --

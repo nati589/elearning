@@ -1,32 +1,32 @@
 import React from "react";
-import Image from "../assets/ourgoal-image.png";
+import Image from "../assets/our goal picture.png";
 
 function OurGoal() {
   return (
     <div className="mb-16">
       <h4 className="text-center text-3xl font-bold  text-[#20053E]">
-        {" "}
+        {""}
         Our Goal
       </h4>
-      <p className="text-center py-5 px-20 self-center lg:w-1/2 sm:w-full mx-auto text-lg">
+      <p className="text-center py-5 self-center lg:w-1/2 sm:w-full mx-auto text-lg">
         As we are passionate about promoting Ethiopian languages and bridging
         the linguistic gap for foreigners. Our team of experienced language
         experts and native speakers have developed a comprehensive curriculum to
         make learning Ethiopian languages accessible and enjoyable.
       </p>
 
-      <div className="flex justify-center items-center px-20 pt-2 pb-6">
+      <div className="flex justify-center items-center px-20 pt-2">
         <a
           // type="submit"
           href="  /courses"
-          className="flex-none rounded-md bg-[#20053E] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500 ">
+          className="flex-none hover:bg-dark-purple rounded-md bg-medium-purple px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500 ">
           Visit Courses
         </a>
       </div>
-      <div className="py-5">
-        <img src={Image} alt="images" className="rounded-lg w-1/2 mx-auto" />
+      <div>
+        <img src={Image} alt="images" className="rounded-lg w-3/4 mx-auto " />
       </div>
-      {/* Colored Buttons  */}
+      {/* Colored Buttons 
       <div className="w-full">
         <div className="flex justify-between mx-auto w-full flex-wrap">
           <div className="m-2 flex-wrap md:px-36 lg:px-56">
@@ -51,7 +51,7 @@ function OurGoal() {
             </button>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

@@ -31,7 +31,6 @@ function Header() {
   const [signupModal, setSignupModal] = useState(false);
   const [userProfileImg,setUserprofileImg] = useState("https://www.material-tailwind.com/img/face-2.jpg");
 
-  setUserprofileImg("https://www.material-tailwind.com/img/face-2.jpg")
   const disableScroll = () => {
     document.body.style.overflow = "hidden";
   };
@@ -181,6 +180,7 @@ function Header() {
             {
               subNavigation.map((item) => (
                  <NavLink exact='true' 
+                          key={item.name}
                           to={item.to} 
                           className='sub-navs' >
                             {item.name}

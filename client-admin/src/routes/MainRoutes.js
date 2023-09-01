@@ -3,6 +3,9 @@ import { lazy } from 'react';
 // project import
 import Loadable from 'components/Loadable';
 import MainLayout from 'layout/MainLayout';
+import AddCourse from 'pages/components-overview/AddCourse';
+import EditCourse from 'pages/components-overview/EditCourse';
+import CourseList from 'pages/components-overview/CourseList';
 
 // render - dashboard
 const DashboardDefault = Loadable(lazy(() => import('pages/dashboard')));
@@ -49,7 +52,22 @@ const MainRoutes = {
     },
     {
       path: 'coursemanagement',
-      element: <CourseManagement />
+      element: <CourseManagement />,
+      children: [
+        {
+          path: '',
+          element: <CourseList />
+        },
+        {
+          path: 'addcourse',
+          element: <AddCourse />
+        },
+        {
+          path: 'edit/:id',
+          element: <EditCourse />
+        },
+        // Update or add more routes here
+      ]
     },
     {
       path: 'icons/ant',

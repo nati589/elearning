@@ -52,6 +52,6 @@ const Pricecard = () => {
       </button>
     </div>
   );
-};
+};      
 
 export default Pricecard;

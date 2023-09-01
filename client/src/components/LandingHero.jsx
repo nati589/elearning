@@ -2,7 +2,7 @@ import React from "react";
 import heroimage from "../assets/heroimage.png";
 import backgroundImage from "../assets/hero-bg-1.png";
 
-function LandingHero() {
+function LandingHero({hero_title, hero_detail}) {
   return (
     <div className="relative isolate over px-4 md:px-6 lg:px-8">
       <div
@@ -21,12 +21,10 @@ function LandingHero() {
         <div className=" max-w-2xl py-32 sm:py-12 lg:py-40">
           <div className="">
             <h1 className="text-4xl font-bold tracking-tight text-[#0A033C] sm:text-6xl lg:text-start sm:text-center">
-              Learn Ethiopian Languages
+              {hero_title}
             </h1>
             <p className="mt-6 text-lg leading-8 text-gray-600 lg:text-start sm:text-center">
-              Discover the beauty and diversity of Ethiopian languages through
-              our immersive courses, interactive lessons, and cultural insights.
-              Start your language learning journey today!
+              {hero_detail}
             </p>
             <div className="mt-10 flex items-center gap-x-6 lg:justify-start sm:justify-center">
               <div className="mt-0 flex max-w-md gap-x-4">

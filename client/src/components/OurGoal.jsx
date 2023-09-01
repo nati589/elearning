@@ -1,18 +1,15 @@
 import React from "react";
 import Image from "../assets/our goal picture.png";
 
-function OurGoal() {
+function OurGoal({goal_detail, goal_title}) {
   return (
     <div className="mb-16">
       <h4 className="text-center text-3xl font-bold  text-[#20053E]">
         {""}
-        Our Goal
+        {goal_title}
       </h4>
       <p className="text-center py-5 self-center lg:w-1/2 sm:w-full mx-auto text-lg">
-        As we are passionate about promoting Ethiopian languages and bridging
-        the linguistic gap for foreigners. Our team of experienced language
-        experts and native speakers have developed a comprehensive curriculum to
-        make learning Ethiopian languages accessible and enjoyable.
+        {goal_detail}
       </p>
 
       <div className="flex justify-center items-center px-20 pt-2">

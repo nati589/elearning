@@ -112,24 +112,24 @@ function Header() {
             <div onClick={toggleSignup} className="button-component-stroke">Sign Up</div>
 
               
-            <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="text-white bg-light-purple h-12 font-medium rounded-3xl px-3 py-1 text-center flex flex-row flex-nowrap items-center justify-center" type="button">
+            <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" className="text-white bg-light-purple h-12 font-medium rounded-3xl px-3 py-1 text-center flex flex-row flex-nowrap items-center justify-center" type="button">
               <img className="relative inline-block h-10 w-10 rounded-[50%] object-cover object-center" alt="avatar placeholder" src={userProfileImg}></img>
                <span className="mx-3 font-sans text-dark-purple">user name</span> 
               <FontAwesomeIcon icon={faCaretDown} className="text-dark-purple"/>
             </button>
-            <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-                <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
+            <div id="dropdown" className="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+                <ul className="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
                   <li>
-                    <a href="/" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
+                    <a href="/" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
                   </li>
                   <li>
-                    <a href="/" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Settings</a>
+                    <a href="/" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Settings</a>
                   </li>
                   <li>
-                    <a href="/" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</a>
+                    <a href="/" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</a>
                   </li>
                   <li>
-                    <a href="/" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Sign out</a>
+                    <a href="/" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Sign out</a>
                   </li>
                 </ul>
             </div>

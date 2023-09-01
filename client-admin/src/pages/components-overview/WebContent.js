@@ -11,7 +11,6 @@ export default function WebContent() {
     </Box>
 
       <Grid container sx={{ pl: 2, pr: 2 }}>
-        {/* <Typography variant="h4">New Arrival</Typography> */}
         <Grid item xs={12}>
           <Box component="form" onSubmit={() => {}}>
             <TextField

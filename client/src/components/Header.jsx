@@ -40,7 +40,7 @@ function Header() {
     setAvatarState(!avatarState)
   }
 
-  const avatarMenu = avatarState? 'z-10 absolute right-8 top-16 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700':'hidden';
+  const avatarMenu = avatarState? 'z-10 absolute right-10 top-[72px] bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700':'hidden';
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [signinModal, setSigninModal] = useState(false);
@@ -81,7 +81,7 @@ function Header() {
         <SignupModal toggle={toggleSignup} toggleSignin={toggleSignin} />
       )}
 
-      <header className="sticky righ flex flex-col flex-nowrap inset-x-0 top-0 z-30 bg-white">
+      <header className="sticky righ top flex flex-col flex-nowrap inset-x-0 top-0 z-30 bg-white">
         <div>
          <div
           className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
@@ -124,19 +124,17 @@ function Header() {
             ))}
           </div>
 
-          <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-            <div onClick={toggleSignin} className="button-component">Log in </div>
-            <div onClick={toggleSignup} className="button-component-stroke">Sign Up</div>
+          <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end">
+            <div onClick={toggleSignin} className="button-component h-12">Log in </div>
+            <div onClick={toggleSignup} className="button-component-stroke h-12">Sign Up</div>
 
               {/* profile avatar */}
-           
-          </div>
-           <button onClick={openAvatar} id="dropdownDefaultButton" className="text-white bg-light-purple h-12 px-3 font-medium  rounded-[32px] text-center flex flex-row flex-nowrap items-center justify-center" type="button">
-              <Link to='/profile'>
-                 <img className="relative inline-block h-10 w-10 rounded-[50%] object-cover object-center" alt="avatar placeholder" src={userProfileImg}></img>
-              </Link>
-               <span className="mx-3 font-sans text-dark-purple">user name</span> 
-              <FontAwesomeIcon icon={faCaretDown} className="text-dark-purple"/>
+              <button id="dropdownDefaultButton" className="text-white cursor-default bg-light-purple h-14 px-3 font-medium  rounded-[32px] text-center flex flex-row flex-nowrap items-center justify-center" type="button">
+                  <span className="mx-3 font-sans text-dark-purple">user name</span> 
+                  <Link to='/profile'>
+                    <img className=" cursor-pointer relative inline-block h-10 w-10 rounded-[50%] object-cover object-center" alt="avatar placeholder" src={userProfileImg}></img>
+                  </Link>
+              <FontAwesomeIcon onClick={openAvatar} icon={faCaretDown} className="text-dark-purple hover:text-writing-dark cursor-pointer w-6 h-6"/>
             </button>
             <div id="dropdown" className={avatarMenu}>
                 <ul className="py-2 text-sm text-writing-dark bg-light-purple" aria-labelledby="dropdownDefaultButton">
@@ -151,6 +149,8 @@ function Header() {
                   
                 </ul>
             </div>
+          </div>
+       
         </nav>
 
         <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>

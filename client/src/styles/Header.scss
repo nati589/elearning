@@ -1,0 +1,15 @@
+.sub-navs{
+    @apply flex flex-row flex-nowrap justify-center items-center text-sm px-8 py-3 my-0 h-full 
+}
+
+.top-nav-holder{
+    .active{
+        @apply text-medium-purple
+    }
+}
+
+.sub-nav-holder{
+    .active{
+        @apply bg-dark-purple text-white h-full rounded-t-md 
+    }
+}

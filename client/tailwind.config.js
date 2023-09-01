@@ -9,6 +9,7 @@ module.exports = {
         'medium-purple-hover': '#754DA2',
         'subscribe-purple':'#401C6F',
         'dark-purple': '#53389E',
+        'writing-dark':'#0A033C',
       },
     },
     fontFamily: {

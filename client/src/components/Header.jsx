@@ -4,10 +4,12 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import logo from "../assets/Logo.png";
 import LoginModal from "./LoginModal";
 import SignupModal from "./SignupModal";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import '../styles/Header.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons'
+import { useForm } from "react-hook-form";
+import axios from "axios";
 
 const navigation = [
   { name: "Home", to: "/" },
@@ -34,18 +36,46 @@ const avatarNavigation=[
 
 function Header() {
 
-  const [avatarState, setAvatarState]= useState(false)
+  const methods= useForm()
+  const navigate= useNavigate();
 
-  const openAvatar = ()=>{
-    setAvatarState(!avatarState)
-  }
-
-  const avatarMenu = avatarState? 'z-10 absolute right-10 top-[72px] bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700':'hidden';
-
+  const [submitSuccess,setSubmitSuccess]= useState(false)
+  const [failure,setFailure]= useState(false)
+  const [success_msg,setMsg] = useState('')
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [signinModal, setSigninModal] = useState(false);
   const [signupModal, setSignupModal] = useState(false);
   const [userProfileImg,setUserprofileImg] = useState("https://www.material-tailwind.com/img/face-2.jpg");
+  const [avatarState, setAvatarState]= useState(false)
+
+
+  const {handleSubmit}=methods
+  const avatarMenu = avatarState? 'z-10 absolute right-10 top-[72px] bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700':'hidden';
+
+  const submitInputs= handleSubmit((data)=>{
+    axios.post('/auth/login',data)
+    .then(res=>{
+      setSubmitSuccess(true)
+      setMsg(res.data.message)
+      setFailure(false)
+      setTimeout(()=>{
+        setSubmitSuccess(false)
+        navigate('/')
+      },2000)
+
+    })
+    .catch((error) =>{
+      setSubmitSuccess(true)
+      setMsg(error.response.data.message)
+      setFailure(true)
+      setTimeout(()=>{setSubmitSuccess(false)},2000)
+    })
+    
+  })
+
+  const openAvatar = ()=>{
+    setAvatarState(!avatarState)
+  }
 
   const disableScroll = () => {
     document.body.style.overflow = "hidden";
@@ -132,9 +162,9 @@ function Header() {
               <button id="dropdownDefaultButton" className="text-white cursor-default bg-light-purple h-14 px-3 font-medium  rounded-[32px] text-center flex flex-row flex-nowrap items-center justify-center" type="button">
                   <span className="mx-3 font-sans text-dark-purple">user name</span> 
                   <Link to='/profile'>
-                    <img className=" cursor-pointer relative inline-block h-10 w-10 rounded-[50%] object-cover object-center" alt="avatar placeholder" src={userProfileImg}></img>
+                    <img className=" cursor-pointer relative mr-1 inline-block h-10 w-auto rounded-[50%] object-cover object-center" alt="avatar placeholder" src={userProfileImg}></img>
                   </Link>
-              <FontAwesomeIcon onClick={openAvatar} icon={faCaretDown} className="text-dark-purple hover:text-writing-dark cursor-pointer w-6 h-6"/>
+              <FontAwesomeIcon onClick={openAvatar} icon={faCaretDown} className="text-dark-purple hover:text-writing-dark cursor-pointer w-auto h-5"/>
             </button>
             <div id="dropdown" className={avatarMenu}>
                 <ul className="py-2 text-sm text-writing-dark bg-light-purple" aria-labelledby="dropdownDefaultButton">

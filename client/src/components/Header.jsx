@@ -112,8 +112,8 @@ function Header() {
             <div onClick={toggleSignin} className="button-component">Log in </div>
             <div onClick={toggleSignup} className="button-component-stroke">Sign Up</div>
 
-              
-            <button id="dropdownDefaultButton" className="text-white bg-light-purple h-12 font-medium rounded-3xl px-3 py-1 text-center flex flex-row flex-nowrap items-center justify-center" type="button">
+              {/* profile avatar */}
+            <button id="dropdownDefaultButton" className="text-white bg-light-purple h-12 font-medium rounded-3xl px-3 py-2 text-center flex flex-row flex-nowrap items-center justify-center" type="button">
               <Link to='/profile'>
                  <img className="relative inline-block h-10 w-10 rounded-[50%] object-cover object-center" alt="avatar placeholder" src={userProfileImg}></img>
               </Link>
@@ -178,6 +178,7 @@ function Header() {
         </Dialog>
         </div>
 
+{/* sub navigation */}
         <div className="w-full h-14 bg-light-purple flex flex-row flex-nowrap justify-center items-center p-0">
           <nav className="sub-nav-holder flex flex-row flex-nowrap justify-center items-center h-full p-0">
             {

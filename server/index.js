@@ -1,6 +1,5 @@
 import express, { json } from "express";
 import authRoutes from "./routes/auth.js";
-import session from 'express-session';
 import cookieParser from 'cookie-parser';
 
 import cors from "cors";

@@ -113,7 +113,9 @@ function Header() {
 
               
             <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" className="text-white bg-light-purple h-12 font-medium rounded-3xl px-3 py-1 text-center flex flex-row flex-nowrap items-center justify-center" type="button">
-              <img className="relative inline-block h-10 w-10 rounded-[50%] object-cover object-center" alt="avatar placeholder" src={userProfileImg}></img>
+              <Link to='/profile'>
+                 <img className="relative inline-block h-10 w-10 rounded-[50%] object-cover object-center" alt="avatar placeholder" src={userProfileImg}></img>
+              </Link>
                <span className="mx-3 font-sans text-dark-purple">user name</span> 
               <FontAwesomeIcon icon={faCaretDown} className="text-dark-purple"/>
             </button>

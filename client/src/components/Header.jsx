@@ -4,18 +4,32 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import logo from "../assets/Logo.png";
 import LoginModal from "./LoginModal";
 import SignupModal from "./SignupModal";
-import { NavLink } from "react-router-dom";
-import '../styles/Header.css'
+import { Link, NavLink } from "react-router-dom";
+import '../styles/Header.scss'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCaretDown } from '@fortawesome/free-solid-svg-icons'
+
 const navigation = [
-  { name: "Books", to: "  /books" },
-  { name: "Pricing", to: "  /pricing" },
-  { name: "Courses", to: "  /courses" },
+  { name: "Home", to: "/" },
+  { name: "Books", to: "/books" },
+  { name: "Courses", to: "/courses" },
 ];
 
+const subNavigation=[
+  {name: "All Courses", to: "/"},
+  {name: "My Books", to: "/"},
+  {name: "Learning", to: "/"},
+  {name: "My Status", to: "/"},
+  {name: "My Courses", to: "/"},
+]
+
+
 function Header() {
+
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [signinModal, setSigninModal] = useState(false);
   const [signupModal, setSignupModal] = useState(false);
+  const [userProfileImg,setUserprofileImg] = useState("https://www.material-tailwind.com/img/face-2.jpg");
 
   const disableScroll = () => {
     document.body.style.overflow = "hidden";
@@ -37,6 +51,7 @@ function Header() {
     setSignupModal(!signupModal);
     setSigninModal(false);
     setMobileMenuOpen(false)
+    setUserprofileImg("https://www.material-tailwind.com/img/face-2.jpg")
 
     !signupModal ? disableScroll() : enableScroll();
   };
@@ -63,12 +78,12 @@ function Header() {
             }}
           />
         </div>
-        <nav className=" text-[#0A033C] flex items-center justify-between p-6 lg:px-8" aria-label="Global">
+        <nav className=" text-writing-dark flex items-center justify-between px-6 py-3 lg:px-8" aria-label="Global">
           
           <div className="flex lg:flex-1">
-            <NavLink to="  /" className="-m-1.5 p-1.5">
+            <Link to="/" className="-m-1.5 p-1.5">
               <img className="h-8 w-auto" src={logo} alt="company logo" />
-            </NavLink>
+            </Link>
           </div>
 
 
@@ -81,12 +96,13 @@ function Header() {
             </button>
           </div>
 
-          <div className="hidden lg:flex lg:gap-x-12">
+          <div className="top-nav-holder hidden lg:flex lg:gap-x-12">
             {navigation.map((item) => (
               <NavLink
                 key={item.name}
                 to={item.to}
-                className="text-sm font-semibold leading-6 text-gray-900">
+                className='text-writing-dark'
+                >
                 {item.name}
               </NavLink>
             ))}
@@ -95,6 +111,31 @@ function Header() {
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
             <div onClick={toggleSignin} className="button-component">Log in </div>
             <div onClick={toggleSignup} className="button-component-stroke">Sign Up</div>
+
+              {/* profile avatar */}
+            <button id="dropdownDefaultButton" className="text-white bg-light-purple h-12 font-medium rounded-3xl px-3 py-2 text-center flex flex-row flex-nowrap items-center justify-center" type="button">
+              <Link to='/profile'>
+                 <img className="relative inline-block h-10 w-10 rounded-[50%] object-cover object-center" alt="avatar placeholder" src={userProfileImg}></img>
+              </Link>
+               <span className="mx-3 font-sans text-dark-purple">user name</span> 
+              <FontAwesomeIcon icon={faCaretDown} className="text-dark-purple"/>
+            </button>
+            <div id="dropdown" className="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+                <ul className="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
+                  <li>
+                    <a href="/" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
+                  </li>
+                  <li>
+                    <a href="/" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Settings</a>
+                  </li>
+                  <li>
+                    <a href="/" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</a>
+                  </li>
+                  <li>
+                    <a href="/" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Sign out</a>
+                  </li>
+                </ul>
+            </div>
           </div>
         </nav>
 
@@ -136,13 +177,20 @@ function Header() {
           </Dialog.Panel>
         </Dialog>
         </div>
+
+{/* sub navigation */}
         <div className="w-full h-14 bg-light-purple flex flex-row flex-nowrap justify-center items-center p-0">
-          <nav className="flex flex-row flex-nowrap justify-center items-center h-full p-0">
-            <NavLink exact='true' to='/' className='sub-navs' >All Courses</NavLink>
-            <NavLink exact='true' to='/books' className='sub-navs'> My Books</NavLink>
-            <NavLink exact='true' to='/' className='sub-navs' >Learning</NavLink>
-            <NavLink exact='true' to='/' className='sub-navs' >My Status</NavLink>
-            <NavLink exact='true' to='/courses' className='sub-navs'>My Courses</NavLink>
+          <nav className="sub-nav-holder flex flex-row flex-nowrap justify-center items-center h-full p-0">
+            {
+              subNavigation.map((item) => (
+                 <NavLink exact='true' 
+                          key={item.name}
+                          to={item.to} 
+                          className='sub-navs' >
+                            {item.name}
+                 </NavLink>
+                 ))
+            }
           </nav>
         </div>
       </header>

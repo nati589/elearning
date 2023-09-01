@@ -5,7 +5,7 @@ import CoursesList from "../components/CourseList";
 import Mentor from "../components/Mentor";
 // import CoursesHero from "../components/CoursesHero";
 
-import Explore from "../components/Explore";
+// import Explore from "../components/Explore";
 // import { useNavigate } from "react-router-dom";
 
 function LandingPage() {
@@ -16,7 +16,7 @@ function LandingPage() {
       <OurGoal />
       <CoursesList />
       <Mentor />
-      <Explore />
+      {/* <Explore /> */}
     </>
   );
 }

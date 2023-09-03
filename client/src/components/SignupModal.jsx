@@ -11,10 +11,10 @@ function SignupModal({ toggle, toggleSignin }) {
   return (
     <>
       <div className="modal-overlay h-screen w-full bg-black bg-opacity-60 fixed top-0 bottom-0 left-0 right-0 flex flex-col flex-nowrap justify-center items-center z-50">
-        <div className="modal-body flex flex-col h-fit bg-white w-8/12 rounded-xl p-4">
+        <div className="modal-body flex flex-col h-fit bg-white w-10/12 lg:w-8/12 rounded-xl p-4">
           <img src={Xmark} onClick={toggle} alt="close button " className='block self-end cursor-pointer w-6 h-auto'/>
           <div className="modal-body flex flex-row">
-            <div className="flex flex-col flex-nowrap justify-center items-left w-1/2 p-8 pl-24 font-sans">
+            <div className=" hidden lg:flex flex-col flex-nowrap justify-center items-left w-1/2 p-8 pl-24 font-sans">
               <img src={EduviLogo} alt="eduvi logo" className="w-2/12" />
               <span className=" leading-normal font-extrabold text-4xl mb-5">
                 Welcome to <br /> EthLang online <br /> learning platform
@@ -28,9 +28,9 @@ function SignupModal({ toggle, toggleSignin }) {
             <img
               src={DividerVertical}
               alt="vertical divider"
-              className="h-[500px] m-auto"
+              className="hidden lg:block h-[500px] m-auto"
             />
-            <div className="flex flex-col flex-nowrap justify-center items-center w-1/2 p-8 font-sans">
+            <div className="flex flex-col flex-nowrap justify-center items-center w-full lg:w-1/2 p-8 font-sans">
               <a
                 className="flex flex-row justify-center items-center font-normal bg-opacity-10 border-2 h-auto p-2 pr-3 pl-3 mt-2 mb-3 w-auto rounded-lg font-sans text-sm text-gray-500 hover:bg-medium-purple hover:text-white"
                 href="/"

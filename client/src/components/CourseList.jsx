@@ -1,8 +1,8 @@
 import React from "react";
-//import CourseCard from "./CourseCard";
+import CourseCard from "./CourseCard";
 
 function CourseList() {
-  /*const courseData = [
+  const courseData = [
     {
       title: "Standard One",
       description:
@@ -52,65 +52,36 @@ function CourseList() {
       image: require("../assets/number-8.png"),
     },
   ];
-*/
+
   return (
-    <div className="grid grid-cols-2 gap-1 md:gap-8">
-      <div className="flex justify-center   md:px-20  flex flex-col pt-10">
-        <h2 className=" text-center rounded-tl-lg rounded-tr-lg bg-[#796bd4] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500" >
-          Popular Courses
-        </h2>
-        <div class="max-h-40 overflow-y-auto pt-5">
+    <div className="my-4">
+      <h3 className="text-center text-5xl text-[#20053E] font-bold mx-2">
+        Qualified lessons for students
+      </h3>
 
+      <p className="text-center py-5 px-20 self-center lg:w-1/2 sm:w-full mx-auto text-md my-2 ">
+        Explore our range of courses designed to suit your language learning
+        needs. Whether you are a beginner or an advanced learner, we have
+        courses that cater to all levels. Choose from Amharic, Oromo, Tigrinya,
+        Somali, and more!
+      </p>
+      <h4 className="text-center text-4xl font-bold text-[#20053E]">Our Top Courses</h4>
 
-          <h4 className="text-center text-4xl font-bold text-[#20053E]">Other </h4>
-
-
-        </div>
-        <div class="pt-10">
-          <h2 className="rounded-tl-lg rounded-tr-lg text-center bg-[#796bd4] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500" >
-            Trending Courses
-          </h2>
-          <div class="max-h-40 overflow-y-auto pt-5">
-
-
-            <h4 className="text-center text-4xl font-bold text-[#20053E]">Other 2</h4>
-
-
-          </div>
-        </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8 px-4 sm:px-8 md:px-20 my-8">
+        {courseData.map((course, index) => (
+          <CourseCard key={index} course={course} courseName='Amharic' hoursNeeded='2 hours' teacherName='Abe Kebe' rating='3 stars' price='40ETB0' />
+        ))}
       </div>
 
-      <div className="flex justify-center px-4 sm:px-8 md:px-20 my-4 flex flex-col ">
-        <h4 className="text-center text-4xl font-bold text-[#20053E]">Other courses</h4>
-        <div className="pt-10 flex gap- justify-between flex-wrap sm:flex-nowrap mx-8">
-          {/* search  */}
-          <div className="flex items-center basis-3/4">
-            <input
-              type="text"
-              className="w-full rounded-lg border border-gray-400 p-2"
-              placeholder="Search ..."
-            />
-            <button className="ml-2 rounded-lg bg-blue-500 p-2 text-white hover:bg-blue-600">
-              Search
-            </button>
-          </div>
-          {/* sort  */}
-          <div className="flex basis-1/4 items-center">
-            <label htmlFor="sort" className="mr-2">
-              Sort
-            </label>
-            <select name="sort" id="sort" className="rounded-md p-2 w-full">
-              <option value="a">Latest</option>
-              <option value="b">Oldest</option>
-              <option value="c">c</option>
-            </select>
-          </div>
-        </div>
+      <div className="flex justify-center px-4 sm:px-8 md:px-20 my-4">
+        <a
+          href="  /courses"
+          className="flex-none rounded-md bg-[#20053E] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-[#9C4DF4] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
+          View More Courses
+        </a>
       </div>
     </div>
   );
 }
-/*   {courseData.map((course, index) => (
-          <CourseCard key={index} course={course} />
-        ))} */
+
 export default CourseList;

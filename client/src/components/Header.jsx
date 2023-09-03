@@ -86,7 +86,7 @@ function Header() {
 
   return (
     <>
-   {signinModal && (
+      {signinModal && (
         <LoginModal toggle={toggleSignin} toggleSignup={toggleSignup} />
       )}
       {signupModal && (

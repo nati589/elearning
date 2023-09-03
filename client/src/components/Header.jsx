@@ -153,8 +153,8 @@ function Header() {
 
                 {
                   avatarNavigation.map((item) => (
-                  <li>
-                    <a key={item.name} href={item.to} className="block px-4 py-2 hover:bg-medium-purple hover:text-white hover:font-bold">{item.name}</a>
+                  <li key={item.name}>
+                    <a  href={item.to} className="block px-4 py-2 hover:bg-medium-purple hover:text-white hover:font-bold">{item.name}</a>
                   </li>
                   ))
                 }

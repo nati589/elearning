@@ -69,7 +69,7 @@ function CourseList() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8 px-4 sm:px-8 md:px-20 my-8">
         {courseData.map((course, index) => (
-          <CourseCard key={index} course={course} courseName='Amharic' hoursNeeded='2 hours' teacherName='Abe Kebe' rating='3 stars' price='40ETB0' />
+          <CourseCard key={index} course={course} course_name='Amharic For Beginners' course_description='Minim pariatur exercitation est aliquip deserunt id sit tempor voluptate. Sit mollit voluptate ipsum laborum consequat non eu  do ipsum id ea ipsum duis enim.' course_image="" hoursNeeded='2 hours' teacherName='Abe Kebe' rating="3.7" price='40 ETB' level="3" />
         ))}
       </div>
 

@@ -31,7 +31,7 @@ export default function App() {
   
       <Subscription />
 
-      <Footer courseName='Amharic' teacherName='Abeba' rating='3 stars' hoursNeeded='3 hours' price='40 ETB'/>
+      <Footer />
     </div>
   );
 }

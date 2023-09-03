@@ -69,14 +69,14 @@ function CourseList() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8 px-4 sm:px-8 md:px-20 my-8">
         {courseData.map((course, index) => (
-          <CourseCard key={index} course={course} course_name='Amharic For Beginners' course_description='Minim pariatur exercitation est aliquip deserunt id sit tempor voluptate.' course_image="" hoursNeeded='2 hours' teacherName='Abe Kebe' rating="3.7" price='40 ETB' level="3" />
+          <CourseCard key={index} course={course} course_name='Amharic For Beginners' course_description='Minim pariatur exercitation est aliquip deserunt id sit tempor voluptate.' courseImagePath="./Image.png" hoursNeeded='2 hours' teacherName='Abe Kebe' rating="3.7" price='40 ETB' level="3" />
         ))}
       </div>
 
       <div className="flex justify-center px-4 sm:px-8 md:px-20 my-4">
         <a
           href="  /courses"
-          className="flex-none rounded-md bg-[#20053E] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-[#9C4DF4] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
+          className="button-component px-4 py-2">
           View More Courses
         </a>
       </div>

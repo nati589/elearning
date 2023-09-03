@@ -63,7 +63,7 @@ function Header() {
     document.body.style.overflow = "auto";
   };
 
-  const closeOtherModals= (exceptionModal) =>{
+  const closeOthersExcept= (exceptionModal) =>{
 
     const closingModals = setModalsArray.filter( modal => modal !== exceptionModal)
     closingModals.map(modal => modal(false))
@@ -72,14 +72,14 @@ function Header() {
 
   const toggleSignin = () => {
     setSigninModal(!signinModal);
-    closeOtherModals(setSigninModal)
+    closeOthersExcept(setSigninModal)
 
     !signinModal ? disableScroll() : enableScroll();
   };
 
   const toggleSignup = () => {
     setSignupModal(!signupModal);
-    closeOtherModals(setSignupModal)
+    closeOthersExcept(setSignupModal)
     
     !signupModal ? disableScroll() : enableScroll();
   };

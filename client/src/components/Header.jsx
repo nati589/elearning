@@ -46,7 +46,9 @@ function Header() {
   const [resetpsdModal,setResetpsdModal]= useState(false);
   const [userProfileImg,setUserprofileImg] = useState(profileUrl);
   const [avatarState, setAvatarState]= useState(false)
-  const avatarMenu = avatarState? 'z-10 absolute right-10 top-[72px] bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700':'hidden';
+
+
+  const avatarMenu = avatarState? 'z-10 absolute right-10 top-[72px] bg-white divide-y divide-gray-100 rounded-lg shadow-lg w-44':'hidden';
 
  
   const setModalsArray = [setSigninModal,setSignupModal,setForgotpsdModal,setResetpsdModal,setMobileMenuOpen];

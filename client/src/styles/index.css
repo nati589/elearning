@@ -20,7 +20,7 @@ code {
 }
 
 .gradient-purple{
-  @apply  bg-gradient-to-r from-[#53389E] from-0% to-[#6941C6] to-100%
+  @apply  bg-gradient-to-r from-[#53389E] via-[#643FBD] via-90% to-[#6941C6] to-100%
 
 }
 

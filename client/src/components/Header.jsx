@@ -42,11 +42,14 @@ function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [signinModal, setSigninModal] = useState(false);
   const [signupModal, setSignupModal] = useState(false);
+  const [forgotpsdModal,setForgotpsdModal]= useState(false);
+  const [resetpsdModal,setResetpsdModal]= useState(false);
   const [userProfileImg,setUserprofileImg] = useState(profileUrl);
   const [avatarState, setAvatarState]= useState(false)
   const avatarMenu = avatarState? 'z-10 absolute right-10 top-[72px] bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700':'hidden';
 
  
+  const setModalsArray = [setSigninModal,setSignupModal,setForgotpsdModal,setResetpsdModal,setMobileMenuOpen];
 
   const openAvatar = ()=>{
     setAvatarState(!avatarState)
@@ -60,37 +63,35 @@ function Header() {
     document.body.style.overflow = "auto";
   };
 
+  const closeOtherModals= (exceptionModal) =>{
+
+    const closingModals = setModalsArray.filter( modal => modal !== exceptionModal)
+    closingModals.map(modal => modal(false))
+
+  }
+
   const toggleSignin = () => {
     setSigninModal(!signinModal);
-    setSignupModal(false);
-    setMobileMenuOpen(false)
+    closeOtherModals(setSigninModal)
 
     !signinModal ? disableScroll() : enableScroll();
   };
 
   const toggleSignup = () => {
     setSignupModal(!signupModal);
-    setSigninModal(false);
-    setMobileMenuOpen(false)
-
-    setUserprofileImg("")
+    closeOtherModals(setSignupModal)
     
     !signupModal ? disableScroll() : enableScroll();
   };
 
   return (
     <>
-    <Routes>
-        <Route exact path="/login-modal" element={<LoginModal/>} />
-        <Route exact path="/signup-modal" element={<SignupModal/>} />
-    </Routes>
-
-      {/* {signinModal && (
+   {signinModal && (
         <LoginModal toggle={toggleSignin} toggleSignup={toggleSignup} />
       )}
       {signupModal && (
         <SignupModal toggle={toggleSignup} toggleSignin={toggleSignin} />
-      )} */}
+      )}
 
       <header className="sticky flex flex-col flex-nowrap inset-x-0 top-0 z-30 bg-white">
         <div>
@@ -108,9 +109,9 @@ function Header() {
         <nav className=" text-writing-dark flex items-center justify-between px-6 py-3 lg:px-8" aria-label="Global">
           
           <div className="flex lg:flex-1">
-            <Link to="/" className="-m-1.5 p-1.5">
+            <button to="/" className="-m-1.5 p-1.5">
               <img className="h-10 w-auto" src={logo} alt="company logo" />
-            </Link>
+            </button>
           </div>
 
 
@@ -136,8 +137,8 @@ function Header() {
           </div>
 
           <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end">
-            <Link  to='/login-modal' className="button-component h-12">Log in </Link>
-            <Link  to='/login-modal' className="button-component-stroke h-12">Sign Up</Link>
+            <button  onClick={toggleSignin} className="button-component h-12">Log in </button>
+            <button  onClick={toggleSignup} className="button-component-stroke h-12">Sign Up</button>
 
               {/* profile avatar */}
               <button id="dropdownDefaultButton" className="text-white cursor-default bg-light-purple h-14 px-3 font-medium  rounded-[32px] text-center flex flex-row flex-nowrap items-center justify-center" type="button">

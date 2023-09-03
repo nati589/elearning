@@ -40,7 +40,7 @@ function CourseCard({ course_name,courseImage,course_description, teacherName, r
             <span className="ml-2">{teacherName}</span>
           </div>
            <div className="flex flex-row flex-nowrap items-center justify-start mb-2">
-            <img src={DollarIcon} alt='icon' className="h-4 w-auto bg-writing-dark"/>
+            <img src={DollarIcon} alt='icon' className="h-4 w-auto fill-current text-writing-dark"/>
             <span className="ml-2">{price}</span>
           </div>
           <div className="flex flex-row flex-nowrap items-center justify-start mb-2">

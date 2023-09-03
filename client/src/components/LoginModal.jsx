@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import EduviLogo from '../assets/eduvi_logo.svg'
 import LoginImage from '../assets/login_image.svg'
 import DividerVertical from '../assets/divider_line.svg'
@@ -6,8 +7,40 @@ import InputComponent from './InputComponent'
 import GoogleIcon from '../assets/google_icon2.svg'
 import {GoLock, GoMail} from 'react-icons/go' 
 import { GoXCircle } from 'react-icons/go'
+import { useForm } from 'react-hook-form'
+import axios from 'axios';
 
 function LoginModal({toggle, toggleSignup}) {
+    const methods= useForm()
+
+    const {handleSubmit}=methods
+
+    const navigate= useNavigate();
+
+  const [submitSuccess,setSubmitSuccess]= useState(false)
+  const [failure,setFailure]= useState(false)
+  const [success_msg,setMsg] = useState('')
+  
+    const submitInputs = handleSubmit((data)=>{
+      axios.post('/auth/login',data)
+      .then(res=>{
+        setSubmitSuccess(true)
+        setMsg(res.data.message)
+        setFailure(false)
+        setTimeout(()=>{
+          setSubmitSuccess(false)
+          navigate('/')
+        },2000)
+  
+      })
+      .catch((error) =>{
+        setSubmitSuccess(true)
+        setMsg(error.response.data.message)
+        setFailure(true)
+        setTimeout(()=>{setSubmitSuccess(false)},2000)
+      })
+      
+    })
     
   return (
     <>
@@ -42,7 +75,7 @@ function LoginModal({toggle, toggleSignup}) {
                                 Keep me signed in &nbsp; <a href='/' className='text-medium-purple '>Forgot password?</a>
                                 </label>
 
-                                <button className='w-9/12 h-10 my-3 bg-medium-purple hover:bg-medium-purple-hover rounded-md text-white'>
+                                <button onClick={submitInputs} className='w-9/12 h-10 my-3 bg-medium-purple hover:bg-medium-purple-hover rounded-md text-white'>
                                 Sign In
                                 </button>
                         </form>

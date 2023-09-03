@@ -19,7 +19,7 @@ function CourseCard({ course_name,courseImagePath,course_description, teacherNam
         
         <img src={course_image} alt="Course thumbnail" className="my-4 h-52 w-auto" />
       </div>
-      <div className="grid px-2 md:grid-cols-2 gap-2">
+      <div className="grid sm:justify-center px-2 md:grid-cols-2 gap-2">
           <div className="flex flex-row flex-nowrap items-center justify-start mb-2">
             <img src={TimerIcon} alt='icon' className="h-4 w-auto"/>
             <span className="ml-2">{hoursNeeded}</span>
@@ -29,9 +29,9 @@ function CourseCard({ course_name,courseImagePath,course_description, teacherNam
                 {
                   numbers.map( number =>{
                     if( number <= Math.floor(rating)){
-                      return (<img src={FullStarIcon} alt='full star icon' className="h-4 w-auto mr-1"/>)
+                      return (<img key={number} src={FullStarIcon} alt='full star icon' className="h-4 w-auto mr-1"/>)
                     }else{
-                      return (<img src={EmptyStarIcon} alt='empty star icon' className="h-4 w-auto mr-1"/>)
+                      return (<img key={number} src={EmptyStarIcon} alt='empty star icon' className="h-4 w-auto mr-1"/>)
                     }
                   })
                 }

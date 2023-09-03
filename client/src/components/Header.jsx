@@ -205,8 +205,8 @@ function Header() {
         </div>
 
 {/* sub navigation */}
-        <div className="w-full h-14 bg-light-purple flex flex-row flex-nowrap justify-center items-center p-0">
-          <nav className="sub-nav-holder flex flex-row flex-nowrap justify-center items-center h-full p-0">
+        <div className="w-full lg:h-14 md:h-12 h-9 bg-light-purple flex flex-row flex-nowrap justify-center items-center p-0">
+          <nav className="sub-nav-holder flex flex-row flex-nowrap justify-center items-center w-full h-full p-0">
             {
               subNavigation.map((item) => (
                  <NavLink exact='true' 

@@ -12,14 +12,14 @@ function CourseCard({ course_name,courseImagePath,course_description, teacherNam
   const course_image = images(courseImagePath);
   const numbers =[1,2,3,4,5];
   return (
-    <div className="relative bg-white rounded-lg border-t-8 border-x-2 min-h-[380px] h-fit md:w-full sm:w-8/12 border-medium-purple p-2 shadow-md">
+    <div className="relative bg-white rounded-lg border-t-8 border-x-2 min-h-[180px] lg:min-h-[380px] h-fit md:w-full  border-medium-purple p-2 shadow-md">
       <div className="flex flex-col px-1 items-center justify-center mb-2">
-        <span className=" self-start mb-2 text-xl font-semibold font-sans">{course_name}</span>
-        <span className=" self-start text-sm font-light font-sans">{course_description}</span>
+        <span className=" self-start mb-2 text-sm lg:text-xl font-semibold font-sans">{course_name}</span>
+        <span className=" self-start text-xs lg:text-sm font-light font-sans">{course_description}</span>
         
-        <img src={course_image} alt="Course thumbnail" className="my-4 h-52 w-auto" />
+        <img src={course_image} alt="Course thumbnail" className="my-4 h-32 md:h-48 lg:h-52 w-auto" />
       </div>
-      <div className="grid sm:justify-center px-2 md:grid-cols-2 gap-2">
+      <div className="grid px-2 md:grid-cols-2 lg:gap-2 text-xs lg:text-sm">
           <div className="flex flex-row flex-nowrap items-center justify-start mb-2">
             <img src={TimerIcon} alt='icon' className="h-4 w-auto"/>
             <span className="ml-2">{hoursNeeded}</span>

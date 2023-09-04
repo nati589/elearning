@@ -16,6 +16,7 @@ const navigation = [
   { name: "Home", to: "/" },
   { name: "Books", to: "/books" },
   { name: "Courses", to: "/courses" },
+  { name: "Cart", to: "/cart" },
 ];
 
 const subNavigation = [

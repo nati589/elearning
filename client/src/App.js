@@ -11,6 +11,7 @@ import TestPage from "./pages/TestPage";
 import UserProfile from "./pages/UserProfile";
 // import Background from "./components/Background";
 import "./styles/App.css";
+import Cart from "./pages/Cart";
 
 export default function App() {
   return (
@@ -25,6 +26,7 @@ export default function App() {
         <Route path="/courses" element={<CoursesPage />} />
         <Route path="/coursedetails" element={<CourseDetailsPage />} />
         <Route path="/profile" element={<UserProfile />} />
+        <Route path="/cart" element={<Cart />} />
       </Routes>
 
       {/* <Subscription /> */}

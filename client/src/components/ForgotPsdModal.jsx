@@ -63,6 +63,10 @@ function ForgotPsdModal({ toggle, toggleSignin }) {
               <span className=" leading-normal font-extrabold text-4xl mb-5">
                 Forgot Password?
               </span>
+              <span className=" leading-normal font-normal text-sm mb-5">
+                Enter the email associated with your account and we'll send an
+                email with instructions to reset your password.
+              </span>
               <img
                 src={ForgotImage}
                 alt="login asset"
@@ -101,7 +105,7 @@ function ForgotPsdModal({ toggle, toggleSignin }) {
 
               <span
                 onClick={toggleSignin}
-                className="text-medium-purple text-sm">
+                className="text-medium-purple text-sm cursor-pointer">
                 back to login
               </span>
             </div>

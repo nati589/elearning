@@ -1,15 +1,19 @@
 import CoursesHero from "../components/CoursesHero";
-import CoursesList from "../components/CourseList";
+import CoursesPageList from "../components/CoursesPageList";
 import OtherCourses from "../components/OtherCourses";
 
 function CourseDetailsPage() {
 
   return (
     <>
-      <CoursesHero />
-      <CoursesList />
-      <OtherCourses />
+          <CoursesHero />
+          <CoursesPageList />
     </>
+  
+     
+    
+      
+
   );
 }
 

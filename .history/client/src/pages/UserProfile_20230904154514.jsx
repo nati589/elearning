@@ -1,8 +1,14 @@
 import React, { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faDashboard } from "@fortawesome/free-solid-svg-icons";
-import { BsArrowLeftShort } from "react-icons/bs";
-import { FaLock, FaCog, FaLifeRing } from "react-icons/fa";
+import { BsArrowLeftShort, BsSearch } from "react-icons/bs";
+import {
+  // FaDashboard,
+  FaBell,
+  FaLock,
+  FaShieldAlt,
+  FaFlag,
+  FaCog,
+  FaLifeRing,
+} from "react-icons/fa";
 import { NavLink, Outlet, Route, Routes } from "react-router-dom";
 
 function UserProfile() {
@@ -10,15 +16,15 @@ function UserProfile() {
   const Menus = [
     {
       title: "Dashboard",
-      icon: <faDashboard />,
+      icon: <riDashboardFill />,
       spacing: true,
-      to: "/profile/",
+      to: "/profile/user-dashboard",
     },
     // { title: "Notifications", icon: <FaBell /> },
     { title: "Privacy & Security", icon: <FaLock />, to: "/profile/privacy" },
-    { title: "Setting", icon: <FaCog />, to: "/profile/setting" },
+    { title: "Setting", icon: <FaCog />, to: "/profile/" },
     // { title: "Report", icon: <FaFlag /> },
-    { title: "Support", icon: <FaLifeRing />, to: "/profile/support" },
+    { title: "Support", icon: <FaLifeRing />, to: "/profile/" },
   ];
 
   return (
@@ -26,7 +32,7 @@ function UserProfile() {
       {" "}
       <div className="bg-white w-3/12 ">
         <div
-          className={`h-full w-full bg-gradient-to-b from-dark-purple via-medium-purple to-light-purple p-5 pt-8 ${
+          className={`h-screen w-full bg-gradient-to-b from-dark-purple via-medium-purple to-light-purple p-5 pt-8 ${
             open ? "w-72" : "w-20"
           } duration-300 relative`}
         >

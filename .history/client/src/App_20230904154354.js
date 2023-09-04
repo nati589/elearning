@@ -9,8 +9,7 @@ import CoursesPage from "./pages/CoursesPage";
 import CourseDetailsPage from "./pages/CourseDetailsPage";
 import TestPage from "./pages/TestPage";
 import UserProfile from "./pages/UserProfile";
-import Support from "./components/Support";
-import Setting from "./components/Setting";
+
 import ProfilePrivacy from "./components/PrivacyAndSecurity";
 import UserProfileDashboard from "./components/UserProfileDashboard";
 // import Background from "./components/Background";
@@ -32,10 +31,12 @@ export default function App() {
         <Route path="/courses" element={<CoursesPage />} />
         <Route path="/coursedetails" element={<CourseDetailsPage />} />
         <Route path="/profile" element={<UserProfile />}>
-          <Route exact index element={<UserProfileDashboard />} />
-          <Route exact path="/profile/privacy" element={<ProfilePrivacy />} />
-          <Route exact path="/profile/setting" element={<Setting />} />
-          <Route exact path="/profile/support" element={<Support />} />
+          <Route
+            exact
+            path="/user-dashboard"
+            element={<UserProfileDashboard />}
+          />
+          <Route exact path="/privacy" element={<ProfilePrivacy />} />
         </Route>
       </Routes>
 

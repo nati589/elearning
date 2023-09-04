@@ -70,4 +70,5 @@ const PopularCourseCard = ({
   );
 };
 
+
 export default PopularCourseCard;

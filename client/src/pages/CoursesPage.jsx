@@ -1,5 +1,5 @@
 import CoursesHero from "../components/CoursesHero";
-import CoursesList from "../components/CourseList";
+import CoursesBody from "../components/CoursesBody";
 import OtherCourses from "../components/OtherCourses";
 
 function CourseDetailsPage() {
@@ -7,7 +7,7 @@ function CourseDetailsPage() {
   return (
     <>
       <CoursesHero />
-      <CoursesList />
+      <CoursesBody />
       <OtherCourses />
     </>
 

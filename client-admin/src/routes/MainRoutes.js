@@ -1,79 +1,105 @@
-import { lazy } from 'react';
+import { lazy } from "react";
 
 // project import
-import Loadable from 'components/Loadable';
-import MainLayout from 'layout/MainLayout';
-import AddCourse from 'pages/components-overview/AddCourse';
-import EditCourse from 'pages/components-overview/EditCourse';
-import CourseList from 'pages/components-overview/CourseList';
+import Loadable from "components/Loadable";
+import MainLayout from "layout/MainLayout";
+import AddCourse from "pages/components-overview/AddCourse";
+import EditCourse from "pages/components-overview/EditCourse";
+import CourseList from "pages/components-overview/CourseList";
+import AddBook from "pages/components-overview/AddBook";
+import EditBook from "pages/components-overview/EditBook";
+import BookList from "pages/components-overview/BookList";
 
 // render - dashboard
-const DashboardDefault = Loadable(lazy(() => import('pages/dashboard')));
+const DashboardDefault = Loadable(lazy(() => import("pages/dashboard")));
 
 // render - sample page
-const SamplePage = Loadable(lazy(() => import('pages/extra-pages/SamplePage')));
+const SamplePage = Loadable(lazy(() => import("pages/extra-pages/SamplePage")));
 
 // render - management
-const CourseManagement = Loadable(lazy(() => import('pages/components-overview/CourseManagement')));
-const WebContent = Loadable(lazy(() => import('pages/components-overview/WebContent')));
-const Shadow = Loadable(lazy(() => import('pages/components-overview/Shadow')));
-const AntIcons = Loadable(lazy(() => import('pages/components-overview/AntIcons')));
+const CourseManagement = Loadable(
+  lazy(() => import("pages/components-overview/CourseManagement"))
+);
+const WebContent = Loadable(
+  lazy(() => import("pages/components-overview/WebContent"))
+);
+const BookManagement = Loadable(
+  lazy(() => import("pages/components-overview/BookManagement"))
+);
+const AntIcons = Loadable(
+  lazy(() => import("pages/components-overview/AntIcons"))
+);
 
 // ==============================|| MAIN ROUTING ||============================== //
 
 const MainRoutes = {
-  path: '/',
+  path: "/",
   element: <MainLayout />,
   children: [
     {
-      path: '/',
-      element: <DashboardDefault />
+      path: "/",
+      element: <DashboardDefault />,
     },
     {
-      path: '/webcontent',
-      element: <WebContent />
+      path: "/webcontent",
+      element: <WebContent />,
     },
     {
-      path: 'dashboard',
+      path: "dashboard",
       children: [
         {
-          path: 'default',
-          element: <DashboardDefault />
-        }
-      ]
+          path: "default",
+          element: <DashboardDefault />,
+        },
+      ],
     },
     {
-      path: 'sample-page',
-      element: <SamplePage />
+      path: "sample-page",
+      element: <SamplePage />,
     },
     {
-      path: 'shadow',
-      element: <Shadow />
+      path: "bookmanagement",
+      element: <BookManagement />,
+      children: [
+        {
+          path: "",
+          element: <BookList />,
+        },
+        {
+          path: "addbook",
+          element: <AddBook />,
+        },
+        {
+          path: "edit/:id",
+          element: <EditBook />,
+        },
+        // Update or add more routes here
+      ],
     },
     {
-      path: 'coursemanagement',
+      path: "coursemanagement",
       element: <CourseManagement />,
       children: [
         {
-          path: '',
-          element: <CourseList />
+          path: "",
+          element: <CourseList />,
         },
         {
-          path: 'addcourse',
-          element: <AddCourse />
+          path: "addcourse",
+          element: <AddCourse />,
         },
         {
-          path: 'edit/:id',
-          element: <EditCourse />
+          path: "edit/:id",
+          element: <EditCourse />,
         },
         // Update or add more routes here
-      ]
+      ],
     },
     {
-      path: 'icons/ant',
-      element: <AntIcons />
-    }
-  ]
+      path: "icons/ant",
+      element: <AntIcons />,
+    },
+  ],
 };
 
 export default MainRoutes;

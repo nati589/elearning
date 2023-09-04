@@ -12,7 +12,7 @@ function InputError({message}) {
   return (
    
           <motion.p
-            className=" flex flex-row flex-nowrap justify-start items-center px-2 py-1 mb-2 h-fit w-fit text-red-700  text-xs lg:text-sm md:text-sm bg-red-300 rounded-md "
+            className=" flex flex-row flex-nowrap justify-start items-center px-2 py-1 mb-2 h-fit w-fit text-red-700  text-[8px] lg:text-xs md:text-xs text- bg-red-300 rounded-md "
             {...framer_error}
           >
             <BiErrorCircle className=' text-red-700'/>

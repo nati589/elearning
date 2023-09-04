@@ -1,3 +1,4 @@
+
 import React from 'react'
 import dollar from "../assets/icons/dollar.svg";
 import person from "../assets/icons/person.svg"
@@ -8,7 +9,9 @@ import stickynote from "../assets/icons/stickynote.svg";
 
 
 const PopularCourseCard = ({ course_title, course_details, course_thumbnail, course_total_hour, course_instructure, course_level, course_rate, course_price }) => {
+
   return (
+
 
     <div class="card bg-white border-l-8 border-l-dark-purple rounded-lg shadow-md my-4 p-6 w-80 h-88">
       <h1 class="text-xl mb-4 font-bold">{course_title}</h1>
@@ -64,7 +67,7 @@ const PopularCourseCard = ({ course_title, course_details, course_thumbnail, cou
       </div>
     </div>
 
-  )
+ ); 
 }
 
 export default PopularCourseCard

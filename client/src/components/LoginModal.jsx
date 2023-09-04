@@ -22,6 +22,8 @@ function LoginModal({toggle, toggleSignup}) {
   const [success_msg,setMsg] = useState('')
   
     const submitInputs = handleSubmit((data)=>{
+
+      alert(data,"data")
       axios.post('/auth/login',data)
       .then(res=>{
         setSubmitSuccess(true)
@@ -45,7 +47,7 @@ function LoginModal({toggle, toggleSignup}) {
   return (
     <>
         <div  className='modal-overlay h-screen w-full bg-black bg-opacity-60 fixed top-0 bottom-0 left-0 right-0 flex flex-col flex-nowrap justify-center items-center z-50'>
-            <div className='modal-body flex flex-col h-fit bg-white w-10/12 lg:w-8/12 rounded-xl p-4'>
+            <div className='modal-body flex flex-col h-fit bg-white w-10/12 lg:w-8/12 rounded-xl p-2 md:p-4 lg:p-4'>
                 <img src={Xmark} onClick={toggle} alt="close button " className='block self-end cursor-pointer w-6 h-auto'/>
                 <div className='modal-body flex flex-row'>
                     <div className='hidden lg:flex flex-col flex-nowrap justify-center items-left w-1/2 p-8 pl-24 font-sans'>

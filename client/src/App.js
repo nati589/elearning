@@ -14,7 +14,7 @@ import "./styles/App.css";
 
 export default function App() {
   return (
-    <div>
+    <div className="App" style={{ backgroundColor: "#F7F5FA", minHeight: "100vh" }}>
       {/* <Background /> */}
       <Header />
 

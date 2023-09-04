@@ -28,11 +28,8 @@ function CourseCard({ course_name,courseImagePath,course_description, teacherNam
             {rating}&nbsp;
                 {
                   numbers.map( number =>{
-                    if( number <= Math.floor(rating)){
-                      return (<img key={number} src={FullStarIcon} alt='full star icon' className="h-4 w-auto mr-1"/>)
-                    }else{
-                      return (<img key={number} src={EmptyStarIcon} alt='empty star icon' className="h-4 w-auto mr-1"/>)
-                    }
+                    const chosenIcon= number <= Math.floor(rating)?FullStarIcon:EmptyStarIcon;
+                    return (<img key={number} src={chosenIcon} alt='empty star icon' className="h-4 w-auto mr-1"/>)
                   })
                 }
           </div>

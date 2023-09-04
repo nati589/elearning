@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import EduviLogo from "../assets/eduvi_logo.svg";
-import { Link, NavLink, useNavigate } from "react-router-dom";
-import { code_validation, email_validation, name_validation, password_validation} from '../utils/inputValidations';
+import {  useNavigate } from "react-router-dom";
+import {  email_validation, name_validation, password_validation} from '../utils/inputValidations';
 import LoginImage from "../assets/login_image.svg";
 import DividerVertical from "../assets/divider_line.svg";
 import InputComponent from "./InputComponent";
 import GoogleIcon from "../assets/google_icon2.svg";
 import Xmark from '../assets/icons/Xmark.svg'
 import { GoLock, GoMail, GoPerson } from "react-icons/go";
-import { FormProvider, useForm, useFormContext } from "react-hook-form";
+import { FormProvider, useForm} from "react-hook-form";
 import axios from "axios";
 import { AnimatePresence } from "framer-motion";
 import InputError from "./InputError";
@@ -28,8 +28,6 @@ function SignupModal({ toggle, toggleSignin }) {
 
 
   const submitInputs = handleSubmit((data)=>{
-
-    console.log(data,"data")
 
     axios.post('/auth/login',data)
     .then(res=>{
@@ -87,12 +85,12 @@ function SignupModal({ toggle, toggleSignin }) {
               </a>
               <div className="flex flex-row flex-nowrap justify-center items-center w-11/12 text-gray-600 text-sm font-semibold">
                 <div className="w-3/12 justify-center items-center px-1 ">
-                  {" "}
+                  &nbsp;
                   <hr className="w-full border-2" />
                 </div>
                 or sign up with your email
                 <div className="w-3/12 justify-center items-center px-1">
-                  {" "}
+                  &nbsp;
                   <hr className="w-full border-2" />
                 </div>
               </div>
@@ -136,7 +134,6 @@ function SignupModal({ toggle, toggleSignin }) {
                 />
                 <label className="text-grey-500 text-sm">
                 <AnimatePresence mode="wait" initial={false}>
-                  {console.log(errors.terms_checkbox,"checkbox")}
                   {errors.terms_checkbox && ( 
                     <InputError
                         message={errors.terms_checkbox.message}

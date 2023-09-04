@@ -208,9 +208,8 @@ function Header() {
                   aria-labelledby="dropdownDefaultButton"
                 >
                   {avatarNavigation.map((item) => (
-                    <li>
+                    <li key={item.name}>
                       <a
-                        key={item.name}
                         href={item.to}
                         className="block px-4 py-2 hover:bg-medium-purple hover:text-white hover:font-bold"
                       >

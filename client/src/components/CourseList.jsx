@@ -79,7 +79,7 @@ function CourseList() {
             courseImagePath="./Image.png"
             hoursNeeded="2 hours"
             teacherName="Abe Kebe"
-            rating="3.7"
+            rating="4.7"
             price="40 ETB"
             level="3"
           />

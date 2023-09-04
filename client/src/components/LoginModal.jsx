@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Xmark from "../assets/icons/Xmark.svg";
 import EduviLogo from "../assets/eduvi_logo.svg";
 import LoginImage from "../assets/login_image.svg";
@@ -16,7 +16,7 @@ import {
 import { AnimatePresence } from "framer-motion";
 import InputError from "./InputError";
 
-function LoginModal({ toggle, toggleSignup }) {
+function LoginModal({ toggle, toggleSignup, toggleForgot }) {
   const methods = useForm();
   const {
     register,
@@ -146,9 +146,11 @@ function LoginModal({ toggle, toggleSignup }) {
                     Keep me signed in &nbsp;
                     <br className="lg:hidden" />
                     &nbsp;
-                    <a href="/" className="text-medium-purple ">
+                    <button
+                      onClick={toggleForgot}
+                      className="text-medium-purple ">
                       Forgot password?
-                    </a>
+                    </button>
                   </label>
 
                   <button

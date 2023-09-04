@@ -8,8 +8,7 @@ function Cart() {
         <h1 className="text-3xl">Shopping cart</h1>
         <button
           onClick={() => navigate(-1)}
-          className="bg-purple-50 p-1.5 rounded text-medium-purple"
-        >
+          className="bg-purple-50 p-1.5 rounded text-medium-purple">
           Continue shopping
         </button>
       </div>
@@ -22,8 +21,8 @@ function Cart() {
         <CartItem />
         <div className="flex flex-col gap-1 self-end mt-3">
           <div className=" bg-purple-100 w-40 p-2 text-xl rounded flex flex-row justify-between">
-            <sapn>Total</sapn>
-            <sapn className="text-medium-purple">$32.12</sapn>
+            <span>Total</span>
+            <span className="text-medium-purple">$32.12</span>
           </div>
           <div>
             <button className="bg-medium-purple text-white p-2 rounded  w-40">

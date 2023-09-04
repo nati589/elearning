@@ -1,6 +1,7 @@
 import React from "react";
 import PopularCourseCard from "../components/PopularCourseCard";
 import selam from "../../src/assets/Cardphoto10.png";
+import TrendingCard from "../components/TrendingCard";
 
 function TestPage() {
   return (

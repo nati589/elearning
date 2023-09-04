@@ -1,13 +1,49 @@
-import React from "react";
+import React, { useState } from "react";
 import EduviLogo from "../assets/eduvi_logo.svg";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import { code_validation, email_validation, name_validation, password_validation} from '../utils/inputValidations';
 import LoginImage from "../assets/login_image.svg";
 import DividerVertical from "../assets/divider_line.svg";
 import InputComponent from "./InputComponent";
 import GoogleIcon from "../assets/google_icon2.svg";
 import Xmark from '../assets/icons/Xmark.svg'
 import { GoLock, GoMail, GoPerson } from "react-icons/go";
+import { FormProvider, useForm } from "react-hook-form";
+import axios from "axios";
 
 function SignupModal({ toggle, toggleSignin }) {
+
+  const methods= useForm()
+
+  const {handleSubmit}=methods
+
+  const navigate= useNavigate();
+
+const [submitSuccess,setSubmitSuccess]= useState(false)
+const [failure,setFailure]= useState(false)
+const [success_msg,setMsg] = useState('')
+
+  const submitInputs = handleSubmit((data)=>{
+    axios.post('/auth/login',data)
+    .then(res=>{
+      setSubmitSuccess(true)
+      setMsg(res.data.message)
+      setFailure(false)
+      setTimeout(()=>{
+        setSubmitSuccess(false)
+        navigate('/')
+      },2000)
+
+    })
+    .catch((error) =>{
+      setSubmitSuccess(true)
+      setMsg(error.response.data.message)
+      setFailure(true)
+      setTimeout(()=>{setSubmitSuccess(false)},2000)
+    })
+    
+  })
+  
   return (
     <>
       <div className="modal-overlay h-screen w-full bg-black bg-opacity-60 fixed top-0 bottom-0 left-0 right-0 flex flex-col flex-nowrap justify-center items-center z-50">
@@ -53,8 +89,8 @@ function SignupModal({ toggle, toggleSignin }) {
                   <hr className="w-full border-2" />
                 </div>
               </div>
-
-              <form
+              <FormProvider {...methods}>
+                 <form
                 className="signup-form w-full flex flex-col flex-nowrap justify-center items-center"
                 onSubmit={(e) => e.preventDefault()}
               >
@@ -63,45 +99,56 @@ function SignupModal({ toggle, toggleSignin }) {
                     <GoPerson className="relative top-7 left-3  text-gray-500" />
                   }
                   label="Full name"
+                  name='full_name'
                   placeholder="Enter your full name"
                   type="text"
                   required="required"
+                  {...name_validation}
                 />
                 <InputComponent
                   logo={
                     <GoMail className="relative top-7 left-3  text-gray-500" />
                   }
                   label="Email"
+                  name='signup_email'
                   placeholder="Enter your email"
                   type="email"
                   required="required"
+                  {...email_validation}
                 />
                 <InputComponent
                   logo={
                     <GoLock className="relative top-7 left-3  text-gray-500" />
                   }
                   label="Password"
+                  name='signup_password'
                   placeholder="Enter password"
                   type="password"
                   required="required"
+                  {...password_validation}
                 />
                 <label className="text-grey-500 text-sm">
                   <input
                     type="checkbox"
+                    name='terms_checkbox'
                     className="mx-3 text-medium-purple"
-                    required
+                    {...code_validation}
                   />
-                  I agreed to the{" "}
+                    I agreed to the
                   <a href="/" className="font-bold ">
                     terms and conditions
                   </a>
                 </label>
-                <button className="w-9/12 h-10 my-3 bg-medium-purple hover:bg-medium-purple-hover rounded-md text-white">
+                <button 
+                  onClick={submitInputs}
+                  className="w-9/12 h-10 my-3 bg-medium-purple hover:bg-medium-purple-hover rounded-md text-white">
                   Sign Up
                 </button>
               </form>
+              </FormProvider>
+             
               <span className="text-sm text-grey-500 font-sans">
-                Already have an account?{" "}
+                Already have an account?
                 <span onClick={toggleSignin} className="text-medium-purple ">
                   Sign In
                 </span>

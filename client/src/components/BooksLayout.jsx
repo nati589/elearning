@@ -62,7 +62,7 @@ function BooksLayout() {
               className="w-full rounded-lg border border-gray-400 p-2"
               placeholder="Search ..."
             />
-            <button className="ml-2 rounded-lg bg-blue-500 p-2 text-white hover:bg-blue-600">
+            <button className="ml-2 rounded-lg bg-dark-purple p-2 text-white hover:bg-blue-600">
               Search
             </button>
           </div>

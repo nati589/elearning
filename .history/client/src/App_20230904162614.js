@@ -9,8 +9,7 @@ import CoursesPage from "./pages/CoursesPage";
 import CourseDetailsPage from "./pages/CourseDetailsPage";
 import TestPage from "./pages/TestPage";
 import UserProfile from "./pages/UserProfile";
-import Support from "./components/Support";
-import Setting from "./components/Setting";
+
 import ProfilePrivacy from "./components/PrivacyAndSecurity";
 import UserProfileDashboard from "./components/UserProfileDashboard";
 // import Background from "./components/Background";

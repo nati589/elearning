@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faDashboard } from "@fortawesome/free-solid-svg-icons";
-import { BsArrowLeftShort } from "react-icons/bs";
+import { BsArrowLeftShort, BsSearch } from "react-icons/bs";
 import {
+  // FaDashboard,
   FaBell,
   FaLock,
   FaShieldAlt,
@@ -10,22 +9,21 @@ import {
   FaCog,
   FaLifeRing,
 } from "react-icons/fa";
-import { NavLink, Outlet, Route, Routes } from "react-router-dom";
+import { AiFillEnvironment } from "react-icons/ai";
+import { RiDashboard2Fill, riDashboardFill } from "react-icons/ri";
+import Profile from "../components/Profile";
+import PopularCourseCard from "../components/PopularCourseCard";
+import selam from "../../src/assets/Cardphoto10.png";
 
 function UserProfile() {
   const [open, setOpen] = useState(true);
   const Menus = [
-    {
-      title: "Dashboard",
-      icon: <faDashboard />,
-      spacing: true,
-      to: "/profile/",
-    },
+    { title: "Dashboard", spacing: true },
     // { title: "Notifications", icon: <FaBell /> },
-    { title: "Privacy & Security", icon: <FaLock />, to: "/profile/privacy" },
-    { title: "Setting", icon: <FaCog />, to: "/profile/setting" },
+    { title: "Privacy & Security", icon: <FaLock /> },
+    { title: "Setting", icon: <FaCog /> },
     // { title: "Report", icon: <FaFlag /> },
-    { title: "Support", icon: <FaLifeRing />, to: "/profile/support" },
+    { title: "Support", icon: <FaLifeRing /> },
   ];
 
   return (
@@ -33,7 +31,7 @@ function UserProfile() {
       {" "}
       <div className="bg-white w-3/12 ">
         <div
-          className={`h-full w-full bg-gradient-to-b from-dark-purple via-medium-purple to-light-purple p-5 pt-8 ${
+          className={`h-screen w-full bg-gradient-to-b from-dark-purple via-medium-purple to-light-purple p-5 pt-8 ${
             open ? "w-72" : "w-20"
           } duration-300 relative`}
         >
@@ -52,17 +50,18 @@ function UserProfile() {
           </div>
           <h1 className="font-bold text-2xl px-10"> John Doe</h1>
 
-          <nav className="pt-2">
+          <ul className="pt-2">
             {Menus.map((menu, index) => (
               <>
-                <NavLink
+                <li
                   key={index}
-                  to={menu.to}
                   className={`text-grey-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-white rounded-md ${
                     menu.spacing ? "mt-9" : "mt-2"
                   } mt-2 `}
                 >
-                  <span>{menu.icon}</span>
+                  <span>
+                    <RiDashboard2Fill className="text-2xl block float-left" />
+                  </span>
                   <span
                     className={`text-base font-medium flex-1 ${
                       !open && "hidden"
@@ -70,14 +69,61 @@ function UserProfile() {
                   >
                     {menu.title}
                   </span>
-                </NavLink>
+                </li>
               </>
             ))}
-          </nav>
+          </ul>
         </div>
       </div>
-      <div className="w-9/12">
-        <Outlet />
+      {/* profile column */}
+      <div className="bg-white w-6/12">
+        Profile <Profile />
+      </div>
+      {/* Your courses conlumn */}
+      <div className="bg-white w-4/12">
+        <div class="card-header">My Courses </div>
+        <div>
+          <div class="card-body">
+            <PopularCourseCard
+              course_title="interaction"
+              course_details="orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text"
+              course_thumbnail={selam}
+              course_total_hour="3Hours"
+              course_instructure="selam"
+              course_level="level"
+              course_rate="4.7"
+              course_price="price"
+            />
+          </div>
+        </div>
+        <div>
+          <div class="card-body">
+            <PopularCourseCard
+              course_title="interaction"
+              course_details="orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text"
+              course_thumbnail={selam}
+              course_total_hour="3Hours"
+              course_instructure="selam"
+              course_level="level"
+              course_rate="4.7"
+              course_price="price"
+            />
+          </div>
+        </div>
+        <div>
+          <div class="card-body">
+            <PopularCourseCard
+              course_title="interaction"
+              course_details="orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text"
+              course_thumbnail={selam}
+              course_total_hour="3Hours"
+              course_instructure="selam"
+              course_level="level"
+              course_rate="4.7"
+              course_price="price"
+            />
+          </div>
+        </div>
       </div>
     </div>
   );

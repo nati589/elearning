@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faDashboard } from "@fortawesome/free-solid-svg-icons";
-import { BsArrowLeftShort } from "react-icons/bs";
+import { BsArrowLeftShort, BsSearch } from "react-icons/bs";
 import {
+  // FaDashboard,
   FaBell,
   FaLock,
   FaShieldAlt,
@@ -10,22 +9,19 @@ import {
   FaCog,
   FaLifeRing,
 } from "react-icons/fa";
-import { NavLink, Outlet, Route, Routes } from "react-router-dom";
+import { NavLink, Routes } from "react-router-dom";
+import ProfilePrivacy from "../components/PrivacyAndSecurity";
+import UserProfileDashboard from "../components/UserProfileDashboard";
 
 function UserProfile() {
   const [open, setOpen] = useState(true);
   const Menus = [
-    {
-      title: "Dashboard",
-      icon: <faDashboard />,
-      spacing: true,
-      to: "/profile/",
-    },
+    { title: "Dashboard", icon: <riDashboardFill />, spacing: true, to: "/" },
     // { title: "Notifications", icon: <FaBell /> },
-    { title: "Privacy & Security", icon: <FaLock />, to: "/profile/privacy" },
-    { title: "Setting", icon: <FaCog />, to: "/profile/setting" },
+    { title: "Privacy & Security", icon: <FaLock />, to: "/privacy" },
+    { title: "Setting", icon: <FaCog />, to: "/" },
     // { title: "Report", icon: <FaFlag /> },
-    { title: "Support", icon: <FaLifeRing />, to: "/profile/support" },
+    { title: "Support", icon: <FaLifeRing />, to: "/" },
   ];
 
   return (
@@ -33,7 +29,7 @@ function UserProfile() {
       {" "}
       <div className="bg-white w-3/12 ">
         <div
-          className={`h-full w-full bg-gradient-to-b from-dark-purple via-medium-purple to-light-purple p-5 pt-8 ${
+          className={`h-screen w-full bg-gradient-to-b from-dark-purple via-medium-purple to-light-purple p-5 pt-8 ${
             open ? "w-72" : "w-20"
           } duration-300 relative`}
         >
@@ -52,7 +48,7 @@ function UserProfile() {
           </div>
           <h1 className="font-bold text-2xl px-10"> John Doe</h1>
 
-          <nav className="pt-2">
+          <ul className="pt-2">
             {Menus.map((menu, index) => (
               <>
                 <NavLink
@@ -73,12 +69,13 @@ function UserProfile() {
                 </NavLink>
               </>
             ))}
-          </nav>
+          </ul>
         </div>
       </div>
-      <div className="w-9/12">
-        <Outlet />
-      </div>
+      <Routes>
+        <Route index element={<UserProfileDashboard />} />
+        <Route path="/privacy" element={<ProfilePrivacy />} />
+      </Routes>
     </div>
   );
 }

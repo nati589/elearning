@@ -23,9 +23,9 @@ function UserProfile() {
     },
     // { title: "Notifications", icon: <FaBell /> },
     { title: "Privacy & Security", icon: <FaLock />, to: "/profile/privacy" },
-    { title: "Setting", icon: <FaCog />, to: "/profile/setting" },
+    { title: "Setting", icon: <FaCog />, to: "/profile/" },
     // { title: "Report", icon: <FaFlag /> },
-    { title: "Support", icon: <FaLifeRing />, to: "/profile/support" },
+    { title: "Support", icon: <FaLifeRing />, to: "/profile/" },
   ];
 
   return (

@@ -14,7 +14,7 @@ function Footer() {
     >
       <div className="container mx-auto flex flex-wrap items-center">
         <div className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 flex flex-col items-center justify-center  ">
-          <img src={Logo} alt="logo" className="w-8 h-8 " />
+          <div><img src={Logo} alt="logo" className="w-8 h-8 " />
           <img
             src={linkedinIcon}
             alt="linkedin_logo"

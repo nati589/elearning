@@ -14,7 +14,7 @@ function ProgressCard({ courseName, quiz, mid, final, total, assignment }) {
         <div className="flex items-center">
           <span className="font-bold text-gray-700 mr-2">Progress:</span>
           <div className="bg-gray-200 h-2 flex-grow rounded-full">
-            <div className="bg-indigo-500 h-2 rounded-full" style={{ width: '70%' }}></div>
+            <div className="bg-medium-purple h-2 rounded-full w-3/12" ></div>
           </div>
         </div>
       </div>

@@ -4,19 +4,19 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'light-purple': '#D2CCFB',
-        'medium-purple': '#796BD4',
-        'medium-purple-hover': '#754DA2',
-        'subscribe-purple':'#401C6F',
-        'dark-purple': '#53389E',
-        'writing-dark':'#0A033C',
+        "light-purple": "#D2CCFB",
+        "medium-purple": "#796BD4",
+        "medium-purple-hover": "#754DA2",
+        "subscribe-purple": "#401C6F",
+        "dark-purple": "#53389E",
+        "writing-dark": "#0A033C",
       },
     },
     fontFamily: {
-      'sans': ['Poppins', 'ui-sans-serif', 'system-ui'],
-      'serif': ['ui-serif', 'Georgia'],
-      'mono': ['ui-monospace', 'SFMono-Regular'],
-    }
+      sans: ["Poppins", "ui-sans-serif", "system-ui"],
+      serif: ["ui-serif", "Georgia"],
+      mono: ["ui-monospace", "SFMono-Regular"],
+    },
   },
   plugins: [],
-}
+};

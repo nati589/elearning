@@ -80,7 +80,7 @@ function UserProfile() {
         Profile <Profile />
       </div>
       {/* Your courses conlumn */}
-      <div className="bg-white w-4/12">
+      <div className="bg-white w-3/12">
         <div class="card-header">My Courses </div>
         <div>
           <div class="card-body">

@@ -29,7 +29,7 @@ function UserProfile() {
   return (
     <div className="flex flex-row flex-nowrap ">
       {" "}
-      <div className="bg-white w-3/12 ">
+      <div className="bg-white w-2/12 ">
         <div
           className={`h-screen w-full bg-gradient-to-b from-dark-purple via-medium-purple to-light-purple p-5 pt-8 ${
             open ? "w-72" : "w-20"

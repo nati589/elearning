@@ -70,9 +70,7 @@ function Footer() {
           </ul>
         </div>
         <div className="w-full max-w-xs sm:w-1/2 md:w-1/3 lg:w-1/4 px-4 mb-8">
-          <h2 className="text-subscribe-purple mb-4 font-bold  text-lg">
-            Contact Us
-          </h2>
+          <h2 className="text-subscribe-purple mb-4   text-lg">Contact Us</h2>
           <form>
             <div className="mb-4">
               <label

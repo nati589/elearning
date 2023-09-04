@@ -27,7 +27,7 @@ function UserProfile() {
   ];
 
   return (
-    <div className="grid grid-cols-3 gap-1">
+    <div className="grid grid-cols-3 gap-2">
       {" "}
       <div className="bg-white ">
         <div className="flex">
@@ -85,48 +85,17 @@ function UserProfile() {
       </div>
       <div className="bg-white p-4">
         <div class="card-header">My Courses </div>
-
-        <div>
-          <div class="card-body">
-            <PopularCourseCard
-              course_title="interaction"
-              course_details="orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text"
-              course_thumbnail={selam}
-              course_total_hour="3Hours"
-              course_instructure="selam"
-              course_level="level"
-              course_rate="4.7"
-              course_price="price"
-            />
-          </div>
-        </div>
-        <div>
-          <div class="card-body">
-            <PopularCourseCard
-              course_title="interaction"
-              course_details="orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text"
-              course_thumbnail={selam}
-              course_total_hour="3Hours"
-              course_instructure="selam"
-              course_level="level"
-              course_rate="4.7"
-              course_price="price"
-            />
-          </div>
-        </div>
-        <div>
-          <div class="card-body">
-            <PopularCourseCard
-              course_title="interaction"
-              course_details="orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text"
-              course_thumbnail={selam}
-              course_total_hour="3Hours"
-              course_instructure="selam"
-              course_level="level"
-              course_rate="4.7"
-              course_price="price"
-            />
-          </div>
+        <div class="card-body">
+          <PopularCourseCard
+            course_title="interaction"
+            course_details="orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text"
+            course_thumbnail={selam}
+            course_total_hour="3Hours"
+            course_instructure="selam"
+            course_level="level"
+            course_rate="4.7"
+            course_price="price"
+          />
         </div>
       </div>
     </div>

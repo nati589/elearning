@@ -84,9 +84,8 @@ function UserProfile() {
         Profile <Profile />
       </div>
       <div className="bg-white p-4">
-        <div class="card-header">My Courses </div>
-
         <div>
+          <div class="card-header">My Courses </div>
           <div class="card-body">
             <PopularCourseCard
               course_title="interaction"

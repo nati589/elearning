@@ -44,10 +44,10 @@ const PopularCourseCard = ({
             </div>
           </div>
         </div>
-        {/* <div class="flex-grow">
+        <div class="flex-grow">
           <div class="grid grid-rows-3">
             <div class="flex flex-row">
-              <p class="ml-2 text-xs">{course_rate}</p>
+              <p class="ml-2 text-sm">{course_rate}</p>
               <img class="w-2 h-2" src={fullstar} alt="" />
               <img class="w-2 h-2" src={fullstar} alt="" />
               <img class="w-2 h-2" src={fullstar} alt="" />
@@ -56,15 +56,15 @@ const PopularCourseCard = ({
             </div>
             <div class="flex flex-row">
               <img class="w-2 h-2" src={dollar} alt="" />
-              <p class="ml-2 text-xs ">{course_price}</p>
+              <p class="ml-2 text-xs py-0">{course_price}</p>
             </div>
-            <div class="flex flex-row-m ">
+            <div class="flex flex-row-m">
               <button class="button-component-stroke text-xs">
                 Add to cart
               </button>
             </div>
           </div>
-        </div> */}
+        </div>
       </div>
     </div>
   );

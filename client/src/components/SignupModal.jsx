@@ -8,22 +8,29 @@ import InputComponent from "./InputComponent";
 import GoogleIcon from "../assets/google_icon2.svg";
 import Xmark from '../assets/icons/Xmark.svg'
 import { GoLock, GoMail, GoPerson } from "react-icons/go";
-import { FormProvider, useForm } from "react-hook-form";
+import { FormProvider, useForm, useFormContext } from "react-hook-form";
 import axios from "axios";
+import { AnimatePresence } from "framer-motion";
+import InputError from "./InputError";
 
 function SignupModal({ toggle, toggleSignin }) {
 
   const methods= useForm()
 
-  const {handleSubmit}=methods
+  const {register,handleSubmit,formState: { errors }}=methods
 
   const navigate= useNavigate();
 
-const [submitSuccess,setSubmitSuccess]= useState(false)
-const [failure,setFailure]= useState(false)
-const [success_msg,setMsg] = useState('')
+  const [submitSuccess,setSubmitSuccess]= useState(false)
+  const [failure,setFailure]= useState(false)
+  const [success_msg,setMsg] = useState('')
+
+
 
   const submitInputs = handleSubmit((data)=>{
+
+    console.log(data,"data")
+
     axios.post('/auth/login',data)
     .then(res=>{
       setSubmitSuccess(true)
@@ -47,7 +54,7 @@ const [success_msg,setMsg] = useState('')
   return (
     <>
       <div className="modal-overlay h-screen w-full bg-black bg-opacity-60 fixed top-0 bottom-0 left-0 right-0 flex flex-col flex-nowrap justify-center items-center z-50">
-        <div className="modal-body flex flex-col h-fit bg-white w-10/12 lg:w-8/12 rounded-xl p-4">
+        <div className="modal-body flex flex-col h-fit bg-white w-10/12 lg:w-8/12 rounded-xl p-2 md:p-4 lg:p-4">
           <img src={Xmark} onClick={toggle} alt="close button " className='block self-end cursor-pointer w-6 h-auto'/>
           <div className="modal-body flex flex-row">
             <div className=" hidden lg:flex flex-col flex-nowrap justify-center items-left w-1/2 p-8 pl-24 font-sans">
@@ -128,13 +135,24 @@ const [success_msg,setMsg] = useState('')
                   {...password_validation}
                 />
                 <label className="text-grey-500 text-sm">
+                <AnimatePresence mode="wait" initial={false}>
+                  {console.log(errors.terms_checkbox,"checkbox")}
+                  {errors.terms_checkbox && ( 
+                    <InputError
+                        message={errors.terms_checkbox.message}
+                        key={errors.terms_checkbox.message}
+                      />
+                    )            
+                    }
+                </AnimatePresence>
                   <input
                     type="checkbox"
                     name='terms_checkbox'
                     className="mx-3 text-medium-purple"
-                    {...code_validation}
+                    {...register('terms_checkbox', { required: 'required' })}
+                    
                   />
-                    I agreed to the
+                    I agreed to the &nbsp;
                   <a href="/" className="font-bold ">
                     terms and conditions
                   </a>

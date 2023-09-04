@@ -18,11 +18,7 @@ import InputError from "./InputError";
 
 function ForgotPsdModal({ toggle, toggleSignin }) {
   const methods = useForm();
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = methods;
+  const { handleSubmit } = methods;
   const navigate = useNavigate();
 
   const [submitSuccess, setSubmitSuccess] = useState(false);
@@ -30,7 +26,6 @@ function ForgotPsdModal({ toggle, toggleSignin }) {
   const [success_msg, setMsg] = useState("");
 
   const submitInputs = handleSubmit((data) => {
-    alert(data, "data");
     axios
       .post("/auth/login", data)
       .then((res) => {
@@ -104,7 +99,9 @@ function ForgotPsdModal({ toggle, toggleSignin }) {
                 </form>
               </FormProvider>
 
-              <span onClick={toggleSignin} className="text-medium-purple ">
+              <span
+                onClick={toggleSignin}
+                className="text-medium-purple text-sm">
                 back to login
               </span>
             </div>

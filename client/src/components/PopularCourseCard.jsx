@@ -17,7 +17,7 @@ const PopularCourseCard = ({ course_title, course_details, course_thumbnail, cou
     <div className="card bg-white border-l-8 border-l-dark-purple rounded-lg shadow-md my-4 p-6 w-80 h-88">
       <h1 className="text-xl mb-4 font-bold">{course_title}</h1>
       <div className="grid grid-cols-4 gap-4">
-        <div className="col-span-1"><img className="w-32 h-16 " src={course_thumbnail} alt="books" /></div><div className="col-span-3"><p className="text-sm">{course_details}</p></div></div>
+        <div className="col-span-1"><img className="w-32 h-12 " src={course_thumbnail} alt="books" /></div><div className="col-span-3"><p className="text-sm">{course_details}</p></div></div>
 
       <div className="flex flex-row m-2">
         <div className="flex-grow">

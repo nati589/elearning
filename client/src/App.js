@@ -32,17 +32,15 @@ export default function App() {
         <Route path="/books" element={<BooksPage />} />
         <Route path="/courses" element={<CoursesPage />} />
         <Route path="/coursedetails" element={<CourseDetailsPage />} />
-<<<<<<< HEAD
         <Route path="/profile" element={<UserProfile />} />
         <Route path="/cart" element={<Cart />} />
-=======
         <Route path="/profile" element={<UserProfile />}>
           <Route exact index element={<UserProfileDashboard />} />
           <Route exact path="/profile/privacy" element={<ProfilePrivacy />} />
           <Route exact path="/profile/setting" element={<Setting />} />
           <Route exact path="/profile/support" element={<Support />} />
         </Route>
->>>>>>> e099412eb3edec74966e0a9d88c76b2084dcba11
+        1
       </Routes>
 
       {/* <Subscription /> */}

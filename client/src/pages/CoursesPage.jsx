@@ -1,6 +1,6 @@
 import CoursesHero from "../components/CoursesHero";
 import CoursesBody from "../components/CoursesBody";
-import OtherCourses from "../components/OtherCourses";
+//import OtherCourses from "../components/OtherCourses";
 
 function CourseDetailsPage() {
 
@@ -8,7 +8,7 @@ function CourseDetailsPage() {
     <>
       <CoursesHero />
       <CoursesBody />
-      <OtherCourses />
+      {/* <OtherCourses /> */}
     </>
 
 

@@ -1,6 +1,8 @@
 import express, { json } from "express";
 import authRoutes from "./routes/auth.js";
 import teamRoutes from "./routes/team.js";
+import booksRoutes from "./routes/books.js";
+import webContentRoutes from "./routes/webContent.js";
 import cookieParser from 'cookie-parser';
 
 import cors from "cors";
@@ -19,6 +21,8 @@ app.use(cookieParser());
 
 app.use('/api/auth', authRoutes)
 app.use('/api/team', teamRoutes)
+app.use('/api/books', booksRoutes)
+app.use('/api/webcontent', webContentRoutes)
 
 
 app.get('/', (req, res) => {

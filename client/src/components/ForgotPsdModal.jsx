@@ -92,6 +92,7 @@ function ForgotPsdModal({ toggle, toggleSignin }) {
                     placeholder="Enter your email"
                     type="email"
                     required="required"
+                    submitClicked={submitInputs}
                     {...email_validation}
                   />
 

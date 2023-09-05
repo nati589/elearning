@@ -116,6 +116,7 @@ function SignupModal({ toggle, toggleSignin }) {
                     placeholder="Enter your full name"
                     type="text"
                     required="required"
+                    submitClicked={submitInputs}
                     {...name_validation}
                   />
                   <InputComponent
@@ -127,6 +128,7 @@ function SignupModal({ toggle, toggleSignin }) {
                     placeholder="Enter your email"
                     type="email"
                     required="required"
+                    submitClicked={submitInputs}
                     {...email_validation}
                   />
                   <InputComponent
@@ -139,6 +141,7 @@ function SignupModal({ toggle, toggleSignin }) {
                     type="password"
                     required="required"
                     {...password_validation}
+                    submitClicked={submitInputs}
                   />
                   <label className="text-grey-500 text-sm">
                     <AnimatePresence mode="wait" initial={false}>

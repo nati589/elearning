@@ -44,5 +44,5 @@ code {
 }
 
 .button-component-stroke:hover {
-  @apply bg-medium-purple-hover font-bold;
+  @apply bg-light-purple font-bold;
 }

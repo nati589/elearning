@@ -18,7 +18,7 @@ function BooksHero() {
           </span>
         </>
         <img
-          src="https://media.npr.org/assets/img/2022/12/22/gettyimages-1245203807-1536x1029_wide-9982607ca51f99999656d993bf5511d42533c0f2-s1100-c50.jpg"
+          src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.npr.org%2F2022%2F12%2F22%2F1145092279%2Fthe-best-books-of-2022&psig=AOvVaw35lvBXdDtZsn8TsFDZmrfy&ust=1693994201716000&source=images&cd=vfe&opi=89978449&ved=0CBAQjRxqFwoTCID6k-qYk4EDFQAAAAAdAAAAABAJ"
           alt=""
           className="w-96 rounded-2xl"
         />

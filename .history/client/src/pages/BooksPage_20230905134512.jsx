@@ -1,5 +1,6 @@
 import React from "react";
 import BooksHero from "../components/BooksHero";
+import BooksLayout from "../components/BooksLayout";
 import Subscription from "../components/Subscription";
 import BooksCard from "../components/BooksCard";
 import TrendingCard from "../components/TrendingCoursesCard";
@@ -12,18 +13,15 @@ function BooksPage() {
       <BooksHero />
       <div className="flex flex-row flex-nowrap  ">
         {" "}
-        <div className="px-10 w-3/12">
+        <div className="px-5 w-5/12">
           <MoreBooks />
         </div>
-        <div className=" p-10 w-8/12">
+        <div className="w-7/12">
           {" "}
           <BooksBody />
         </div>
       </div>
-      <div className="p-10">
-        {" "}
-        <Subscription />
-      </div>
+      <Subscription />
     </>
   );
 }

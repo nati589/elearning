@@ -19,7 +19,7 @@ function Subscription() {
 
   return (
     <div className="mx-8 rounded-3xl relative isolate overflow-hidden gradient-purple py-16 sm:py-24 lg:py-32 flex justify-center ">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-6 lg:px-16">
         <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-2">
           <div
             className="absolute left-1/2 top-0 -z-10 -translate-x-1/2 blur-3xl xl:-top-6"

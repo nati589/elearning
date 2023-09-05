@@ -20,10 +20,7 @@ function BooksPage() {
           <BooksBody />
         </div>
       </div>
-      <div className="p-10">
-        {" "}
-        <Subscription />
-      </div>
+      <Subscription />
     </>
   );
 }

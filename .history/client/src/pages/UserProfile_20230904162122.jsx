@@ -2,7 +2,14 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDashboard } from "@fortawesome/free-solid-svg-icons";
 import { BsArrowLeftShort } from "react-icons/bs";
-import { FaLock, FaCog, FaLifeRing } from "react-icons/fa";
+import {
+  FaBell,
+  FaLock,
+  FaShieldAlt,
+  FaFlag,
+  FaCog,
+  FaLifeRing,
+} from "react-icons/fa";
 import { NavLink, Outlet, Route, Routes } from "react-router-dom";
 
 function UserProfile() {
@@ -16,9 +23,9 @@ function UserProfile() {
     },
     // { title: "Notifications", icon: <FaBell /> },
     { title: "Privacy & Security", icon: <FaLock />, to: "/profile/privacy" },
-    { title: "Setting", icon: <FaCog />, to: "/profile/setting" },
+    { title: "Setting", icon: <FaCog />, to: "/profile/" },
     // { title: "Report", icon: <FaFlag /> },
-    { title: "Support", icon: <FaLifeRing />, to: "/profile/support" },
+    { title: "Support", icon: <FaLifeRing />, to: "/profile/" },
   ];
 
   return (

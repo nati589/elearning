@@ -20,7 +20,7 @@ const PopularCourseCard = ({
       <h1 class="text-xl mb-4 font-bold">{course_title}</h1>
       <div class="grid grid-cols-4 gap-4">
         <div class="col-span-1">
-          <img class="w-48 h-12 " src={course_thumbnail} alt="books" />
+          <img class="w-32 h-16 " src={course_thumbnail} alt="books" />
         </div>
         <div class="col-span-3">
           <p class="text-sm">{course_details}</p>

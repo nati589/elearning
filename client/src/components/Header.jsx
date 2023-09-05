@@ -11,11 +11,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 import { useForm } from "react-hook-form";
 import axios from "axios";
+import ForgotPsdModal from "./ForgotPsdModal";
 
 const navigation = [
   { name: "Home", to: "/" },
   { name: "Books", to: "/books" },
   { name: "Courses", to: "/courses" },
+  { name: "Cart", to: "/cart" },
 ];
 
 const subNavigation = [
@@ -37,7 +39,6 @@ const avatarNavigation = [
 function Header() {
   const methods = useForm();
   const navigate = useNavigate();
-  const [modalsArray, setModalsArray] = useState([]);
 
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [failure, setFailure] = useState(false);
@@ -45,10 +46,20 @@ function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [signinModal, setSigninModal] = useState(false);
   const [signupModal, setSignupModal] = useState(false);
+  const [forgotpsdModal, setForgotpsdModal] = useState(false);
+  const [resetpsdModal, setResetpsdModal] = useState(false);
   const [userProfileImg, setUserprofileImg] = useState(
     "https://www.material-tailwind.com/img/face-2.jpg"
   );
   const [avatarState, setAvatarState] = useState(false);
+
+  const setModalsArray = [
+    setSigninModal,
+    setSignupModal,
+    setForgotpsdModal,
+    setResetpsdModal,
+    setMobileMenuOpen,
+  ];
 
   const { handleSubmit } = methods;
   const avatarMenu = avatarState
@@ -98,36 +109,45 @@ function Header() {
 
   const toggleSignin = () => {
     setSigninModal(!signinModal);
-    setSignupModal(false);
-    setMobileMenuOpen(false);
+    closeOthersExcept(setSigninModal);
 
     !signinModal ? disableScroll() : enableScroll();
   };
 
   const toggleSignup = () => {
     setSignupModal(!signupModal);
-    setSigninModal(false);
-    setMobileMenuOpen(false);
-    setUserprofileImg("https://www.material-tailwind.com/img/face-2.jpg");
+    closeOthersExcept(setSignupModal);
 
     !signupModal ? disableScroll() : enableScroll();
+  };
+
+  const ForgotPassword = () => {
+    setForgotpsdModal(!forgotpsdModal);
+    closeOthersExcept(setForgotpsdModal);
+    !forgotpsdModal ? disableScroll() : enableScroll();
   };
 
   return (
     <>
       {signinModal && (
-        <LoginModal toggle={toggleSignin} toggleSignup={toggleSignup} />
+        <LoginModal
+          toggleForgot={ForgotPassword}
+          toggle={toggleSignin}
+          toggleSignup={toggleSignup}
+        />
       )}
       {signupModal && (
         <SignupModal toggle={toggleSignup} toggleSignin={toggleSignin} />
+      )}
+      {forgotpsdModal && (
+        <ForgotPsdModal toggle={toggleSignup} toggleSignin={toggleSignin} />
       )}
 
       <header className="sticky flex flex-col flex-nowrap inset-x-0 top-0 z-30 bg-white">
         <div>
           <div
             className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
-            aria-hidden="true"
-          >
+            aria-hidden="true">
             <div
               className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg]  bg-gradient-to-tr from-[#ff80b5] to-[#9089fc]"
               style={{
@@ -138,8 +158,7 @@ function Header() {
           </div>
           <nav
             className=" text-writing-dark flex items-center justify-between px-6 py-3 lg:px-8"
-            aria-label="Global"
-          >
+            aria-label="Global">
             <div className="flex lg:flex-1">
               <Link to="/" className="-m-1.5 p-1.5">
                 <img className="h-8 w-auto" src={logo} alt="company logo" />
@@ -150,8 +169,7 @@ function Header() {
               <button
                 type="button"
                 className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
-                onClick={() => setMobileMenuOpen(true)}
-              >
+                onClick={() => setMobileMenuOpen(true)}>
                 <Bars3Icon className="h-6 w-6" aria-hidden="true" />
               </button>
             </div>
@@ -161,8 +179,7 @@ function Header() {
                 <NavLink
                   key={item.name}
                   to={item.to}
-                  className="text-writing-dark"
-                >
+                  className="text-writing-dark">
                   {item.name}
                 </NavLink>
               ))}
@@ -174,8 +191,7 @@ function Header() {
               </div>
               <div
                 onClick={toggleSignup}
-                className="button-component-stroke h-12"
-              >
+                className="button-component-stroke h-12">
                 Sign Up
               </div>
 
@@ -183,8 +199,7 @@ function Header() {
               <button
                 id="dropdownDefaultButton"
                 className="text-white cursor-default bg-light-purple h-14 px-3 font-medium  rounded-[32px] text-center flex flex-row flex-nowrap items-center justify-center"
-                type="button"
-              >
+                type="button">
                 <span className="mx-3 font-sans text-dark-purple">
                   user name
                 </span>
@@ -192,8 +207,7 @@ function Header() {
                   <img
                     className=" cursor-pointer relative mr-1 inline-block h-10 w-auto rounded-[50%] object-cover object-center"
                     alt="avatar placeholder"
-                    src={userProfileImg}
-                  ></img>
+                    src={userProfileImg}></img>
                 </Link>
                 <FontAwesomeIcon
                   onClick={openAvatar}
@@ -204,14 +218,12 @@ function Header() {
               <div id="dropdown" className={avatarMenu}>
                 <ul
                   className="py-2 text-sm text-writing-dark bg-light-purple"
-                  aria-labelledby="dropdownDefaultButton"
-                >
+                  aria-labelledby="dropdownDefaultButton">
                   {avatarNavigation.map((item) => (
                     <li key={item.name}>
                       <a
                         href={item.to}
-                        className="block px-4 py-2 hover:bg-medium-purple hover:text-white hover:font-bold"
-                      >
+                        className="block px-4 py-2 hover:bg-medium-purple hover:text-white hover:font-bold">
                         {item.name}
                       </a>
                     </li>
@@ -225,8 +237,7 @@ function Header() {
             as="div"
             className="lg:hidden"
             open={mobileMenuOpen}
-            onClose={setMobileMenuOpen}
-          >
+            onClose={setMobileMenuOpen}>
             <div className="fixed inset-0 z-50" />
 
             <Dialog.Panel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
@@ -237,8 +248,7 @@ function Header() {
                 <button
                   type="button"
                   className="-m-2.5 rounded-md p-2.5 text-gray-700"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
+                  onClick={() => setMobileMenuOpen(false)}>
                   <XMarkIcon className="h-6 w-6" aria-hidden="true" />
                 </button>
               </div>
@@ -250,8 +260,7 @@ function Header() {
                       <NavLink
                         key={item.name}
                         to={item.to}
-                        className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                      >
+                        className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
                         {item.name}
                       </NavLink>
                     ))}
@@ -262,14 +271,12 @@ function Header() {
                   <div className="py-6">
                     <div
                       onClick={toggleSignin}
-                      className="button-component my-2"
-                    >
+                      className="button-component my-2">
                       Log in{" "}
                     </div>
                     <div
                       onClick={toggleSignup}
-                      className="button-component-stroke my-2"
-                    >
+                      className="button-component-stroke my-2">
                       Sign Up
                     </div>
                   </div>
@@ -287,8 +294,7 @@ function Header() {
                 exact="true"
                 key={item.name}
                 to={item.to}
-                className="sub-navs"
-              >
+                className="sub-navs">
                 {item.name}
               </NavLink>
             ))}

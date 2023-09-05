@@ -1,5 +1,6 @@
 import express, { json } from "express";
 import authRoutes from "./routes/auth.js";
+import teamRoutes from "./routes/team.js";
 import cookieParser from 'cookie-parser';
 
 import cors from "cors";
@@ -16,6 +17,8 @@ app.use(cors({
 app.use(cookieParser());
 
 app.use('/api/auth', authRoutes)
+app.use('/api/team', teamRoutes)
+
 
 app.get('/', (req, res) => {
     res.json("success");

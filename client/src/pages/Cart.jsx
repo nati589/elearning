@@ -3,12 +3,13 @@ import CartItem from "../components/CartItem";
 function Cart() {
   const navigate = useNavigate();
   return (
-    <div className="pt-10 pb-2 px-32 ">
+    <div className="pt-10 pb-2 lg:px-auto lg:px-32 sm:px-2">
       <div className="flex flex-row justify-between items-center ">
         <h1 className="text-3xl">Shopping cart</h1>
         <button
           onClick={() => navigate(-1)}
-          className="bg-purple-50 p-1.5 rounded text-medium-purple">
+          className="bg-purple-50 p-1.5 rounded text-medium-purple"
+        >
           Continue shopping
         </button>
       </div>

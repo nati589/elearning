@@ -10,8 +10,8 @@ function MoreBooks() {
     <div>
       <div className="">
         <div
-          className={`h-12 w-24 bg-dark-purple pt-3 py-10 ${
-            open ? "w-80" : "w-20"
+          className={`h-12 w-24 bg-dark-purple p-5 pt-8 ${
+            open ? "w-72" : "w-20"
           } duration-300 relative rounded-lg`}
         >
           <h1 className="text-xl font-semibold text-white text-center p-0">

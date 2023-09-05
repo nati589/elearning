@@ -5,6 +5,7 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import logo from "../assets/Logo.png";
 import LoginModal from "./LoginModal";
 import SignupModal from "./SignupModal";
+import DefaultProfile from "../assets/default_profile.svg";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import "../styles/Header.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -49,7 +50,7 @@ function Header() {
   const [forgotpsdModal, setForgotpsdModal] = useState(false);
   const [resetpsdModal, setResetpsdModal] = useState(false);
   const [userProfileImg, setUserprofileImg] = useState(
-    "https://www.material-tailwind.com/img/face-2.jpg"
+    "../assets/default_profile.svg"
   );
   const [avatarState, setAvatarState] = useState(false);
 
@@ -200,21 +201,22 @@ function Header() {
                 id="dropdownDefaultButton"
                 className="text-white cursor-default bg-light-purple h-14 px-3 font-medium  rounded-[32px] text-center flex flex-row flex-nowrap items-center justify-center"
                 type="button">
-                <span className="mx-3 font-sans text-dark-purple">
+                <span className="mx-2 font-sans text-dark-purple">
                   user name
                 </span>
                 <Link to="/profile">
                   <img
-                    className=" cursor-pointer relative mr-1 inline-block h-10 w-auto rounded-[50%] object-cover object-center"
+                    className=" cursor-pointer relative inline-block h-10 w-auto rounded-[50%] object-cover object-center"
                     alt="avatar placeholder"
-                    src={userProfileImg}></img>
+                    src={DefaultProfile}></img>
                 </Link>
                 <FontAwesomeIcon
                   onClick={openAvatar}
                   icon={faCaretDown}
-                  className="text-dark-purple hover:text-writing-dark cursor-pointer w-auto h-5"
+                  className="text-dark-purple mx-1 hover:text-writing-dark cursor-pointer w-auto h-5"
                 />
               </button>
+              {/* Avatar Dropdown */}
               <div id="dropdown" className={avatarMenu}>
                 <ul
                   className="py-2 text-sm text-writing-dark bg-light-purple"

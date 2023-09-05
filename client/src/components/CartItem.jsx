@@ -1,5 +1,14 @@
 import { TiDeleteOutline } from "react-icons/ti";
-function CartItem() {
+function CartItem({
+  title,
+  description,
+  hour,
+  level,
+  lecture,
+  rate,
+  price,
+  image,
+}) {
   return (
     <div className=" relative shadow flex flex-row items-center max-w-max sm:gap-1 lg:gap-6 px-1 md:gap-4 sm:px-2 md:px-4 rounded">
       <button className=" absolute top-2 right-2 text-2xl md:hidden text-medium-purple">
@@ -14,27 +23,21 @@ function CartItem() {
       </div>
       <div className="   sm:min-w-[90px] md:max-w-lg px-2 sm:px-0 py-2">
         <div className="mb-2">
-          <h1 className="text-sm md:text-lg">
-            Advance amharic course part one
-          </h1>
-          <p className="text-[11px] md:text-xs">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae velit
-            ipsa dicta, nesciunt error perspiciatis repellendus neque aut
-            deleniti quidem veniam porro, voluptatum
-          </p>{" "}
+          <h1 className="text-sm md:text-lg">{title}</h1>
+          <p className="text-[11px] md:text-xs">{description}</p>{" "}
         </div>
         <div className="flex flex-row mb-1.5 gap-1">
-          <span className="text-[11px] md:text-xs">4.7</span>
+          <span className="text-[11px] md:text-xs">{rate}</span>
           <span className="text-[11px]">XXXXXX</span>
         </div>
         <div className=" text-[11px] md:text-xs flex flex-row gap-5 items-center">
-          <span>31 total hours</span>
-          <span>31 lecture</span>
-          <span>Intermadte</span>
+          <span>{hour} total hours</span>
+          <span>{lecture} lecture</span>
+          <span>{level}</span>
         </div>
       </div>
       <div>
-        <span className="text-medium-purple text-lg">$16.99</span>
+        <span className="text-medium-purple text-lg">${price}</span>
       </div>
       <button className="bg-medium-purple px-4 hidden md:inline-block py-2 rounded-3xl sm:mx-2  md:mx-10 text-white ">
         remove

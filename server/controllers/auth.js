@@ -6,7 +6,7 @@ export const login = (req, res) => {
   const { user_email, user_password, signed_checkbox } = req.body;
 
   const q = "SELECT * FROM user WHERE user_email=?";
-  db.query(q, [username], (err, result) => {
+  db.query(q, [user_email], (err, result) => {
     if (err) {
       return res
         .status(401)
@@ -29,13 +29,15 @@ export const login = (req, res) => {
       }
 
       const token = jwt.sign(
-        { username: result[0].user_full_name, id: result[0].user_id },
+        { username: result[0].user_full_name, user_id: result[0].user_id },
         "EthLang1212",
         { expiresIn: "1h" }
       );
       res.cookie("token", token, { httpOnly: true });
       res.status(200).json({
-        message: "Login successful. Redirecting...",
+        message: `Login successful. Redirecting...`,
+        username: result[0].user_full_name,
+        user_id: result[0].user_id,
       });
     }
   });

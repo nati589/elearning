@@ -1,3 +1,4 @@
+
 import React from "react";
 import dollar from "../assets/icons/dollar.svg";
 import person from "../assets/icons/person.svg"
@@ -102,8 +103,8 @@ export default PopularCourseCard;
    <img  className="w-4 h-4" src={fullstar} alt="" />
    <img  className="w-4 h-4" src={fullstar} alt="" />
 
-
-   </div>
+Albo ze yisano le egziyabher, [9/6/2023 2:33 PM]
+</div>
    <div className='flex flex-row'>
    <img  className="w-6 h-6"src={dollar} alt="" />
    <p  className="ml-2">{course_price}</p>

@@ -63,7 +63,7 @@ function ForgotPsdModal({ toggle, toggleSignin }) {
               <span className=" leading-normal font-extrabold text-4xl mb-5">
                 Forgot Password?
               </span>
-              <span className=" leading-normal font-normal text-sm mb-5">
+              <span className=" leading-normal font-normal text-xs mb-5">
                 Enter the email associated with your account and we'll send an
                 email with instructions to reset your password.
               </span>
@@ -92,13 +92,14 @@ function ForgotPsdModal({ toggle, toggleSignin }) {
                     placeholder="Enter your email"
                     type="email"
                     required="required"
+                    submitClicked={submitInputs}
                     {...email_validation}
                   />
 
                   <button
                     onClick={submitInputs}
                     className="w-9/12 h-10 my-3 bg-medium-purple hover:bg-medium-purple-hover rounded-md text-white">
-                    Reset Password
+                    Verify Email
                   </button>
                 </form>
               </FormProvider>

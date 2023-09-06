@@ -19,7 +19,6 @@ import InputError from "./InputError";
 function LoginModal({ toggle, toggleSignup, toggleForgot }) {
   const methods = useForm();
   const {
-    register,
     handleSubmit,
     formState: { errors },
   } = methods;
@@ -115,6 +114,7 @@ function LoginModal({ toggle, toggleSignup, toggleForgot }) {
                     placeholder="Enter your email"
                     type="email"
                     required="required"
+                    submitClicked={submitInputs}
                     {...email_validation}
                   />
                   <InputComponent
@@ -126,6 +126,7 @@ function LoginModal({ toggle, toggleSignup, toggleForgot }) {
                     placeholder="Enter password"
                     type="password"
                     required="required"
+                    submitClicked={submitInputs}
                     {...password_validation}
                   />
                   <label className="text-grey-500 text-sm flex justify-center">
@@ -141,7 +142,6 @@ function LoginModal({ toggle, toggleSignup, toggleForgot }) {
                       type="checkbox"
                       name="signed_checkbox"
                       className="mx-3 text-medium-purple"
-                      {...register("signed_checkbox", { required: "required" })}
                     />
                     Keep me signed in &nbsp;
                     <br className="lg:hidden" />

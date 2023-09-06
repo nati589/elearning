@@ -1,5 +1,4 @@
 import React from "react";
-
 function ProgressCard(props) {
   const { courseName, final, mid, quiz, assignment } = props;
 
@@ -9,7 +8,7 @@ function ProgressCard(props) {
   const total = quizSum + Number(mid) + Number(final) + assignSum;
 
   return (
-    <div className="bg-white rounded-lg p-4 max-w-xl shadow-xl">
+    <div className="bg-white rounded-lg p-4   w-[580px] shadow-xl">
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center">
           <div className="bg-purple-500 rounded-full h-8 w-8 flex items-center justify-center text-white font-bold text-lg">
@@ -102,7 +101,9 @@ function ProgressCard(props) {
             {/* <ul>
               {assignment.map((assignValue, index) => (
                 <li key={index}>
+
                   Final {index + 1}: {assignValue}
+
                 </li>
               ))}
             </ul> */}

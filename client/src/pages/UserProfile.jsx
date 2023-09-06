@@ -12,7 +12,7 @@ function UserProfile() {
       title: "Dashboard",
       icon: <faDashboard />,
       spacing: true,
-      to: "/profile/",
+      to: "/profile/dashboard",
     },
     // { title: "Notifications", icon: <FaBell /> },
     { title: "Privacy & Security", icon: <FaLock />, to: "/profile/privacy" },

@@ -220,27 +220,29 @@ export default function BooksBody() {
         <div>
           {" "}
           <div className="flex w-full m-2 gap-8 justify-between xs:flex-wrap">
-            <div className="flex flex-row w-full m-2 my-3">
-              <div className="flex flex-row items-center justify-center mx-3 basis-1/2">
-                <input
-                  type="text"
-                  className="w-full rounded-lg border border-gray-400 p-2"
-                  placeholder="Search ..."
-                />
-                <button className="ml-2 rounded-lg bg-dark-purple p-2 text-white hover:bg-blue-600">
-                  Search
-                </button>
-              </div>
-              <div className="flex flex-row mx-3 items-center bg-light-purple justify-center">
-                <label htmlFor="sort" className="mr-2">
-                  Sort
-                </label>
-                <select name="sort" id="sort" className="rounded-md p-2">
-                  <option value="a">Latest</option>
-                  <option value="b">Oldest</option>
-                  <option value="c">c</option>
-                </select>
-              </div>
+            <div className="flex items-center basis-1/2">
+              <input
+                type="text"
+                className="w-full rounded-lg border border-gray-400 p-2 text-sm"
+                placeholder="Search ..."
+              />
+              <button className="ml-2 rounded-lg text-sm bg-dark-purple p-2 text-white hover:bg-light-purple">
+                Search
+              </button>
+            </div>
+            <div className="">
+              <label htmlFor="sort" className="mr-2 text-sm">
+                Sort
+              </label>
+              <select
+                name="sort"
+                id="sort"
+                className="rounded-md p-2 text-sm bg-light-purple "
+              >
+                <option value="a">Latest</option>
+                <option value="b">Oldest</option>
+                <option value="c">Alphabetical</option>
+              </select>
             </div>
           </div>
         </div>

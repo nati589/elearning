@@ -10,9 +10,16 @@ function BooksPage() {
   return (
     <>
       <BooksHero />
-
-      <BooksBody />
-
+      <div className="flex flex-row flex-nowrap  ">
+        {" "}
+        <div className="px-10 w-8/12">
+          <MoreBooks />
+        </div>
+        <div className=" p-10 w-8/12">
+          {" "}
+          <BooksBody />
+        </div>
+      </div>
       <div className="p-10">
         {" "}
         <Subscription />

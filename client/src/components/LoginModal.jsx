@@ -15,6 +15,7 @@ import {
 } from "../utils/inputValidations";
 import { AnimatePresence } from "framer-motion";
 import InputError from "./InputError";
+import ResponseMessage from "./ResponseMessage";
 
 function LoginModal({ toggle, toggleSignup, toggleForgot }) {
   const methods = useForm();
@@ -26,7 +27,7 @@ function LoginModal({ toggle, toggleSignup, toggleForgot }) {
 
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [failure, setFailure] = useState(false);
-  const [success_msg, setMsg] = useState("");
+  const [response_msg, setMsg] = useState("");
 
   const submitInputs = handleSubmit((data) => {
     alert(data, "data");
@@ -39,7 +40,7 @@ function LoginModal({ toggle, toggleSignup, toggleForgot }) {
         setTimeout(() => {
           setSubmitSuccess(false);
           navigate("/");
-        }, 2000);
+        }, 4000);
       })
       .catch((error) => {
         setSubmitSuccess(true);
@@ -47,7 +48,7 @@ function LoginModal({ toggle, toggleSignup, toggleForgot }) {
         setFailure(true);
         setTimeout(() => {
           setSubmitSuccess(false);
-        }, 2000);
+        }, 4000);
       });
   });
 
@@ -100,7 +101,9 @@ function LoginModal({ toggle, toggleSignup, toggleForgot }) {
                   <hr className="w-full border-2" />
                 </div>
               </div>
-
+              {submitSuccess && (
+                <ResponseMessage message={response_msg} failure={failure} />
+              )}
               <FormProvider {...methods}>
                 <form
                   className="login-form w-full flex flex-col flex-nowrap justify-center items-center"
@@ -110,7 +113,7 @@ function LoginModal({ toggle, toggleSignup, toggleForgot }) {
                       <GoMail className="relative top-7 left-3  text-gray-500" />
                     }
                     label="Email"
-                    name="login_email"
+                    name="user_email"
                     placeholder="Enter your email"
                     type="email"
                     required="required"
@@ -122,7 +125,7 @@ function LoginModal({ toggle, toggleSignup, toggleForgot }) {
                       <GoLock className="relative top-7 left-3  text-gray-500" />
                     }
                     label="Password"
-                    name="login-passsword"
+                    name="user_password"
                     placeholder="Enter password"
                     type="password"
                     required="required"

@@ -30,18 +30,18 @@ function SignupModal({ toggle, toggleSignin }) {
 
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [failure, setFailure] = useState(false);
-  const [success_msg, setMsg] = useState("");
+  const [response_msg, setMsg] = useState("");
 
   const submitInputs = handleSubmit((data) => {
     axios
-      .post("/auth/login", data)
+      .post("/users/addUser", data)
       .then((res) => {
         setSubmitSuccess(true);
         setMsg(res.data.message);
         setFailure(false);
         setTimeout(() => {
           setSubmitSuccess(false);
-          navigate("/");
+          toggleSignin();
         }, 2000);
       })
       .catch((error) => {
@@ -112,7 +112,7 @@ function SignupModal({ toggle, toggleSignin }) {
                       <GoPerson className="relative top-7 left-3  text-gray-500" />
                     }
                     label="Full name"
-                    name="full_name"
+                    name="user_full_name"
                     placeholder="Enter your full name"
                     type="text"
                     required="required"
@@ -124,7 +124,7 @@ function SignupModal({ toggle, toggleSignin }) {
                       <GoMail className="relative top-7 left-3  text-gray-500" />
                     }
                     label="Email"
-                    name="signup_email"
+                    name="user_email"
                     placeholder="Enter your email"
                     type="email"
                     required="required"
@@ -136,7 +136,7 @@ function SignupModal({ toggle, toggleSignin }) {
                       <GoLock className="relative top-7 left-3  text-gray-500" />
                     }
                     label="Password"
-                    name="signup_password"
+                    name="user_password"
                     placeholder="Enter password"
                     type="password"
                     required="required"

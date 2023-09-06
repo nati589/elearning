@@ -12,13 +12,12 @@ function MoreBooks() {
         <div
           className={`h-12 w-24 bg-dark-purple pt-3 py-10 ${
             open ? "w-80" : "w-20"
-          } duration-300 relative rounded-lg`}
-        >
+          } duration-300 relative rounded-lg`}>
           <h1 className="text-xl font-semibold text-white text-center p-0">
             Popular Books
           </h1>
 
-          <div class="card-body">
+          <div className="card-body">
             <PopularCourseCard
               course_title="interaction"
               course_details="orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text"
@@ -30,7 +29,7 @@ function MoreBooks() {
               course_price="price"
             />
           </div>
-          <div class="card-body">
+          <div className="card-body">
             <PopularCourseCard
               course_title="interaction"
               course_details="orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text"
@@ -42,7 +41,7 @@ function MoreBooks() {
               course_price="price"
             />
           </div>
-          <div class="card-body">
+          <div className="card-body">
             <PopularCourseCard
               course_title="interaction"
               course_details="orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text"

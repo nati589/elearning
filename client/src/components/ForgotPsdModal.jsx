@@ -99,7 +99,7 @@ function ForgotPsdModal({ toggle, toggleSignin }) {
                   <button
                     onClick={submitInputs}
                     className="w-9/12 h-10 my-3 bg-medium-purple hover:bg-medium-purple-hover rounded-md text-white">
-                    Reset Password
+                    Verify Email
                   </button>
                 </form>
               </FormProvider>

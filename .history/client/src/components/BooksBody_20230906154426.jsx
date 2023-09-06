@@ -1,9 +1,6 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import BooksCard from "./BooksCard";
-import PopularCourseCard from "./PopularCourseCard";
-import BookImg from "../../src/assets/Cardphoto10.png";
-import TrendingCard from "./TrendingCoursesCard";
 
 export default function BooksBody() {
   const BooksData = [
@@ -69,7 +66,7 @@ export default function BooksBody() {
   return (
     <div className="flex flex-row flex-nowrap w-full">
       <div className="flex flex-col md:flex-row flex-nowrap w-4/12">
-        <div className="w-full text-xs md:text-sm px-8 md:px-4 pt-2 my-4 flex flex-col justify-start items-center">
+        <div className="w-full md:w-4/12 text-xs md:text-sm px-8 md:px-2 pt-2 my-4 flex flex-col justify-start items-center">
           <div className="flex flex-col flex-nowrap w-full">
             <div className="my-2 shadow-md">
               <h2 className="rounded-tl-lg rounded-tr-lg text-center bg-[#796bd4] px-3.5 py-2.5 font-semibold text-white shadow-sm  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
@@ -155,7 +152,7 @@ export default function BooksBody() {
           </div>
         </div>
       </div>
-      <div className="w-8/12 px-6">
+      <div className="w-8/12 ">
         <h1 className="text-dark-purple font-bold text-3xl text-center">
           General Books
         </h1>
@@ -220,27 +217,29 @@ export default function BooksBody() {
         <div>
           {" "}
           <div className="flex w-full m-2 gap-8 justify-between xs:flex-wrap">
-            <div className="flex flex-row w-full m-2 my-3">
-              <div className="flex flex-row items-center justify-center mx-3 basis-1/2">
-                <input
-                  type="text"
-                  className="w-full rounded-lg border border-gray-400 p-2"
-                  placeholder="Search ..."
-                />
-                <button className="ml-2 rounded-lg bg-dark-purple p-2 text-white hover:bg-blue-600">
-                  Search
-                </button>
-              </div>
-              <div className="flex flex-row mx-3 items-center bg-light-purple justify-center">
-                <label htmlFor="sort" className="mr-2">
-                  Sort
-                </label>
-                <select name="sort" id="sort" className="rounded-md p-2">
-                  <option value="a">Latest</option>
-                  <option value="b">Oldest</option>
-                  <option value="c">c</option>
-                </select>
-              </div>
+            <div className="flex items-center basis-1/2">
+              <input
+                type="text"
+                className="w-full rounded-lg border border-gray-400 p-2 text-sm"
+                placeholder="Search ..."
+              />
+              <button className="ml-2 rounded-lg text-sm bg-dark-purple p-2 text-white hover:bg-light-purple">
+                Search
+              </button>
+            </div>
+            <div className="">
+              <label htmlFor="sort" className="mr-2 text-sm">
+                Sort
+              </label>
+              <select
+                name="sort"
+                id="sort"
+                className="rounded-md p-2 text-sm bg-light-purple "
+              >
+                <option value="a">Latest</option>
+                <option value="b">Oldest</option>
+                <option value="c">Alphabetical</option>
+              </select>
             </div>
           </div>
         </div>

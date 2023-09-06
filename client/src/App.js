@@ -16,13 +16,13 @@ import UserProfileDashboard from "./components/UserProfileDashboard";
 // import Background from "./components/Background";
 import "./styles/App.css";
 import Cart from "./pages/Cart";
+import PasswordResetPage from "./pages/PasswordResetPage";
 
 export default function App() {
   return (
     <div
       className="App"
-      style={{ backgroundColor: "#F7F5FA", minHeight: "100vh" }}
-    >
+      style={{ backgroundColor: "#F7F5FA", minHeight: "100vh" }}>
       {/* <Background /> */}
       <Header />
 
@@ -40,7 +40,7 @@ export default function App() {
           <Route exact path="/profile/setting" element={<Setting />} />
           <Route exact path="/profile/support" element={<Support />} />
         </Route>
-        1
+        <Route exact path="password-reset" element={<PasswordResetPage />} />
       </Routes>
 
       {/* <Subscription /> */}

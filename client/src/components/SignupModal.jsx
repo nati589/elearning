@@ -16,6 +16,7 @@ import { FormProvider, useForm } from "react-hook-form";
 import axios from "axios";
 import { AnimatePresence } from "framer-motion";
 import InputError from "./InputError";
+import ResponseMessage from "./ResponseMessage";
 
 function SignupModal({ toggle, toggleSignin }) {
   const methods = useForm();
@@ -103,6 +104,9 @@ function SignupModal({ toggle, toggleSignin }) {
                   <hr className="w-full border-2" />
                 </div>
               </div>
+              {submitSuccess && (
+                <ResponseMessage message={response_msg} failure={failure} />
+              )}
               <FormProvider {...methods}>
                 <form
                   className="signup-form w-full flex flex-col flex-nowrap justify-center items-center"

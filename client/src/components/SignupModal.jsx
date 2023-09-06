@@ -10,13 +10,13 @@ import LoginImage from "../assets/login_image.svg";
 import DividerVertical from "../assets/divider_line.svg";
 import InputComponent from "./InputComponent";
 import GoogleIcon from "../assets/google_icon2.svg";
-import Xmark from "../assets/icons/Xmark.svg";
 import { GoLock, GoMail, GoPerson } from "react-icons/go";
 import { FormProvider, useForm } from "react-hook-form";
 import axios from "axios";
 import { AnimatePresence } from "framer-motion";
 import InputError from "./InputError";
 import ResponseMessage from "./ResponseMessage";
+import { BsFillXSquareFill } from "react-icons/bs";
 
 function SignupModal({ toggle, toggleSignin }) {
   const methods = useForm();
@@ -59,11 +59,9 @@ function SignupModal({ toggle, toggleSignin }) {
     <>
       <div className="modal-overlay h-screen w-full bg-black bg-opacity-60 fixed top-0 bottom-0 left-0 right-0 flex flex-col flex-nowrap justify-center items-center z-50">
         <div className="modal-body flex flex-col h-fit bg-white w-10/12 lg:w-8/12 rounded-xl p-2 md:p-4 lg:p-4">
-          <img
-            src={Xmark}
+          <BsFillXSquareFill
             onClick={toggle}
-            alt="close button "
-            className="block self-end cursor-pointer w-6 h-auto"
+            className="self-end text-medium-purple hover:text-dark-purple h-8 md:h-6 w-auto"
           />
           <div className="modal-body flex flex-row">
             <div className=" hidden lg:flex flex-col flex-nowrap justify-center items-left w-1/2 p-8 pl-24 font-sans">

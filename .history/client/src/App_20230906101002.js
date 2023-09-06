@@ -18,8 +18,6 @@ import UserProfileDashboard from "./components/UserProfileDashboard";
 // import Background from "./components/Background";
 import "./styles/App.css";
 import Cart from "./pages/Cart";
-import PasswordResetPage from "./pages/PasswordResetPage";
-import Dashboard from "./components/Dashboard";
 
 export default function App() {
   return (
@@ -42,12 +40,10 @@ export default function App() {
         <Route path="/profile" element={<UserProfile />}>
           <Route exact index element={<UserProfileDashboard />} />
           <Route exact path="/profile/privacy" element={<ProfilePrivacy />} />
-          <Route exact path="/profile/dashboard" element={<Dashboard />} />
-          <Route exact path="/profile/privacy" element={<ProfilePrivacy />} />
           <Route exact path="/profile/setting" element={<Setting />} />
           <Route exact path="/profile/support" element={<Support />} />
         </Route>
-        <Route exact path="password-reset" element={<PasswordResetPage />} />
+        1
       </Routes>
 
       {/* <Subscription /> */}

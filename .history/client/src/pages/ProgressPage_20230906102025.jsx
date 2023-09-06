@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import ProgressCard from "../components/ProgressCard";
-
 import selam from "../../src/assets/Cardphoto10.png";
 import PopularCourseCard from "../components/PopularCourseCard";
 
@@ -11,10 +10,7 @@ function ProgressPage() {
 
   return (
     <>
-      <h1 className="text-3xl font-semibold text-dark-purple text-center p-5">
-        {" "}
-        My Status
-      </h1>
+      <div></div>
       <div className="flex flex-row flex-nowrap ">
         <div className="w-4/12 px-10 ">
           <div
@@ -65,33 +61,27 @@ function ProgressPage() {
           </div>
         </div>
         <div class="card-body w-8/12 px-10">
-          <div className="py-5">
-            <ProgressCard
-              assignment={assignArray}
-              quiz={quizArray}
-              mid="20"
-              final="45"
-              totalCourseContents="30"
-            />
-          </div>
-          <div className="py-5">
-            <ProgressCard
-              assignment={assignArray}
-              quiz={quizArray}
-              mid="20"
-              final="45"
-              totalCourseContents="30"
-            />
-          </div>
-          <div className="py-5">
-            <ProgressCard
-              assignment={assignArray}
-              quiz={quizArray}
-              mid="20"
-              final="45"
-              totalCourseContents="30"
-            />
-          </div>
+          <ProgressCard
+            assignment={assignArray}
+            quiz={quizArray}
+            mid="20"
+            final="45"
+            totalCourseContents="30"
+          />
+          <ProgressCard
+            assignment={assignArray}
+            quiz={quizArray}
+            mid="20"
+            final="45"
+            totalCourseContents="30"
+          />
+          <ProgressCard
+            assignment={assignArray}
+            quiz={quizArray}
+            mid="20"
+            final="45"
+            totalCourseContents="30"
+          />
         </div>
       </div>
     </>

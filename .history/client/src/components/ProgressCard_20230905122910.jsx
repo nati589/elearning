@@ -1,4 +1,5 @@
 import React from "react";
+
 function ProgressCard(props) {
   const { courseName, final, mid, quiz, assignment } = props;
 
@@ -8,12 +9,10 @@ function ProgressCard(props) {
   const total = quizSum + Number(mid) + Number(final) + assignSum;
 
   return (
-    <div className="bg-white rounded-lg p-4   w-[580px] shadow-xl">
+    <div className="bg-white rounded-lg p-4 max-w-xl shadow-xl">
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center">
-          <div className="bg-purple-500 rounded-full h-8 w-8 flex items-center justify-center text-white font-bold text-lg">
-            CN
-          </div>
+          <div className="bg-purple-500 rounded-full h-8 w-8 flex items-center justify-center text-white font-bold text-lg">CN</div>
           <h2 className="text-xl font-bold ml-2">{courseName}</h2>
         </div>
       </div>
@@ -21,10 +20,7 @@ function ProgressCard(props) {
         <div className="flex items-center">
           <span className="font-bold text-gray-700 mr-2">Progress:</span>
           <div className="bg-gray-200 h-2 flex-grow rounded-full">
-            <div
-              className="bg-medium-purple h-2 rounded-full"
-              style={{ width: `${props.progress}%` }}
-            ></div>
+            <div className="bg-medium-purple h-2 rounded-full" style={{ width: `${props.progress}%` }}></div>
           </div>
         </div>
       </div>
@@ -79,34 +75,20 @@ function ProgressCard(props) {
         <h3 className="font-bold text-gray-700">Results</h3>
         <div className="grid grid-cols-2 gap-2">
           <div>
-            {/* <p className="font-bold">Mid Results:</p> */}
-            <p className="font-bold">Mid Results: {mid}</p>
-
-            {/* <ul>
-              {quiz.length > 0 && (
-                <li>
-                  Mid:
-                  {quiz.map((quizValue, index) => (
-                    <span key={index}>
-                      {index + 1}: {quizValue}
-                      {index < quiz.length - 1 && ", "}
-                    </span>
-                  ))}
-                </li>
-              )}
-            </ul> */}
+            <p className="font-bold">Quiz Results:</p>
+            <ul>
+              {quiz.map((quizValue, index) => (
+                <li key={index}>Quiz {index + 1}: {quizValue}</li>
+              ))}
+            </ul>
           </div>
           <div>
-            <p className="font-bold">Final Results: {final}</p>
-            {/* <ul>
+            <p className="font-bold">Assignment Results:</p>
+            <ul>
               {assignment.map((assignValue, index) => (
-                <li key={index}>
-
-                  Final {index + 1}: {assignValue}
-
-                </li>
+                <li key={index}>Assignment {index + 1}: {assignValue}</li>
               ))}
-            </ul> */}
+            </ul>
           </div>
         </div>
         <p className="mt-4 text-center">Total Score: {total}</p>

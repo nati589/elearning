@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import ProgressCard from "../components/ProgressCard";
-
 import selam from "../../src/assets/Cardphoto10.png";
 import PopularCourseCard from "../components/PopularCourseCard";
 
@@ -11,19 +10,16 @@ function ProgressPage() {
 
   return (
     <>
-      <h1 className="text-3xl font-semibold text-dark-purple text-center p-5">
-        {" "}
-        My Status
-      </h1>
+      <div></div>
       <div className="flex flex-row flex-nowrap ">
-        <div className="w-4/12 px-10 ">
+        <div className="w-4/12 ">
           <div
             className={`h-12 w-24 bg-dark-purple pt-3 py-10 ${
               open ? "w-80" : "w-20"
             } duration-300 relative rounded-lg`}
           >
             <h1 className="text-xl font-semibold text-white text-center p-0">
-              Recommendations{" "}
+              Popular Books
             </h1>
 
             <div class="card-body">
@@ -64,34 +60,28 @@ function ProgressPage() {
             </div>
           </div>
         </div>
-        <div class="card-body w-8/12 px-10">
-          <div className="py-5">
-            <ProgressCard
-              assignment={assignArray}
-              quiz={quizArray}
-              mid="20"
-              final="45"
-              totalCourseContents="30"
-            />
-          </div>
-          <div className="py-5">
-            <ProgressCard
-              assignment={assignArray}
-              quiz={quizArray}
-              mid="20"
-              final="45"
-              totalCourseContents="30"
-            />
-          </div>
-          <div className="py-5">
-            <ProgressCard
-              assignment={assignArray}
-              quiz={quizArray}
-              mid="20"
-              final="45"
-              totalCourseContents="30"
-            />
-          </div>
+        <div class="card-body w-8/12">
+          <ProgressCard
+            assignment={assignArray}
+            quiz={quizArray}
+            mid="20"
+            final="45"
+            totalCourseContents="30"
+          />
+          <ProgressCard
+            assignment={assignArray}
+            quiz={quizArray}
+            mid="20"
+            final="45"
+            totalCourseContents="30"
+          />
+          <ProgressCard
+            assignment={assignArray}
+            quiz={quizArray}
+            mid="20"
+            final="45"
+            totalCourseContents="30"
+          />
         </div>
       </div>
     </>

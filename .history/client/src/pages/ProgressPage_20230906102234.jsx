@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import ProgressCard from "../components/ProgressCard";
-
 import selam from "../../src/assets/Cardphoto10.png";
 import PopularCourseCard from "../components/PopularCourseCard";
 
@@ -26,7 +25,7 @@ function ProgressPage() {
               Recommendations{" "}
             </h1>
 
-            <div class="card-body">
+            <div class="card-body py-5">
               <PopularCourseCard
                 course_title="interaction"
                 course_details="orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text"
@@ -38,7 +37,7 @@ function ProgressPage() {
                 course_price="price"
               />
             </div>
-            <div class="card-body">
+            <div class="card-body py-5">
               <PopularCourseCard
                 course_title="interaction"
                 course_details="orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text"
@@ -50,7 +49,7 @@ function ProgressPage() {
                 course_price="price"
               />
             </div>
-            <div class="card-body">
+            <div class="card-body py-5">
               <PopularCourseCard
                 course_title="interaction"
                 course_details="orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text"
@@ -65,33 +64,27 @@ function ProgressPage() {
           </div>
         </div>
         <div class="card-body w-8/12 px-10">
-          <div className="py-5">
-            <ProgressCard
-              assignment={assignArray}
-              quiz={quizArray}
-              mid="20"
-              final="45"
-              totalCourseContents="30"
-            />
-          </div>
-          <div className="py-5">
-            <ProgressCard
-              assignment={assignArray}
-              quiz={quizArray}
-              mid="20"
-              final="45"
-              totalCourseContents="30"
-            />
-          </div>
-          <div className="py-5">
-            <ProgressCard
-              assignment={assignArray}
-              quiz={quizArray}
-              mid="20"
-              final="45"
-              totalCourseContents="30"
-            />
-          </div>
+          <ProgressCard
+            assignment={assignArray}
+            quiz={quizArray}
+            mid="20"
+            final="45"
+            totalCourseContents="30"
+          />
+          <ProgressCard
+            assignment={assignArray}
+            quiz={quizArray}
+            mid="20"
+            final="45"
+            totalCourseContents="30"
+          />
+          <ProgressCard
+            assignment={assignArray}
+            quiz={quizArray}
+            mid="20"
+            final="45"
+            totalCourseContents="30"
+          />
         </div>
       </div>
     </>

@@ -5,7 +5,6 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import logo from "../assets/Logo.png";
 import LoginModal from "./LoginModal";
 import SignupModal from "./SignupModal";
-import DefaultProfile from "../assets/default_profile.svg";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import "../styles/Header.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -50,7 +49,7 @@ function Header() {
   const [forgotpsdModal, setForgotpsdModal] = useState(false);
   const [resetpsdModal, setResetpsdModal] = useState(false);
   const [userProfileImg, setUserprofileImg] = useState(
-    "../assets/default_profile.svg"
+    "https://www.material-tailwind.com/img/face-2.jpg"
   );
   const [avatarState, setAvatarState] = useState(false);
 
@@ -205,34 +204,24 @@ function Header() {
               <button
                 id="dropdownDefaultButton"
                 className="text-white cursor-default bg-light-purple h-14 px-3 font-medium  rounded-[32px] text-center flex flex-row flex-nowrap items-center justify-center"
-<<<<<<< Updated upstream
-                type="button">
-                <span className="mx-2 font-sans text-dark-purple">
-=======
                 type="button"
               >
                 <span className="mx-3 font-sans text-dark-purple">
->>>>>>> Stashed changes
                   user name
                 </span>
                 <Link to="/profile">
                   <img
-                    className=" cursor-pointer relative inline-block h-10 w-auto rounded-[50%] object-cover object-center"
+                    className=" cursor-pointer relative mr-1 inline-block h-10 w-auto rounded-[50%] object-cover object-center"
                     alt="avatar placeholder"
-<<<<<<< Updated upstream
-                    src={DefaultProfile}></img>
-=======
                     src={userProfileImg}
                   ></img>
->>>>>>> Stashed changes
                 </Link>
                 <FontAwesomeIcon
                   onClick={openAvatar}
                   icon={faCaretDown}
-                  className="text-dark-purple mx-1 hover:text-writing-dark cursor-pointer w-auto h-5"
+                  className="text-dark-purple hover:text-writing-dark cursor-pointer w-auto h-5"
                 />
               </button>
-              {/* Avatar Dropdown */}
               <div id="dropdown" className={avatarMenu}>
                 <ul
                   className="py-2 text-sm text-writing-dark bg-light-purple"
@@ -278,30 +267,12 @@ function Header() {
               <div className="mt-6 flow-root">
                 <div className="-my-6 divide-y divide-gray-500/10">
                   <div className="space-y-2 py-6">
-                    <Link
-                      to="/profile"
-                      onClick={() => setMobileMenuOpen(false)}
-                      className=" text-writing-dark hover:text-white font-semibold cursor-default bg-light-purple hover:bg-medium-purple h-14
-                      rounded-sm text-center flex flex-row mx-3 px-3 
-                      flex-nowrap items-center justify-start">
-                      <img
-                        className=" cursor-pointer relative inline-block h-10 w-auto rounded-[50%] object-cover object-center"
-                        alt="avatar placeholder"
-                        src={DefaultProfile}></img>
-                      <span className="mx-2 font-sans">user name</span>
-                    </Link>
-
                     {navigation.map((item) => (
                       <NavLink
                         key={item.name}
                         to={item.to}
-<<<<<<< Updated upstream
-                        onClick={() => setMobileMenuOpen(false)}
-                        className="mx-3 px-3 block rounded-lg py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
-=======
                         className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                       >
->>>>>>> Stashed changes
                         {item.name}
                       </NavLink>
                     ))}

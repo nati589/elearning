@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import ProgressCard from "../components/ProgressCard";
-
 import selam from "../../src/assets/Cardphoto10.png";
 import PopularCourseCard from "../components/PopularCourseCard";
 
@@ -74,24 +73,20 @@ function ProgressPage() {
               totalCourseContents="30"
             />
           </div>
-          <div className="py-5">
-            <ProgressCard
-              assignment={assignArray}
-              quiz={quizArray}
-              mid="20"
-              final="45"
-              totalCourseContents="30"
-            />
-          </div>
-          <div className="py-5">
-            <ProgressCard
-              assignment={assignArray}
-              quiz={quizArray}
-              mid="20"
-              final="45"
-              totalCourseContents="30"
-            />
-          </div>
+          <ProgressCard
+            assignment={assignArray}
+            quiz={quizArray}
+            mid="20"
+            final="45"
+            totalCourseContents="30"
+          />
+          <ProgressCard
+            assignment={assignArray}
+            quiz={quizArray}
+            mid="20"
+            final="45"
+            totalCourseContents="30"
+          />
         </div>
       </div>
     </>

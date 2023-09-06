@@ -261,16 +261,14 @@ function Header() {
                     <Link
                       to="/profile"
                       onClick={() => setMobileMenuOpen(false)}
-                      className="text-white cursor-default bg-light-purple h-14
-                      px-3 font-medium rounded-[32px] text-center flex flex-row
-                      flex-nowrap items-center justify-center">
-                      <span className="mx-2 font-sans text-dark-purple">
-                        user name
-                      </span>
+                      className=" text-writing-dark hover:text-white font-semibold cursor-default bg-light-purple hover:bg-medium-purple h-14
+                      rounded-sm text-center flex flex-row mx-3 px-3 
+                      flex-nowrap items-center justify-start">
                       <img
                         className=" cursor-pointer relative inline-block h-10 w-auto rounded-[50%] object-cover object-center"
                         alt="avatar placeholder"
                         src={DefaultProfile}></img>
+                      <span className="mx-2 font-sans">user name</span>
                     </Link>
 
                     {navigation.map((item) => (
@@ -278,7 +276,7 @@ function Header() {
                         key={item.name}
                         to={item.to}
                         onClick={() => setMobileMenuOpen(false)}
-                        className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
+                        className="mx-3 px-3 block rounded-lg py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
                         {item.name}
                       </NavLink>
                     ))}

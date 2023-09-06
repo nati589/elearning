@@ -52,8 +52,8 @@ function Footer() {
     <footer
       style={{ borderTopLeftRadius: "20px", borderTopRightRadius: "20px" }}
       className="py-4 px-8 mt-20 bg-light-purple">
-      <div className="container mx-auto flex flex-wrap items-center">
-        <div className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 flex flex-col items-center justify-center  ">
+      <div className="text-sm md:text-base lg:text-base container mx-auto flex flex-wrap items-center">
+        <div className="w-1/2 md:w-1/3 lg:w-1/4 mb-4 flex flex-col items-center justify-center  ">
           <img src={Logo} alt="logo" className="w-8 h-8 " />
           <img
             src={linkedinIcon}
@@ -81,31 +81,23 @@ function Footer() {
             className="w-8 h-8 mt-2 hover:rotate-180 transition-transform duration-500 ease-in-out "
           />
         </div>
-        <div className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4  flex flex-col px-4 mb-8  justify-center ">
-          <ul className="text-subscribe-purple ml-10">
-            <li
-              className="mb-2 hover:text-medium-purple font-bold"
-              style={{ fontSize: "20px" }}>
+        <div className="w-1/2 md:w-1/3 lg:w-1/4 flex flex-col px-4 mb-8  justify-center ">
+          <ul className="text-subscribe-purple text-sm md:text-base lg:text-lg ml-10">
+            <li className="mb-2 hover:text-medium-purple font-bold">
               <a href="/">FAQ & Help</a>
             </li>
-            <li
-              className="mb-2 hover:text-medium-purple"
-              style={{ fontSize: "20px" }}>
+            <li className="mb-2 hover:text-medium-purple">
               <a href="/">Courses</a>
             </li>
-            <li
-              className="mb-2 hover:text-medium-purple"
-              style={{ fontSize: "20px" }}>
+            <li className="mb-2 hover:text-medium-purple">
               <a href="/">Link 3</a>
             </li>
-            <li
-              className="mb-2 hover:text-medium-purple"
-              style={{ fontSize: "20px" }}>
+            <li className="mb-2 hover:text-medium-purple">
               <a href="/">Link 4</a>
             </li>
           </ul>
         </div>
-        <div className="w-full max-w-xs sm:w-1/2 md:w-1/3 lg:w-1/4 px-4 mb-8">
+        <div className="w-full max-w-xs md:w-1/3 lg:w-1/3 px-4 mb-8">
           <h2 className="text-subscribe-purple mb-4 font-bold  text-lg">
             Contact Us
           </h2>

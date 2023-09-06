@@ -66,7 +66,6 @@ const PopularCourseCard = ({ course_title, course_details, course_thumbnail, cou
 
 export default PopularCourseCard;
 
-export default PopularCourseCard
 
 {/* <div className="card bg-white border-l-8 border-l-dark-purple rounded-lg shadow-md my-4 p-6">
 <h1 className="text-4xl mb-4 font-bold">{course_title}</h1>

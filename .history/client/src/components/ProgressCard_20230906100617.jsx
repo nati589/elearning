@@ -98,7 +98,7 @@ function ProgressCard(props) {
             </ul> */}
           </div>
           <div>
-            <p className="font-bold">Final Results: {final}</p>
+            <p className="font-bold">Final Results: {total}</p>
             {/* <ul>
               {assignment.map((assignValue, index) => (
                 <li key={index}>

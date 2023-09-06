@@ -81,7 +81,7 @@ function ProgressCard(props) {
         <div className="grid grid-cols-2 gap-2">
           <div>
             {/* <p className="font-bold">Mid Results:</p> */}
-            <p className="font-bold">Mid Results: {mid}</p>
+            <p className="font-bold">Mid Results: {total}</p>
 
             {/* <ul>
               {quiz.length > 0 && (
@@ -98,7 +98,7 @@ function ProgressCard(props) {
             </ul> */}
           </div>
           <div>
-            <p className="font-bold">Final Results: {final}</p>
+            <p className="font-bold">Final Results: {total}</p>
             {/* <ul>
               {assignment.map((assignValue, index) => (
                 <li key={index}>

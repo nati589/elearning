@@ -7,17 +7,18 @@ function MoreBooks() {
   const [open, setOpen] = useState(true);
 
   return (
-    <div className="grid-cols-1">
-      <div className="h-6/12 ">
+    <div>
+      <div className="flex justify-center flex-nowrap">
         <div
           className={`h-12 w-24 bg-dark-purple pt-3 py-10 ${
             open ? "w-80" : "w-20"
-          } duration-300 relative rounded-lg`}>
+          } duration-300 relative rounded-lg`}
+        >
           <h1 className="text-xl font-semibold text-white text-center p-0">
             Popular Books
           </h1>
 
-          <div className="card-body">
+          <div class="card-body">
             <PopularCourseCard
               course_title="interaction"
               course_details="orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text"
@@ -29,7 +30,7 @@ function MoreBooks() {
               course_price="price"
             />
           </div>
-          <div className="card-body">
+          <div class="card-body">
             <PopularCourseCard
               course_title="interaction"
               course_details="orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text"
@@ -41,7 +42,7 @@ function MoreBooks() {
               course_price="price"
             />
           </div>
-          <div className="card-body">
+          <div class="card-body">
             <PopularCourseCard
               course_title="interaction"
               course_details="orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text"
@@ -54,31 +55,30 @@ function MoreBooks() {
             />
           </div>
         </div>
-        <div className="h-6/12">
-          <div
-            className={`h-12 w-24 bg-dark-purple pt-3 py-10 ${
-              open ? "w-80" : "w-20"
-            } duration-300 relative rounded-lg`}
-          >
-            <h1 className="text-xl font-semibold text-white text-center p-0">
-              New Arrivals{" "}
-            </h1>
-            <TrendingCard
-              course_title="Course Title"
-              course_details="Course Details go here."
-              course_thumbnail="URL_to_course_thumbnail_image"
-            />
-            <TrendingCard
-              course_title="Course Title"
-              course_details="Course Details go here."
-              course_thumbnail="URL_to_course_thumbnail_image"
-            />{" "}
-            <TrendingCard
-              course_title="Course Title"
-              course_details="Course Details go here."
-              course_thumbnail="URL_to_course_thumbnail_image"
-            />
-          </div>
+
+        <div
+          className={`h-12 w-24 bg-dark-purple pt-3 py-10 ${
+            open ? "w-80" : "w-20"
+          } duration-300 relative rounded-lg`}
+        >
+          <h1 className="text-xl font-semibold text-white text-center p-0">
+            New Arrivals{" "}
+          </h1>
+          <TrendingCard
+            course_title="Course Title"
+            course_details="Course Details go here."
+            course_thumbnail="URL_to_course_thumbnail_image"
+          />
+          <TrendingCard
+            course_title="Course Title"
+            course_details="Course Details go here."
+            course_thumbnail="URL_to_course_thumbnail_image"
+          />{" "}
+          <TrendingCard
+            course_title="Course Title"
+            course_details="Course Details go here."
+            course_thumbnail="URL_to_course_thumbnail_image"
+          />
         </div>
       </div>
     </div>

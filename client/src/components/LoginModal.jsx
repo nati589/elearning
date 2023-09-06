@@ -19,7 +19,6 @@ import InputError from "./InputError";
 function LoginModal({ toggle, toggleSignup, toggleForgot }) {
   const methods = useForm();
   const {
-    register,
     handleSubmit,
     formState: { errors },
   } = methods;
@@ -143,7 +142,6 @@ function LoginModal({ toggle, toggleSignup, toggleForgot }) {
                       type="checkbox"
                       name="signed_checkbox"
                       className="mx-3 text-medium-purple"
-                      {...register("signed_checkbox", { required: "required" })}
                     />
                     Keep me signed in &nbsp;
                     <br className="lg:hidden" />

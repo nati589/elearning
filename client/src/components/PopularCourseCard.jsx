@@ -1,5 +1,4 @@
-
-import React from 'react'
+import React from "react";
 import dollar from "../assets/icons/dollar.svg";
 import person from "../assets/icons/person.svg"
 import timer from "../assets/icons/timer.svg"
@@ -35,8 +34,6 @@ const PopularCourseCard = ({ course_title, course_details, course_thumbnail, cou
               <img className="w-4 h-4" src={stickynote} alt="" />
               <p className="ml-2 text-sm">{course_level}</p>
             </div>
-
-
           </div>
         </div>
         <div className="flex-grow">
@@ -60,16 +57,14 @@ const PopularCourseCard = ({ course_title, course_details, course_thumbnail, cou
 
              
             </div>
-
-
           </div>
         </div>
-       
       </div>
     </div>
+  );
+};
 
- ); 
-}
+export default PopularCourseCard;
 
 export default PopularCourseCard
 
@@ -122,8 +117,5 @@ export default PopularCourseCard
  </div>
    </div>
  </div>
-</div> */}
-
-
-
-
+</div> */
+}

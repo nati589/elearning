@@ -63,7 +63,7 @@ function ForgotPsdModal({ toggle, toggleSignin }) {
               <span className=" leading-normal font-extrabold text-4xl mb-5">
                 Forgot Password?
               </span>
-              <span className=" leading-normal font-normal text-sm mb-5">
+              <span className=" leading-normal font-normal text-xs mb-5">
                 Enter the email associated with your account and we'll send an
                 email with instructions to reset your password.
               </span>

@@ -16,6 +16,7 @@ import { AnimatePresence } from "framer-motion";
 import InputError from "./InputError";
 import ResponseMessage from "./ResponseMessage";
 import { BsFillXSquareFill } from "react-icons/bs";
+// import jwt_decode from "jwt-decode";
 
 function LoginModal({ toggle, toggleSignup, toggleForgot }) {
   const methods = useForm();
@@ -30,16 +31,19 @@ function LoginModal({ toggle, toggleSignup, toggleForgot }) {
   const [response_msg, setMsg] = useState("");
 
   const submitInputs = handleSubmit((data) => {
-    alert(data, "data");
     axios
       .post("/auth/login", data)
       .then((res) => {
         setSubmitSuccess(true);
         setMsg(res.data.message);
         setFailure(false);
+        localStorage.setItem("username", res.data.username);
+        localStorage.setItem("user_id", res.data.user_id);
+
         setTimeout(() => {
           setSubmitSuccess(false);
-          navigate("/");
+          navigate("/profile");
+          toggle();
         }, 4000);
       })
       .catch((error) => {

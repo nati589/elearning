@@ -258,10 +258,26 @@ function Header() {
               <div className="mt-6 flow-root">
                 <div className="-my-6 divide-y divide-gray-500/10">
                   <div className="space-y-2 py-6">
+                    <Link
+                      to="/profile"
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="text-white cursor-default bg-light-purple h-14
+                      px-3 font-medium rounded-[32px] text-center flex flex-row
+                      flex-nowrap items-center justify-center">
+                      <span className="mx-2 font-sans text-dark-purple">
+                        user name
+                      </span>
+                      <img
+                        className=" cursor-pointer relative inline-block h-10 w-auto rounded-[50%] object-cover object-center"
+                        alt="avatar placeholder"
+                        src={DefaultProfile}></img>
+                    </Link>
+
                     {navigation.map((item) => (
                       <NavLink
                         key={item.name}
                         to={item.to}
+                        onClick={() => setMobileMenuOpen(false)}
                         className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
                         {item.name}
                       </NavLink>

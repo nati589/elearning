@@ -36,7 +36,7 @@ function CourseCard({
           className="my-4 h-32 md:h-48 lg:h-52 w-auto"
         />
       </div>
-      <div className="grid px-2 md:grid-cols-2 lg:gap-2 text-[10px] lg:text-sm">
+      <div className="grid px-2 md:grid-cols-2 lg:gap-2 text-xs lg:text-sm">
         <div className="flex flex-row flex-nowrap items-center justify-start mb-2">
           <img src={TimerIcon} alt="icon" className="h-4 w-auto" />
           <span className="ml-2">{hoursNeeded}</span>

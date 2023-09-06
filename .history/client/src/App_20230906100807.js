@@ -5,8 +5,6 @@ import Footer from "./components/Footer";
 import { Route, Routes } from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
 import BooksPage from "./pages/BooksPage";
-import ProgressPage from "./pages/ProgressPage";
-
 import CoursesPage from "./pages/CoursesPage";
 import CourseDetailsPage from "./pages/CourseDetailsPage";
 import TestPage from "./pages/TestPage";
@@ -18,13 +16,13 @@ import UserProfileDashboard from "./components/UserProfileDashboard";
 // import Background from "./components/Background";
 import "./styles/App.css";
 import Cart from "./pages/Cart";
-import PasswordResetPage from "./pages/PasswordResetPage";
 
 export default function App() {
   return (
     <div
       className="App"
-      style={{ backgroundColor: "#F7F5FA", minHeight: "100vh" }}>
+      style={{ backgroundColor: "#F7F5FA", minHeight: "100vh" }}
+    >
       {/* <Background /> */}
       <Header />
 
@@ -32,7 +30,7 @@ export default function App() {
         <Route exact path="/" element={<LandingPage />} />
         <Route exact path="/test" element={<TestPage />} />
         <Route path="/books" element={<BooksPage />} />
-        <Route path="/progress" element={<ProgressPage />} />
+        <Route path="/mystatus" element={<ProgressPage />} />
         <Route path="/courses" element={<CoursesPage />} />
         <Route path="/coursedetails" element={<CourseDetailsPage />} />
         <Route path="/profile" element={<UserProfile />} />
@@ -43,7 +41,7 @@ export default function App() {
           <Route exact path="/profile/setting" element={<Setting />} />
           <Route exact path="/profile/support" element={<Support />} />
         </Route>
-        <Route exact path="password-reset" element={<PasswordResetPage />} />
+        1
       </Routes>
 
       {/* <Subscription /> */}

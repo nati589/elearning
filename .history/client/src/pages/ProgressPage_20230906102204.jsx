@@ -64,33 +64,27 @@ function ProgressPage() {
           </div>
         </div>
         <div class="card-body w-8/12 px-10">
-          <div className="py-5">
-            <ProgressCard
-              assignment={assignArray}
-              quiz={quizArray}
-              mid="20"
-              final="45"
-              totalCourseContents="30"
-            />
-          </div>
-          <div className="py-5">
-            <ProgressCard
-              assignment={assignArray}
-              quiz={quizArray}
-              mid="20"
-              final="45"
-              totalCourseContents="30"
-            />
-          </div>
-          <div className="py-5">
-            <ProgressCard
-              assignment={assignArray}
-              quiz={quizArray}
-              mid="20"
-              final="45"
-              totalCourseContents="30"
-            />
-          </div>
+          <ProgressCard
+            assignment={assignArray}
+            quiz={quizArray}
+            mid="20"
+            final="45"
+            totalCourseContents="30"
+          />
+          <ProgressCard
+            assignment={assignArray}
+            quiz={quizArray}
+            mid="20"
+            final="45"
+            totalCourseContents="30"
+          />
+          <ProgressCard
+            assignment={assignArray}
+            quiz={quizArray}
+            mid="20"
+            final="45"
+            totalCourseContents="30"
+          />
         </div>
       </div>
     </>

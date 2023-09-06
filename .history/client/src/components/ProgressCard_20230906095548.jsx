@@ -80,25 +80,17 @@ function ProgressCard(props) {
         <h3 className="font-bold text-gray-700">Results</h3>
         <div className="grid grid-cols-2 gap-2">
           <div>
-            {/* <p className="font-bold">Mid Results:</p> */}
-            <p className="font-bold">Mid Results: {mid}</p>
-
+            <p className="font-bold">Mid Results:</p>
             {/* <ul>
-              {quiz.length > 0 && (
-                <li>
-                  Mid:
-                  {quiz.map((quizValue, index) => (
-                    <span key={index}>
-                      {index + 1}: {quizValue}
-                      {index < quiz.length - 1 && ", "}
-                    </span>
-                  ))}
+              {quiz.map((quizValue, index) => (
+                <li key={index}>
+                  Mid {index + 1}: {quizValue}
                 </li>
-              )}
+              ))}
             </ul> */}
           </div>
           <div>
-            <p className="font-bold">Final Results: {final}</p>
+            <p className="font-bold">Final Results:</p>
             {/* <ul>
               {assignment.map((assignValue, index) => (
                 <li key={index}>

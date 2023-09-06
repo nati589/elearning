@@ -43,7 +43,7 @@ function SignupModal({ toggle, toggleSignin }) {
         setTimeout(() => {
           setSubmitSuccess(false);
           toggleSignin();
-        }, 2000);
+        }, 4000);
       })
       .catch((error) => {
         setSubmitSuccess(true);
@@ -51,7 +51,7 @@ function SignupModal({ toggle, toggleSignin }) {
         setFailure(true);
         setTimeout(() => {
           setSubmitSuccess(false);
-        }, 2000);
+        }, 4000);
       });
   });
 

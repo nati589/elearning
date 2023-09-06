@@ -1,6 +1,8 @@
 import { db } from "../db.js";
 import multer from "multer";
 import * as path from "path";
+import bcrypt from "bcryptjs";
+import { v4 as uuidv4 } from "uuid";
 
 export const getUsers = (req, res) => {
   const q = "select * from team";
@@ -15,11 +17,15 @@ export const getUsers = (req, res) => {
 };
 
 export const addUser = (req, res) => {
-  const q1 = "SELECT * FROM users WHERE user_email=? ";
+  const q1 = "SELECT * FROM user WHERE user_email=? ";
 
-  const [user_full_name, user_email, user_password] = req.body;
+  const user_id = uuidv4();
 
+  const { user_full_name, user_email, user_password, terms_checkbox } =
+    req.body;
   db.query(q1, [user_email], (err, data) => {
+    console.log("inside", req.body);
+    console.log("error", err);
     if (err) {
       return res.status(401).send({ message: "Connection error try again." });
     } else {
@@ -41,14 +47,14 @@ export const addUser = (req, res) => {
         const currentDateTimeString = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
 
         const q =
-          "INSERT INTO user (user_full_name,user_email,user_password,user_joined) VALUES (?,?,?,?)";
+          "INSERT INTO user (user_id, user_full_name,user_email,user_password,user_joined) VALUES (?,?,?,?,?)";
 
         const salt = bcrypt.genSaltSync(10);
         const hash = bcrypt.hashSync(user_password, salt);
 
         db.query(
           q,
-          [user_full_name, user_email, hash, currentDateTimeString],
+          [user_id, user_full_name, user_email, hash, currentDateTimeString],
           (err, data) => {
             if (err) {
               console.log(err);

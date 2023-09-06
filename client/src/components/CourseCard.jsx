@@ -44,25 +44,16 @@ function CourseCard({
         <div className="flex flex-row flex-nowrap items-center justify-start mb-2">
           {rating}&nbsp;
           {numbers.map((number) => {
-            if (number <= Math.floor(rating)) {
-              return (
-                <img
-                  key={number}
-                  src={FullStarIcon}
-                  alt="full star icon"
-                  className="h-4 w-auto mr-1"
-                />
-              );
-            } else {
-              return (
-                <img
-                  key={number}
-                  src={EmptyStarIcon}
-                  alt="empty star icon"
-                  className="h-4 w-auto mr-1"
-                />
-              );
-            }
+            const chosenIcon =
+              number <= Math.floor(rating) ? FullStarIcon : EmptyStarIcon;
+            return (
+              <img
+                key={number}
+                src={chosenIcon}
+                alt="full star icon"
+                className="h-3 md:h-4 w-auto mr-1"
+              />
+            );
           })}
         </div>
         <div className="flex flex-row flex-nowrap items-center justify-start mb-2">

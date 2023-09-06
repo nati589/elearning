@@ -27,11 +27,17 @@ function InputComponent({
 
   useEffect(() => {
     if (isInvalid) {
-      setShowError(true);
-      const timeoutId = setTimeout(() => {
+      const timeoutId1 = setTimeout(() => {
+        setShowError(true);
+      }, 200);
+
+      const timeoutId2 = setTimeout(() => {
         setShowError(false);
-      }, 5000);
-      return () => clearTimeout(timeoutId);
+      }, 6000);
+      return () => {
+        clearTimeout(timeoutId2);
+        clearInterval(timeoutId1);
+      };
     } else {
       setShowError(false);
     }
@@ -41,7 +47,7 @@ function InputComponent({
     <div className="flex flex-col flex-nowrap w-10/12 m-auto mb-2 mt-2">
       <label className="font-sans text-base font-medium leading-4">
         <AnimatePresence mode="wait" initial={false}>
-          {showError && (
+          {showError && isInvalid && (
             <InputError
               message={inputError.error.message}
               key={inputError.error.message}

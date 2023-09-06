@@ -57,9 +57,9 @@ function CoursesBody() {
   ];
   return (
     <div className="flex flex-col md:flex-row flex-nowrap w-full">
-      <div className="w-full md:w-4/12 text-xs md:text-sm px-2 pt-10 my-4 flex flex-col justify-start items-center">
+      <div className="w-full md:w-4/12 text-xs md:text-sm px-8 md:px-2 pt-2 my-4 flex flex-col justify-start items-center">
         <div className="flex flex-col flex-nowrap w-full">
-          <div className="pt-10">
+          <div className="my-2 shadow-md">
             <h2 className="rounded-tl-lg rounded-tr-lg text-center bg-[#796bd4] px-3.5 py-2.5 font-semibold text-white shadow-sm  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
               Popular Courses
             </h2>
@@ -106,7 +106,7 @@ function CoursesBody() {
               />
             </div>
           </div>
-          <div className="pt-10">
+          <div className="my-2 shadow-md">
             <h2 className="rounded-tl-lg rounded-tr-lg text-center bg-[#796bd4] px-3.5 py-2.5 font-semibold text-white shadow-sm  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
               Trending Courses
             </h2>
@@ -161,7 +161,7 @@ function CoursesBody() {
             </select>
           </div>
         </div>
-        <div className="w-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-2 gap-4  my-8">
+        <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-4  my-8">
           {courseData.map((course, index) => (
             <CourseCard
               key={index}

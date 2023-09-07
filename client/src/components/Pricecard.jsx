@@ -54,11 +54,13 @@ const Pricecard = ({course_price,course_instructure,course_rate,course_total_hou
             <div className="flex-1  text-dimgray-100">Access</div>
             <div className="  font-black text-right">{course_access}</div>
           </div>
-        </div>
-      </div>
-      <button className="bg-purple-500 text-white font-bold py-2 px-4 rounded-10 mr-0 mt-4">
+          <button className="bg-purple-500 text-white font-bold py-2 px-4 rounded-10 mr-0 mt-4">
         <a href="/coursepreview">Purchase Course</a>
       </button>
+        </div>
+        
+      </div>
+     
     </div>
   );
 };      

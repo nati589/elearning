@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Xmark from "../assets/icons/Xmark.svg";
 import EduviLogo from "../assets/eduvi_logo.svg";
 import LoginImage from "../assets/login_image.svg";
 import DividerVertical from "../assets/divider_line.svg";
 import InputComponent from "./InputComponent";
-import GoogleIcon from "../assets/google_icon2.svg";
+// import GoogleIcon from "../assets/google_icon2.svg";
 import { GoLock, GoMail } from "react-icons/go";
 import { FormProvider, useForm } from "react-hook-form";
 import axios from "axios";
@@ -15,6 +14,9 @@ import {
 } from "../utils/inputValidations";
 import { AnimatePresence } from "framer-motion";
 import InputError from "./InputError";
+import ResponseMessage from "./ResponseMessage";
+import { BsFillXSquareFill } from "react-icons/bs";
+import jwt_decode from "jwt-decode";
 
 function LoginModal({ toggle, toggleSignup, toggleForgot }) {
   const methods = useForm();
@@ -26,20 +28,23 @@ function LoginModal({ toggle, toggleSignup, toggleForgot }) {
 
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [failure, setFailure] = useState(false);
-  const [success_msg, setMsg] = useState("");
+  const [response_msg, setMsg] = useState("");
 
   const submitInputs = handleSubmit((data) => {
-    alert(data, "data");
     axios
       .post("/auth/login", data)
       .then((res) => {
         setSubmitSuccess(true);
         setMsg(res.data.message);
         setFailure(false);
+        localStorage.setItem("username", res.data.username);
+        localStorage.setItem("user_id", res.data.user_id);
+
         setTimeout(() => {
           setSubmitSuccess(false);
-          navigate("/");
-        }, 2000);
+          navigate("/profile");
+          toggle();
+        }, 4000);
       })
       .catch((error) => {
         setSubmitSuccess(true);
@@ -47,19 +52,51 @@ function LoginModal({ toggle, toggleSignup, toggleForgot }) {
         setFailure(true);
         setTimeout(() => {
           setSubmitSuccess(false);
-        }, 2000);
+        }, 4000);
       });
   });
 
+  function handleCallbackResponse(response) {
+    console.log("Encoded JWT ID token: " + response.credential);
+    var userObject = jwt_decode(response.credential);
+    console.log("User: " + userObject);
+    // Log individual properties of userObject
+    console.log("User ID: " + userObject.sub);
+    console.log("Email: " + userObject.email);
+    console.log("Name: " + userObject.name);
+   localStorage.setItem("username", userObject.name);
+   localStorage.setItem("user_id", userObject.sub);
+
+    // Alternatively, you can log the entire object as a JSON string
+    console.log("User Object as JSON: " + JSON.stringify(userObject, null, 2));
+  }
+  
+  useEffect(() => {
+    /* global google */
+    if (typeof google !== "undefined") {
+      google.accounts.id.initialize({
+        client_id: "414869111411-t9qjqi80ef1rbo91rdugd6p5nvnd5f5u.apps.googleusercontent.com",
+        callback: handleCallbackResponse
+      });
+  
+      google.accounts.id.renderButton(
+        document.getElementById("signIn"), {
+          theme: "outline",
+          size: "large"
+        }
+      );
+    }
+
+    google.accounts.id.prompt();
+  }, []);
+  
   return (
     <>
       <div className="modal-overlay h-screen w-full bg-black bg-opacity-60 fixed top-0 bottom-0 left-0 right-0 flex flex-col flex-nowrap justify-center items-center z-50">
         <div className="modal-body flex flex-col h-fit bg-white w-10/12 lg:w-8/12 rounded-xl p-2 md:p-4 lg:p-4">
-          <img
-            src={Xmark}
+          <BsFillXSquareFill
             onClick={toggle}
-            alt="close button "
-            className="block self-end cursor-pointer w-6 h-auto"
+            className="self-end text-medium-purple hover:text-dark-purple h-8 md:h-6 w-auto"
           />
           <div className="modal-body flex flex-row">
             <div className="hidden lg:flex flex-col flex-nowrap justify-center items-left w-1/2 p-8 pl-24 font-sans">
@@ -79,7 +116,8 @@ function LoginModal({ toggle, toggleSignup, toggleForgot }) {
               className="hidden lg:block  h-[500px] m-auto"
             />
             <div className="flex flex-col flex-nowrap justify-center items-center w-full lg:w-1/2 p-8 font-sans">
-              <a
+             <div id="signIn" className="m-3"></div> 
+              {/* <a
                 className="flex flex-row justify-center items-center font-normal bg-opacity-10 border-2 h-auto p-2 pr-3 pl-3 mt-2 mb-3 w-auto rounded-lg font-sans text-sm text-gray-500 hover:bg-medium-purple hover:text-white"
                 href="/">
                 <img
@@ -88,7 +126,7 @@ function LoginModal({ toggle, toggleSignup, toggleForgot }) {
                   className="h-8 m-auto mr-2"
                 />
                 Sign In with Google
-              </a>
+              </a> */}
               <div className="flex flex-row flex-nowrap justify-center items-center w-11/12 text-gray-600 text-sm font-semibold">
                 <div className="w-3/12 justify-center items-center px-1 ">
                   &nbsp;
@@ -100,7 +138,9 @@ function LoginModal({ toggle, toggleSignup, toggleForgot }) {
                   <hr className="w-full border-2" />
                 </div>
               </div>
-
+              {submitSuccess && (
+                <ResponseMessage message={response_msg} failure={failure} />
+              )}
               <FormProvider {...methods}>
                 <form
                   className="login-form w-full flex flex-col flex-nowrap justify-center items-center"
@@ -110,7 +150,7 @@ function LoginModal({ toggle, toggleSignup, toggleForgot }) {
                       <GoMail className="relative top-7 left-3  text-gray-500" />
                     }
                     label="Email"
-                    name="login_email"
+                    name="user_email"
                     placeholder="Enter your email"
                     type="email"
                     required="required"
@@ -122,7 +162,7 @@ function LoginModal({ toggle, toggleSignup, toggleForgot }) {
                       <GoLock className="relative top-7 left-3  text-gray-500" />
                     }
                     label="Password"
-                    name="login-passsword"
+                    name="user_password"
                     placeholder="Enter password"
                     type="password"
                     required="required"

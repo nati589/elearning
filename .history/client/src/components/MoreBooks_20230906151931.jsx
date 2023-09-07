@@ -64,7 +64,31 @@ function MoreBooks() {
               />
             </div>
           </div>
-
+          {/* <div className="h-6/12">
+          <div
+            className={`h-12 w-24 bg-dark-purple pt-3 py-10 ${
+              open ? "w-80" : "w-20"
+            } duration-300 relative rounded-lg`}
+          >
+            <h1 className="text-xl font-semibold text-white text-center p-0">
+              New Arrivals{" "}
+            </h1>
+            <TrendingCard
+              course_title="Course Title"
+              course_details="Course Details go here."
+              course_thumbnail="URL_to_course_thumbnail_image"
+            />
+            <TrendingCard
+              course_title="Course Title"
+              course_details="Course Details go here."
+              course_thumbnail="URL_to_course_thumbnail_image"
+            />{" "}
+            <TrendingCard
+              course_title="Course Title"
+              course_details="Course Details go here."
+              course_thumbnail="URL_to_course_thumbnail_image"
+              
+            /> */}
           <div className="my-2 shadow-md">
             <h2 className="rounded-tl-lg rounded-tr-lg text-center bg-[#796bd4] px-3.5 py-2.5 font-semibold text-white shadow-sm  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
               Trending Courses

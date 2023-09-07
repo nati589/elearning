@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 // material-ui
 import {
@@ -26,7 +26,7 @@ import ReportAreaChart from "./ReportAreaChart";
 import SalesColumnChart from "./SalesColumnChart";
 import MainCard from "components/MainCard";
 import AnalyticEcommerce from "components/cards/statistics/AnalyticEcommerce";
-
+import axios from "axios";
 // assets
 import {
   GiftOutlined,
@@ -44,6 +44,10 @@ const avatarSX = {
   height: 36,
   fontSize: "1rem",
 };
+// Calcualte the Percentage
+function getPercentage(ValueYear, ValueTotal) {
+  return ((ValueYear * 100) / ValueTotal).toFixed(1).toString();
+}
 
 // action style
 const actionSX = {
@@ -70,13 +74,85 @@ const status = [
     label: "This Year",
   },
 ];
-
+//==============================||======================||================================||====================
 // ==============================|| DASHBOARD - DEFAULT ||============================== //
-
+const url1 = "http://localhost:8800/api/users/getUsers";
+const url2 = "http://localhost:8800/api/books/getBooks";
+const url3 = "http://localhost:8800/api/courses/getCourses";
+const url4 = "http://localhost:8800/api/purchases/getPurchases";
+const urTl1 = "http://localhost:8800/api/users/getUsersThisYear";
+const urTl2 = "http://localhost:8800/api/books/getBooksThisYear";
+const urTl3 = "http://localhost:8800/api/purchases/getPurchasesThisYear";
+const urTl4 = "http://localhost:8800/api/courses/getCoursesThisYear";
 const DashboardDefault = () => {
+  const [totalCourse, setTotalCourse] = useState(0);
+  const [totalCourseYear, setTotalCourseYear] = useState(0);
+  const [totalSale, setTotalSale] = useState(0);
+  const [totalSaleYear, setTotalSaleYear] = useState(0);
+  const [totalBook, setTotalBook] = useState(0);
+  const [totalBookYear, setTotalBookYear] = useState(0);
+  const [totalUser, setTotalUser] = useState(0);
+  const [totalUserYear, setTotalUserYear] = useState(0);
   const [value, setValue] = useState("today");
   const [slot, setSlot] = useState("week");
+  useEffect(function () {
+    // Make a GET request using Axios
 
+    // Create an array of Axios requests
+    const requests = [
+      axios.get(url1),
+      axios.get(url2),
+      axios.get(url3),
+      axios.get(url4),
+    ];
+
+    // Use axios.all to send the requests concurrently
+    axios
+      .all(requests)
+      .then(
+        axios.spread((response1, response2, response3, response4) => {
+          // Handle the responses here
+          setTotalUser(response1.data?.length ?? 0);
+          setTotalBook(response2.data?.length ?? 0);
+          setTotalCourse(response3.data?.length ?? 0);
+          setTotalSale(response4.data?.length ?? 0);
+        })
+      )
+      .catch((error) => {
+        // Handle errors
+        console.error("Error:", error);
+      });
+  }, []);
+
+  useEffect(function () {
+    // Make a GET request using Axios
+
+    // Create an array of Axios requests
+    const requests = [
+      axios.get(urTl1),
+      axios.get(urTl2),
+      axios.get(urTl3),
+      axios.get(urTl4),
+    ];
+
+    // Use axios.all to send the requests concurrently
+    axios
+      .all(requests)
+      .then(
+        axios.spread((response1, response2, response3, response4) => {
+          // Handle the responses here
+          setTotalUserYear(response1.data?.length ?? 0);
+          setTotalBookYear(response2.data?.length ?? 0);
+          setTotalCourseYear(response3.data?.length ?? 0);
+          setTotalSaleYear(response4.data?.length ?? 0);
+        })
+      )
+      .catch((error) => {
+        // Handle errors
+        console.error("Error:", error);
+      });
+  }, []);
+  // console.log(getPercentage(totalBookYear, totalBook));
   return (
     <Grid container rowSpacing={4.5} columnSpacing={2.75}>
       {/* row 1 */}
@@ -86,37 +162,38 @@ const DashboardDefault = () => {
       <Grid item xs={12} sm={6} md={4} lg={3}>
         <AnalyticEcommerce
           title="Total Users"
-          count={42236}
-          percentage={12.3}
-          extra={4234}
+          count={totalUser}
+          percentage={getPercentage(totalUserYear, totalUser)}
+          extra={totalUserYear}
         />
       </Grid>
       <Grid item xs={12} sm={6} md={4} lg={3}>
         <AnalyticEcommerce
           title="Total Courses"
-          count="78,250"
-          percentage={70.5}
-          extra="8,900"
+          count={totalCourse}
+          percentage={getPercentage(totalCourseYear, totalCourse)}
+          extra={totalCourseYear}
         />
       </Grid>
       <Grid item xs={12} sm={6} md={4} lg={3}>
         <AnalyticEcommerce
           title="Total Books"
-          count={18800}
-          percentage={27.4}
+          count={totalBook}
+          percentage={getPercentage(totalBookYear, totalBook)}
           // isLoss
           color="warning"
-          extra={1943}
+          extra={totalBookYear}
         />
       </Grid>
       <Grid item xs={12} sm={6} md={4} lg={3}>
         <AnalyticEcommerce
           title="Total Sales"
-          count={35078}
-          percentage={27.4}
+          count={totalSale}
+          percentage={getPercentage(totalSaleYear, totalSale)}
+          // percentage={0}
           // isLoss
           color="warning"
-          extra={20395}
+          extra={totalSaleYear}
         />
       </Grid>
 
@@ -138,14 +215,16 @@ const DashboardDefault = () => {
                 size="small"
                 onClick={() => setSlot("month")}
                 color={slot === "month" ? "primary" : "secondary"}
-                variant={slot === "month" ? "outlined" : "text"}>
+                variant={slot === "month" ? "outlined" : "text"}
+              >
                 Month
               </Button>
               <Button
                 size="small"
                 onClick={() => setSlot("week")}
                 color={slot === "week" ? "primary" : "secondary"}
-                variant={slot === "week" ? "outlined" : "text"}>
+                variant={slot === "week" ? "outlined" : "text"}
+              >
                 Week
               </Button>
             </Stack>
@@ -230,7 +309,8 @@ const DashboardDefault = () => {
               onChange={(e) => setValue(e.target.value)}
               sx={{
                 "& .MuiInputBase-input": { py: 0.5, fontSize: "0.875rem" },
-              }}>
+              }}
+            >
               {status.map((option) => (
                 <MenuItem key={option.value} value={option.value}>
                   {option.label}
@@ -270,14 +350,16 @@ const DashboardDefault = () => {
                   position: "relative",
                 },
               },
-            }}>
+            }}
+          >
             <ListItemButton divider>
               <ListItemAvatar>
                 <Avatar
                   sx={{
                     color: "success.main",
                     bgcolor: "success.lighter",
-                  }}>
+                  }}
+                >
                   <GiftOutlined />
                 </Avatar>
               </ListItemAvatar>
@@ -304,7 +386,8 @@ const DashboardDefault = () => {
                   sx={{
                     color: "primary.main",
                     bgcolor: "primary.lighter",
-                  }}>
+                  }}
+                >
                   <MessageOutlined />
                 </Avatar>
               </ListItemAvatar>
@@ -331,7 +414,8 @@ const DashboardDefault = () => {
                   sx={{
                     color: "error.main",
                     bgcolor: "error.lighter",
-                  }}>
+                  }}
+                >
                   <SettingOutlined />
                 </Avatar>
               </ListItemAvatar>
@@ -369,7 +453,8 @@ const DashboardDefault = () => {
               </Grid>
               <Grid item>
                 <AvatarGroup
-                  sx={{ "& .MuiAvatar-root": { width: 32, height: 32 } }}>
+                  sx={{ "& .MuiAvatar-root": { width: 32, height: 32 } }}
+                >
                   <Avatar alt="Remy Sharp" src={avatar1} />
                   <Avatar alt="Travis Howard" src={avatar2} />
                   <Avatar alt="Cindy Baker" src={avatar3} />
@@ -380,7 +465,8 @@ const DashboardDefault = () => {
             <Button
               size="small"
               variant="contained"
-              sx={{ textTransform: "capitalize" }}>
+              sx={{ textTransform: "capitalize" }}
+            >
               Need Help?
             </Button>
           </Stack>

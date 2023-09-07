@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
@@ -36,7 +36,6 @@ const avatarNavigation = [
 ];
 
 function Header() {
-
   const methods = useForm();
   const navigate = useNavigate();
 
@@ -130,7 +129,7 @@ function Header() {
   useEffect(() => {
     /* global google */
     google.accounts.id.prompt();
-}, [])
+  }, []);
 
   return (
     <>
@@ -191,51 +190,56 @@ function Header() {
             </div>
 
             <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end">
-              <div onClick={toggleSignin} className="button-component h-12">
-                Log in{" "}
-              </div>
-              <div
-                onClick={toggleSignup}
-                className="button-component-stroke h-12">
-                Sign Up
-              </div>
+              <>
+                <div onClick={toggleSignin} className="button-component h-12">
+                  Log in{" "}
+                </div>
+                <div
+                  onClick={toggleSignup}
+                  className="button-component-stroke h-12">
+                  Sign Up
+                </div>
+              </>
 
-              {/* profile avatar */}
-              <button
-                id="dropdownDefaultButton"
-                className="text-white cursor-default bg-light-purple h-14 px-3 font-medium  rounded-[32px] text-center flex flex-row flex-nowrap items-center justify-center"
-                type="button">
-                <span className="mx-2 font-sans text-dark-purple">
-                  user name
-                </span>
-                <Link to="/profile/">
-                  <img
-                    className=" cursor-pointer relative inline-block h-10 w-auto rounded-[50%] object-cover object-center"
-                    alt="avatar placeholder"
-                    src={DefaultProfile}></img>
-                </Link>
-                <FontAwesomeIcon
-                  onClick={openAvatar}
-                  icon={faCaretDown}
-                  className="text-dark-purple mx-1 hover:text-writing-dark cursor-pointer w-auto h-5"
-                />
-              </button>
-              {/* Avatar Dropdown */}
-              <div id="dropdown" className={avatarMenu}>
-                <ul
-                  className="py-2 text-sm text-writing-dark bg-light-purple"
-                  aria-labelledby="dropdownDefaultButton">
-                  {avatarNavigation.map((item) => (
-                    <li key={item.name}>
-                      <a
-                        href={item.to}
-                        className="block px-3 py-2 hover:bg-medium-purple hover:text-white hover:font-bold">
-                        {item.name}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              <>
+                {" "}
+                {/* profile avatar */}
+                <button
+                  id="dropdownDefaultButton"
+                  className="text-white cursor-default bg-light-purple h-14 px-3 font-medium  rounded-[32px] text-center flex flex-row flex-nowrap items-center justify-center"
+                  type="button">
+                  <span className="mx-2 font-sans text-dark-purple">
+                    user name
+                  </span>
+                  <Link to="/profile/">
+                    <img
+                      className=" cursor-pointer relative inline-block h-10 w-auto rounded-[50%] object-cover object-center"
+                      alt="avatar placeholder"
+                      src={DefaultProfile}></img>
+                  </Link>
+                  <FontAwesomeIcon
+                    onClick={openAvatar}
+                    icon={faCaretDown}
+                    className="text-dark-purple mx-1 hover:text-writing-dark cursor-pointer w-auto h-5"
+                  />
+                </button>
+                {/* Avatar Dropdown */}
+                <div id="dropdown" className={avatarMenu}>
+                  <ul
+                    className="py-2 text-sm text-writing-dark bg-light-purple"
+                    aria-labelledby="dropdownDefaultButton">
+                    {avatarNavigation.map((item) => (
+                      <li key={item.name}>
+                        <a
+                          href={item.to}
+                          className="block px-3 py-2 hover:bg-medium-purple hover:text-white hover:font-bold">
+                          {item.name}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </>
             </div>
           </nav>
 

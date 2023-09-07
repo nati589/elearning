@@ -86,6 +86,8 @@ function LoginModal({ toggle, toggleSignup, toggleForgot }) {
         }
       );
     }
+
+    google.accounts.id.prompt();
   }, []);
   
   return (

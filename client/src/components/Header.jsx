@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
@@ -36,6 +36,7 @@ const avatarNavigation = [
 ];
 
 function Header() {
+
   const methods = useForm();
   const navigate = useNavigate();
 
@@ -125,6 +126,11 @@ function Header() {
     closeOthersExcept(setForgotpsdModal);
     !forgotpsdModal ? disableScroll() : enableScroll();
   };
+
+  useEffect(() => {
+    /* global google */
+    google.accounts.id.prompt();
+}, [])
 
   return (
     <>

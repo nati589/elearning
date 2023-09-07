@@ -1,15 +1,18 @@
 import express from "express";
-import { getCourses, getCoursesThisYear } from "../controllers/courses.js";
-// import { getBooks, addBook } from "../controllers/books.js";
-// import multer from "multer";
-// const upload = multer({ dest: 'books/thumbnails/' });
+import {
+  getCourses,
+  addCourse,
+  updateCourse,
+  deleteCourse,
+  getCoursesThisYear,
+} from "../controllers/courses.js";
 
 const router = express.Router();
 
+router.put("/updateCourse", updateCourse);
+router.delete("/deleteCourse", deleteCourse);
+router.post("/addCourse", addCourse);
 router.get("/getCourses", getCourses);
 router.get("/getCoursesThisYear", getCoursesThisYear);
-// router.put('/updateMember', updateMember);
-// router.delete('/deleteMember', deleteMember);
-// router.post('/addBook', upload.single('book_thumbnail'), addBook);
 
 export default router;

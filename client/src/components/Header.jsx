@@ -22,7 +22,7 @@ const navigation = [
 ];
 
 const subNavigation = [
-  { name: "All Courses", to: "/" },
+  { name: "All Courses", to: "/courses" },
   { name: "My Books", to: "/" },
   { name: "Learning", to: "/" },
   { name: "My Status", to: "/" },
@@ -30,11 +30,9 @@ const subNavigation = [
 ];
 
 const avatarNavigation = [
-  { name: "All Courses", to: "/" },
-  { name: "My Books", to: "/" },
-  { name: "Learning", to: "/" },
-  { name: "My Status", to: "/" },
-  { name: "My Courses", to: "/" },
+  { name: "Dashboard", to: "/profile/dashboard" },
+  { name: "Privacy and Security", to: "/profile/privacy" },
+  { name: "Settings", to: "/profile/setting" },
 ];
 
 function Header() {
@@ -225,7 +223,7 @@ function Header() {
                     <li key={item.name}>
                       <a
                         href={item.to}
-                        className="block px-4 py-2 hover:bg-medium-purple hover:text-white hover:font-bold">
+                        className="block px-3 py-2 hover:bg-medium-purple hover:text-white hover:font-bold">
                         {item.name}
                       </a>
                     </li>

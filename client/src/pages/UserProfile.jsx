@@ -44,7 +44,7 @@ function UserProfile() {
 
         <h1
           className={`inline-flex font-bold ${
-            open ? "text-2xl" : "text-sm"
+            open ? "text-xl" : "text-sm"
           } px-10`}>
           {" "}
           {localStorage.getItem("username")}

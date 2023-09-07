@@ -24,7 +24,7 @@ const subNavigation = [
   { name: "All Courses", to: "/courses" },
   { name: "My Books", to: "/" },
   { name: "Learning", to: "/learning" },
-  { name: "My Status", to: "/" },
+  // { name: "My Status", to: "/" },
   { name: "My Courses", to: "/" },
   { name: "Cart", to: "/cart" },
 ];

@@ -4,7 +4,7 @@ import {
   addCourses,
   updateCourse,
   deleteCourse,
-} from "../controllers/users.js";
+} from "../controllers/course.js";
 
 const router = express.Router();
 

@@ -4,7 +4,7 @@ import EduviLogo from "../assets/eduvi_logo.svg";
 import LoginImage from "../assets/login_image.svg";
 import DividerVertical from "../assets/divider_line.svg";
 import InputComponent from "./InputComponent";
-import GoogleIcon from "../assets/google_icon2.svg";
+// import GoogleIcon from "../assets/google_icon2.svg";
 import { GoLock, GoMail } from "react-icons/go";
 import { FormProvider, useForm } from "react-hook-form";
 import axios from "axios";
@@ -64,7 +64,9 @@ function LoginModal({ toggle, toggleSignup, toggleForgot }) {
     console.log("User ID: " + userObject.sub);
     console.log("Email: " + userObject.email);
     console.log("Name: " + userObject.name);
-  
+   localStorage.setItem("username", userObject.name);
+   localStorage.setItem("user_id", userObject.sub);
+
     // Alternatively, you can log the entire object as a JSON string
     console.log("User Object as JSON: " + JSON.stringify(userObject, null, 2));
   }

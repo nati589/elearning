@@ -1,5 +1,6 @@
-import React from "react";
 import Pricecard from "../components/Pricecard";
+import selam from "../../src/assets/Image.png";
+import PopularCourseCard from "./PopularCourseCard";
 
 function CourseDetails() {
   const courses = [
@@ -86,14 +87,104 @@ function CourseDetails() {
           </ul>
         </div>
         <div className=" w-full">
-          <Pricecard />
+          <Pricecard
+            course_price="$49.00"
+            course_instructure="WadeWarren"
+            course_rate="4.7"
+            course_total_hour="10 Days"
+            course_sections="30"
+            course_quizzes="5"
+            course_answer="yes"
+            course_languges="English"
+            course_access="Lifetime"
+          />
         </div>
       </div>
 
-      <h3 className="font-extrabold text-4xl text-left text-[#0A033C] ml-10">
+      <h3 className="font-extrabold text-4xl t text-[#0A033C] ml-8 p-9">
         Similar Courses
       </h3>
-      <div className="grid md:grid-cols-2 gap-4 mx-8 my-4 sm:grid-cols-1">
+      <div className="flex flex-col mx-10">
+        <div className="grid grid-cols-3 gap-4">
+          <div className=" p-4">
+            {" "}
+            <PopularCourseCard
+              course_title="interaction"
+              course_details="lorem Ipsum is simply dummy text of the printing and typesetting industry. "
+              course_thumbnail={selam}
+              course_total_hour="3Hours"
+              course_instructure="selam"
+              course_level="level"
+              course_rate="4.7"
+              course_price="price"
+            />
+          </div>
+          <div className=" p-4">
+            <PopularCourseCard
+              course_title="interaction"
+              course_details="lorem Ipsum is simply dummy text of the printing and typesetting industry. "
+              course_thumbnail={selam}
+              course_total_hour="3Hours"
+              course_instructure="selam"
+              course_level="level"
+              course_rate="4.7"
+              course_price="price"
+            />
+          </div>
+          <div className=" p-4">
+            <PopularCourseCard
+              course_title="interaction"
+              course_details="lorem Ipsum is simply dummy text of the printing and typesetting industry. "
+              course_thumbnail={selam}
+              course_total_hour="3Hours"
+              course_instructure="selam"
+              course_level="level"
+              course_rate="4.7"
+              course_price="price"
+            />
+          </div>
+        </div>
+        <div className="grid grid-cols-3 gap-4">
+          <div className=" p-4 ">
+            <PopularCourseCard
+              course_title="interaction"
+              course_details="lorem Ipsum is simply dummy text of the printing and typesetting industry. "
+              course_thumbnail={selam}
+              course_total_hour="3Hours"
+              course_instructure="selam"
+              course_level="level"
+              course_rate="4.7"
+              course_price="price"
+            />
+          </div>
+          <div className=" p-4 ">
+            <PopularCourseCard
+              course_title="interaction"
+              course_details="lorem Ipsum is simply dummy text of the printing and typesetting industry. "
+              course_thumbnail={selam}
+              course_total_hour="3Hours"
+              course_instructure="selam"
+              course_level="level"
+              course_rate="4.7"
+              course_price="price"
+            />
+          </div>
+          <div className="  p-4">
+            <PopularCourseCard
+              course_title="interaction"
+              course_details="lorem Ipsum is simply dummy text of the printing and typesetting industry. "
+              course_thumbnail={selam}
+              course_total_hour="3Hours"
+              course_instructure="selam"
+              course_level="level"
+              course_rate="4.7"
+              course_price="price"
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* <di className="grid md:grid-cols-2 gap-4 mx-8 my-4 sm:grid-cols-1">
         {courses.slice(0, 4).map((item,index) => (
           <div key={index} className="bg-white my-2 rounded-xl shadow-md">
             <a
@@ -109,10 +200,10 @@ function CourseDetails() {
                   />
                 </div>
                 <div className="col-span-5 md:col-span-4 ml-4">
-                  <p className="text-gray-600 font-bold">{item.title}</p>
-                  {/* ... other course details */}
-                </div>
-                <div className="col-start-2 ml-4 md:col-start-auto md:ml-0 md:justify-end">
+                  <p className="text-gray-600 font-bold">{item.title}</p> */}
+      {/* ... other course details */}
+      {/* </div> */}
+      {/* <div className="col-start-2 ml-4 md:col-start-auto md:ml-0 md:justify-end">
                   <p className="rounded-lg text-red-500 font-bold bg-red-100 py-1 px-3 text-sm">
                     $40.00
                   </p>
@@ -121,7 +212,7 @@ function CourseDetails() {
             </a>
           </div>
         ))}
-      </div>
+      </di> */}
     </div>
   );
 }

@@ -6,6 +6,7 @@ import coursesRoutes from "./routes/courses.js";
 import purchasesRouter from "./routes/purchases.js";
 import webContentRoutes from "./routes/webContent.js";
 import usersRoutes from "./routes/users.js";
+import coursesRoutes from "./routes/course.js";
 import cookieParser from "cookie-parser";
 
 import cors from "cors";

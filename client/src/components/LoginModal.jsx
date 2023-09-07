@@ -16,7 +16,7 @@ import { AnimatePresence } from "framer-motion";
 import InputError from "./InputError";
 import ResponseMessage from "./ResponseMessage";
 import { BsFillXSquareFill } from "react-icons/bs";
-// import jwt_decode from "jwt-decode";
+import jwt_decode from "jwt-decode";
 
 function LoginModal({ toggle, toggleSignup, toggleForgot }) {
   const methods = useForm();
@@ -56,10 +56,19 @@ function LoginModal({ toggle, toggleSignup, toggleForgot }) {
       });
   });
 
-  function handleCallbackResponse (response){
-
+  function handleCallbackResponse(response) {
+    console.log("Encoded JWT ID token: " + response.credential);
+    var userObject = jwt_decode(response.credential);
+    console.log("User: " + userObject);
+    // Log individual properties of userObject
+    console.log("User ID: " + userObject.sub);
+    console.log("Email: " + userObject.email);
+    console.log("Name: " + userObject.name);
+  
+    // Alternatively, you can log the entire object as a JSON string
+    console.log("User Object as JSON: " + JSON.stringify(userObject, null, 2));
   }
-
+  
   useEffect(() => {
     /* global google */
     if (typeof google !== "undefined") {

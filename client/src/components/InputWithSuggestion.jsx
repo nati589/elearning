@@ -3,10 +3,12 @@ import { BiSearch } from "react-icons/bi";
 import CourseCard from "./CourseCard";
 
 const InputWithSuggestion = ({ searchData }) => {
-  const suggestions = searchData;
+  // const suggestions = searchData;
+  const [suggestions, setSuggestions] = useState(searchData);
   const [inputValue, setInputValue] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
+  const [showSearch, setShowSearch] = useState(false);
 
   const handleInputChange = (e) => {
     const value = e.target.value;
@@ -14,11 +16,14 @@ const InputWithSuggestion = ({ searchData }) => {
 
     // Show the suggestion modal when input is not empty
     setShowModal(value !== "");
-
-    // Filter and set the search results
-    const filteredResults = searchData.filter((course) =>
+     
+    setSuggestions( searchData.filter((course) =>
       course.course_name.toLowerCase().includes(value.toLowerCase())
-    );
+    ))
+    // Filter and set the search results
+    const filteredResults = showSearch ? searchData.filter((course) =>
+      course.course_name.toLowerCase().includes(value.toLowerCase())
+    ) : "";
     setSearchResults(filteredResults);
   };
 
@@ -81,7 +86,7 @@ const InputWithSuggestion = ({ searchData }) => {
 
         <button
           className="ml-1 h-fit rounded-lg bg-dark-purple px-8 py-3 text-white hover:bg-blue-600 flex flex-row text-[1rem] sm:px-16 sm:py-2 "
-          onClick={() => handleInputChange({ target: { value: inputValue } })}
+          onClick={() => setShowSearch(true)}
         >
           <BiSearch className="mr-3 text-[1.5rem]" />
           <div className="my-auto sm:my-1">Search</div>

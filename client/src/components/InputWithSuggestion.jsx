@@ -16,14 +16,18 @@ const InputWithSuggestion = ({ searchData }) => {
 
     // Show the suggestion modal when input is not empty
     setShowModal(value !== "");
-     
-    setSuggestions( searchData.filter((course) =>
-      course.course_name.toLowerCase().includes(value.toLowerCase())
-    ))
+
+    setSuggestions(
+      searchData.filter((course) =>
+        course.course_name.toLowerCase().includes(value.toLowerCase())
+      )
+    );
     // Filter and set the search results
-    const filteredResults = showSearch ? searchData.filter((course) =>
-      course.course_name.toLowerCase().includes(value.toLowerCase())
-    ) : "";
+    const filteredResults = showSearch
+      ? searchData.filter((course) =>
+          course.course_name.toLowerCase().includes(value.toLowerCase())
+        )
+      : "";
     setSearchResults(filteredResults);
   };
 
@@ -62,7 +66,7 @@ const InputWithSuggestion = ({ searchData }) => {
         <div className="relative ">
           <input
             type="text"
-            placeholder="Type something..."
+            placeholder="Search title"
             className="w-full rounded-lg bg-transparent p-2 text-lg font-light pr-4 border-2 border-purple md:pr-28 sm:w-fit"
             value={inputValue}
             onChange={handleInputChange}
@@ -74,8 +78,7 @@ const InputWithSuggestion = ({ searchData }) => {
                   <li
                     key={index}
                     className="p-2 cursor-pointer hover:bg-gray-200"
-                    onClick={() => handleSuggestionClick(suggestion)}
-                  >
+                    onClick={() => handleSuggestionClick(suggestion)}>
                     {suggestion.course_name}
                   </li>
                 ))}
@@ -86,8 +89,7 @@ const InputWithSuggestion = ({ searchData }) => {
 
         <button
           className="ml-1 h-fit rounded-lg bg-dark-purple px-8 py-3 text-white hover:bg-blue-600 flex flex-row text-[1rem] sm:px-16 sm:py-2 "
-          onClick={() => setShowSearch(true)}
-        >
+          onClick={() => setShowSearch(true)}>
           <BiSearch className="mr-3 text-[1.5rem]" />
           <div className="my-auto sm:my-1">Search</div>
         </button>

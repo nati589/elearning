@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import EduviLogo from "../assets/eduvi_logo.svg";
 import LoginImage from "../assets/login_image.svg";
@@ -56,6 +56,27 @@ function LoginModal({ toggle, toggleSignup, toggleForgot }) {
       });
   });
 
+  function handleCallbackResponse (response){
+
+  }
+
+  useEffect(() => {
+    /* global google */
+    if (typeof google !== "undefined") {
+      google.accounts.id.initialize({
+        client_id: "414869111411-t9qjqi80ef1rbo91rdugd6p5nvnd5f5u.apps.googleusercontent.com",
+        callback: handleCallbackResponse
+      });
+  
+      google.accounts.id.renderButton(
+        document.getElementById("signIn"), {
+          theme: "outline",
+          size: "large"
+        }
+      );
+    }
+  }, []);
+  
   return (
     <>
       <div className="modal-overlay h-screen w-full bg-black bg-opacity-60 fixed top-0 bottom-0 left-0 right-0 flex flex-col flex-nowrap justify-center items-center z-50">
@@ -82,7 +103,8 @@ function LoginModal({ toggle, toggleSignup, toggleForgot }) {
               className="hidden lg:block  h-[500px] m-auto"
             />
             <div className="flex flex-col flex-nowrap justify-center items-center w-full lg:w-1/2 p-8 font-sans">
-              <a
+             <div id="signIn" className="m-3"></div> 
+              {/* <a
                 className="flex flex-row justify-center items-center font-normal bg-opacity-10 border-2 h-auto p-2 pr-3 pl-3 mt-2 mb-3 w-auto rounded-lg font-sans text-sm text-gray-500 hover:bg-medium-purple hover:text-white"
                 href="/">
                 <img
@@ -91,7 +113,7 @@ function LoginModal({ toggle, toggleSignup, toggleForgot }) {
                   className="h-8 m-auto mr-2"
                 />
                 Sign In with Google
-              </a>
+              </a> */}
               <div className="flex flex-row flex-nowrap justify-center items-center w-11/12 text-gray-600 text-sm font-semibold">
                 <div className="w-3/12 justify-center items-center px-1 ">
                   &nbsp;

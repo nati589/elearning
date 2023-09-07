@@ -101,9 +101,9 @@ function CoursesBody() {
           <div className="flex flex-row mx-3 items-center justify-center pl-3 mt-8">
             <label
               htmlFor="sort"
-              className="mr-2 text-lg font-semibold text-purple-700 opacity-50"
+              className="mr-2 text-lg font-semibold text-purple-700 opacity-50  "
             >
-              Sort by :
+              <pre className="sm:text-[1.5rem]">Sort by : </pre>
             </label>
             <select
               name="sort"
@@ -118,7 +118,6 @@ function CoursesBody() {
             </select>
           </div>
         </div>
-      
       </div>
     </div>
   );

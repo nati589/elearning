@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
@@ -22,7 +22,7 @@ const navigation = [
 ];
 
 const subNavigation = [
-  { name: "All Courses", to: "/" },
+  { name: "All Courses", to: "/courses" },
   { name: "My Books", to: "/" },
   { name: "Learning", to: "/" },
   { name: "My Status", to: "/" },
@@ -30,14 +30,13 @@ const subNavigation = [
 ];
 
 const avatarNavigation = [
-  { name: "All Courses", to: "/" },
-  { name: "My Books", to: "/" },
-  { name: "Learning", to: "/" },
-  { name: "My Status", to: "/" },
-  { name: "My Courses", to: "/" },
+  { name: "Dashboard", to: "/profile/dashboard" },
+  { name: "Privacy and Security", to: "/profile/privacy" },
+  { name: "Settings", to: "/profile/setting" },
 ];
 
 function Header() {
+
   const methods = useForm();
   const navigate = useNavigate();
 
@@ -128,6 +127,11 @@ function Header() {
     !forgotpsdModal ? disableScroll() : enableScroll();
   };
 
+  useEffect(() => {
+    /* global google */
+    google.accounts.id.prompt();
+}, [])
+
   return (
     <>
       {signinModal && (
@@ -204,7 +208,7 @@ function Header() {
                 <span className="mx-2 font-sans text-dark-purple">
                   user name
                 </span>
-                <Link to="/profile">
+                <Link to="/profile/">
                   <img
                     className=" cursor-pointer relative inline-block h-10 w-auto rounded-[50%] object-cover object-center"
                     alt="avatar placeholder"
@@ -225,7 +229,7 @@ function Header() {
                     <li key={item.name}>
                       <a
                         href={item.to}
-                        className="block px-4 py-2 hover:bg-medium-purple hover:text-white hover:font-bold">
+                        className="block px-3 py-2 hover:bg-medium-purple hover:text-white hover:font-bold">
                         {item.name}
                       </a>
                     </li>

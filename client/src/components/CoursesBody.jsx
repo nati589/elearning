@@ -5,6 +5,7 @@ import TrendingCard from "./TrendingCoursesCard";
 import BookImg from "../../src/assets/Cardphoto10.png";
 import { BiSearch } from "react-icons/bi";
 import SearchComponent from "./search";
+import InputWithSuggestion from "./InputWithSuggestion";
 
 function CoursesBody() {
   const courseData = [

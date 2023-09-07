@@ -51,7 +51,7 @@ function Footer() {
   return (
     <footer
       style={{ borderTopLeftRadius: "20px", borderTopRightRadius: "20px" }}
-      className="py-4 px-8 mt-20 bg-light-purple">
+      className="py-4 px-8 mt-1 bg-light-purple">
       <div className="text-sm md:text-base lg:text-base container mx-auto flex flex-wrap items-center">
         <div className="w-1/2 md:w-1/3 lg:w-1/4 mb-4 flex flex-col items-center justify-center  ">
           <img src={Logo} alt="logo" className="w-8 h-8 " />

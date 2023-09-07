@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 06, 2023 at 01:28 PM
+-- Generation Time: Sep 07, 2023 at 11:13 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.1.32
 
@@ -47,38 +47,39 @@ CREATE TABLE `book` (
   `book_author` varchar(1000) DEFAULT NULL,
   `book_purchases` int(100) NOT NULL DEFAULT 0,
   `book_price` float DEFAULT NULL,
-  `book_rating` float DEFAULT 0
+  `book_rating` float DEFAULT 0,
+  `book_date_created` datetime(6) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `book`
 --
 
-INSERT INTO `book` (`book_id`, `book_title`, `book_details`, `book_author`, `book_purchases`, `book_price`, `book_rating`) VALUES
-('302a22a5-9c96-4cd6-8acc-f117517671c3', 'dssdfsdfds', 'dsffsdfdsfsdfsd', 'dsfsdfdsfdsf', 0, 12, 0),
-('38c587b0-a905-4815-b5ca-ff60b6d40cbc', 'dssdfsdfds', 'dsffsdfdsfsdfsd', 'dsfsdfdsfdsf', 0, 12, 0),
-('3a1fc32f-5129-403a-a805-1a661a4b1da2', 'dssdfsdfds', 'dsffsdfdsfsdfsd', 'dsfsdfdsfdsf', 0, 12, 0),
-('4a444a43-9660-484b-a702-9f65860c13dc', 'dssdfsdfds', 'dsffsdfdsfsdfsd', 'dsfsdfdsfdsf', 0, 12, 0),
-('4f94ab5c-f75e-4b6f-b0e2-d43b2052a1b4', 'dssdfsdfds', 'dsffsdfdsfsdfsd', 'dsfsdfdsfdsf', 0, 12, 0),
-('56f6d8b0-55dc-48a6-a2c5-f3072e11a046', 'hero withe ths', 'ldskjfd thewois ', 'dklskjdfldkj dsk', 0, 23, 0),
-('571c7651-2ac7-4bc9-9be6-e4ade251e766', 'dssdfsdfds', 'dsffsdfdsfsdfsd', 'dsfsdfdsfdsf', 0, 12, 0),
-('669a263e-5b8d-43c8-ba1f-85b2f46be774', 'dssdfsdfds', 'dsffsdfdsfsdfsd', 'dsfsdfdsfdsf', 0, 12, 0),
-('6a9bb2d2-0052-43de-996c-a9238deecf89', 'dssdfsdfds', 'dsffsdfdsfsdfsd', 'dsfsdfdsfdsf', 0, 12, 0),
-('72c15bad-6845-47c3-9851-5568d6d661f6', 'dssdfsdfds', 'dsffsdfdsfsdfsd', 'dsfsdfdsfdsf', 0, 12, 0),
-('768b80a4-d037-42f0-8f6e-a1110836892d', 'Diary of a ceo', 'Steven', 'a book is here', 0, 120, 0),
-('774bcc03-7bd7-4e5c-8b52-fb8631e21bd7', 'dssdfsdfds', 'dsffsdfdsfsdfsd', 'dsfsdfdsfdsf', 0, 12, 0),
-('78504e96-72b3-40bf-b9c5-0d1be00afb21', 'hero withe ths', 'ldskjfd thewois ', 'dklskjdfldkj dsk', 0, 23, 0),
-('78bf4ad0-369a-495d-bfb1-8e69dd0f3afe', 'hero withe ths', 'ldskjfd thewois ', 'dklskjdfldkj dsk', 0, 23, 0),
-('79cacd3e-1c29-43e1-9d93-37bf023d8991', 'dssdfsdfds', 'dsffsdfdsfsdfsd', 'dsfsdfdsfdsf', 0, 12, 0),
-('88175803-bb22-4fbb-a910-1f523aa87f6c', 'dssdfsdfds', 'dsffsdfdsfsdfsd', 'dsfsdfdsfdsf', 0, 12, 0),
-('a97d6b4c-2bdb-458b-aa91-10001ac20545', 'dssdfsdfds', 'dsffsdfdsfsdfsd', 'dsfsdfdsfdsf', 0, 12, 0),
-('abaf379f-d125-4ed2-8385-7c2c791ef192', 'dssdfsdfds', 'dsffsdfdsfsdfsd', 'dsfsdfdsfdsf', 0, 12, 0),
-('c3658f66-7d44-4dc9-a27d-0316620c0fb9', 'ldksfjfdkfjlk', 'klsjfdjfklsdjfsld', 'ljksdfjdlskfjlskdf', 0, 2, 0),
-('d26dbcf5-4e74-419a-817d-a8197b086203', 'dssdfsdfds', 'dsffsdfdsfsdfsd', 'dsfsdfdsfdsf', 0, 12, 0),
-('f03060ca-68a0-4c57-9350-d545f5d5de49', 'dssdfsdfds', 'dsffsdfdsfsdfsd', 'dsfsdfdsfdsf', 0, 12, 0),
-('fab1d923-f073-425d-b1c6-db8e5bba2f37', 'hero withe ths', 'ldskjfd thewois ', 'dklskjdfldkj dsk', 0, 23, 0),
-('fca82205-d847-45b3-ace0-500ea245a2fd', 'dssdfsdfds', 'dsffsdfdsfsdfsd', 'dsfsdfdsfdsf', 0, 12, 0),
-('fe2b810b-f4c2-4dd9-890f-2c78e73830ae', 'dssdfsdfds', 'dsffsdfdsfsdfsd', 'dsfsdfdsfdsf', 0, 12, 0);
+INSERT INTO `book` (`book_id`, `book_title`, `book_details`, `book_author`, `book_purchases`, `book_price`, `book_rating`, `book_date_created`) VALUES
+('302a22a5-9c96-4cd6-8acc-f117517671c3', 'dssdfsdfds', 'dsffsdfdsfsdfsd', 'dsfsdfdsfdsf', 0, 12, 0, NULL),
+('38c587b0-a905-4815-b5ca-ff60b6d40cbc', 'dssdfsdfds', 'dsffsdfdsfsdfsd', 'dsfsdfdsfdsf', 0, 12, 0, NULL),
+('3a1fc32f-5129-403a-a805-1a661a4b1da2', 'dssdfsdfds', 'dsffsdfdsfsdfsd', 'dsfsdfdsfdsf', 0, 12, 0, NULL),
+('4a444a43-9660-484b-a702-9f65860c13dc', 'dssdfsdfds', 'dsffsdfdsfsdfsd', 'dsfsdfdsfdsf', 0, 12, 0, NULL),
+('4f94ab5c-f75e-4b6f-b0e2-d43b2052a1b4', 'dssdfsdfds', 'dsffsdfdsfsdfsd', 'dsfsdfdsfdsf', 0, 12, 0, NULL),
+('56f6d8b0-55dc-48a6-a2c5-f3072e11a046', 'hero withe ths', 'ldskjfd thewois ', 'dklskjdfldkj dsk', 0, 23, 0, NULL),
+('571c7651-2ac7-4bc9-9be6-e4ade251e766', 'dssdfsdfds', 'dsffsdfdsfsdfsd', 'dsfsdfdsfdsf', 0, 12, 0, NULL),
+('669a263e-5b8d-43c8-ba1f-85b2f46be774', 'dssdfsdfds', 'dsffsdfdsfsdfsd', 'dsfsdfdsfdsf', 0, 12, 0, NULL),
+('6a9bb2d2-0052-43de-996c-a9238deecf89', 'dssdfsdfds', 'dsffsdfdsfsdfsd', 'dsfsdfdsfdsf', 0, 12, 0, NULL),
+('72c15bad-6845-47c3-9851-5568d6d661f6', 'dssdfsdfds', 'dsffsdfdsfsdfsd', 'dsfsdfdsfdsf', 0, 12, 0, NULL),
+('768b80a4-d037-42f0-8f6e-a1110836892d', 'Diary of a ceo', 'Steven', 'a book is here', 0, 120, 0, NULL),
+('774bcc03-7bd7-4e5c-8b52-fb8631e21bd7', 'dssdfsdfds', 'dsffsdfdsfsdfsd', 'dsfsdfdsfdsf', 0, 12, 0, NULL),
+('78504e96-72b3-40bf-b9c5-0d1be00afb21', 'hero withe ths', 'ldskjfd thewois ', 'dklskjdfldkj dsk', 0, 23, 0, NULL),
+('78bf4ad0-369a-495d-bfb1-8e69dd0f3afe', 'hero withe ths', 'ldskjfd thewois ', 'dklskjdfldkj dsk', 0, 23, 0, NULL),
+('79cacd3e-1c29-43e1-9d93-37bf023d8991', 'dssdfsdfds', 'dsffsdfdsfsdfsd', 'dsfsdfdsfdsf', 0, 12, 0, NULL),
+('88175803-bb22-4fbb-a910-1f523aa87f6c', 'dssdfsdfds', 'dsffsdfdsfsdfsd', 'dsfsdfdsfdsf', 0, 12, 0, NULL),
+('a97d6b4c-2bdb-458b-aa91-10001ac20545', 'dssdfsdfds', 'dsffsdfdsfsdfsd', 'dsfsdfdsfdsf', 0, 12, 0, NULL),
+('abaf379f-d125-4ed2-8385-7c2c791ef192', 'dssdfsdfds', 'dsffsdfdsfsdfsd', 'dsfsdfdsfdsf', 0, 12, 0, NULL),
+('c3658f66-7d44-4dc9-a27d-0316620c0fb9', 'ldksfjfdkfjlk', 'klsjfdjfklsdjfsld', 'ljksdfjdlskfjlskdf', 0, 2, 0, NULL),
+('d26dbcf5-4e74-419a-817d-a8197b086203', 'dssdfsdfds', 'dsffsdfdsfsdfsd', 'dsfsdfdsfdsf', 0, 12, 0, NULL),
+('f03060ca-68a0-4c57-9350-d545f5d5de49', 'dssdfsdfds', 'dsffsdfdsfsdfsd', 'dsfsdfdsfdsf', 0, 12, 0, NULL),
+('fab1d923-f073-425d-b1c6-db8e5bba2f37', 'hero withe ths', 'ldskjfd thewois ', 'dklskjdfldkj dsk', 0, 23, 0, NULL),
+('fca82205-d847-45b3-ace0-500ea245a2fd', 'dssdfsdfds', 'dsffsdfdsfsdfsd', 'dsfsdfdsfdsf', 0, 12, 0, NULL),
+('fe2b810b-f4c2-4dd9-890f-2c78e73830ae', 'dssdfsdfds', 'dsffsdfdsfsdfsd', 'dsfsdfdsfdsf', 0, 12, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -147,9 +148,9 @@ CREATE TABLE `course` (
   `course_archived` tinyint(1) DEFAULT NULL,
   `course_price` double NOT NULL,
   `course_instructor` varchar(100) DEFAULT NULL,
-  `course_thumbnail` varchar(2000) DEFAULT NULL,
   `course_max_comments` int(100) NOT NULL DEFAULT 5,
-  `course_total_hour` int(100) DEFAULT NULL
+  `course_total_hour` int(100) DEFAULT NULL,
+  `course_date_created` datetime(6) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -239,7 +240,7 @@ CREATE TABLE `user` (
   `user_photo` varchar(2000) DEFAULT NULL,
   `user_token` varchar(2000) DEFAULT NULL,
   `user_full_name` varchar(1000) NOT NULL,
-  `user_joined` datetime(6) DEFAULT NULL
+  `user_date_joined` datetime(6) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------

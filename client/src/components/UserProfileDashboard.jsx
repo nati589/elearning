@@ -2,62 +2,20 @@ import React from "react";
 import Profile from "../components/Profile";
 import PopularCourseCard from "../components/PopularCourseCard";
 import selam from "../../src/assets/Cardphoto10.png";
+import Dashboard from "./Dashboard";
 
 function UserProfileDashboard() {
   return (
-    <div className="flex flex-row flex-nowrap  ">
-      {/* profile column */}
-      <div className="bg-white h-full w-8/12">
-        <Profile />
-      </div>
-      {/* Your courses conlumn */}
-      <div className="bg-white w-4/12">
-        <div class="card-header text-2xl text-dark-purple font-bold">
-          My Courses{" "}
-        </div>
-        <div>
-          <div class="card-body">
-            <PopularCourseCard
-              course_title="interaction"
-              course_details="orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text"
-              course_thumbnail={selam}
-              course_total_hour="3Hours"
-              course_instructure="selam"
-              course_level="level"
-              course_rate="4.7"
-              course_price="price"
-            />
-          </div>
-        </div>
-        <div>
-          <div class="card-body">
-            <PopularCourseCard
-              course_title="interaction"
-              course_details="orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text"
-              course_thumbnail={selam}
-              course_total_hour="3Hours"
-              course_instructure="selam"
-              course_level="level"
-              course_rate="4.7"
-              course_price="price"
-            />
-          </div>
-        </div>
-        <div>
-          <div class="card-body">
-            <PopularCourseCard
-              course_title="interaction"
-              course_details="orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text"
-              course_thumbnail={selam}
-              course_total_hour="3Hours"
-              course_instructure="selam"
-              course_level="level"
-              course_rate="4.7"
-              course_price="price"
-            />
-          </div>
+    <div className="w-full flex flex-col flex-nowrap  ">
+      <div class="bg-white  px-5">
+        <div class="flex flex-col flex-nowrap my-3 bg-light-purple rounded-lg shadow-md py-5 w-full justify-center items-center ">
+          <h2 class="text-center  text-subscribe-purple text-2xl font-semibold ">
+            Your Courses
+          </h2>
         </div>
       </div>
+      {/* <Profile /> */}
+      <Dashboard />
     </div>
   );
 }

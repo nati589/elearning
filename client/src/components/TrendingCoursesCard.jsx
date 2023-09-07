@@ -1,6 +1,6 @@
 import React from "react";
 
-const TrendingCard = ({ course_title, course_details, course_thumbnail }) => {
+const TrendingCoursesCard = ({ course_title, course_details, course_thumbnail }) => {
   return (
     <div className="card bg-white border-l-8 border-light-purple rounded-lg shadow-md my-4 p-6 h-88 w-80">
       <h1 className=" text-lg md:text-xl mb-4 font-bold">{course_title}</h1>
@@ -16,7 +16,7 @@ const TrendingCard = ({ course_title, course_details, course_thumbnail }) => {
   );
 };
 
-export default TrendingCard;
+export default TrendingCoursesCard;
 
 {
   /* <div className="card bg-white border-l-8 rounded-lg shadow-md my-4 p-6">

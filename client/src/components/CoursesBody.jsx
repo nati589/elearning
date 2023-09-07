@@ -1,4 +1,4 @@
-import React from "react";
+import { React ,useState} from "react";
 import CourseCard from "./CourseCard";
 import PopularCourseCard from "./PopularCourseCard";
 import TrendingCard from "./TrendingCoursesCard";
@@ -6,7 +6,9 @@ import BookImg from "../../src/assets/Cardphoto10.png";
 import { BiSearch } from "react-icons/bi";
 import SearchComponent from "./search";
 import InputWithSuggestion from "./InputWithSuggestion";
+import courseData from "./courseData";
 
+<<<<<<< Updated upstream
 function CoursesBody({ courses }) {
   const courseData = [
     {
@@ -59,6 +61,11 @@ function CoursesBody({ courses }) {
     },
   ];
 
+=======
+function CoursesBody() {
+  
+  
+>>>>>>> Stashed changes
   return (
     <div className="flex flex-col md:flex-row flex-nowrap w-full">
       <div className="w-full md:w-4/12 text-xs md:text-sm px-8 md:px-2 pt-2 my-4 flex flex-col justify-start items-center">
@@ -143,33 +150,29 @@ function CoursesBody({ courses }) {
         <h4 className="text-center text-2xl md:text-4xl font-bold text-writing-dark">
           Other courses
         </h4>
-        <div className="flex  w-full m-2 my-3 flex-col sm:flex-row  items-start">
-          {/* <div className="flex flex-row  justify-between mx-3 basis-1/2 my-1">
-            <input
-              type="text"
-              className="w-full rounded-lg bg-transparent p-2  text-lg font-light pr-8 border-2 border-purple"
-              placeholder="Search class,courses"
-            />
-            <button className="ml-1 rounded-lg bg-dark-purple sm:p-2 px-8 py-4 text-white hover:bg-blue-600 flex flex-row text-[1rem]">
-              <BiSearch className="mr-3  text-[1.5rem]" />
-              <div className="my-auto">
-               Search
-              </div>
-             
-            </button>
-          </div> */}
-          <SearchComponent data={courseData} />
+        <div className="flex  w-full m-2 my-3 flex-col sm:flex-row  items-start sm:justify-between">
+          <InputWithSuggestion />
           <div className="flex flex-row mx-3 items-center justify-center pl-3 mt-8">
-            <label htmlFor="sort" className="mr-2 text-lg font-semibold text-purple-700 opacity-50">
+            <label
+              htmlFor="sort"
+              className="mr-2 text-lg font-semibold text-purple-700 opacity-50"
+            >
               Sort by :
             </label>
-            <select name="sort" id="sort" className="rounded-md p-2 font-semibold bg-transparent pr-12 text-lg ">
-              <option className="" value="a ">Latest</option>
+            <select
+              name="sort"
+              id="sort"
+              className="rounded-md p-2 font-semibold bg-transparent pr-12 text-lg "
+            >
+              <option className="" value="a ">
+                Latest
+              </option>
               <option value="b">Oldest</option>
               <option value="c">c</option>
             </select>
           </div>
         </div>
+<<<<<<< Updated upstream
         <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-4  my-8">
           {courseData.map((course, index) => (
             <CourseCard
@@ -186,6 +189,25 @@ function CoursesBody({ courses }) {
               level="3"
             />
           ))}
+=======
+        <div>
+          {/* <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-4 my-8">
+            {filteredCourses.map((course, index) => (
+              <CourseCard
+                key={index}
+                course={course}
+                course_name={course.course_name}
+                course_description={course.course_description}
+                courseImagePath={course.courseImagePath}
+                hoursNeeded={course.hoursNeeded}
+                teacherName={course.teacherName}
+                rating={course.rating}
+                price={course.price}
+                level={course.level}
+              />
+            ))}
+          </div> */}
+>>>>>>> Stashed changes
         </div>
       </div>
     </div>

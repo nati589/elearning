@@ -5,7 +5,7 @@ import TrendingCard from "./TrendingCoursesCard";
 import BookImg from "../../src/assets/Cardphoto10.png";
 import InputWithSuggestion from "./InputWithSuggestion";
 
-function CoursesBody() {
+function CoursesBody({ courses }) {
   const courseData = [
     {
       title: "Standard One",
@@ -56,6 +56,7 @@ function CoursesBody() {
       image: require("../assets/number-8.png"),
     },
   ];
+
   return (
     <div className="flex flex-col md:flex-row flex-nowrap w-full">
       <div className="w-full md:w-4/12 text-xs md:text-sm px-8 md:px-2 pt-2 my-4 flex flex-col justify-start items-center">
@@ -166,6 +167,7 @@ function CoursesBody() {
           {courseData.map((course, index) => (
             <CourseCard
               key={index}
+              courseId={courses.id}
               course={course}
               course_name="Amharic For Beginners"
               course_description="Minim pariatur exercitation est aliquip deserunt id sit tempor voluptate."

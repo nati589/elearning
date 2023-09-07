@@ -4,6 +4,7 @@ import teamRoutes from "./routes/team.js";
 import booksRoutes from "./routes/books.js";
 import webContentRoutes from "./routes/webContent.js";
 import usersRoutes from "./routes/users.js";
+import coursesRoutes from "./routes/course.js";
 import cookieParser from "cookie-parser";
 
 import cors from "cors";
@@ -27,6 +28,7 @@ app.use("/api/team", teamRoutes);
 app.use("/api/books", booksRoutes);
 app.use("/api/webcontent", webContentRoutes);
 app.use("/api/users", usersRoutes);
+app.use("/api/course", coursesRoutes);
 
 app.get("/", (req, res) => {
   res.json("success");

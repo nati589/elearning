@@ -54,7 +54,7 @@ export const addUser = (req, res) => {
         const currentDate = new Date();
 
         const q =
-          "INSERT INTO user (user_id, user_full_name,user_email,user_password,user_joined) VALUES (?,?,?,?,?)";
+          "INSERT INTO user (user_id, user_full_name,user_email,user_password,user_date_joined) VALUES (?,?,?,?,?)";
 
         const salt = bcrypt.genSaltSync(10);
         const hash = bcrypt.hashSync(user_password, salt);
@@ -70,8 +70,7 @@ export const addUser = (req, res) => {
               });
             } else {
               res.status(200).json({
-                message:
-                  "Password reset successful. Login with your new credentials",
+                message: "You have Registered Successfully! Please login.",
               });
             }
           }

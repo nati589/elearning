@@ -30,7 +30,7 @@ export const login = (req, res) => {
 
       const token = jwt.sign(
         { username: result[0].user_full_name, user_id: result[0].user_id },
-        "EthLang1212",
+        process.env.JWT_SECRET,
         { expiresIn: "1h" }
       );
       res.cookie("token", token, { httpOnly: true });

@@ -5,9 +5,11 @@ import * as url from "url";
 export const getCourses = (req, res) => {
   const q = "select * from courses";
 
-  db.query(q, (err, data) => {
+  db.query(q, (err, result) => {
     if (err) {
-      res.json(err);
+      return res
+        .status(401)
+        .send({ message: "Connection error try again.", data: result });
     } else {
       res.json(data);
     }

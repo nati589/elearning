@@ -18,7 +18,6 @@ const navigation = [
   { name: "Home", to: "/" },
   { name: "Books", to: "/books" },
   { name: "Courses", to: "/courses" },
-  { name: "Cart", to: "/cart" },
 ];
 
 const subNavigation = [
@@ -27,10 +26,11 @@ const subNavigation = [
   { name: "Learning", to: "/learning" },
   { name: "My Status", to: "/" },
   { name: "My Courses", to: "/" },
+  { name: "Cart", to: "/cart" },
 ];
 
 const avatarNavigation = [
-  { name: "Dashboard", to: "/profile/dashboard" },
+  { name: "Dashboard", to: "/profile/" },
   { name: "Privacy and Security", to: "/profile/privacy" },
   { name: "Settings", to: "/profile/setting" },
 ];
@@ -62,7 +62,7 @@ function Header() {
 
   // const { handleSubmit } = methods;
   const avatarMenu = avatarState
-    ? "z-10 absolute right-10 top-[72px] bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700"
+    ? "z-10 absolute right-10 top-[72px] bg-white divide-y divide-gray-100 rounded-lg shadow w-52 dark:bg-gray-700"
     : "hidden";
 
   const logoutHandler = () => {
@@ -226,14 +226,14 @@ function Header() {
                   {/* profile avatar */}
                   <button
                     id="dropdownDefaultButton"
-                    className="text-white cursor-default bg-light-purple h-14 px-3 font-medium  rounded-[32px] text-center flex flex-row flex-nowrap items-center justify-center"
+                    className="text-white min-w-[50%] cursor-default bg-light-purple h-14 px-3 font-medium  rounded-[32px] text-center flex flex-row flex-nowrap items-center "
                     type="button">
-                    <span className="mx-2 font-sans text-dark-purple">
+                    <span className="min-w-[60%] mx-2 font-sans text-sm text-dark-purple justify-self-start">
                       {localStorage.getItem("username")}
                     </span>
                     <Link to="/profile/">
                       <img
-                        className=" cursor-pointer relative inline-block h-10 w-auto rounded-[50%] object-cover object-center"
+                        className="self-right cursor-pointer mr-2 relative hover:scale-105 inline-block h-10 w-auto rounded-[50%] object-cover object-center"
                         alt="avatar placeholder"
                         src={DefaultProfile}></img>
                     </Link>

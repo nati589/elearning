@@ -1,11 +1,9 @@
 import React, { useState } from "react";
-import courseData from "./courseData";
 import { BiSearch } from "react-icons/bi";
 import CourseCard from "./CourseCard";
 
-const suggestions = courseData;
-
-const InputWithSuggestion = () => {
+const InputWithSuggestion = ({ searchData }) => {
+  const suggestions = searchData;
   const [inputValue, setInputValue] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
@@ -18,7 +16,7 @@ const InputWithSuggestion = () => {
     setShowModal(value !== "");
 
     // Filter and set the search results
-    const filteredResults = courseData.filter((course) =>
+    const filteredResults = searchData.filter((course) =>
       course.course_name.toLowerCase().includes(value.toLowerCase())
     );
     setSearchResults(filteredResults);
@@ -31,7 +29,7 @@ const InputWithSuggestion = () => {
 
   const renderCourses = () => {
     const coursesToRender =
-      searchResults.length > 0 ? searchResults : courseData;
+      searchResults.length > 0 ? searchResults : searchData;
 
     return (
       <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-4 my-8">
@@ -40,13 +38,13 @@ const InputWithSuggestion = () => {
             key={index}
             courseId={course.course_id}
             course_name={course.course_name}
-            course_description={course.course_description}
-            courseImagePath={course.courseImagePath}
-            hoursNeeded={course.hoursNeeded}
-            teacherName={course.teacherName}
-            rating={course.rating}
-            price={course.price}
-            level={course.level}
+            course_description="Minim pariatur exercitation est aliquip deserunt id sit tempor voluptate."
+            courseImagePath="./Image.png"
+            hoursNeeded="2 hours"
+            teacherName="Abe Kebe"
+            rating="3.7"
+            price="40 ETB"
+            level="3"
           />
         ))}
       </div>

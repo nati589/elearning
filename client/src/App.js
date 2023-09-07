@@ -27,8 +27,7 @@ export default function App() {
   return (
     <div
       className="App"
-      style={{ backgroundColor: "#F7F5FA", minHeight: "100vh" }}
-    >
+      style={{ backgroundColor: "#F7F5FA", minHeight: "100vh" }}>
       {/* <Background /> */}
       
       <Header />
@@ -44,8 +43,6 @@ export default function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/profile" element={<UserProfile />}>
           <Route exact index element={<UserProfileDashboard />} />
-          <Route exact path="/profile/privacy" element={<ProfilePrivacy />} />
-          <Route exact path="/profile/dashboard" element={<Dashboard />} />
           <Route exact path="/profile/privacy" element={<ProfilePrivacy />} />
           <Route exact path="/profile/setting" element={<Setting />} />
           <Route exact path="/profile/support" element={<Support />} />

@@ -15,9 +15,11 @@ import { db } from "./db.js";
 const app = express();
 
 app.use(express.json());
+
+const allowedOrigins = ["http://localhost:3000", "http://localhost:3001"];
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: allowedOrigins,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,

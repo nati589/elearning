@@ -3,6 +3,7 @@ import CourseCard from "./CourseCard";
 import PopularCourseCard from "./PopularCourseCard";
 import TrendingCard from "./TrendingCoursesCard";
 import BookImg from "../../src/assets/Cardphoto10.png";
+import InputWithSuggestion from "./InputWithSuggestion";
 
 function CoursesBody() {
   const courseData = [

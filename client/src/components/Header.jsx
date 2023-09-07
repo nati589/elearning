@@ -202,7 +202,7 @@ function Header() {
                 <span className="mx-2 font-sans text-dark-purple">
                   user name
                 </span>
-                <Link to="/profile">
+                <Link to="/profile/">
                   <img
                     className=" cursor-pointer relative inline-block h-10 w-auto rounded-[50%] object-cover object-center"
                     alt="avatar placeholder"

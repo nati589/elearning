@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect} from "react";
 import Header from "./components/Header";
 import Subscription from "./components/Subscription";
 import Footer from "./components/Footer";
@@ -19,13 +19,17 @@ import UserProfileDashboard from "./components/UserProfileDashboard";
 import "./styles/App.css";
 import Cart from "./pages/Cart";
 import PasswordResetPage from "./pages/PasswordResetPage";
+import Dashboard from "./components/Dashboard";
 
 export default function App() {
+
+
   return (
     <div
       className="App"
       style={{ backgroundColor: "#F7F5FA", minHeight: "100vh" }}>
       {/* <Background /> */}
+      
       <Header />
 
       <Routes>

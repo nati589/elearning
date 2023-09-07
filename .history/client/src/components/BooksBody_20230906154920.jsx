@@ -231,7 +231,7 @@ export default function BooksBody() {
                   Search
                 </button>
               </div>
-              <div className="flex flex-row mx-3 items-center bg-light-purple justify-center">
+              <div className="flex flex-row mx-3 items-center justify-center">
                 <label htmlFor="sort" className="mr-2">
                   Sort
                 </label>
@@ -241,6 +241,20 @@ export default function BooksBody() {
                   <option value="c">c</option>
                 </select>
               </div>
+            </div>
+            <div className="">
+              <label htmlFor="sort" className="mr-2 text-sm">
+                Sort
+              </label>
+              <select
+                name="sort"
+                id="sort"
+                className="rounded-md p-2 text-sm bg-light-purple "
+              >
+                <option value="a">Latest</option>
+                <option value="b">Oldest</option>
+                <option value="c">Alphabetical</option>
+              </select>
             </div>
           </div>
         </div>

@@ -1,9 +1,6 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import BooksCard from "./BooksCard";
-import PopularCourseCard from "./PopularCourseCard";
-import BookImg from "../../src/assets/Cardphoto10.png";
-import TrendingCard from "./TrendingCoursesCard";
 
 export default function BooksBody() {
   const BooksData = [
@@ -67,9 +64,9 @@ export default function BooksBody() {
     return value === filter ? "books-nav-active" : "books-nav";
   };
   return (
-    <div className="flex flex-row flex-nowrap w-full">
-      <div className="flex flex-col md:flex-row flex-nowrap w-4/12">
-        <div className="w-full text-xs md:text-sm px-8 md:px-4 pt-2 my-4 flex flex-col justify-start items-center">
+    <div className="flex flex-row flex-nowrap">
+      <div className="flex flex-col md:flex-row flex-nowrap w-full">
+        <div className="w-full md:w-4/12 text-xs md:text-sm px-8 md:px-2 pt-2 my-4 flex flex-col justify-start items-center">
           <div className="flex flex-col flex-nowrap w-full">
             <div className="my-2 shadow-md">
               <h2 className="rounded-tl-lg rounded-tr-lg text-center bg-[#796bd4] px-3.5 py-2.5 font-semibold text-white shadow-sm  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
@@ -152,114 +149,6 @@ export default function BooksBody() {
                 />
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-      <div className="w-8/12 px-6">
-        <h1 className="text-dark-purple font-bold text-3xl text-center">
-          General Books
-        </h1>
-        <div className="flex items-center justify-center ">
-          <nav className="flex flex-row w-fit my-2">
-            <div className="px-3">
-              <NavLink
-                to="#"
-                onClick={(e) => handleFilterClick(e, "all")}
-                className={`${
-                  isActive("all")
-                    ? "bg-medium-purple  text-white"
-                    : "bg-white text-gray-700"
-                } px-4 py-2 rounded-md block w-36 h-10 text-center`}
-              >
-                All Books
-              </NavLink>
-            </div>
-            <div className="px-3">
-              <NavLink
-                to="#"
-                onClick={(e) => handleFilterClick(e, "fiction")}
-                className={`${
-                  isActive("fiction")
-                    ? "bg-white text-gray-700"
-                    : "bg-medium-purple  text-white"
-                } px-4 py-2 rounded-md block w-24 h-10 text-center`}
-              >
-                Fiction
-              </NavLink>
-            </div>
-
-            <div className="px-3">
-              <NavLink
-                to="#"
-                onClick={(e) => handleFilterClick(e, "journal")}
-                className={`${
-                  isActive("journal")
-                    ? "bg-white text-gray-700"
-                    : "bg-medium-purple  text-white"
-                } px-4 py-2 rounded-md block w-24 h-10 text-center`}
-              >
-                Journal
-              </NavLink>
-            </div>
-
-            <div className="px-3">
-              <NavLink
-                to="#"
-                onClick={(e) => handleFilterClick(e, "kids")}
-                className={`${
-                  isActive("kids")
-                    ? "bg-white text-gray-700"
-                    : "bg-medium-purple  text-white"
-                } px-4 py-2 rounded-md block w-24 h-10 text-center`}
-              >
-                Kids
-              </NavLink>
-            </div>
-          </nav>
-        </div>
-        <div>
-          {" "}
-          <div className="flex w-full m-2 gap-8 justify-between xs:flex-wrap">
-            <div className="flex flex-row w-full m-2 my-3">
-              <div className="flex flex-row items-center justify-center mx-3 basis-1/2">
-                <input
-                  type="text"
-                  className="w-full rounded-lg border border-gray-400 p-2"
-                  placeholder="Search ..."
-                />
-                <button className="ml-2 rounded-lg bg-dark-purple p-2 text-white hover:bg-blue-600">
-                  Search
-                </button>
-              </div>
-              <div className="flex flex-row mx-3 items-center bg-light-purple justify-center">
-                <label htmlFor="sort" className="mr-2">
-                  Sort
-                </label>
-                <select name="sort" id="sort" className="rounded-md p-2">
-                  <option value="a">Latest</option>
-                  <option value="b">Oldest</option>
-                  <option value="c">c</option>
-                </select>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div>
-          <div className="w-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-2 gap-4  my-8">
-            {BooksData.map((Book, index) => (
-              <BooksCard
-                key={index}
-                Book={Book}
-                Book_name="Amharic For Beginners"
-                Book_description="Minim pariatur exercitation est aliquip deserunt id sit tempor voluptate."
-                BookImagePath="./Image.png"
-                hoursNeeded="2 hours"
-                teacherName="Abe Kebe"
-                rating="3.7"
-                price="40 ETB"
-                level="3"
-              />
-            ))}
           </div>
         </div>
       </div>

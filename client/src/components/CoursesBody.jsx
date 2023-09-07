@@ -3,6 +3,8 @@ import CourseCard from "./CourseCard";
 import PopularCourseCard from "./PopularCourseCard";
 import TrendingCard from "./TrendingCoursesCard";
 import BookImg from "../../src/assets/Cardphoto10.png";
+import { BiSearch } from "react-icons/bi";
+import SearchComponent from "./search";
 
 function CoursesBody() {
   const courseData = [
@@ -139,23 +141,28 @@ function CoursesBody() {
         <h4 className="text-center text-2xl md:text-4xl font-bold text-writing-dark">
           Other courses
         </h4>
-        <div className="flex flex-row w-full m-2 my-3">
-          <div className="flex flex-row items-center justify-center mx-3 basis-1/2">
+        <div className="flex  w-full m-2 my-3 flex-col sm:flex-row  items-start">
+          {/* <div className="flex flex-row  justify-between mx-3 basis-1/2 my-1">
             <input
               type="text"
-              className="w-full rounded-lg border border-gray-400 p-2"
-              placeholder="Search ..."
+              className="w-full rounded-lg bg-transparent p-2  text-lg font-light pr-8 border-2 border-purple"
+              placeholder="Search class,courses"
             />
-            <button className="ml-2 rounded-lg bg-dark-purple p-2 text-white hover:bg-blue-600">
-              Search
+            <button className="ml-1 rounded-lg bg-dark-purple sm:p-2 px-8 py-4 text-white hover:bg-blue-600 flex flex-row text-[1rem]">
+              <BiSearch className="mr-3  text-[1.5rem]" />
+              <div className="my-auto">
+               Search
+              </div>
+             
             </button>
-          </div>
-          <div className="flex flex-row mx-3 items-center justify-center">
-            <label htmlFor="sort" className="mr-2">
-              Sort
+          </div> */}
+          <SearchComponent data={courseData} />
+          <div className="flex flex-row mx-3 items-center justify-center pl-3 mt-8">
+            <label htmlFor="sort" className="mr-2 text-lg font-semibold text-purple-700 opacity-50">
+              Sort by :
             </label>
-            <select name="sort" id="sort" className="rounded-md p-2">
-              <option value="a">Latest</option>
+            <select name="sort" id="sort" className="rounded-md p-2 font-semibold bg-transparent pr-12 text-lg ">
+              <option className="" value="a ">Latest</option>
               <option value="b">Oldest</option>
               <option value="c">c</option>
             </select>

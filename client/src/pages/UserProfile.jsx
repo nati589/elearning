@@ -71,7 +71,7 @@ function UserProfile() {
           ))}
         </nav>
       </div>
-      <div className="w-full h-full overflow-y-auto">
+      <div className="w-full h-full">
         <Outlet />
       </div>
     </div>

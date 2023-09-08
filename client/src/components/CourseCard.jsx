@@ -23,7 +23,7 @@ function CourseCard({
   const course_image = images(courseImagePath);
   const numbers = [1, 2, 3, 4, 5];
   return (
-    <Link to={`/coursedetails/?id=${courseId}`}>
+    <Link to={`/coursedetails/${courseId}`}>
       <div
         className="relative bg-white rounded-lg border-t-8 border-x-2 min-h-[180px] lg:min-h-[380px] h-fit
      md:w-full border-medium-purple p-2 shadow-md cursor-pointer transition-transform duration-300 ease-in-out

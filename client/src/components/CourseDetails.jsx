@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Pricecard from "../components/Pricecard";
 import BookImage from "../../src/assets/Image.png";
 import PopularCourseCard from "./PopularCourseCard";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
 function CourseDetails() {
@@ -14,9 +14,9 @@ function CourseDetails() {
   // ];
   const navigate = useNavigate();
   const [courseData, setCourseData] = useState({});
+  const { id: courseID } = useParams();
+
   useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const courseID = urlParams.get("id");
     if (courseID === null) {
       navigate("/");
     } else {
@@ -31,7 +31,7 @@ function CourseDetails() {
           // navigate("/");
         });
     }
-  }, [navigate]);
+  }, [navigate, courseID]);
   return (
     <div className="">
       <div className="flex justify-between gap-8 mx-8 flex-wrap lg:flex-nowrap my-16">
@@ -131,6 +131,18 @@ function CourseDetails() {
       <div className="flex flex-col mx-10">
         <div className="flex flex-wrap overflow-x-auto overflow-y-auto">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
+            <div className="p-4">
+              <PopularCourseCard
+                course_title="interaction"
+                course_details="lorem Ipsum is simply dummy text of the printing and typesetting industry."
+                course_thumbnail={BookImage}
+                course_total_hour="3Hours"
+                course_instructure="Wadew Warrren"
+                course_level="level"
+                course_rate="4.7"
+                course_price="price"
+              />
+            </div>
             <div className="p-4">
               <PopularCourseCard
                 course_title="interaction"

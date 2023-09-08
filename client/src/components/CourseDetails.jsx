@@ -1,14 +1,38 @@
 import Pricecard from "../components/Pricecard";
 import selam from "../../src/assets/Image.png";
 import PopularCourseCard from "./PopularCourseCard";
+import { useEffect, useState } from "react";
+import { warning } from "framer-motion";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function CourseDetails() {
-  const courses = [
-    { title: "Ha Geez", image: require("../assets/Cardphoto.png") },
-    { title: "Hu Cabe", image: require("../assets/Cardphoto2.png") },
-    { title: "Hei Seles", image: require("../assets/Cardphoto3.png") },
-    { title: "Ho Rabe", image: require("../assets/Cardphoto4.png") },
-  ];
+  // const courses = [
+  //   { title: "Ha Geez", image: require("../assets/Cardphoto.png") },
+  //   { title: "Hu Cabe", image: require("../assets/Cardphoto2.png") },
+  //   { title: "Hei Seles", image: require("../assets/Cardphoto3.png") },
+  //   { title: "Ho Rabe", image: require("../assets/Cardphoto4.png") },
+  // ];
+  const navigate = useNavigate();
+  const [courseData, setCourseData] = useState({});
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const courseID = urlParams.get("id");
+    if (courseID === null) {
+      navigate("/");
+    } else {
+      axios
+        .get("/courses/getSingleCourse", { courseID: courseID })
+        .then((res) => {
+          setCourseData(res.data[0]);
+          console.log(res, "fetched course data");
+        })
+        .catch((error) => {
+          console.log(error.response.data.message);
+          navigate("/");
+        });
+    }
+  }, []);
   return (
     <div className="">
       <div className="flex justify-between gap-8 mx-8 flex-wrap lg:flex-nowrap my-16">

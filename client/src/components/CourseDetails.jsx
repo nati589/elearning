@@ -1,6 +1,6 @@
 import React from "react";
 import Pricecard from "../components/Pricecard";
-import selam   from "../../src/assets/Image.png";
+import BookImage  from "../../src/assets/Image.png";
 import PopularCourseCard from "./PopularCourseCard";
 
 function CourseDetails() {
@@ -95,23 +95,51 @@ function CourseDetails() {
       <h3 className="font-extrabold text-4xl t text-[#0A033C] ml-8 p-9">
         Similar Courses
       </h3>
+      
       <div className="flex flex-col mx-10">
-      <div className="grid grid-cols-3 gap-4">
-  <div className=" p-4"> <PopularCourseCard course_title='interaction' course_details='lorem Ipsum is simply dummy text of the printing and typesetting industry. '
-      course_thumbnail={selam}  course_total_hour='3Hours'   course_instructure="selam" course_level='level'  course_rate='4.7'  course_price='price'/></div>
-  <div className=" p-4"><PopularCourseCard course_title='interaction' course_details='lorem Ipsum is simply dummy text of the printing and typesetting industry. '
-      course_thumbnail={selam}  course_total_hour='3Hours'   course_instructure="selam" course_level='level'  course_rate='4.7'  course_price='price'/></div>
-  <div className=" p-4"><PopularCourseCard course_title='interaction' course_details='lorem Ipsum is simply dummy text of the printing and typesetting industry. '
-      course_thumbnail={selam}  course_total_hour='3Hours'   course_instructure="selam" course_level='level'  course_rate='4.7'  course_price='price'/></div>
+      <div className="flex flex-wrap overflow-x-auto overflow-y-auto">
+  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
+    <div className="p-4">
+      <PopularCourseCard
+        course_title="interaction"
+        course_details="lorem Ipsum is simply dummy text of the printing and typesetting industry."
+        course_thumbnail={BookImage}
+        course_total_hour="3Hours"
+        course_instructure="Wadew Warrren"
+        course_level="level"
+        course_rate="4.7"
+        course_price="price"
+      />
+    </div>
+    <div className="p-4">
+      <PopularCourseCard
+        course_title="interaction"
+        course_details="lorem Ipsum is simply dummy text of the printing and typesetting industry."
+        course_thumbnail={BookImage}
+        course_total_hour="3Hours"
+        course_instructure="Wadew Warrren"
+        course_level="level"
+        course_rate="4.7"
+        course_price="price"
+      />
+    </div>
+    <div className="p-4">
+      <PopularCourseCard
+        course_title="interaction"
+        course_details="lorem Ipsum is simply dummy text of the printing and typesetting industry."
+        course_thumbnail={BookImage}
+        course_total_hour="3Hours"
+        course_instructure="Wadew Warrren"
+        course_level="level"
+        course_rate="4.7"
+        course_price="price"
+      />
+    </div>
+    
+    
+  </div>
 </div>
-<div className="grid grid-cols-3 gap-4">
-  <div className=" p-4 "><PopularCourseCard course_title='interaction' course_details='lorem Ipsum is simply dummy text of the printing and typesetting industry. '
-      course_thumbnail={selam}  course_total_hour='3Hours'   course_instructure="selam" course_level='level'  course_rate='4.7'  course_price='price'/></div>
-  <div className=" p-4 "><PopularCourseCard course_title='interaction' course_details='lorem Ipsum is simply dummy text of the printing and typesetting industry. '
-      course_thumbnail={selam}  course_total_hour='3Hours'   course_instructure="selam" course_level='level'  course_rate='4.7'  course_price='price'/></div>
-  <div className="  p-4"><PopularCourseCard course_title='interaction' course_details='lorem Ipsum is simply dummy text of the printing and typesetting industry. '
-      course_thumbnail={selam}  course_total_hour='3Hours'   course_instructure="selam" course_level='level'  course_rate='4.7'  course_price='price'/></div>
-</div>
+
 </div>
 
       {/* <di className="grid md:grid-cols-2 gap-4 mx-8 my-4 sm:grid-cols-1">

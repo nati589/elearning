@@ -12,6 +12,8 @@ import axios from "axios";
 import InputComponent from "./InputComponent";
 import { GoMail } from "react-icons/go";
 import { email_validation } from "../utils/inputValidations";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faInstagram } from '@fortawesome/free-brands-svg-icons';
 
 function Footer() {
   const methods = useForm();
@@ -51,10 +53,62 @@ function Footer() {
   return (
     <footer
       style={{ borderTopLeftRadius: "20px", borderTopRightRadius: "20px" }}
-      className="py-4 px-8 mt-1 bg-light-purple">
+      className="py-4 px-8 mt-1  bg-light-purple">
       <div className="text-sm md:text-base lg:text-base container mx-auto flex flex-wrap items-center">
-        <div className="w-1/2 md:w-1/3 lg:w-1/4 mb-4 flex flex-col items-center justify-center  ">
-          <img src={Logo} alt="logo" className="w-8 h-8 " />
+      
+      <div className="w-1/2 md:w-1/3 lg:w-1/4 flex flex-col px-4 mb-5  justify-center ">
+          <ul className="text-subscribe-purple text-sm md:text-base lg:text-lg ml-10">
+          <li className="mb-1 hover:text-medium-purple font-bold">
+              <a href="/">LOGO</a>
+            </li>
+            <li className="mb-1 hover:text-medium-purple">
+              <a href="/">
+          <img
+            src={linkedinIcon}
+            alt="linkedin_logo"
+            className="w-7 h-7 mt-2 transform hover:scale-105 transition-transform duration-500 ease-in-out"
+          /></a>
+            </li>
+            <li className="mb-1 hover:text-medium-purple">
+              <a href="/">  <img
+            src={emailIcon}
+            alt="email_logo"
+            className="w-7 h-7 mt-2 transform hover:scale-105 transition-transform duration-500 ease-in-out"
+          /></a>
+            </li>
+            <li className="mb-1 hover:text-medium-purple">
+              <a href="/">   <img
+            src={fbIcon}
+            alt="fb_logo"
+            className="w-7 h-7 mt-2 transform hover:scale-105 transition-transform duration-500 ease-in-out"
+          /></a>
+            </li>
+            <li className="mb-1 hover:text-medium-purple">
+              <a href="/">   <img
+            src={instagramIcon}
+            alt="insta_logo"
+            className="w-7 h-7 mt-2 transform hover:scale-105 transition-transform duration-500 ease-in-out"
+          /></a>
+            </li>
+            <li className="mb-1 hover:text-medium-purple">
+              <a href="/">   <img
+            src={twitterIcon}
+            alt="twitter_logo"
+            className="w-7 h-7 mt-2 transform hover:scale-105 transition-transform duration-500 ease-in-out"
+          /></a>
+            </li>
+         
+            
+          </ul>
+        </div>
+      
+      
+      
+      
+        {/* <div className="w-1/2 md:w-1/3 lg:w-1/4 mb-4 flex flex-col items-center justify-center  ">
+          <img src={Logo} alt="logo" className="w-7 h-7 " />
+          <h1 class="font-bold text-3xl">Logo</h1>
+
           <img
             src={linkedinIcon}
             alt="linkedin_logo"
@@ -80,30 +134,28 @@ function Footer() {
             alt="twitter_logo"
             className="w-8 h-8 mt-2 hover:rotate-180 transition-transform duration-500 ease-in-out "
           />
-        </div>
-        <div className="w-1/2 md:w-1/3 lg:w-1/4 flex flex-col px-4 mb-8  justify-center ">
+        </div> */}
+        <div className="w-1/2 md:w-1/3 lg:w-1/4 flex flex-col px-4 mb-4  justify-center ">
           <ul className="text-subscribe-purple text-sm md:text-base lg:text-lg ml-10">
-            <li className="mb-2 hover:text-medium-purple font-bold">
+            <li className="mb-1 hover:text-medium-purple font-bold">
               <a href="/">FAQ & Help</a>
             </li>
-            <li className="mb-2 hover:text-medium-purple">
+            <li className="mb-1 hover:text-medium-purple">
               <a href="/">Courses</a>
             </li>
-            <li className="mb-2 hover:text-medium-purple">
-              <a href="/">Link 3</a>
+            <li className="mb-1 hover:text-medium-purple">
+              <a href="/">Books </a>
             </li>
-            <li className="mb-2 hover:text-medium-purple">
-              <a href="/">Link 4</a>
-            </li>
+            
           </ul>
         </div>
-        <div className="w-full max-w-xs md:w-1/3 lg:w-1/3 px-4 mb-8">
-          <h2 className="text-subscribe-purple mb-4 font-bold  text-lg">
+        <div className="w-full max-w-xs md:w-1/3 lg:w-1/3 px-4 mb-3">
+          <h2 className="text-subscribe-purple mb-0.1 font-bold  text-lg">
             Contact Us
           </h2>
           <FormProvider {...methods}>
             <form>
-              <div className="mb-4">
+              <div className="mb-0.1">
                 <InputComponent
                   logo={
                     <GoMail className="relative top-7 left-3  text-gray-500" />
@@ -117,7 +169,7 @@ function Footer() {
                   {...email_validation}
                 />
               </div>
-              <div className="flex flex-col flex-nowrap w-10/12 m-auto mb-2 mt-2">
+              <div className="flex flex-col flex-nowrap w-10/12 m-auto mb-1 mt-0.1">
                 <AnimatePresence mode="wait" initial={false}>
                   {errors.description && (
                     <InputError
@@ -131,7 +183,7 @@ function Footer() {
                   <textarea
                     id="description"
                     name="description"
-                    className="w-full font-sans font-thin text-sm bg-opacity-10 border-2 border-gray-200  pt-2 pb-2 pr-3 pl-9 mb-3 min-h-[100px] max-h-80 max-w-xl h-28 px-4 py-2 rounded-lg bg-white-700 border-b"
+                    className="w-full font-sans font-thin text-sm bg-opacity-10 border-2 border-gray-200  pt-1 pb-1 pr-3 pl-9 mb-0.1 min-h-[100px] max-h-80 max-w-xl h-28 px-4 py-2 rounded-lg bg-white-700 border-b"
                     placeholder="Enter your description"
                     rows="4"
                     {...register("description", {
@@ -141,7 +193,7 @@ function Footer() {
                 </label>
                 <button
                   onClick={handleClick}
-                  className="button-component self-start w-2/12 my-2 py-2 px-4">
+                  className="button-component self-start w-2/12 my-0.1 py-1 px-4">
                   Send
                 </button>
               </div>

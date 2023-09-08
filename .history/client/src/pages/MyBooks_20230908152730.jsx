@@ -73,7 +73,7 @@ export default function MyBooks() {
       <div className="flex flex-col md:flex-row flex-nowrap ">
         <div className="w-full text-xs md:text-sm px-8 md:px-4 pt-2 my-4 flex flex-col justify-start items-center">
           <div className="flex flex-col flex-nowrap w-full">
-            <div className="flex flex-col flex-nowrap my-3 bg-white rounded-lg shadow-md py-5 w-full justify-center items-center ">
+            <div className="flex flex-col flex-nowrap my-3 bg-off-white rounded-lg shadow-md py-5 w-full justify-center items-center ">
               <h2 className="text-center  text-subscribe-purple text-2xl font-semibold ">
                 My Courses
               </h2>

@@ -4,6 +4,10 @@ import BooksCard from "./BooksCard";
 import PopularCourseCard from "./PopularCourseCard";
 import BookImg from "../../src/assets/Cardphoto10.png";
 import TrendingCard from "./TrendingCoursesCard";
+import InputWithSuggestion from "./InputWithSuggestion";
+import booksData from "./booksData";
+import BookSearch from "./BookSearch";
+
 
 export default function BooksBody() {
   const BooksData = [
@@ -66,6 +70,7 @@ export default function BooksBody() {
   const isActive = (value) => {
     return value === filter ? "books-nav-active" : "books-nav";
   };
+  const [books, setBooks] = useState([...booksData]);
   return (
     <div className="flex flex-row flex-nowrap w-full">
       <div className="flex flex-col md:flex-row flex-nowrap w-4/12">
@@ -219,28 +224,26 @@ export default function BooksBody() {
         </div>
         <div>
           {" "}
-          <div className="flex w-full m-2 gap-8 justify-between xs:flex-wrap">
-            <div className="flex flex-row w-full m-2 my-3">
-              <div className="flex flex-row items-center justify-center mx-3 basis-1/2">
-                <input
-                  type="text"
-                  className="w-full rounded-lg border border-gray-400 p-2"
-                  placeholder="Search ..."
-                />
-                <button className="ml-2 rounded-lg bg-dark-purple p-2 text-white hover:bg-blue-600">
-                  Search
-                </button>
-              </div>
-              <div className="flex flex-row mx-3 items-center bg-light-purple justify-center">
-                <label htmlFor="sort" className="mr-2">
-                  Sort
-                </label>
-                <select name="sort" id="sort" className="rounded-md p-2">
-                  <option value="a">Latest</option>
-                  <option value="b">Oldest</option>
-                  <option value="c">c</option>
-                </select>
-              </div>
+          <div className="flex  w-full m-2 my-3 flex-col sm:flex-row  items-start sm:justify-between">
+             <BookSearch searchData={books}/>
+            <div className="flex flex-row mx-3 items-center justify-center pl-3 mt-8">
+              <label
+                htmlFor="sort"
+                className="mr-2 text-lg font-semibold text-purple-700 opacity-50  "
+              >
+                <pre className="sm:text-[1.5rem]">Sort by : </pre>
+              </label>
+              <select
+                name="sort"
+                id="sort"
+                className="rounded-md p-2 font-semibold bg-transparent pr-12 text-lg "
+              >
+                <option className="" value="a ">
+                  Latest
+                </option>
+                <option value="b">Oldest</option>
+                <option value="c">c</option>
+              </select>
             </div>
           </div>
         </div>

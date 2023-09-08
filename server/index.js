@@ -2,6 +2,8 @@ import express, { json } from "express";
 import authRoutes from "./routes/auth.js";
 import teamRoutes from "./routes/team.js";
 import booksRoutes from "./routes/books.js";
+import coursesRoutes from "./routes/courses.js";
+import purchasesRouter from "./routes/purchases.js";
 import webContentRoutes from "./routes/webContent.js";
 import usersRoutes from "./routes/users.js";
 import cookieParser from "cookie-parser";
@@ -12,9 +14,11 @@ import { db } from "./db.js";
 const app = express();
 
 app.use(express.json());
+
+const allowedOrigins = ["http://localhost:3000", "http://localhost:3001"];
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: allowedOrigins,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
@@ -27,6 +31,8 @@ app.use("/api/team", teamRoutes);
 app.use("/api/books", booksRoutes);
 app.use("/api/webcontent", webContentRoutes);
 app.use("/api/users", usersRoutes);
+app.use("/api/courses", coursesRoutes);
+app.use("/api/purchases", purchasesRouter);
 
 app.get("/", (req, res) => {
   res.json("success");

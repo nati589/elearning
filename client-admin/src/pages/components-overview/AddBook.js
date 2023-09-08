@@ -36,7 +36,7 @@ export default function AddBook() {
     // Make an API call using Axios
     // console.log(formData)
     axios
-      .post("http://localhost:8800/api/books/addBook", values, {
+      .post("/books/addBook", values, {
         headers: {
           "Content-Type": "multipart/form-data",
           // Set the Content-Type header to indicate file upload

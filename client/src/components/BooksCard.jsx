@@ -7,6 +7,7 @@ import EmptyStarIcon from "../assets/icons/empty_star.svg";
 import FullStarIcon from "../assets/icons/full_star.svg";
 
 function BooksCard({
+  Book_Id,
   Book_name,
   BookImagePath,
   Book_description,
@@ -21,7 +22,10 @@ function BooksCard({
   const Book_image = images(BookImagePath);
   const numbers = [1, 2, 3, 4, 5];
   return (
-    <div className="relative bg-white rounded-lg border-t-8 border-x-2 min-h-[180px] lg:min-h-[380px] h-fit md:w-full  border-medium-purple p-2 shadow-md">
+    <div
+      className="relative bg-white rounded-lg border-t-8 border-x-2 min-h-[180px] lg:min-h-[380px] h-fit md:w-full  border-medium-purple p-2 shadow-md cursor-pointer transition-transform duration-300 ease-in-out
+      hover:scale-[1.04] hover:-translate-y-1 hover:z-10 hover:drop-shadow-[0 35px 35px rgba(0, 0, 0, 1)]"
+    >
       <div className="flex flex-col px-1 items-center justify-center mb-2">
         <span className=" self-start mb-2 text-sm lg:text-xl font-semibold font-sans">
           {Book_name}

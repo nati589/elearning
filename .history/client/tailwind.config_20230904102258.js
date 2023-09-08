@@ -9,7 +9,6 @@ module.exports = {
         "medium-purple-hover": "#754DA2",
         "subscribe-purple": "#401C6F",
         "dark-purple": "#53389E",
-        "off-white": "#F7F5FA",
         "writing-dark": "#0A033C",
       },
     },

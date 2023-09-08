@@ -69,7 +69,7 @@ export default function MyBooks() {
   };
   const [books, setBooks] = useState([...booksData]);
   return (
-    <div className="flex flex-col flex-nowrap w-full bg-white">
+    <div className="flex flex-col flex-nowrap w-full">
       <div className="flex flex-col md:flex-row flex-nowrap ">
         <div className="w-full text-xs md:text-sm px-8 md:px-4 pt-2 my-4 flex flex-col justify-start items-center">
           <div className="flex flex-col flex-nowrap w-full">

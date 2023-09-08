@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 07, 2023 at 11:13 AM
+-- Generation Time: Sep 08, 2023 at 11:35 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.1.32
 
@@ -64,6 +64,7 @@ INSERT INTO `book` (`book_id`, `book_title`, `book_details`, `book_author`, `boo
 ('56f6d8b0-55dc-48a6-a2c5-f3072e11a046', 'hero withe ths', 'ldskjfd thewois ', 'dklskjdfldkj dsk', 0, 23, 0, NULL),
 ('571c7651-2ac7-4bc9-9be6-e4ade251e766', 'dssdfsdfds', 'dsffsdfdsfsdfsd', 'dsfsdfdsfdsf', 0, 12, 0, NULL),
 ('669a263e-5b8d-43c8-ba1f-85b2f46be774', 'dssdfsdfds', 'dsffsdfdsfsdfsd', 'dsfsdfdsfdsf', 0, 12, 0, NULL),
+('684f6903-bda6-4035-968e-d604d1c33f68', 'dlsjdslkfjd', ';sdfjklfjksdfjsdl', 'lsdkfjdsklfjdsflkjfs', 0, 12, 0, NULL),
 ('6a9bb2d2-0052-43de-996c-a9238deecf89', 'dssdfsdfds', 'dsffsdfdsfsdfsd', 'dsfsdfdsfdsf', 0, 12, 0, NULL),
 ('72c15bad-6845-47c3-9851-5568d6d661f6', 'dssdfsdfds', 'dsffsdfdsfsdfsd', 'dsfsdfdsfdsf', 0, 12, 0, NULL),
 ('768b80a4-d037-42f0-8f6e-a1110836892d', 'Diary of a ceo', 'Steven', 'a book is here', 0, 120, 0, NULL),
@@ -142,16 +143,30 @@ CREATE TABLE `course` (
   `course_details` varchar(1000) NOT NULL,
   `course_level` varchar(1000) NOT NULL,
   `course_certificate` tinyint(1) NOT NULL DEFAULT 1,
-  `course_students` varchar(1000) NOT NULL,
-  `course_rating` varchar(100) DEFAULT NULL,
-  `course_sections` int(10) NOT NULL,
-  `course_archived` tinyint(1) DEFAULT NULL,
+  `course_students` int(100) NOT NULL DEFAULT 0,
+  `course_rating` varchar(100) DEFAULT '0',
+  `course_sections` int(10) NOT NULL DEFAULT 0,
+  `course_archived` tinyint(1) DEFAULT 0,
   `course_price` double NOT NULL,
   `course_instructor` varchar(100) DEFAULT NULL,
   `course_max_comments` int(100) NOT NULL DEFAULT 5,
   `course_total_hour` int(100) DEFAULT NULL,
   `course_date_created` datetime(6) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `course`
+--
+
+INSERT INTO `course` (`course_id`, `course_title`, `course_details`, `course_level`, `course_certificate`, `course_students`, `course_rating`, `course_sections`, `course_archived`, `course_price`, `course_instructor`, `course_max_comments`, `course_total_hour`, `course_date_created`) VALUES
+('19a45b62-6f39-4034-8ca1-85770e6c7193', 'llsdjkfjkdsljflsdkjfsdljfkld', 'klsjfdslkfjsdlkfjsdklfjdslkf', 'Advanced', 1, 0, '0', 0, 0, 12, 'ksljdflfksdjfkldsjfksdlfjdskl', 5, 13, '2023-09-07 23:09:37.000000'),
+('5a0398dc-8998-4409-b9a5-f1adf380f3a1', 'sdfdsfsdfsd', 'fsdffssssssssss', 'Beginner', 1, 0, '0', 0, 0, 345, 'sdfghjk', 5, 23, '2023-09-08 00:09:57.000000'),
+('9154f207-9a25-418c-9b87-34257ef565d9', 'llsdjkfjkdsljflsdkjfsdljfkld', 'klsjfdslkfjsdlkfjsdklfjdslkf', 'Advanced', 1, 0, '0', 0, 0, 12, 'ksljdflfksdjfkldsjfksdlfjdskl', 5, 13, '2023-09-07 23:22:04.000000'),
+('985af890-025f-4cdb-a425-858d48d9c49a', 'llsdjkfjkdsljflsdkjfsdljfkld', 'klsjfdslkfjsdlkfjsdklfjdslkf', 'Advanced', 1, 0, '0', 0, 0, 12, 'ksljdflfksdjfkldsjfksdlfjdskl', 5, 13, '2023-09-07 23:12:52.000000'),
+('a18537b7-7716-4db6-b21d-598d8843b258', 'sdfdsfsdfsd', 'fsdffssssssssss', 'Beginner', 1, 0, '0', 0, 0, 345, 'sdfghjk', 5, 23, '2023-09-08 00:08:00.000000'),
+('c6bf0b68-0c74-47d6-9320-26a58757c6c6', 'llsdjkfjkdsljflsdkjfsdljfkld', 'klsjfdslkfjsdlkfjsdklfjdslkf', 'Advanced', 1, 0, '0', 0, 0, 12, 'ksljdflfksdjfkldsjfksdlfjdskl', 5, 13, '2023-09-07 23:11:44.000000'),
+('dac3dedc-5544-44e2-b76f-6a4f67a601aa', 'llsdjkfjkdsljflsdkjfsdljfkld', 'klsjfdslkfjsdlkfjsdklfjdslkf', 'Advanced', 1, 0, '0', 0, 0, 12, 'ksljdflfksdjfkldsjfksdlfjdskl', 5, 13, '2023-09-07 23:20:22.000000'),
+('faa2c699-971d-4394-9db9-edef4df7962c', 'sdfdsfsdfsd', 'fsdffssssssssss', 'Beginner', 1, 0, '0', 0, 0, 345, 'sdfghjk', 5, 23, '2023-09-08 00:21:23.000000');
 
 -- --------------------------------------------------------
 
@@ -242,6 +257,13 @@ CREATE TABLE `user` (
   `user_full_name` varchar(1000) NOT NULL,
   `user_date_joined` datetime(6) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`user_id`, `user_email`, `user_password`, `user_photo`, `user_token`, `user_full_name`, `user_date_joined`) VALUES
+('ef8202ae-2188-44d7-8bb1-da4b2ee4a3a3', 'haileyabsera3@gmail.com', '$2a$10$/TmjzMTEsE06YqcLE/uRj.WVsoGSP2Wxd5ieH/8ydu0OwefVzAoa6', NULL, NULL, 'Natan Mekebib', '2023-09-07 21:52:13.984000');
 
 -- --------------------------------------------------------
 

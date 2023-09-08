@@ -8,8 +8,23 @@ import {
   // ButtonBase,
 } from "@mui/material";
 import { useNavigate } from "../../../node_modules/react-router/dist/index";
+import axios from "axios";
 
 export default function CourseList() {
+  axios
+    .get("/courses/getCourses") // Replace with your API endpoint
+    .then((response) => {
+      // Handle the response
+      console.log(response.data);
+
+      // Reset the form and set submitting state to false
+    })
+    .catch((error) => {
+      // Handle the error
+      console.error(error);
+
+      // Reset the submitting state to false
+    });
   const navigate = useNavigate();
   const productList = [];
   const options = {

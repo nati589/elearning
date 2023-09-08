@@ -1,158 +1,175 @@
 import {
   Typography,
-  Grid,
   TextField,
   Box,
   Select,
   MenuItem,
+  FormControl,
+  InputLabel,
   Button,
 } from "@mui/material";
-import { useNavigate } from "../../../node_modules/react-router/dist/index";
-import SectionCard from "components/SectionCard";
-import { useState } from "react";
+import React from "react";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
+import axios from "axios";
 
 export default function AddCourse() {
-  const navigate = useNavigate("/coursemanagement");
-  const [sections, setSections] = useState([]);
-  console.log(sections.length);
+  const initialValues = {
+    course_title: "",
+    course_details: "",
+    course_level: "",
+    course_price: "",
+    course_instructor: "",
+    course_total_hours: "",
+    course_thumbnail: null,
+  };
+
+  const validationSchema = Yup.object({
+    course_title: Yup.string().required("Course Title is required"),
+    course_details: Yup.string().required("Course Details is required"),
+    course_level: Yup.string().required("Course Level is required"),
+    course_price: Yup.number().required("Course Price is required"),
+    course_instructor: Yup.string().required("Course Instructor is required"),
+    course_total_hours: Yup.number().required("Course Total Hours is required"),
+    course_thumbnail: Yup.mixed().required("Course Thumbnail is required"),
+  });
+
+  const handleSubmit = (values, { setSubmitting }) => {
+    console.log(values);
+    const formData = new FormData();
+
+    formData.append("course_title", values.course_title);
+    formData.append("course_details", values.course_details);
+    formData.append("course_level", values.course_level);
+    formData.append("course_price", values.course_price);
+    formData.append("course_instructor", values.course_instructor);
+    formData.append("course_total_hours", values.course_total_hours);
+    formData.append("course_thumbnail", values.course_thumbnail);
+    console.log(formData)
+
+    axios
+      .post("/courses/addCourse", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then((response) => {
+        console.log(response.data);
+        setSubmitting(false);
+      })
+      .catch((error) => {
+        console.error(error);
+        setSubmitting(false);
+      });
+  };
+
   return (
-    <>
-      <Grid container sx={{ px: 2 }}>
-        <Box>
-          <Typography variant="h4">Add Course</Typography>
-          <Typography variant="p">
-            This section is to create a course.
-          </Typography>
+    <Formik
+      initialValues={initialValues}
+      validationSchema={validationSchema}
+      onSubmit={handleSubmit}>
+      <Form>
+        <Field
+          as={TextField}
+          required
+          fullWidth
+          id="course_title"
+          label="Course Title"
+          name="course_title"
+          sx={{ my: 2 }}
+        />
+        <ErrorMessage name="course_title" component="div" />
+
+        <Field
+          as={TextField}
+          required
+          fullWidth
+          id="course_details"
+          label="Course Details"
+          name="course_details"
+          multiline
+          sx={{ my: 2 }}
+        />
+        <ErrorMessage name="course_details" component="div" />
+
+        <FormControl fullWidth sx={{ my: 2 }}>
+          <InputLabel id="course_level_label">Course Level</InputLabel>
+          <Field
+            as={Select}
+            required
+            fullWidth
+            id="course_level"
+            name="course_level"
+            labelId="course_level_label">
+            <MenuItem value="All">All</MenuItem>
+            <MenuItem value="Beginner">Beginner</MenuItem>
+            <MenuItem value="Intermediate">Intermediate</MenuItem>
+            <MenuItem value="Advanced">Advanced</MenuItem>
+          </Field>
+          <ErrorMessage name="course_level" component="div" />
+        </FormControl>
+
+        <Field
+          as={TextField}
+          required
+          fullWidth
+          type="number"
+          id="course_price"
+          label="Course Price"
+          name="course_price"
+        />
+        <ErrorMessage name="course_price" component="div" />
+
+        <Field
+          as={TextField}
+          required
+          fullWidth
+          id="course_instructor"
+          label="Course Instructor"
+          name="course_instructor"
+          sx={{ my: 2 }}
+        />
+        <ErrorMessage name="course_instructor" component="div" />
+
+        <Field
+          as={TextField}
+          required
+          fullWidth
+          type="number"
+          id="course_total_hours"
+          label="Course Total Hours"
+          name="course_total_hours"
+        />
+        <ErrorMessage name="course_total_hours" component="div" />
+
+        <Box sx={{ my: 2, ml: 0.2 }}>
+          <Typography>Course Thumbnail</Typography>
+          <Field name="course_thumbnail">
+            {({ field, form }) => (
+              <div>
+                <input
+                  id="course_thumbnail"
+                  type="file"
+                  onChange={(event) =>
+                    form.setFieldValue(field.name, event.target.files[0])
+                  }
+                />
+                <ErrorMessage name="course_thumbnail" component="div" />
+              </div>
+            )}
+          </Field>
         </Box>
-        <Grid item xs={12}>
-          <Box component="form" onSubmit={() => {}}>
-            <TextField
-              required
-              fullWidth
-              id="course_title"
-              label="Course Title"
-              name="course_title"
-              sx={{ my: 2 }}
-              // onChange={(event) => setProduct(event.target.value)}
-            />
-            <TextField
-              required
-              fullWidth
-              id="course_instructor"
-              label="Instructor Name"
-              name="course_instructor"
-              sx={{ my: 2 }}
 
-              // onChange={(event) => setProduct(event.target.value)}
-            />
-            <TextField
-              required
-              fullWidth
-              id="course_details"
-              label="Course Description "
-              name="course_details"
-              multiline
-              sx={{ my: 2 }}
-              // onChange={(event) => setProduct(event.target.value)}
-            />
-            <Box sx={{ display: "flex", gap: 2, mt: 2 }}>
-              <Select
-                // sx={{ m: 2, minWidth: 220 }}
-
-                labelId="course_level_label"
-                id="course_level"
-                value="all"
-                label="Level"
-                // onChange={handleChange}
-              >
-                <MenuItem value="all">All Level</MenuItem>
-                <MenuItem value="beginner">beginner</MenuItem>
-                <MenuItem value="Intermediate">Intermediate</MenuItem>
-                <MenuItem value="advance">Advance</MenuItem>
-              </Select>
-              <TextField
-                required
-                type="number"
-                id="course_price"
-                label="Course Price"
-                name="course_price"
-
-                // onChange={(event) => setProduct(event.target.value)}
-              />
-              <TextField
-                required
-                type="number"
-                id="course_total_hour"
-                label="Course Total Hour"
-                name="course_price"
-
-                // onChange={(event) => setProduct(event.target.value)}
-              />
-            </Box>
-            <Box sx={{ my: 2, ml: 0.2 }}>
-              <Typography>Course Thumbnail</Typography>
-              <TextField
-                required
-                fullWidth
-                type="file"
-                // helperText=" please upload your course thumnail "
-                id="course_thumbnail"
-                // label="Lesson Detail"
-                name="course_thumbnail"
-                sx={{ my: 0.5 }}
-                // onChange={(event) => setProduct(event.target.value)}
-              />
-              {/* <Stack direction="row" alignItems="center" spacing={2}>
-              <Button variant="outlined"  component="label">
-                Upload Thumbnail
-                <input hidden accept="image/*" multiple type="file" />
-              </Button>
-            </Stack> */}
-            </Box>
-            {/* <TextareaAutosize minRows={5}/> */}
-          </Box>
-        </Grid>
-      </Grid>
-      <Box sx={{ px: 2 }}>
-        <Typography variant="h6">Sections</Typography>
-      </Box>
-      <Box sx={{ w: "100%", px: 2 }}>
-        {sections?.map((section) => (
-          <SectionCard key={section} />
-        ))}
-      </Box>
-      <Box
-        sx={{
-          px: 2,
-          //  display: 'flex', justifyContent: 'end'
-        }}>
-        <Button
-          variant="contained"
-          color="error"
-          onClick={() => setSections([...sections, {}])}>
-          Add +
-        </Button>
-      </Box>
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "flex-end",
-          gap: 1.5,
-          mt: 2,
-          px: 2,
-        }}>
-        <Button
-          variant="outlined"
-          type="submit"
-          onClick={() => {
-            navigate("/coursemanagement");
-          }}>
-          Cancel
-        </Button>
-        <Button variant="contained" type="submit">
-          Next
-        </Button>
-      </Box>
-    </>
+        <Box
+          sx={{ display: "flex", justifyContent: "flex-end", gap: 1.5, mt: 2 }}>
+          <Button variant="outlined" type="submit">
+            Cancel
+          </Button>
+          <Button variant="contained" type="submit">
+            Next
+          </Button>
+        </Box>
+      </Form>
+    </Formik>
   );
 }

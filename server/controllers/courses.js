@@ -6,14 +6,29 @@ export const getCourses = (req, res) => {
   const q = "SELECT * FROM course WHERE course_archived = '0'";
   db.query(q, (err, data) => {
     if (err) {
-      return res
-        .status(401)
-        .send({ message: "Connection error try again."});
+      return res.status(401).send({ message: "Connection error try again." });
     } else {
-      res.json(data);
+      res.status(200).json(data);
     }
   });
 };
+
+export const getSingleCourse = (req, res) => {
+  const { courseID } = req.body;
+  const q = "SELECT * FROM course WHERE course_id =?";
+  db.query(q, [courseID], (err, data) => {
+    if (err) {
+      return res.status(401).send({ message: "Connection error try again." });
+    } else {
+      if (data.length === 0) {
+        return res.status(404).send({ message: "Data not found!" });
+      }
+
+      res.status(200).json(data);
+    }
+  });
+};
+
 export const getCoursesThisYear = (req, res) => {
   const q = `
     SELECT *

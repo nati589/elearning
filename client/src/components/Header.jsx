@@ -5,7 +5,7 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import logo from "../assets/Logo.png";
 import LoginModal from "./LoginModal";
 import SignupModal from "./SignupModal";
-import DefaultProfile from "../assets/default_profile.svg";
+import DefaultProfile from "../assets/ProfilePic.png";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import "../styles/Header.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -22,10 +22,10 @@ const navigation = [
 
 const subNavigation = [
   { name: "All Courses", to: "/courses" },
-  { name: "My Books", to: "/" },
+  { name: "My Books", to: "/mybooks" },
   { name: "Learning", to: "/learning" },
   // { name: "My Status", to: "/" },
-  { name: "My Courses", to: "/" },
+  { name: "My Courses", to: "/mycourses" },
   { name: "Cart", to: "/cart" },
 ];
 
@@ -73,6 +73,7 @@ function Header() {
           localStorage.clear();
           alert("Logout Successful");
           setAvatarState(!avatarState);
+          setMobileMenuOpen(false);
           navigate("/");
         }, 2000);
       })
@@ -144,10 +145,10 @@ function Header() {
     !forgotpsdModal ? disableScroll() : enableScroll();
   };
 
-  useEffect(() => {
-    /* global google */
-    google.accounts.id.prompt();
-  }, []);
+  // useEffect(() => {
+  //   /* global google */
+  //   google.accounts.id.prompt();
+  // }, []);
 
   return (
     <>
@@ -226,9 +227,9 @@ function Header() {
                   {/* profile avatar */}
                   <button
                     id="dropdownDefaultButton"
-                    className="text-white min-w-[50%] cursor-default bg-light-purple h-14 px-3 font-medium  rounded-[32px] text-center flex flex-row flex-nowrap items-center "
+                    className="text-white min-w-[40%] cursor-default bg-light-purple h-14 font-medium  rounded-[32px] text-center flex flex-row flex-nowrap items-center justify-center "
                     type="button">
-                    <span className="min-w-[60%] mx-2 font-sans text-sm text-dark-purple justify-self-start">
+                    <span className="min-w-[50%] mx-2 font-sans text-sm text-dark-purple justify-self-start">
                       {localStorage.getItem("username")}
                     </span>
                     <Link to="/profile/">
@@ -240,7 +241,7 @@ function Header() {
                     <FontAwesomeIcon
                       onClick={openAvatar}
                       icon={faCaretDown}
-                      className="text-dark-purple mx-1 hover:text-writing-dark cursor-pointer w-auto h-5"
+                      className="text-dark-purple mx-1 mr-2 hover:text-writing-dark cursor-pointer w-auto h-5"
                     />
                   </button>
                   {/* Avatar Dropdown */}

@@ -1,6 +1,6 @@
 import React from "react";
 import PopularCourseCard from "../components/PopularCourseCard";
-import selam   from "../../src/assets/Image.png";
+import BookImage  from "../../src/assets/Image.png";
 import TrendingCoursesCard from "../components/TrendingCoursesCard";
 
 function TestPage() {
@@ -14,24 +14,24 @@ function TestPage() {
       <PopularCourseCard
         course_title="interaction"
         course_details="lorem Ipsum is simply dummy text of the printing and typesetting industry. "
-        course_thumbnail={selam}
+        course_thumbnail={BookImage}
         course_total_hour="3Hours"
-        course_instructure="selam"
+        course_instructure="Wadew Warren"
         course_level="level"
         course_rate="4.7"
         course_price="price"
       />
       {/* <PopularCourseCard course_title='interaction' course_details='orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book'
-      course_thumbnail={selam}  course_total_hour='3Hours'   course_instructure='selam' course_level='level'  course_rate='4.7'  course_price='price'/>
+      course_thumbnail={BookImage }  course_total_hour='3Hours'   course_instructure='Wadew Warren' course_level='level'  course_rate='4.7'  course_price='price'/>
       <PopularCourseCard course_title='interaction' course_details='orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book'
-      course_thumbnail={selam}  course_total_hour='3Hours'   course_instructure='selam' course_level='level'  course_rate='4.7'  course_price='price'/>
+      course_thumbnail={BookImage }  course_total_hour='3Hours'   course_instructure='Wadew Warren' course_level='level'  course_rate='4.7'  course_price='price'/>
       <PopularCourseCard course_title='interaction' course_details='orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book'
-      course_thumbnail={selam}  course_total_hour='3Hours'   course_instructure='selam' course_level='level'  course_rate='4.7'  course_price='price'/>
+      course_thumbnail={BookImage }  course_total_hour='3Hours'   course_instructure='Wadew Warren' course_level='level'  course_rate='4.7'  course_price='price'/>
       <PopularCourseCard course_title='interaction' course_details='orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book'
-      course_thumbnail={selam}  course_total_hour='3Hours'   course_instructure='selam' course_level='level'  course_rate='4.7'  course_price='price'/> */}
+      course_thumbnail={BookImage }  course_total_hour='3Hours'   course_instructure='Wadew Warren' course_level='level'  course_rate='4.7'  course_price='price'/> */}
 <TrendingCoursesCard course_title='interaction' course_details='lorem Ipsum is simply dummy text of the printing and typesetting industry.
 '
-      course_thumbnail={selam}/> 
+      course_thumbnail={BookImage}/> 
 
       {/* <Selam1  course_title='interaction' course_details='lorem Ipsum is simply dummy text of the printing and typesetting industry.lorem Ipsum is simply dummy text of the printing and typesetting industry.lorem Ipsum is simply dummy text of the printing and typesetting industry.lorem Ipsum is simply dummy text of the printing and typesetting industry.lorem Ipsum is simply dummy text of the printing and typesetting industry.lorem Ipsum is simply dummy text of the printing and typesetting industry.lorem Ipsum is simply dummy text of the printing and typesetting industry.lorem Ipsum is simply dummy text of the printing and typesetting industry.lorem Ipsum is simply dummy text of the printing and typesetting industry.lorem Ipsum is simply dummy text of the printing and typesetting industry. '
 course_thumbnail={selam}  course_total_hour='3Hours'   course_instructure='selam' course_level='level'  course_rate='4.7'  course_price='price' 

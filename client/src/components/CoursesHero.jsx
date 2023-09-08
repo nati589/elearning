@@ -7,28 +7,12 @@ function CoursesHero() {
 
   return (
     <div className="mx-8 bg-violet-50 rounded-3xl px-8 py-2 mb-16">
-      <div className="">
-        <button
-          className="text-gray-400"
-          onClick={() => {
-            navigate("  /");
-          }}>
-          Home
-        </button>
-        <span className="text-gray-400"> | </span>
-        <button
-          className="text--indigo-500"
-          onClick={() => {
-            navigate("  /courses");
-          }}>
-          Courses
-        </button>
-      </div>
       <div className="flex items-center justify-around py-4 flex-wrap-reverse lg:flex-nowrap">
         <>
           <span className="flex gap-4">
             <h2 className="text-4xl sm:text-6xl font-bold text-center my-2">
-              <span className="text-medium-purple">Courses</span> for All Standards
+              <span className="text-medium-purple">Courses</span> for All
+              Standards
             </h2>
           </span>
         </>

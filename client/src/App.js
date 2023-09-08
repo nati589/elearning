@@ -19,10 +19,11 @@ import UserProfileDashboard from "./components/UserProfileDashboard";
 import "./styles/App.css";
 import Cart from "./pages/Cart";
 import PasswordResetPage from "./pages/PasswordResetPage";
-import Dashboard from "./components/Dashboard";
 import LearningPage from "./pages/LearningPage";
 import SectionContent from "./components/LearningPageComponents/SectionContent";
 import CourseSectionList from "./components/LearningPageComponents/CourseSectionList";
+import MyBooks from "./pages/MyBooks";
+import MyCourses from "./pages/MyCourses";
 
 export default function App() {
   return (
@@ -45,8 +46,11 @@ export default function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/learning" element={<LearningPage />}>
           {/* Nested route for sections */}
-          <Route  index element={<CourseSectionList />} />
-          <Route path="/learning/section/:sectionId" element={<SectionContent />} />
+          <Route index element={<CourseSectionList />} />
+          <Route
+            path="/learning/section/:sectionId"
+            element={<SectionContent />}
+          />
         </Route>
 
         <Route path="/profile" element={<UserProfile />}>
@@ -56,6 +60,8 @@ export default function App() {
           <Route exact path="/profile/support" element={<Support />} />
         </Route>
         <Route exact path="password-reset" element={<PasswordResetPage />} />
+        <Route path="/mybooks" element={<MyBooks />}></Route>
+        <Route path="/mycourses" element={<MyCourses />}></Route>
       </Routes>
 
       {/* <Subscription /> */}

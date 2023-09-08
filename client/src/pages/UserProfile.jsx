@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDashboard } from "@fortawesome/free-solid-svg-icons";
 import { BsArrowLeftShort } from "react-icons/bs";
 import { FaLock, FaCog, FaLifeRing, FaDashcube } from "react-icons/fa";
-import DefaultProfile from "../assets/default_profile.svg";
+import DefaultProfile from "../assets/ProfilePic.png";
 import { NavLink, Outlet, Route, Routes } from "react-router-dom";
 import "../styles/UserProfile.css";
 
@@ -28,7 +28,8 @@ function UserProfile() {
       <div
         className={`h-full flex flex-col flex-nowrap items-center bg-gradient-to-b from-dark-purple via-medium-purple to-light-purple px-2 pt-8 ${
           open ? "w-3/12" : "w-1/12"
-        } duration-300 relative`}>
+        } duration-300 relative`}
+      >
         <BsArrowLeftShort
           className={`bg-white text-purple-800 text-3xl rounded-full absolute -right-3 top-9 border border-purple-800 cursor-pointer ${
             !open && "rotate-180"
@@ -45,7 +46,8 @@ function UserProfile() {
         <h1
           className={`inline-flex font-bold ${
             open ? "text-xl" : "text-sm"
-          } px-10`}>
+          } px-10`}
+        >
           {" "}
           {localStorage.getItem("username")}
         </h1>
@@ -57,10 +59,12 @@ function UserProfile() {
               to={menu.to}
               className={`user-nav text-grey-300 text-base flex items-center gap-x-4 cursor-pointer p-2 px-5 hover:bg-white rounded-md ${
                 menu.spacing ? "mt-9" : "mt-2"
-              } mt-2 `}>
+              } mt-2 `}
+            >
               <span>{menu.icon}</span>
               <span
-                className={`text-base font-medium flex-1 ${!open && "hidden"}`}>
+                className={`text-base font-medium flex-1 ${!open && "hidden"}`}
+              >
                 {menu.title}
               </span>
             </NavLink>

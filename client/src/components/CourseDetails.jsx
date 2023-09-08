@@ -1,14 +1,37 @@
+import React, { useEffect, useState } from "react";
 import Pricecard from "../components/Pricecard";
-import selam from "../../src/assets/Image.png";
+import BookImage from "../../src/assets/Image.png";
 import PopularCourseCard from "./PopularCourseCard";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function CourseDetails() {
-  const courses = [
-    { title: "Ha Geez", image: require("../assets/Cardphoto.png") },
-    { title: "Hu Cabe", image: require("../assets/Cardphoto2.png") },
-    { title: "Hei Seles", image: require("../assets/Cardphoto3.png") },
-    { title: "Ho Rabe", image: require("../assets/Cardphoto4.png") },
-  ];
+  // const courses = [
+  //   { title: "Ha Geez", image: require("../assets/Cardphoto.png") },
+  //   { title: "Hu Cabe", image: require("../assets/Cardphoto2.png") },
+  //   { title: "Hei Seles", image: require("../assets/Cardphoto3.png") },
+  //   { title: "Ho Rabe", image: require("../assets/Cardphoto4.png") },
+  // ];
+  const navigate = useNavigate();
+  const [courseData, setCourseData] = useState({});
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const courseID = urlParams.get("id");
+    if (courseID === null) {
+      navigate("/");
+    } else {
+      axios
+        .get("/courses/getSingleCourse", { courseID: courseID })
+        .then((res) => {
+          setCourseData(res.data[0]);
+          console.log(res, "fetched course data");
+        })
+        .catch((error) => {
+          console.log(error.response.data.message);
+          // navigate("/");
+        });
+    }
+  }, [navigate]);
   return (
     <div className="">
       <div className="flex justify-between gap-8 mx-8 flex-wrap lg:flex-nowrap my-16">
@@ -104,84 +127,86 @@ function CourseDetails() {
       <h3 className="font-extrabold text-4xl t text-[#0A033C] ml-8 p-9">
         Similar Courses
       </h3>
+
       <div className="flex flex-col mx-10">
-        <div className="grid grid-cols-3 gap-4">
-          <div className=" p-4">
-            {" "}
-            <PopularCourseCard
-              course_title="interaction"
-              course_details="lorem Ipsum is simply dummy text of the printing and typesetting industry. "
-              course_thumbnail={selam}
-              course_total_hour="3Hours"
-              course_instructure="selam"
-              course_level="level"
-              course_rate="4.7"
-              course_price="price"
-            />
-          </div>
-          <div className=" p-4">
-            <PopularCourseCard
-              course_title="interaction"
-              course_details="lorem Ipsum is simply dummy text of the printing and typesetting industry. "
-              course_thumbnail={selam}
-              course_total_hour="3Hours"
-              course_instructure="selam"
-              course_level="level"
-              course_rate="4.7"
-              course_price="price"
-            />
-          </div>
-          <div className=" p-4">
-            <PopularCourseCard
-              course_title="interaction"
-              course_details="lorem Ipsum is simply dummy text of the printing and typesetting industry. "
-              course_thumbnail={selam}
-              course_total_hour="3Hours"
-              course_instructure="selam"
-              course_level="level"
-              course_rate="4.7"
-              course_price="price"
-            />
-          </div>
-        </div>
-        <div className="grid grid-cols-3 gap-4">
-          <div className=" p-4 ">
-            <PopularCourseCard
-              course_title="interaction"
-              course_details="lorem Ipsum is simply dummy text of the printing and typesetting industry. "
-              course_thumbnail={selam}
-              course_total_hour="3Hours"
-              course_instructure="selam"
-              course_level="level"
-              course_rate="4.7"
-              course_price="price"
-            />
-          </div>
-          <div className=" p-4 ">
-            <PopularCourseCard
-              course_title="interaction"
-              course_details="lorem Ipsum is simply dummy text of the printing and typesetting industry. "
-              course_thumbnail={selam}
-              course_total_hour="3Hours"
-              course_instructure="selam"
-              course_level="level"
-              course_rate="4.7"
-              course_price="price"
-            />
-          </div>
-          <div className="  p-4">
-            <PopularCourseCard
-              course_title="interaction"
-              course_details="lorem Ipsum is simply dummy text of the printing and typesetting industry. "
-              course_thumbnail={selam}
-              course_total_hour="3Hours"
-              course_instructure="selam"
-              course_level="level"
-              course_rate="4.7"
-              course_price="price"
-            />
+        <div className="flex flex-wrap overflow-x-auto overflow-y-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
+            <div className="p-4">
+              <PopularCourseCard
+                course_title="interaction"
+                course_details="lorem Ipsum is simply dummy text of the printing and typesetting industry."
+                course_thumbnail={BookImage}
+                course_total_hour="3Hours"
+                course_instructure="Wadew Warrren"
+                course_level="level"
+                course_rate="4.7"
+                course_price="price"
+              />
+            </div>
+            <div className="p-4">
+              <PopularCourseCard
+                course_title="interaction"
+                course_details="lorem Ipsum is simply dummy text of the printing and typesetting industry."
+                course_thumbnail={BookImage}
+                course_total_hour="3Hours"
+                course_instructure="Wadew Warrren"
+                course_level="level"
+                course_rate="4.7"
+                course_price="price"
+              />
+            </div>
+            <div className="p-4">
+              <PopularCourseCard
+                course_title="interaction"
+                course_details="lorem Ipsum is simply dummy text of the printing and typesetting industry."
+                course_thumbnail={BookImage}
+                course_total_hour="3Hours"
+                course_instructure="Wadew Warrren"
+                course_level="level"
+                course_rate="4.7"
+                course_price="price"
+              />
+            </div>
           </div>
         </div>
+        {/* <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
+  <div className="p-4">
+    <PopularCourseCard
+      course_title="interaction"
+      course_details="lorem Ipsum is simply dummy text of the printing and typesetting industry."
+      course_thumbnail={BookImage}
+      course_total_hour="3Hours"
+      course_instructure="Wadew Warrren"
+      course_level="level"
+      course_rate="4.7"
+      course_price="price"
+    />
+  </div>
+  <div className="p-4">
+    <PopularCourseCard
+      course_title="interaction"
+      course_details="lorem Ipsum is simply dummy text of the printing and typesetting industry."
+      course_thumbnail={BookImage}
+      course_total_hour="3Hours"
+      course_instructure="Wadew Warrren"
+      course_level="level"
+      course_rate="4.7"
+      course_price="price"
+    />
+  </div>
+  <div className="p-4">
+    <PopularCourseCard
+      course_title="interaction"
+      course_details="lorem Ipsum is simply dummy text of the printing and typesetting industry."
+      course_thumbnail={BookImage}
+      course_total_hour="3Hours"
+      course_instructure="Wadew Warrren"
+      course_level="level"
+      course_rate="4.7"
+      course_price="price"
+    />
+  </div>
+</div> */}
       </div>
 
       {/* <di className="grid md:grid-cols-2 gap-4 mx-8 my-4 sm:grid-cols-1">

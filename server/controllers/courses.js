@@ -3,12 +3,12 @@ import fs from "fs";
 import { v4 as uuidv4 } from "uuid";
 
 export const getCourses = (req, res) => {
-  const q = "SELECT * FROM course";
+  const q = "SELECT * FROM course WHERE course_archived = '0'";
   db.query(q, (err, data) => {
     if (err) {
       return res
         .status(401)
-        .send({ message: "Connection error try again.", data: result });
+        .send({ message: "Connection error try again."});
     } else {
       res.json(data);
     }
@@ -71,4 +71,15 @@ export const addCourse = (req, res) => {
   });
 };
 export const updateCourse = (req, res) => {};
-export const deleteCourse = (req, res) => {};
+export const deleteCourse = (req, res) => {
+  const q = `UPDATE course SET course_archived = 1 WHERE course_id = '${req.body.id}'`;
+  db.query(q, req.body.id, (err, data) => {
+    if (err) {
+      return res
+        .status(401)
+        .send({ message: "Connection error try again." });
+    } else {
+      res.json(data);
+    }
+  });
+};

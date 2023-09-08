@@ -16,5 +16,6 @@ router.delete("/deleteCourse", deleteCourse);
 router.post("/addCourse", upload.single("course_thumbnail"), addCourse);
 router.get("/getCourses", getCourses);
 router.get("/getCoursesThisYear", getCoursesThisYear);
+router.get("/")
 
 export default router;

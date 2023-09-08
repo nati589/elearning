@@ -80,7 +80,7 @@ export const password_validation = {
             message: 'maximum 30 characters',
         },
         pattern: {
-            value:  /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$/,
+            value:  /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@><{};'|":./$%^&*-]).{6,}$/,
             message: 'include Uppercase, Lowercase, digit and special character',
         },
         

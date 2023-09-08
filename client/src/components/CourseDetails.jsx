@@ -167,6 +167,18 @@ function CourseDetails() {
                 course_price="price"
               />
             </div>
+            <div className="p-4">
+              <PopularCourseCard
+                course_title="interaction"
+                course_details="lorem Ipsum is simply dummy text of the printing and typesetting industry."
+                course_thumbnail={BookImage}
+                course_total_hour="3Hours"
+                course_instructure="Wadew Warrren"
+                course_level="level"
+                course_rate="4.7"
+                course_price="price"
+              />
+            </div>
           </div>
         </div>
         {/* <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">

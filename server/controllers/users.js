@@ -5,11 +5,27 @@ import bcrypt from "bcryptjs";
 import { v4 as uuidv4 } from "uuid";
 
 export const getUsers = (req, res) => {
-  const q = "select * from team";
+  const q = "SELECT * FROM user";
 
   db.query(q, (err, data) => {
     if (err) {
       res.json(err);
+    } else {
+      res.json(data);
+    }
+  });
+};
+
+export const getUsersThisYear = (req, res) => {
+  const q = `
+    SELECT *
+    FROM user
+    WHERE YEAR(user_date_joined) = YEAR(CURRENT_DATE)
+  `;
+  db.query(q, (err, data) => {
+    if (err) {
+      res.json(err);
+      console.log(err);
     } else {
       res.json(data);
     }
@@ -38,7 +54,7 @@ export const addUser = (req, res) => {
         const currentDate = new Date();
 
         const q =
-          "INSERT INTO user (user_id, user_full_name,user_email,user_password,user_joined) VALUES (?,?,?,?,?)";
+          "INSERT INTO user (user_id, user_full_name,user_email,user_password,user_date_joined) VALUES (?,?,?,?,?)";
 
         const salt = bcrypt.genSaltSync(10);
         const hash = bcrypt.hashSync(user_password, salt);
@@ -54,8 +70,7 @@ export const addUser = (req, res) => {
               });
             } else {
               res.status(200).json({
-                message:
-                  "Password reset successful. Login with your new credentials",
+                message: "You have Registered Successfully! Please login.",
               });
             }
           }

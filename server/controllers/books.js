@@ -3,15 +3,75 @@ import fs from "fs";
 import { v4 as uuidv4 } from "uuid";
 
 export const getBooks = (req, res) => {
-    const q = "select * from book";
-    db.query(q, (err, data) => {
-      if (err) {
-        res.json(err);
-        console.log(err);
-      } else {
-        res.json(data);
-      }
-    });
+  const q = "SELECT * FROM book";
+  db.query(q, (err, data) => {
+    if (err) {
+      res.json(err);
+      console.log(err);
+    } else {
+      res.json(data);
+    }
+  });
+};
+export const getBooksThisYear = (req, res) => {
+  const q = `
+    SELECT *
+    FROM book
+    WHERE YEAR(book_date_created) = YEAR(CURRENT_DATE)
+  `;
+  db.query(q, (err, data) => {
+    if (err) {
+      res.json(err);
+      console.log(err);
+    } else {
+      res.json(data);
+    }
+  });
+};
+export const getBooksThisWeek = (req, res) => {
+  const q = `
+      SELECT DAYNAME(book_date_created) AS day_name, COUNT(*) AS count
+      FROM book
+      WHERE book_date_created >= CURDATE() - INTERVAL 6 DAY
+        AND book_date_created < CURDATE() + INTERVAL 1 DAY
+      GROUP BY DAYNAME(book_date_created)
+      ORDER BY DAYNAME(book_date_created) DESC;
+    `;
+  db.query(q, (err, data) => {
+    if (err) {
+      res.json(err);
+      console.log(err);
+    } else {
+      const resultArray = [];
+
+      // Initialize the array with days and counts
+      const daysOfWeek = [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+      ];
+      console.log(data);
+      daysOfWeek.forEach((day) => {
+        const row = data.find((r) => r.day_name === day);
+        resultArray.push({
+          day_name: day,
+          count: row ? row.count : 0,
+        });
+      });
+
+      // Print the result array
+      const dataOfWeek = resultArray.map((data) => data.count);
+
+      res.json({
+        dataOfWeek,
+      });
+    }
+  });
+  db.query(q);
 };
 
 export const addBook = (req, res) => {

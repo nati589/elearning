@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
@@ -18,25 +18,24 @@ const navigation = [
   { name: "Home", to: "/" },
   { name: "Books", to: "/books" },
   { name: "Courses", to: "/courses" },
-  { name: "Cart", to: "/cart" },
 ];
 
 const subNavigation = [
   { name: "All Courses", to: "/courses" },
   { name: "My Books", to: "/" },
-  { name: "Learning", to: "/" },
-  { name: "My Status", to: "/" },
+  { name: "Learning", to: "/learning" },
+  // { name: "My Status", to: "/" },
   { name: "My Courses", to: "/" },
+  { name: "Cart", to: "/cart" },
 ];
 
 const avatarNavigation = [
-  { name: "Dashboard", to: "/profile/dashboard" },
+  { name: "Dashboard", to: "/profile/" },
   { name: "Privacy and Security", to: "/profile/privacy" },
   { name: "Settings", to: "/profile/setting" },
 ];
 
 function Header() {
-
   const methods = useForm();
   const navigate = useNavigate();
 
@@ -61,32 +60,50 @@ function Header() {
     setMobileMenuOpen,
   ];
 
-  const { handleSubmit } = methods;
+  // const { handleSubmit } = methods;
   const avatarMenu = avatarState
-    ? "z-10 absolute right-10 top-[72px] bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700"
+    ? "z-10 absolute right-10 top-[72px] bg-white divide-y divide-gray-100 rounded-lg shadow w-52 dark:bg-gray-700"
     : "hidden";
 
-  const submitInputs = handleSubmit((data) => {
+  const logoutHandler = () => {
     axios
-      .post("/auth/login", data)
+      .get("/auth/logout")
       .then((res) => {
-        setSubmitSuccess(true);
-        setMsg(res.data.message);
-        setFailure(false);
         setTimeout(() => {
-          setSubmitSuccess(false);
+          localStorage.clear();
+          alert("Logout Successful");
+          setAvatarState(!avatarState);
           navigate("/");
         }, 2000);
       })
       .catch((error) => {
-        setSubmitSuccess(true);
-        setMsg(error.response.data.message);
-        setFailure(true);
         setTimeout(() => {
-          setSubmitSuccess(false);
+          alert("Unexpected error during logout. Please try again. ");
         }, 2000);
       });
-  });
+  };
+
+  // const submitInputs = handleSubmit((data) => {
+  //   axios
+  //     .post("/auth/login", data)
+  //     .then((res) => {
+  //       setSubmitSuccess(true);
+  //       setMsg(res.data.message);
+  //       setFailure(false);
+  //       setTimeout(() => {
+  //         setSubmitSuccess(false);
+  //         navigate("/");
+  //       }, 2000);
+  //     })
+  //     .catch((error) => {
+  //       setSubmitSuccess(true);
+  //       setMsg(error.response.data.message);
+  //       setFailure(true);
+  //       setTimeout(() => {
+  //         setSubmitSuccess(false);
+  //       }, 2000);
+  //     });
+  // });
 
   const openAvatar = () => {
     setAvatarState(!avatarState);
@@ -130,7 +147,7 @@ function Header() {
   useEffect(() => {
     /* global google */
     google.accounts.id.prompt();
-}, [])
+  }, []);
 
   return (
     <>
@@ -191,51 +208,66 @@ function Header() {
             </div>
 
             <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end">
-              <div onClick={toggleSignin} className="button-component h-12">
-                Log in{" "}
-              </div>
-              <div
-                onClick={toggleSignup}
-                className="button-component-stroke h-12">
-                Sign Up
-              </div>
-
-              {/* profile avatar */}
-              <button
-                id="dropdownDefaultButton"
-                className="text-white cursor-default bg-light-purple h-14 px-3 font-medium  rounded-[32px] text-center flex flex-row flex-nowrap items-center justify-center"
-                type="button">
-                <span className="mx-2 font-sans text-dark-purple">
-                  user name
-                </span>
-                <Link to="/profile/">
-                  <img
-                    className=" cursor-pointer relative inline-block h-10 w-auto rounded-[50%] object-cover object-center"
-                    alt="avatar placeholder"
-                    src={DefaultProfile}></img>
-                </Link>
-                <FontAwesomeIcon
-                  onClick={openAvatar}
-                  icon={faCaretDown}
-                  className="text-dark-purple mx-1 hover:text-writing-dark cursor-pointer w-auto h-5"
-                />
-              </button>
-              {/* Avatar Dropdown */}
-              <div id="dropdown" className={avatarMenu}>
-                <ul
-                  className="py-2 text-sm text-writing-dark bg-light-purple"
-                  aria-labelledby="dropdownDefaultButton">
-                  {avatarNavigation.map((item) => (
-                    <li key={item.name}>
-                      <a
-                        href={item.to}
-                        className="block px-3 py-2 hover:bg-medium-purple hover:text-white hover:font-bold">
-                        {item.name}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              {localStorage.getItem("username") === null &&
+              localStorage.getItem("user_id") === null ? (
+                <>
+                  <div onClick={toggleSignin} className="button-component h-12">
+                    Log in{" "}
+                  </div>
+                  <div
+                    onClick={toggleSignup}
+                    className="button-component-stroke h-12">
+                    Sign Up
+                  </div>
+                </>
+              ) : (
+                <>
+                  {" "}
+                  {/* profile avatar */}
+                  <button
+                    id="dropdownDefaultButton"
+                    className="text-white min-w-[50%] cursor-default bg-light-purple h-14 px-3 font-medium  rounded-[32px] text-center flex flex-row flex-nowrap items-center "
+                    type="button">
+                    <span className="min-w-[60%] mx-2 font-sans text-sm text-dark-purple justify-self-start">
+                      {localStorage.getItem("username")}
+                    </span>
+                    <Link to="/profile/">
+                      <img
+                        className="self-right cursor-pointer mr-2 relative hover:scale-105 inline-block h-10 w-auto rounded-[50%] object-cover object-center"
+                        alt="avatar placeholder"
+                        src={DefaultProfile}></img>
+                    </Link>
+                    <FontAwesomeIcon
+                      onClick={openAvatar}
+                      icon={faCaretDown}
+                      className="text-dark-purple mx-1 hover:text-writing-dark cursor-pointer w-auto h-5"
+                    />
+                  </button>
+                  {/* Avatar Dropdown */}
+                  <div id="dropdown" className={avatarMenu}>
+                    <ul
+                      className="py-2 text-sm text-writing-dark bg-light-purple"
+                      aria-labelledby="dropdownDefaultButton">
+                      {avatarNavigation.map((item) => (
+                        <li key={item.name}>
+                          <a
+                            href={item.to}
+                            className="block px-3 py-2 hover:bg-medium-purple hover:text-white hover:font-bold">
+                            {item.name}
+                          </a>
+                        </li>
+                      ))}
+                      <li>
+                        <button
+                          className="block w-full text-left px-3 py-2 hover:bg-medium-purple hover:text-white hover:font-bold"
+                          onClick={logoutHandler}>
+                          Logout
+                        </button>
+                      </li>
+                    </ul>
+                  </div>
+                </>
+              )}
             </div>
           </nav>
 
@@ -272,7 +304,9 @@ function Header() {
                         className=" cursor-pointer relative inline-block h-10 w-auto rounded-[50%] object-cover object-center"
                         alt="avatar placeholder"
                         src={DefaultProfile}></img>
-                      <span className="mx-2 font-sans">user name</span>
+                      <span className="mx-2 font-sans">
+                        {localStorage.getItem("username")}
+                      </span>
                     </Link>
 
                     {navigation.map((item) => (
@@ -289,16 +323,28 @@ function Header() {
                   {/* mobile nav login */}
 
                   <div className="py-6">
-                    <div
-                      onClick={toggleSignin}
-                      className="button-component my-2">
-                      Log in{" "}
-                    </div>
-                    <div
-                      onClick={toggleSignup}
-                      className="button-component-stroke my-2">
-                      Sign Up
-                    </div>
+                    {localStorage.getItem("username") === null &&
+                    localStorage.getItem("user_id") === null ? (
+                      <>
+                        <div
+                          onClick={toggleSignin}
+                          className="button-component my-2">
+                          Log in{" "}
+                        </div>
+                        <div
+                          onClick={toggleSignup}
+                          className="button-component-stroke my-2">
+                          Sign Up
+                        </div>
+                      </>
+                    ) : (
+                      <button
+                        className="button-component my-2"
+                        onClick={logoutHandler}>
+                        {" "}
+                        Logout
+                      </button>
+                    )}
                   </div>
                 </div>
               </div>
@@ -307,19 +353,25 @@ function Header() {
         </div>
 
         {/* sub navigation */}
-        <div className="w-full h-14 bg-light-purple flex flex-row flex-nowrap justify-center items-center p-0">
-          <nav className="sub-nav-holder flex flex-row flex-nowrap justify-center items-center h-full p-0">
-            {subNavigation.map((item) => (
-              <NavLink
-                exact="true"
-                key={item.name}
-                to={item.to}
-                className="sub-navs">
-                {item.name}
-              </NavLink>
-            ))}
-          </nav>
-        </div>
+
+        {!(
+          localStorage.getItem("username") === null &&
+          localStorage.getItem("user_id") === null
+        ) && (
+          <div className="w-full h-14 bg-light-purple flex flex-row flex-nowrap justify-center items-center p-0">
+            <nav className="sub-nav-holder flex flex-row flex-nowrap justify-center items-center h-full p-0">
+              {subNavigation.map((item) => (
+                <NavLink
+                  exact="true"
+                  key={item.name}
+                  to={item.to}
+                  className="sub-navs">
+                  {item.name}
+                </NavLink>
+              ))}
+            </nav>
+          </div>
+        )}
       </header>
     </>
   );

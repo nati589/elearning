@@ -44,30 +44,26 @@ function UserProfile() {
 
         <h1
           className={`inline-flex font-bold ${
-            open ? "text-2xl" : "text-sm"
+            open ? "text-xl" : "text-sm"
           } px-10`}>
           {" "}
-          John Doe
+          {localStorage.getItem("username")}
         </h1>
 
         <nav className="flex flex-col flex-nowrap  pt-2 px-2 w-full h-full justify-start">
           {Menus.map((menu, index) => (
-            <>
-              <NavLink
-                key={index}
-                to={menu.to}
-                className={`user-nav text-grey-300 text-base flex items-center gap-x-4 cursor-pointer p-2 px-5 hover:bg-white rounded-md ${
-                  menu.spacing ? "mt-9" : "mt-2"
-                } mt-2 `}>
-                <span>{menu.icon}</span>
-                <span
-                  className={`text-base font-medium flex-1 ${
-                    !open && "hidden"
-                  }`}>
-                  {menu.title}
-                </span>
-              </NavLink>
-            </>
+            <NavLink
+              key={index}
+              to={menu.to}
+              className={`user-nav text-grey-300 text-base flex items-center gap-x-4 cursor-pointer p-2 px-5 hover:bg-white rounded-md ${
+                menu.spacing ? "mt-9" : "mt-2"
+              } mt-2 `}>
+              <span>{menu.icon}</span>
+              <span
+                className={`text-base font-medium flex-1 ${!open && "hidden"}`}>
+                {menu.title}
+              </span>
+            </NavLink>
           ))}
         </nav>
       </div>

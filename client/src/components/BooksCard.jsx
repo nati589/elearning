@@ -7,6 +7,7 @@ import EmptyStarIcon from "../assets/icons/empty_star.svg";
 import FullStarIcon from "../assets/icons/full_star.svg";
 
 function BooksCard({
+  Book_Id,
   Book_name,
   BookImagePath,
   Book_description,

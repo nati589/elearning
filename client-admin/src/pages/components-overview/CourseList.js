@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { styled } from "@mui/system";
 import MUIDataTable from "mui-datatables";
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import EditIcon from "@mui/icons-material/Edit";
 import {
   Typography,
   Box,
@@ -11,22 +13,41 @@ import { useNavigate } from "../../../node_modules/react-router/dist/index";
 import axios from "axios";
 
 export default function CourseList() {
-  axios
-    .get("/courses/getCourses") // Replace with your API endpoint
-    .then((response) => {
-      // Handle the response
-      console.log(response.data);
+  const [productList, setProductList] = useState([]);
+  useEffect(() => {
+    axios
+      .get("/courses/getCourses")
+      .then((res) => {
+        setProductList(
+          res.data.map((item) => [
+            item.course_title,
+            item.course_instructor,
+            item.course_level,
+            item.course_price,
+            item.course_rating,
+            item.course_sections,
+            item.course_students,
+            item.course_id,
+          ])
+        );
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
+  const deleteCourse = (data) => {
+    console.log(data);
+    axios
+      .delete("/courses/deleteCourse", { data: { id: data } })
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
 
-      // Reset the form and set submitting state to false
-    })
-    .catch((error) => {
-      // Handle the error
-      console.error(error);
-
-      // Reset the submitting state to false
-    });
   const navigate = useNavigate();
-  const productList = [];
   const options = {
     // filterType: "checkbox",
     elevation: 0,
@@ -37,76 +58,75 @@ export default function CourseList() {
   }));
   const columns = [
     {
-      name: "Products",
+      name: "Title",
       options: {
         filter: false,
       },
     },
     {
-      name: "Unit",
+      name: "Instructor",
       options: {
         filter: false,
       },
     },
     {
-      name: "Quantity",
+      name: "Level",
       options: {
+        filter: true,
+      },
+    },
+    {
+      name: "Price",
+      options: {
+        filter: false,
+        
+      },
+    },
+    {
+      name: "Rating",
+      options: {
+        display: true,
         filter: false,
       },
     },
     {
-      name: "Unit Price",
+      name: "Sections",
       options: {
-        filter: false,
-      },
-    },
-    {
-      name: "ID",
-      options: {
-        display: false,
+        display: true,
         filter: false,
         sort: false,
       },
     },
     {
-      name: "DAY",
+      name: "Students",
       options: {
-        display: false,
-        filter: true,
+        display: true,
       },
     },
-    {
-      name: "MONTH",
-      options: {
-        display: false,
-        filter: true,
-      },
-    },
-    {
-      name: "YEAR",
-      options: {
-        display: false,
-        filter: true,
-      },
-    },
-    {
-      name: "Date Added",
-      options: {
-        filter: false,
-      },
-    },
-    "Category",
     {
       label: "ACTION",
       options: {
         filter: false,
         sort: false,
-        customBodyRender: (value, rowData, tableMeta, updateValue) => {
-          // let data = rowData.rowData;
+        customBodyRender: (value) => {
+          let data = value;
           return (
-            <Button variant="outlined" onClick={() => {}}>
-              Update
-            </Button>
+            <>
+              <Button
+                onClick={() => {
+                  // console.log(data);
+                  navigate(`/coursemanagement/editcourse/${data}`)
+                }}>
+                <EditIcon />
+              </Button>
+              <Button
+                color="error"
+                onClick={() => {
+                  deleteCourse(data);
+                }}>
+                <DeleteOutlineIcon />
+              </Button>
+            </>
           );
         },
       },

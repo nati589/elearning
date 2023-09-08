@@ -89,7 +89,7 @@ const MainRoutes = {
           element: <AddCourse />,
         },
         {
-          path: "edit/:id",
+          path: "editcourse/:id",
           element: <EditCourse />,
         },
         // Update or add more routes here

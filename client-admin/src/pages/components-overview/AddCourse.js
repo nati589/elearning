@@ -45,7 +45,7 @@ export default function AddCourse() {
     formData.append("course_instructor", values.course_instructor);
     formData.append("course_total_hours", values.course_total_hours);
     formData.append("course_thumbnail", values.course_thumbnail);
-    console.log(formData)
+    console.log(formData);
 
     axios
       .post("/courses/addCourse", formData, {
@@ -64,112 +64,125 @@ export default function AddCourse() {
   };
 
   return (
-    <Formik
-      initialValues={initialValues}
-      validationSchema={validationSchema}
-      onSubmit={handleSubmit}>
-      <Form>
-        <Field
-          as={TextField}
-          required
-          fullWidth
-          id="course_title"
-          label="Course Title"
-          name="course_title"
-          sx={{ my: 2 }}
-        />
-        <ErrorMessage name="course_title" component="div" />
-
-        <Field
-          as={TextField}
-          required
-          fullWidth
-          id="course_details"
-          label="Course Details"
-          name="course_details"
-          multiline
-          sx={{ my: 2 }}
-        />
-        <ErrorMessage name="course_details" component="div" />
-
-        <FormControl fullWidth sx={{ my: 2 }}>
-          <InputLabel id="course_level_label">Course Level</InputLabel>
+    <>
+      <Box sx={{ ml: 2 }}>
+        <Typography variant="h4">Add Course</Typography>
+        <Typography variant="p">
+          This section is to create a course.
+        </Typography>
+      </Box>
+      <Formik
+        initialValues={initialValues}
+        validationSchema={validationSchema}
+        onSubmit={handleSubmit}>
+        <Form>
           <Field
-            as={Select}
+            as={TextField}
             required
             fullWidth
-            id="course_level"
-            name="course_level"
-            labelId="course_level_label">
-            <MenuItem value="All">All</MenuItem>
-            <MenuItem value="Beginner">Beginner</MenuItem>
-            <MenuItem value="Intermediate">Intermediate</MenuItem>
-            <MenuItem value="Advanced">Advanced</MenuItem>
-          </Field>
-          <ErrorMessage name="course_level" component="div" />
-        </FormControl>
+            id="course_title"
+            label="Course Title"
+            name="course_title"
+            sx={{ my: 2 }}
+          />
+          <ErrorMessage name="course_title" component="div" />
 
-        <Field
-          as={TextField}
-          required
-          fullWidth
-          type="number"
-          id="course_price"
-          label="Course Price"
-          name="course_price"
-        />
-        <ErrorMessage name="course_price" component="div" />
+          <Field
+            as={TextField}
+            required
+            fullWidth
+            id="course_details"
+            label="Course Details"
+            name="course_details"
+            multiline
+            sx={{ my: 2 }}
+          />
+          <ErrorMessage name="course_details" component="div" />
 
-        <Field
-          as={TextField}
-          required
-          fullWidth
-          id="course_instructor"
-          label="Course Instructor"
-          name="course_instructor"
-          sx={{ my: 2 }}
-        />
-        <ErrorMessage name="course_instructor" component="div" />
+          <FormControl fullWidth sx={{ my: 2 }}>
+            <InputLabel id="course_level_label">Course Level</InputLabel>
+            <Field
+              as={Select}
+              required
+              fullWidth
+              id="course_level"
+              name="course_level"
+              labelId="course_level_label">
+              <MenuItem value="All">All</MenuItem>
+              <MenuItem value="Beginner">Beginner</MenuItem>
+              <MenuItem value="Intermediate">Intermediate</MenuItem>
+              <MenuItem value="Advanced">Advanced</MenuItem>
+            </Field>
+            <ErrorMessage name="course_level" component="div" />
+          </FormControl>
 
-        <Field
-          as={TextField}
-          required
-          fullWidth
-          type="number"
-          id="course_total_hours"
-          label="Course Total Hours"
-          name="course_total_hours"
-        />
-        <ErrorMessage name="course_total_hours" component="div" />
+          <Field
+            as={TextField}
+            required
+            fullWidth
+            type="number"
+            id="course_price"
+            label="Course Price"
+            name="course_price"
+          />
+          <ErrorMessage name="course_price" component="div" />
 
-        <Box sx={{ my: 2, ml: 0.2 }}>
-          <Typography>Course Thumbnail</Typography>
-          <Field name="course_thumbnail">
-            {({ field, form }) => (
-              <div>
-                <input
-                  id="course_thumbnail"
-                  type="file"
-                  onChange={(event) =>
-                    form.setFieldValue(field.name, event.target.files[0])
-                  }
-                />
-                <ErrorMessage name="course_thumbnail" component="div" />
-              </div>
-            )}
-          </Field>
-        </Box>
+          <Field
+            as={TextField}
+            required
+            fullWidth
+            id="course_instructor"
+            label="Course Instructor"
+            name="course_instructor"
+            sx={{ my: 2 }}
+          />
+          <ErrorMessage name="course_instructor" component="div" />
 
-        <Box
-          sx={{ display: "flex", justifyContent: "flex-end", gap: 1.5, mt: 2 }}>
-          <Button variant="outlined" type="submit">
-            Cancel
-          </Button>
-          <Button variant="contained" type="submit">
-            Next
-          </Button>
-        </Box>
-      </Form>
-    </Formik>
+          <Field
+            as={TextField}
+            required
+            fullWidth
+            type="number"
+            id="course_total_hours"
+            label="Course Total Hours"
+            name="course_total_hours"
+          />
+          <ErrorMessage name="course_total_hours" component="div" />
+
+          <Box sx={{ my: 2, ml: 0.2 }}>
+            <Typography>Course Thumbnail</Typography>
+            <Field name="course_thumbnail">
+              {({ field, form }) => (
+                <div>
+                  <input
+                    id="course_thumbnail"
+                    type="file"
+                    onChange={(event) =>
+                      form.setFieldValue(field.name, event.target.files[0])
+                    }
+                  />
+                  <ErrorMessage name="course_thumbnail" component="div" />
+                </div>
+              )}
+            </Field>
+          </Box>
+
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "flex-end",
+              gap: 1.5,
+              mt: 2,
+            }}>
+            <Button variant="outlined" type="submit">
+              Cancel
+            </Button>
+            <Button variant="contained" type="submit">
+              Next
+            </Button>
+          </Box>
+        </Form>
+      </Formik>
+    </>
   );
 }

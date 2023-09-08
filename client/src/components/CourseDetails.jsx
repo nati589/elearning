@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Pricecard from "../components/Pricecard";
 import BookImage from "../../src/assets/Image.png";
 import PopularCourseCard from "./PopularCourseCard";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
 function CourseDetails() {
@@ -14,9 +14,9 @@ function CourseDetails() {
   // ];
   const navigate = useNavigate();
   const [courseData, setCourseData] = useState({});
+  const { id: courseID } = useParams();
+
   useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const courseID = urlParams.get("id");
     if (courseID === null) {
       navigate("/");
     } else {
@@ -31,7 +31,7 @@ function CourseDetails() {
           // navigate("/");
         });
     }
-  }, [navigate]);
+  }, [navigate, courseID]);
   return (
     <div className="">
       <div className="flex justify-between gap-8 mx-8 flex-wrap lg:flex-nowrap my-16">

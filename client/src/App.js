@@ -29,8 +29,7 @@ export default function App() {
   return (
     <div
       className="App"
-      style={{ backgroundColor: "#F7F5FA", minHeight: "100vh" }}
-    >
+      style={{ backgroundColor: "#F7F5FA", minHeight: "100vh" }}>
       {/* <Background /> */}
 
       <Header />
@@ -41,7 +40,7 @@ export default function App() {
         <Route path="/books" element={<BooksPage />} />
         <Route path="/progress" element={<ProgressPage />} />
         <Route path="/courses" element={<CoursesPage />} />
-        <Route path="/coursedetails" element={<CourseDetailsPage />} />
+        <Route path="/coursedetails/:id" element={<CourseDetailsPage />} />
         <Route path="/profile" element={<UserProfile />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/learning" element={<LearningPage />}>

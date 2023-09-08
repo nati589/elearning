@@ -32,7 +32,7 @@ function CourseDetails() {
           navigate("/");
         });
     }
-  }, []);
+  }, [navigate]);
   return (
     <div className="">
       <div className="flex justify-between gap-8 mx-8 flex-wrap lg:flex-nowrap my-16">

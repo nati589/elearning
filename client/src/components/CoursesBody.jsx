@@ -2,7 +2,7 @@ import { React, useState } from "react";
 import CourseCard from "./CourseCard";
 import PopularCourseCard from "./PopularCourseCard";
 import TrendingCard from "./TrendingCoursesCard";
-import BookImg from "../../src/assets/Cardphoto10.png";
+import BookImg from "../../src/assets/Image.png";
 import { BiSearch } from "react-icons/bi";
 import SearchComponent from "./search";
 import InputWithSuggestion from "./InputWithSuggestion";
@@ -100,13 +100,15 @@ function CoursesBody() {
           <div className="flex flex-row mx-3 items-center justify-center pl-3 mt-8">
             <label
               htmlFor="sort"
-              className="mr-2 text-lg font-semibold text-purple-700 opacity-50  ">
+              className="mr-2 text-lg font-semibold text-purple-700 opacity-50  "
+            >
               <pre className="sm:text-[1.5rem]">Sort by : </pre>
             </label>
             <select
               name="sort"
               id="sort"
-              className="rounded-md p-2 font-semibold bg-transparent pr-12 text-lg ">
+              className="rounded-md p-2 font-semibold bg-transparent pr-12 text-lg "
+            >
               <option className="" value="a ">
                 Latest
               </option>

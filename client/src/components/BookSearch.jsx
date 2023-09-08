@@ -3,31 +3,27 @@ import { BiSearch } from "react-icons/bi";
 import BooksCard from "./BooksCard";
 
 const BookSearch = ({ searchData }) => {
-  // const suggestions = searchData;
-  const [suggestions, setSuggestions] = useState(searchData);
+    // const suggestions = searchData;
+    const [suggestions, setSuggestions] = useState(searchData);
   const [inputValue, setInputValue] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
-  const [showSearch, setShowSearch] = useState(false);
+  
 
   const handleInputChange = (e) => {
     const value = e.target.value;
     setInputValue(value);
 
     // Show the suggestion modal when input is not empty
-    setShowModal(value !== "");
-    setSuggestions(
-      searchData.filter((book) =>
-        book.Book_name.toLowerCase().includes(value.toLowerCase())
-      )
-    );
+      setShowModal(value !== "");
+        setSuggestions( searchData.filter((book) =>
+         book.Book_name.toLowerCase().includes(value.toLowerCase())
+       ))
 
     // Filter and set the search results
-    const filteredResults = showSearch
-      ? searchData.filter((book) =>
-          book.Book_name.toLowerCase().includes(value.toLowerCase())
-        )
-      : "";
+    const filteredResults = searchData.filter((book) =>
+      book.Book_name.toLowerCase()===value.toLowerCase()
+    );
     setSearchResults(filteredResults);
   };
 
@@ -37,7 +33,8 @@ const BookSearch = ({ searchData }) => {
   };
 
   const renderbooks = () => {
-    const booksToRender = searchResults.length > 0 ? searchResults : searchData;
+    const booksToRender =
+      searchResults.length > 0 ? searchResults : searchData;
 
     return (
       <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-4 my-8">
@@ -89,7 +86,7 @@ const BookSearch = ({ searchData }) => {
 
         <button
           className="ml-1 h-fit rounded-lg bg-dark-purple px-8 py-3 text-white hover:bg-blue-600 flex flex-row text-[1rem] sm:px-16 sm:py-2 "
-          onClick={() => setShowSearch(true)}
+          onClick={() => handleInputChange({ target: { value: inputValue } })}
         >
           <BiSearch className="mr-3 text-[1.5rem]" />
           <div className="my-auto sm:my-1">Search</div>

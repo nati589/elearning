@@ -9,9 +9,6 @@ function CourseDetailsPage() {
       <CoursesHero />
       <CoursesBody />
       {/* <OtherCourses /> */}
-      <div className="p-10">
-        <Subscription />
-      </div>
     </>
   );
 }

@@ -73,7 +73,6 @@ function Header() {
           localStorage.clear();
           alert("Logout Successful");
           setAvatarState(!avatarState);
-          setMobileMenuOpen(false);
           navigate("/");
         }, 2000);
       })
@@ -232,10 +231,10 @@ function Header() {
                   {/* profile avatar */}
                   <button
                     id="dropdownDefaultButton"
-                    className="text-white min-w-[40%] cursor-default bg-light-purple h-14 font-medium  rounded-[32px] text-center flex flex-row flex-nowrap items-center justify-center "
+                    className="text-white min-w-[50%] cursor-default bg-light-purple h-14 px-3 font-medium  rounded-[32px] text-center flex flex-row flex-nowrap items-center "
                     type="button"
                   >
-                    <span className="min-w-[50%] mx-2 font-sans text-sm text-dark-purple justify-self-start">
+                    <span className="min-w-[60%] mx-2 font-sans text-sm text-dark-purple justify-self-start">
                       {localStorage.getItem("username")}
                     </span>
                     <Link to="/profile/">

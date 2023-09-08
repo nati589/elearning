@@ -23,7 +23,6 @@ import LearningPage from "./pages/LearningPage";
 import SectionContent from "./components/LearningPageComponents/SectionContent";
 import CourseSectionList from "./components/LearningPageComponents/CourseSectionList";
 import MyBooks from "./pages/MyBooks";
-import MyCourses from "./pages/MyCourses";
 
 export default function App() {
   return (

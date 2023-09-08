@@ -22,8 +22,6 @@ import PasswordResetPage from "./pages/PasswordResetPage";
 import LearningPage from "./pages/LearningPage";
 import SectionContent from "./components/LearningPageComponents/SectionContent";
 import CourseSectionList from "./components/LearningPageComponents/CourseSectionList";
-import MyBooks from "./pages/MyBooks";
-import MyCourses from "./pages/MyCourses";
 
 export default function App() {
   return (
@@ -61,7 +59,6 @@ export default function App() {
         </Route>
         <Route exact path="password-reset" element={<PasswordResetPage />} />
         <Route path="/mybooks" element={<MyBooks />}></Route>
-        <Route path="/mycourses" element={<MyCourses />}></Route>
       </Routes>
 
       {/* <Subscription /> */}

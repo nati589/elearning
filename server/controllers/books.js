@@ -3,15 +3,15 @@ import fs from "fs";
 import { v4 as uuidv4 } from "uuid";
 
 export const getBooks = (req, res) => {
-  //   const q = "select * from web_content";
-  //   db.query(q, (err, data) => {
-  //     if (err) {
-  //       res.json(err);
-  //       console.log(err);
-  //     } else {
-  //       res.json(data);
-  //     }
-  //   });
+    const q = "select * from book";
+    db.query(q, (err, data) => {
+      if (err) {
+        res.json(err);
+        console.log(err);
+      } else {
+        res.json(data);
+      }
+    });
 };
 
 export const addBook = (req, res) => {

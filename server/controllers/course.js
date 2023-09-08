@@ -1,6 +1,6 @@
-import db from "../db";
-import * as path from "path";
-import * as url from "url";
+import { db } from "../db.js";
+import fs from "fs";
+import { v4 as uuidv4 } from "uuid";
 
 export const getCourses = (req, res) => {
   const q = "select * from courses";

@@ -12,8 +12,6 @@ import axios from "axios";
 import InputComponent from "./InputComponent";
 import { GoMail } from "react-icons/go";
 import { email_validation } from "../utils/inputValidations";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faInstagram } from '@fortawesome/free-brands-svg-icons';
 
 function Footer() {
   const methods = useForm();
@@ -55,56 +53,63 @@ function Footer() {
       style={{ borderTopLeftRadius: "20px", borderTopRightRadius: "20px" }}
       className="py-4 px-8 mt-1  bg-light-purple">
       <div className="text-sm md:text-base lg:text-base container mx-auto flex flex-wrap items-center">
-      
-      <div className="w-1/2 md:w-1/3 lg:w-1/4 flex flex-col px-4 mb-5  justify-center ">
+        <div className="w-1/2 md:w-1/3 lg:w-1/4 flex flex-col px-4 mb-5  justify-center ">
           <ul className="text-subscribe-purple text-sm md:text-base lg:text-lg ml-10">
-          <li className="mb-1 hover:text-medium-purple font-bold">
+            <li className="mb-1 hover:text-medium-purple font-bold">
               <a href="/">LOGO</a>
             </li>
             <li className="mb-1 hover:text-medium-purple">
               <a href="/">
-          <img
-            src={linkedinIcon}
-            alt="linkedin_logo"
-            className="w-7 h-7 mt-2 transform hover:scale-105 transition-transform duration-500 ease-in-out"
-          /></a>
+                <img
+                  src={linkedinIcon}
+                  alt="linkedin_logo"
+                  className="w-7 h-7 mt-2 transform hover:scale-105 transition-transform duration-500 ease-in-out"
+                />
+              </a>
             </li>
             <li className="mb-1 hover:text-medium-purple">
-              <a href="/">  <img
-            src={emailIcon}
-            alt="email_logo"
-            className="w-7 h-7 mt-2 transform hover:scale-105 transition-transform duration-500 ease-in-out"
-          /></a>
+              <a href="/">
+                {" "}
+                <img
+                  src={emailIcon}
+                  alt="email_logo"
+                  className="w-7 h-7 mt-2 transform hover:scale-105 transition-transform duration-500 ease-in-out"
+                />
+              </a>
             </li>
             <li className="mb-1 hover:text-medium-purple">
-              <a href="/">   <img
-            src={fbIcon}
-            alt="fb_logo"
-            className="w-7 h-7 mt-2 transform hover:scale-105 transition-transform duration-500 ease-in-out"
-          /></a>
+              <a href="/">
+                {" "}
+                <img
+                  src={fbIcon}
+                  alt="fb_logo"
+                  className="w-7 h-7 mt-2 transform hover:scale-105 transition-transform duration-500 ease-in-out"
+                />
+              </a>
             </li>
             <li className="mb-1 hover:text-medium-purple">
-              <a href="/">   <img
-            src={instagramIcon}
-            alt="insta_logo"
-            className="w-7 h-7 mt-2 transform hover:scale-105 transition-transform duration-500 ease-in-out"
-          /></a>
+              <a href="/">
+                {" "}
+                <img
+                  src={instagramIcon}
+                  alt="insta_logo"
+                  className="w-7 h-7 mt-2 transform hover:scale-105 transition-transform duration-500 ease-in-out"
+                />
+              </a>
             </li>
             <li className="mb-1 hover:text-medium-purple">
-              <a href="/">   <img
-            src={twitterIcon}
-            alt="twitter_logo"
-            className="w-7 h-7 mt-2 transform hover:scale-105 transition-transform duration-500 ease-in-out"
-          /></a>
+              <a href="/">
+                {" "}
+                <img
+                  src={twitterIcon}
+                  alt="twitter_logo"
+                  className="w-7 h-7 mt-2 transform hover:scale-105 transition-transform duration-500 ease-in-out"
+                />
+              </a>
             </li>
-         
-            
           </ul>
         </div>
-      
-      
-      
-      
+
         {/* <div className="w-1/2 md:w-1/3 lg:w-1/4 mb-4 flex flex-col items-center justify-center  ">
           <img src={Logo} alt="logo" className="w-7 h-7 " />
           <h1 class="font-bold text-3xl">Logo</h1>
@@ -146,7 +151,6 @@ function Footer() {
             <li className="mb-1 hover:text-medium-purple">
               <a href="/">Books </a>
             </li>
-            
           </ul>
         </div>
         <div className="w-full max-w-xs md:w-1/3 lg:w-1/3 px-4 mb-3">

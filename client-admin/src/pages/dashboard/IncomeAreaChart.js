@@ -1,31 +1,31 @@
-import PropTypes from 'prop-types';
-import { useState, useEffect } from 'react';
+import PropTypes from "prop-types";
+import { useState, useEffect } from "react";
 
 // material-ui
-import { useTheme } from '@mui/material/styles';
-
+import { useTheme } from "@mui/material/styles";
+import axios from "axios";
 // third-party
-import ReactApexChart from 'react-apexcharts';
+import ReactApexChart from "react-apexcharts";
 
 // chart options
 const areaChartOptions = {
   chart: {
     height: 450,
-    type: 'area',
+    type: "area",
     toolbar: {
-      show: false
-    }
+      show: false,
+    },
   },
   dataLabels: {
-    enabled: false
+    enabled: false,
   },
   stroke: {
-    curve: 'smooth',
-    width: 2
+    curve: "smooth",
+    width: 2,
   },
   grid: {
-    strokeDashArray: 0
-  }
+    strokeDashArray: 0,
+  },
 };
 
 // ==============================|| INCOME AREA CHART ||============================== //
@@ -41,12 +41,25 @@ const IncomeAreaChart = ({ slot }) => {
   useEffect(() => {
     setOptions((prevState) => ({
       ...prevState,
-      colors: ['#d00000', theme.palette.primary[700]],
+      colors: ["#d00000", theme.palette.primary[700]],
       xaxis: {
         categories:
-          slot === 'month'
-            ? ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-            : ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+          slot === "month"
+            ? [
+                "Jan",
+                "Feb",
+                "Mar",
+                "Apr",
+                "May",
+                "Jun",
+                "Jul",
+                "Aug",
+                "Sep",
+                "Oct",
+                "Nov",
+                "Dec",
+              ]
+            : ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
         labels: {
           style: {
             colors: [
@@ -61,61 +74,106 @@ const IncomeAreaChart = ({ slot }) => {
               secondary,
               secondary,
               secondary,
-              secondary
-            ]
-          }
+              secondary,
+            ],
+          },
         },
         axisBorder: {
           show: true,
-          color: line
+          color: line,
         },
-        tickAmount: slot === 'month' ? 11 : 7
+        tickAmount: slot === "month" ? 11 : 7,
       },
       yaxis: {
         labels: {
           style: {
-            colors: [secondary]
-          }
-        }
+            colors: [secondary],
+          },
+        },
       },
       grid: {
-        borderColor: line
+        borderColor: line,
       },
       tooltip: {
-        theme: 'light'
-      }
+        theme: "light",
+      },
     }));
   }, [primary, secondary, line, theme, slot]);
 
   const [series, setSeries] = useState([
     {
-      name: 'Page Views',
-      data: [0, 86, 28, 115, 48, 210, 136]
+      name: "Page Views",
+      data: [0, 86, 28, 115, 48, 210, 136],
     },
     {
-      name: 'Sessions',
-      data: [0, 43, 14, 56, 24, 105, 68]
-    }
+      name: "Sessions",
+      data: [0, 43, 14, 56, 24, 105, 68],
+    },
   ]);
 
   useEffect(() => {
-    setSeries([
-      {
-        name: 'Courses',
-        data: slot === 'month' ? [76, 85, 101, 98, 87, 105, 91, 114, 94, 86, 115, 35] : [31, 40, 28, 51, 42, 109, 100]
-      },
-      {
-        name: 'Books',
-        data: slot === 'month' ? [110, 60, 150, 35, 60, 36, 26, 45, 65, 52, 53, 41] : [11, 32, 45, 32, 34, 52, 41]
-      }
-    ]);
+    const weekBookData = "http://localhost:8800/api/books/getBooksThisWeek";
+    const monthBookData = "http://localhost:8800/api/books/getBooksThisMonth";
+    const weekCoursekData =
+      "http://localhost:8800/api/courses/getCoursesThisWeek";
+    const monthCourseData =
+      "http://localhost:8800/api/courses/getCoursesThisMonth";
+
+    const requests = [
+      axios.get(weekBookData),
+      axios.get(monthBookData),
+      axios.get(weekCoursekData),
+      axios.get(monthCourseData),
+    ];
+
+    // Use axios.all to send the requests concurrently
+    axios
+      .all(requests)
+      .then(
+        axios.spread(
+          (weekBookData, monthBookData, weekCoursekData, monthCourseData) => {
+            // Handle the responses here
+            console.log(weekBookData.data);
+            console.log(monthBookData.data);
+            console.log(weekCoursekData.data);
+            console.log(monthCourseData.data);
+            setSeries([
+              {
+                name: "Courses",
+                data:
+                  slot === "month"
+                    ? [...monthCourseData.data]
+                    : [...weekCoursekData.data],
+              },
+              {
+                name: "Books",
+                data:
+                  slot === "month"
+                    ? [...monthBookData.data]
+                    : [...weekBookData.data],
+              },
+            ]);
+          }
+        )
+      )
+      .catch((error) => {
+        // Handle errors
+        console.error("Error:", error);
+      });
   }, [slot]);
 
-  return <ReactApexChart options={options} series={series} type="area" height={450} />;
+  return (
+    <ReactApexChart
+      options={options}
+      series={series}
+      type="area"
+      height={450}
+    />
+  );
 };
 
 IncomeAreaChart.propTypes = {
-  slot: PropTypes.string
+  slot: PropTypes.string,
 };
 
 export default IncomeAreaChart;

@@ -195,75 +195,7 @@ function CourseDetailsPage() {
             </div>
           </div>
         </div>
-        {/* <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
-  <div className="p-4">
-    <PopularCourseCard
-      course_title="interaction"
-      course_details="lorem Ipsum is simply dummy text of the printing and typesetting industry."
-      course_thumbnail={BookImage}
-      course_total_hour="3Hours"
-      course_instructure="Wadew Warrren"
-      course_level="level"
-      course_rate="4.7"
-      course_price="price"
-    />
-  </div>
-  <div className="p-4">
-    <PopularCourseCard
-      course_title="interaction"
-      course_details="lorem Ipsum is simply dummy text of the printing and typesetting industry."
-      course_thumbnail={BookImage}
-      course_total_hour="3Hours"
-      course_instructure="Wadew Warrren"
-      course_level="level"
-      course_rate="4.7"
-      course_price="price"
-    />
-  </div>
-  <div className="p-4">
-    <PopularCourseCard
-      course_title="interaction"
-      course_details="lorem Ipsum is simply dummy text of the printing and typesetting industry."
-      course_thumbnail={BookImage}
-      course_total_hour="3Hours"
-      course_instructure="Wadew Warrren"
-      course_level="level"
-      course_rate="4.7"
-      course_price="price"
-    />
-  </div>
-</div> */}
       </div>
-
-      {/* <di className="grid md:grid-cols-2 gap-4 mx-8 my-4 sm:grid-cols-1">
-        {courses.slice(0, 4).map((item,index) => (
-          <div key={index} className="bg-white my-2 rounded-xl shadow-md">
-            <a
-              href="/"
-              className="border-2  border-gray-200 rounded-xl hover:bg-gray-50 block"
-            >
-              <div className="grid grid-cols-6 p-2 gap-y-2">
-                <div className="col-span-1">
-                  <img
-                    src={item.image}
-                    className="max-w-20 max-h-20 rounded-lg"
-                    alt="Course"
-                  />
-                </div>
-                <div className="col-span-5 md:col-span-4 ml-4">
-                  <p className="text-gray-600 font-bold">{item.title}</p> */}
-      {/* ... other course details */}
-      {/* </div> */}
-      {/* <div className="col-start-2 ml-4 md:col-start-auto md:ml-0 md:justify-end">
-                  <p className="rounded-lg text-red-500 font-bold bg-red-100 py-1 px-3 text-sm">
-                    $40.00
-                  </p>
-                </div>
-              </div>
-            </a>
-          </div>
-        ))}
-      </di> */}
     </div>
   );
 }

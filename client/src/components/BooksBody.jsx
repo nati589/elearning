@@ -8,7 +8,6 @@ import InputWithSuggestion from "./InputWithSuggestion";
 import booksData from "./booksData";
 import BookSearch from "./BookSearch";
 
-
 export default function BooksBody() {
   const BooksData = [
     {
@@ -174,8 +173,7 @@ export default function BooksBody() {
                   isActive("all")
                     ? "bg-medium-purple  text-white"
                     : "bg-white text-gray-700"
-                } px-4 py-2 rounded-md block w-36 h-10 text-center`}
-              >
+                } px-4 py-2 rounded-md block w-36 h-10 text-center`}>
                 All Books
               </NavLink>
             </div>
@@ -187,8 +185,7 @@ export default function BooksBody() {
                   isActive("fiction")
                     ? "bg-white text-gray-700"
                     : "bg-medium-purple  text-white"
-                } px-4 py-2 rounded-md block w-24 h-10 text-center`}
-              >
+                } px-4 py-2 rounded-md block w-24 h-10 text-center`}>
                 Fiction
               </NavLink>
             </div>
@@ -201,8 +198,7 @@ export default function BooksBody() {
                   isActive("journal")
                     ? "bg-white text-gray-700"
                     : "bg-medium-purple  text-white"
-                } px-4 py-2 rounded-md block w-24 h-10 text-center`}
-              >
+                } px-4 py-2 rounded-md block w-24 h-10 text-center`}>
                 Journal
               </NavLink>
             </div>
@@ -215,8 +211,7 @@ export default function BooksBody() {
                   isActive("kids")
                     ? "bg-white text-gray-700"
                     : "bg-medium-purple  text-white"
-                } px-4 py-2 rounded-md block w-24 h-10 text-center`}
-              >
+                } px-4 py-2 rounded-md block w-24 h-10 text-center`}>
                 Kids
               </NavLink>
             </div>
@@ -225,19 +220,17 @@ export default function BooksBody() {
         <div>
           {" "}
           <div className="flex  w-full m-2 my-3 flex-col sm:flex-row  items-start sm:justify-between">
-             <BookSearch searchData={books}/>
+            <BookSearch searchData={books} />
             <div className="flex flex-row mx-3 items-center justify-center pl-3 mt-8">
               <label
                 htmlFor="sort"
-                className="mr-2 text-lg font-semibold text-purple-700 opacity-50  "
-              >
+                className="mr-2 text-lg font-semibold text-purple-700 opacity-50  ">
                 <pre className="sm:text-[1.5rem]">Sort by : </pre>
               </label>
               <select
                 name="sort"
                 id="sort"
-                className="rounded-md p-2 font-semibold bg-transparent pr-12 text-lg "
-              >
+                className="rounded-md p-2 font-semibold bg-transparent pr-12 text-lg ">
                 <option className="" value="a ">
                   Latest
                 </option>
@@ -248,7 +241,7 @@ export default function BooksBody() {
           </div>
         </div>
         <div>
-          <div className="w-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-2 gap-4  my-8">
+          {/* <div className="w-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-2 gap-4  my-8">
             {BooksData.map((Book, index) => (
               <BooksCard
                 key={index}
@@ -263,7 +256,7 @@ export default function BooksBody() {
                 level="3"
               />
             ))}
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

@@ -24,7 +24,6 @@ function CourseDetails() {
         .get("/courses/getSingleCourse", { courseID: courseID })
         .then((res) => {
           setCourseData(res.data[0]);
-          console.log(res, "fetched course data");
         })
         .catch((error) => {
           console.log(error.response.data.message);
@@ -167,7 +166,6 @@ function CourseDetails() {
                 course_price="price"
               />
             </div>
-            
           </div>
         </div>
         {/* <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">

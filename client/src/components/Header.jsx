@@ -35,7 +35,10 @@ const avatarNavigation = [
   { name: "Settings", to: "/profile/setting" },
 ];
 
-function Header() {
+function Header({ subscription }) {
+  subscription(
+    !(localStorage.getItem("username") && localStorage.getItem("user_id"))
+  );
   const methods = useForm();
   const navigate = useNavigate();
 
@@ -60,7 +63,6 @@ function Header() {
     setMobileMenuOpen,
   ];
 
-  // const { handleSubmit } = methods;
   const avatarMenu = avatarState
     ? "z-10 absolute right-10 top-[72px] bg-white divide-y divide-gray-100 rounded-lg shadow w-52 dark:bg-gray-700"
     : "hidden";
@@ -74,6 +76,7 @@ function Header() {
           alert("Logout Successful");
           setAvatarState(!avatarState);
           setMobileMenuOpen(false);
+
           navigate("/");
         }, 2000);
       })
@@ -83,28 +86,6 @@ function Header() {
         }, 2000);
       });
   };
-
-  // const submitInputs = handleSubmit((data) => {
-  //   axios
-  //     .post("/auth/login", data)
-  //     .then((res) => {
-  //       setSubmitSuccess(true);
-  //       setMsg(res.data.message);
-  //       setFailure(false);
-  //       setTimeout(() => {
-  //         setSubmitSuccess(false);
-  //         navigate("/");
-  //       }, 2000);
-  //     })
-  //     .catch((error) => {
-  //       setSubmitSuccess(true);
-  //       setMsg(error.response.data.message);
-  //       setFailure(true);
-  //       setTimeout(() => {
-  //         setSubmitSuccess(false);
-  //       }, 2000);
-  //     });
-  // });
 
   const openAvatar = () => {
     setAvatarState(!avatarState);

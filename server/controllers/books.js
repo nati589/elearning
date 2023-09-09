@@ -31,12 +31,12 @@ export const getBooksThisYear = (req, res) => {
 export const getBooksThisMonth = (req, res) => {
   const q = `
   SELECT
-  DATE_FORMAT(book_date_created, '%Y-%m') AS month_value,
+  DATE_FORMAT(purchase_date, '%Y-%m') AS month_value,
   COUNT(*) AS count
 FROM
-  book
+  purchase
 WHERE
-  book_date_created >= DATE_SUB(CURDATE(), INTERVAL 1 YEAR)
+  purchase_date >= DATE_SUB(CURDATE(), INTERVAL 1 YEAR)
 GROUP BY
   month_value
 ORDER BY
@@ -109,13 +109,13 @@ ORDER BY
 };
 export const getBooksThisWeek = (req, res) => {
   const q = `
-      SELECT DAYNAME(book_date_created) AS day_name, COUNT(*) AS count
-      FROM book
-      WHERE book_date_created >= CURDATE() - INTERVAL 6 DAY
-        AND book_date_created < CURDATE() + INTERVAL 1 DAY
-      GROUP BY DAYNAME(book_date_created)
-      ORDER BY DAYNAME(book_date_created) DESC;
-    `;
+  SELECT DAYNAME(purchase_date) AS day_name, COUNT(*) AS count
+  FROM purchase
+  WHERE purchase_date >= CURDATE() - INTERVAL 6 DAY
+    AND purchase_date < CURDATE() + INTERVAL 1 DAY
+  GROUP BY DAYNAME(purchase_date)
+  ORDER BY DAYNAME(purchase_date) DESC;
+`;
   db.query(q, (err, data) => {
     if (err) {
       res.json(err);

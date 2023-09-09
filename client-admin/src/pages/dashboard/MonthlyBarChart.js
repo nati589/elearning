@@ -43,18 +43,25 @@ const barChartOptions = {
 
 // ==============================|| MONTHLY BAR CHART ||============================== //
 
-const MonthlyBarChart = () => {
+const MonthlyBarChart = ({ weekStat }) => {
   const theme = useTheme();
 
   const { primary, secondary } = theme.palette.text;
   const info = theme.palette.info.light;
-
-  const [series] = useState([
+  const [series, setSeries] = useState([
     {
-      data: [10, 95, 70, 42, 65, 55, 78],
+      data: [...weekStat],
     },
   ]);
+  useEffect(() => {
+    setSeries([
+      {
+        data: [...weekStat],
+      },
+    ]);
+  }, [weekStat]);
 
+  console.log(series, "----------------");
   const [options, setOptions] = useState(barChartOptions);
 
   useEffect(() => {

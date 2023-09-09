@@ -26,12 +26,12 @@ export const getTotalCourses = (req, res) => {
 export const getCouresThisMonth = (req, res) => {
   const q = `
   SELECT
-  DATE_FORMAT(course_date_created, '%Y-%m') AS month_value,
+  DATE_FORMAT(enrolled_date, '%Y-%m') AS month_value,
   COUNT(*) AS count
 FROM
-  course
+enrolled
 WHERE
-  course_date_created >= DATE_SUB(CURDATE(), INTERVAL 1 YEAR)
+  enrolled_date >= DATE_SUB(CURDATE(), INTERVAL 1 YEAR)
 GROUP BY
   month_value
 ORDER BY
@@ -104,7 +104,12 @@ ORDER BY
 };
 export const getCouresThisWeek = (req, res) => {
   const q = `
-  SELECT DAYNAME(course_date_created) AS day_name, COUNT(*) AS count FROM course WHERE course_date_created >= CURDATE() - INTERVAL 6 DAY AND course_date_created < CURDATE() + INTERVAL 1 DAY GROUP BY DAYNAME(course_date_created) ORDER BY DAYNAME(course_date_created) DESC;`;
+  SELECT DAYNAME(enrolled_date) AS day_name, COUNT(*) AS count
+  FROM enrolled
+  WHERE enrolled_date >= CURDATE() - INTERVAL 6 DAY
+    AND enrolled_date < CURDATE() + INTERVAL 1 DAY
+  GROUP BY DAYNAME(enrolled_date)
+  ORDER BY DAYNAME(enrolled_date) DESC`;
   db.query(q, (err, data) => {
     if (err) {
       res.json(err);

@@ -41,7 +41,7 @@ const IncomeAreaChart = ({ slot }) => {
   useEffect(() => {
     setOptions((prevState) => ({
       ...prevState,
-      colors: ["#d00000", theme.palette.primary[700]],
+      colors: ["#df0000", theme.palette.primary[700]],
       xaxis: {
         categories:
           slot === "month"

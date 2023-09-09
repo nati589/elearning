@@ -79,7 +79,7 @@ const status = [
 const url1 = "http://localhost:8800/api/users/getUsers";
 const url2 = "http://localhost:8800/api/books/getBooks";
 const url3 = "http://localhost:8800/api/courses/getTotalCourses";
-const url4 = "http://localhost:8800/api/purchases/getPurchases";
+const url4 = "http://localhost:8800/api/purchases/getTotalPurchase";
 const urTl1 = "http://localhost:8800/api/users/getUsersThisYear";
 const urTl2 = "http://localhost:8800/api/books/getBooksThisYear";
 const urTl3 = "http://localhost:8800/api/purchases/getPurchasesThisYear";
@@ -115,7 +115,7 @@ const DashboardDefault = () => {
           setTotalUser(response1.data?.length ?? 0);
           setTotalBook(response2.data?.length ?? 0);
           setTotalCourse(response3.data?.length ?? 0);
-          setTotalSale(response4.data?.length ?? 0);
+          setTotalSale(response4.data?.total_count);
         })
       )
       .catch((error) => {
@@ -143,8 +143,8 @@ const DashboardDefault = () => {
           // Handle the responses here
           setTotalUserYear(response1.data?.length ?? 0);
           setTotalBookYear(response2.data?.length ?? 0);
-          setTotalCourseYear(response3.data?.length ?? 0);
-          setTotalSaleYear(response4.data?.length ?? 0);
+          setTotalSaleYear(response3.data?.total_count);
+          setTotalCourseYear(response4.data?.length ?? 0);
         })
       )
       .catch((error) => {
@@ -152,6 +152,38 @@ const DashboardDefault = () => {
         console.error("Error:", error);
       });
   }, []);
+  const [weekStat, setWeekStat] = useState([0, 32, 0, 0, 0, 0, 0]);
+
+  useEffect(() => {
+    // Define the URL
+    const url12 =
+      "http://localhost:8800/api/purchases/getBookPurchasesThisWeek";
+    const url22 =
+      "http://localhost:8800/api/purchases/getCoursePurchasesThisWeek";
+
+    // Send a GET request using Axios
+    const requests = [axios.get(url12), axios.get(url22)];
+
+    axios
+      .all(requests)
+      .then(
+        axios.spread((response1, response2) => {
+          // Handle the successful response
+          // console.log(response1, response2);
+          const resultArray = [];
+          for (let i = 0; i < response1.data.length; i++) {
+            resultArray.push(response1.data[i] + response2.data[i]);
+          }
+
+          setWeekStat((s) => resultArray);
+        })
+      )
+      .catch((error) => {
+        // Handle errors
+        console.error("Error:", error);
+      });
+  }, []);
+
   // console.log(getPercentage(totalBookYear, totalBook));
   return (
     <Grid container rowSpacing={4.5} columnSpacing={2.75}>
@@ -162,6 +194,7 @@ const DashboardDefault = () => {
       <Grid item xs={12} sm={6} md={4} lg={3}>
         <AnalyticEcommerce
           title="Total Users"
+          // color=""
           count={totalUser}
           percentage={getPercentage(totalUserYear, totalUser)}
           extra={totalUserYear}
@@ -173,6 +206,7 @@ const DashboardDefault = () => {
           count={totalCourse}
           percentage={getPercentage(totalCourseYear, totalCourse)}
           extra={totalCourseYear}
+          color="info"
         />
       </Grid>
       <Grid item xs={12} sm={6} md={4} lg={3}>
@@ -192,7 +226,7 @@ const DashboardDefault = () => {
           percentage={getPercentage(totalSaleYear, totalSale)}
           // percentage={0}
           // isLoss
-          color="warning"
+          color="success"
           extra={totalSaleYear}
         />
       </Grid>
@@ -249,15 +283,21 @@ const DashboardDefault = () => {
               <Typography variant="h6" color="textSecondary">
                 This Week Statistics
               </Typography>
-              <Typography variant="h3">$7,650</Typography>
+              <Typography variant="h3">
+                ${" "}
+                {weekStat.reduce(
+                  (accumulator, currentValue) => accumulator + currentValue,
+                  0
+                )}
+              </Typography>
             </Stack>
           </Box>
-          <MonthlyBarChart />
+          <MonthlyBarChart weekStat={weekStat} />
         </MainCard>
       </Grid>
 
       {/* row 3 */}
-      <Grid item xs={12} md={7} lg={8}>
+      {/* <Grid item xs={12} md={7} lg={8}>
         <Grid container alignItems="center" justifyContent="space-between">
           <Grid item>
             <Typography variant="h5">Recent Orders</Typography>
@@ -267,14 +307,14 @@ const DashboardDefault = () => {
         <MainCard sx={{ mt: 2 }} content={false}>
           <OrdersTable />
         </MainCard>
-      </Grid>
-      <Grid item xs={12} md={5} lg={4}>
+      </Grid> */}
+      {/* <Grid item xs={12} md={5} lg={4}>
         <Grid container alignItems="center" justifyContent="space-between">
           <Grid item>
             <Typography variant="h5">Analytics Report</Typography>
           </Grid>
-          <Grid item />
-        </Grid>
+          <Grid item /> */}
+      {/* </Grid>
         <MainCard sx={{ mt: 2 }} content={false}>
           <List sx={{ p: 0, "& .MuiListItemButton-root": { py: 2 } }}>
             <ListItemButton divider>
@@ -292,10 +332,10 @@ const DashboardDefault = () => {
           </List>
           <ReportAreaChart />
         </MainCard>
-      </Grid>
+      </Grid> */}
 
       {/* row 4 */}
-      <Grid item xs={12} md={7} lg={8}>
+      {/* <Grid item xs={12} md={7} lg={8}>
         <Grid container alignItems="center" justifyContent="space-between">
           <Grid item>
             <Typography variant="h5">Sales Report</Typography>
@@ -328,8 +368,8 @@ const DashboardDefault = () => {
           </Stack>
           <SalesColumnChart />
         </MainCard>
-      </Grid>
-      <Grid item xs={12} md={5} lg={4}>
+      </Grid> */}
+      {/* <Grid item xs={12} md={5} lg={4}>
         <Grid container alignItems="center" justifyContent="space-between">
           <Grid item>
             <Typography variant="h5">Transaction History</Typography>
@@ -471,7 +511,7 @@ const DashboardDefault = () => {
             </Button>
           </Stack>
         </MainCard>
-      </Grid>
+      </Grid> */}
     </Grid>
   );
 };

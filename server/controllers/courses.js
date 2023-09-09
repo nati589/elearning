@@ -138,8 +138,10 @@ export const getCouresThisWeek = (req, res) => {
     }
   });
 };
+
 export const getSingleCourse = (req, res) => {
-  const { courseID } = req.body;
+  const { courseID } = req.query;
+
   const q = "SELECT * FROM course WHERE course_id =?";
   db.query(q, [courseID], (err, data) => {
     if (err) {

@@ -89,7 +89,7 @@ export default function EditCourse() {
     const controller = new AbortController();
     // let course_id = id;
     axios
-      .get(`/courses/getSingleCourse/${idRef.current}`, {
+      .get(`/courses/getSingleCourse`,{ params: { courseID: id } }, {
         signal: controller.signal,
       })
       .then((res) => {
@@ -248,7 +248,6 @@ export default function EditCourse() {
 
         <Box mb={2}>
           <input
-            fullWidth
             id="course_thumbnail"
             name="course_thumbnail"
             type="file"

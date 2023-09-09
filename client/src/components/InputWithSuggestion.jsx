@@ -12,11 +12,12 @@ const InputWithSuggestion = ({ searchData }) => {
 
   const handleInputChange = (e) => {
     const value = e.target.value;
+    if (value === "") {
+      setInputValue(value);
+      return setSearchResults([]);
+    }
     setInputValue(value);
-
-    // Show the suggestion modal when input is not empty
     setShowModal(true);
-
     setSuggestions(
       searchData.filter((course) =>
         course.course_title.toLowerCase().includes(value.toLowerCase())

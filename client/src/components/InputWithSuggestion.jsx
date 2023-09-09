@@ -8,7 +8,7 @@ const InputWithSuggestion = ({ searchData }) => {
   const [inputValue, setInputValue] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
-  const [showSearch, setShowSearch] = useState(false);
+  // const [showSearch, setShowSearch] = useState(false);
 
   const handleInputChange = (e) => {
     const value = e.target.value;
@@ -19,25 +19,23 @@ const InputWithSuggestion = ({ searchData }) => {
 
     setSuggestions(
       searchData.filter((course) =>
-        course.course_name.toLowerCase().includes(value.toLowerCase())
+        course.course_title.toLowerCase().includes(value.toLowerCase())
       )
     );
-    // Filter and set the search results
-    const filteredResults = searchData.filter(
-      (course) => course.course_name.toLowerCase() === value.toLowerCase()
-    );
-
-    setSearchResults(filteredResults);
   };
 
   const handleSuggestionClick = (suggestion) => {
-    setInputValue(suggestion.course_name);
+    setInputValue(suggestion.course_title);
     setShowModal(false);
   };
 
   const handleOnclick = () => {
     setShowModal(false);
-    setShowSearch(true);
+    const filteredResults = searchData.filter((course) =>
+      course.course_title.toLowerCase().includes(inputValue.toLowerCase())
+    );
+
+    setSearchResults([...filteredResults]);
   };
 
   const renderCourses = () => {
@@ -66,12 +64,13 @@ const InputWithSuggestion = ({ searchData }) => {
 
   return (
     <div>
-      <div className=" w-full flex h-fit  flex-row justify-between items-center mx-3 basis-1/2 my-3 ">
-        <div className="relative w-full">
+      <div className=" w-full flex flex-col md:flex-row justify-start items-start md:items-center basis-1/2 my-3 ">
+        <div className="relative w-5/12">
           <input
             type="text"
+            id="search_input"
             placeholder="Search title"
-            className="w-full rounded-lg bg-transparent p-2 py-3 text-base font-normal border-2 border-purple "
+            className="w-full rounded-lg bg-transparent p-2 py-3 text-xs md:text-base font-normal border-2 border-purple "
             value={inputValue}
             onChange={handleInputChange}
             onBlur={() => setShowModal(false)}
@@ -84,7 +83,7 @@ const InputWithSuggestion = ({ searchData }) => {
                     key={index}
                     className="p-2 cursor-pointer hover:bg-gray-200"
                     onClick={() => handleSuggestionClick(suggestion)}>
-                    {suggestion.course_name}
+                    {suggestion.course_title}
                   </li>
                 ))}
               </ul>
@@ -93,16 +92,16 @@ const InputWithSuggestion = ({ searchData }) => {
         </div>
 
         <button
-          className="flex flex-row items-center justify-between ml-1  px-6 py-3 h-fit w-fit rounded-lg bg-dark-purple text-white hover:bg-medium-purple text-base "
+          className="w-fit flex flex-row items-center justify-between my-2 md:my-0 md:ml-1 md:mr-4 px-6 py-3 h-fit rounded-lg bg-dark-purple text-white hover:bg-medium-purple text-xs md:text-base "
           onClick={handleOnclick}>
-          <BiSearch className="text-xl" />
+          <BiSearch className=" text-base md:text-xl" />
           <div className="mx-2">Search</div>
         </button>
 
         <label
           htmlFor="sort"
-          className=" w-full font-semibold text-base text-purple-700 opacity-50 flex flex-row mx-2 items-center justify-center  ">
-          <span className="text-lg">Sort by :</span>
+          className=" w-fit font-semibold text-xs md:text-base text-purple-700 opacity-50 flex flex-row mx-2 items-center justify-center  ">
+          <span className="text-sm md:text-lg">Sort by :</span>
           <select
             name="sort"
             id="sort"

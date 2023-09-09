@@ -1,60 +1,67 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 // material-ui
-import { useTheme } from '@mui/material/styles';
+import { useTheme } from "@mui/material/styles";
 
 // third-party
-import ReactApexChart from 'react-apexcharts';
+import ReactApexChart from "react-apexcharts";
 
 // chart options
 const barChartOptions = {
   chart: {
-    type: 'bar',
+    type: "bar",
     height: 365,
     toolbar: {
-      show: false
-    }
+      show: false,
+    },
   },
   plotOptions: {
     bar: {
-      columnWidth: '45%',
-      borderRadius: 4
-    }
+      columnWidth: "45%",
+      borderRadius: 4,
+    },
   },
   dataLabels: {
-    enabled: false
+    enabled: false,
   },
   xaxis: {
-    categories: ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'],
+    categories: ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"],
     axisBorder: {
-      show: false
+      show: false,
     },
     axisTicks: {
-      show: false
-    }
+      show: false,
+    },
   },
   yaxis: {
-    show: false
+    show: false,
   },
   grid: {
-    show: false
-  }
+    show: false,
+  },
 };
 
 // ==============================|| MONTHLY BAR CHART ||============================== //
 
-const MonthlyBarChart = () => {
+const MonthlyBarChart = ({ weekStat }) => {
   const theme = useTheme();
 
   const { primary, secondary } = theme.palette.text;
   const info = theme.palette.info.light;
-
-  const [series] = useState([
+  const [series, setSeries] = useState([
     {
-      data: [80, 95, 70, 42, 65, 55, 78]
-    }
+      data: [...weekStat],
+    },
   ]);
+  useEffect(() => {
+    setSeries([
+      {
+        data: [...weekStat],
+      },
+    ]);
+  }, [weekStat]);
 
+  console.log(series, "----------------");
   const [options, setOptions] = useState(barChartOptions);
 
   useEffect(() => {
@@ -64,20 +71,33 @@ const MonthlyBarChart = () => {
       xaxis: {
         labels: {
           style: {
-            colors: [secondary, secondary, secondary, secondary, secondary, secondary, secondary]
-          }
-        }
+            colors: [
+              secondary,
+              secondary,
+              secondary,
+              secondary,
+              secondary,
+              secondary,
+              secondary,
+            ],
+          },
+        },
       },
       tooltip: {
-        theme: 'light'
-      }
+        theme: "light",
+      },
     }));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [primary, info, secondary]);
 
   return (
     <div id="chart">
-      <ReactApexChart options={options} series={series} type="bar" height={365} />
+      <ReactApexChart
+        options={options}
+        series={series}
+        type="bar"
+        height={365}
+      />
     </div>
   );
 };

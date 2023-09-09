@@ -8,7 +8,6 @@ const BookSearch = ({ searchData }) => {
   const [inputValue, setInputValue] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
-  const [showSearch, setShowSearch] = useState(false);
 
   const handleInputChange = (e) => {
     const value = e.target.value;
@@ -23,11 +22,9 @@ const BookSearch = ({ searchData }) => {
     );
 
     // Filter and set the search results
-    const filteredResults = showSearch
-      ? searchData.filter((book) =>
-          book.Book_name.toLowerCase().includes(value.toLowerCase())
-        )
-      : "";
+    const filteredResults = searchData.filter(
+      (book) => book.Book_name.toLowerCase() === value.toLowerCase()
+    );
     setSearchResults(filteredResults);
   };
 
@@ -77,8 +74,7 @@ const BookSearch = ({ searchData }) => {
                   <li
                     key={index}
                     className="p-2 cursor-pointer hover:bg-gray-200"
-                    onClick={() => handleSuggestionClick(suggestion)}
-                  >
+                    onClick={() => handleSuggestionClick(suggestion)}>
                     {suggestion.Book_name}
                   </li>
                 ))}
@@ -89,8 +85,7 @@ const BookSearch = ({ searchData }) => {
 
         <button
           className="ml-1 h-fit rounded-lg bg-dark-purple px-8 py-3 text-white hover:bg-blue-600 flex flex-row text-[1rem] sm:px-16 sm:py-2 "
-          onClick={() => setShowSearch(true)}
-        >
+          onClick={() => handleInputChange({ target: { value: inputValue } })}>
           <BiSearch className="mr-3 text-[1.5rem]" />
           <div className="my-auto sm:my-1">Search</div>
         </button>

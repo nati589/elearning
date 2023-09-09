@@ -8,32 +8,35 @@ const InputWithSuggestion = ({ searchData }) => {
   const [inputValue, setInputValue] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
-  const [showSearch, setShowSearch] = useState(false);
+  // const [showSearch, setShowSearch] = useState(false);
 
   const handleInputChange = (e) => {
     const value = e.target.value;
+    if (value === "") {
+      setInputValue(value);
+      return setSearchResults([]);
+    }
     setInputValue(value);
-
-    // Show the suggestion modal when input is not empty
-    setShowModal(value !== "");
-
+    setShowModal(true);
     setSuggestions(
       searchData.filter((course) =>
-        course.course_name.toLowerCase().includes(value.toLowerCase())
+        course.course_title.toLowerCase().includes(value.toLowerCase())
       )
     );
-    // Filter and set the search results
-    const filteredResults = showSearch
-      ? searchData.filter((course) =>
-          course.course_name.toLowerCase().includes(value.toLowerCase())
-        )
-      : "";
-    setSearchResults(filteredResults);
   };
 
   const handleSuggestionClick = (suggestion) => {
-    setInputValue(suggestion.course_name);
+    setInputValue(suggestion.course_title);
     setShowModal(false);
+  };
+
+  const handleOnclick = () => {
+    setShowModal(false);
+    const filteredResults = searchData.filter((course) =>
+      course.course_title.toLowerCase().includes(inputValue.toLowerCase())
+    );
+
+    setSearchResults([...filteredResults]);
   };
 
   const renderCourses = () => {
@@ -41,19 +44,19 @@ const InputWithSuggestion = ({ searchData }) => {
       searchResults.length > 0 ? searchResults : searchData;
 
     return (
-      <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-4 my-8">
+      <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-4 my-8">
         {coursesToRender.map((course, index) => (
           <CourseCard
             key={index}
             courseId={course.course_id}
-            course_name={course.course_name}
-            course_description="Minim pariatur exercitation est aliquip deserunt id sit tempor voluptate."
+            course_name={course.course_title}
+            course_description={course.course_details}
             courseImagePath="./Image.png"
-            hoursNeeded="2 hours"
-            teacherName="Abe Kebe"
-            rating="3.7"
-            price="40 ETB"
-            level="3"
+            hoursNeeded={course.course_total_hour}
+            teacherName={course.course_instructor}
+            rating={course.course_rating}
+            price={course.course_price}
+            level={course.course_level}
           />
         ))}
       </div>
@@ -62,14 +65,16 @@ const InputWithSuggestion = ({ searchData }) => {
 
   return (
     <div>
-      <div className="flex sm:h-20 h-10 flex-row justify-between mx-3 basis-1/2 my-2 sm:mt-6">
-        <div className="relative ">
+      <div className=" w-full flex flex-col md:flex-row justify-start items-start md:items-center basis-1/2 my-3 ">
+        <div className="relative w-5/12">
           <input
             type="text"
+            id="search_input"
             placeholder="Search title"
-            className="w-full rounded-lg bg-transparent p-2 text-lg font-light pr-4 border-2 border-purple md:pr-28 sm:w-fit"
+            className="w-full rounded-lg bg-transparent p-2 py-3 text-xs md:text-base font-normal border-2 border-purple "
             value={inputValue}
             onChange={handleInputChange}
+            onBlur={() => setShowModal(false)}
           />
           {showModal && (
             <div className="absolute top-10 left-0 w-full bg-purple-50 border rounded shadow-md z-10">
@@ -79,7 +84,7 @@ const InputWithSuggestion = ({ searchData }) => {
                     key={index}
                     className="p-2 cursor-pointer hover:bg-gray-200"
                     onClick={() => handleSuggestionClick(suggestion)}>
-                    {suggestion.course_name}
+                    {suggestion.course_title}
                   </li>
                 ))}
               </ul>
@@ -88,11 +93,25 @@ const InputWithSuggestion = ({ searchData }) => {
         </div>
 
         <button
-          className="ml-1 h-fit rounded-lg bg-dark-purple px-8 py-3 text-white hover:bg-blue-600 flex flex-row text-[1rem] sm:px-16 sm:py-2 "
-          onClick={() => setShowSearch(true)}>
-          <BiSearch className="mr-3 text-[1.5rem]" />
-          <div className="my-auto sm:my-1">Search</div>
+          className="w-fit flex flex-row items-center justify-between my-2 md:my-0 md:ml-1 md:mr-4 px-6 py-3 h-fit rounded-lg bg-dark-purple text-white hover:bg-medium-purple text-xs md:text-base "
+          onClick={handleOnclick}>
+          <BiSearch className=" text-base md:text-xl" />
+          <div className="mx-2">Search</div>
         </button>
+
+        <label
+          htmlFor="sort"
+          className=" w-fit font-semibold text-xs md:text-base text-medium-purple flex flex-row mx-2 items-center justify-center  ">
+          <span className="text-sm md:text-lg">Sort by </span>
+          <select
+            name="sort"
+            id="sort"
+            className=" ml-2 rounded-md border-2 border-medium-purple p-2 bg-transparent text-medium-purple pr-12 ">
+            <option value="a">Latest</option>
+            <option value="b">Oldest</option>
+            <option value="c">c</option>
+          </select>
+        </label>
       </div>
 
       {renderCourses()}

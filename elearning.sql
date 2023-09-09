@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.3
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 08, 2023 at 11:35 AM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 7.1.32
+-- Generation Time: Sep 09, 2023 at 12:48 PM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 8.1.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -159,14 +159,13 @@ CREATE TABLE `course` (
 --
 
 INSERT INTO `course` (`course_id`, `course_title`, `course_details`, `course_level`, `course_certificate`, `course_students`, `course_rating`, `course_sections`, `course_archived`, `course_price`, `course_instructor`, `course_max_comments`, `course_total_hour`, `course_date_created`) VALUES
-('19a45b62-6f39-4034-8ca1-85770e6c7193', 'llsdjkfjkdsljflsdkjfsdljfkld', 'klsjfdslkfjsdlkfjsdklfjdslkf', 'Advanced', 1, 0, '0', 0, 0, 12, 'ksljdflfksdjfkldsjfksdlfjdskl', 5, 13, '2023-09-07 23:09:37.000000'),
-('5a0398dc-8998-4409-b9a5-f1adf380f3a1', 'sdfdsfsdfsd', 'fsdffssssssssss', 'Beginner', 1, 0, '0', 0, 0, 345, 'sdfghjk', 5, 23, '2023-09-08 00:09:57.000000'),
-('9154f207-9a25-418c-9b87-34257ef565d9', 'llsdjkfjkdsljflsdkjfsdljfkld', 'klsjfdslkfjsdlkfjsdklfjdslkf', 'Advanced', 1, 0, '0', 0, 0, 12, 'ksljdflfksdjfkldsjfksdlfjdskl', 5, 13, '2023-09-07 23:22:04.000000'),
-('985af890-025f-4cdb-a425-858d48d9c49a', 'llsdjkfjkdsljflsdkjfsdljfkld', 'klsjfdslkfjsdlkfjsdklfjdslkf', 'Advanced', 1, 0, '0', 0, 0, 12, 'ksljdflfksdjfkldsjfksdlfjdskl', 5, 13, '2023-09-07 23:12:52.000000'),
-('a18537b7-7716-4db6-b21d-598d8843b258', 'sdfdsfsdfsd', 'fsdffssssssssss', 'Beginner', 1, 0, '0', 0, 0, 345, 'sdfghjk', 5, 23, '2023-09-08 00:08:00.000000'),
-('c6bf0b68-0c74-47d6-9320-26a58757c6c6', 'llsdjkfjkdsljflsdkjfsdljfkld', 'klsjfdslkfjsdlkfjsdklfjdslkf', 'Advanced', 1, 0, '0', 0, 0, 12, 'ksljdflfksdjfkldsjfksdlfjdskl', 5, 13, '2023-09-07 23:11:44.000000'),
-('dac3dedc-5544-44e2-b76f-6a4f67a601aa', 'llsdjkfjkdsljflsdkjfsdljfkld', 'klsjfdslkfjsdlkfjsdklfjdslkf', 'Advanced', 1, 0, '0', 0, 0, 12, 'ksljdflfksdjfkldsjfksdlfjdskl', 5, 13, '2023-09-07 23:20:22.000000'),
-('faa2c699-971d-4394-9db9-edef4df7962c', 'sdfdsfsdfsd', 'fsdffssssssssss', 'Beginner', 1, 0, '0', 0, 0, 345, 'sdfghjk', 5, 23, '2023-09-08 00:21:23.000000');
+('19a45b62-6f39-4034-8ca1-85770e6c7193', 'Amharic for Beginners', 'Amharic pariatur exercitation est aliquip deserunt id sit tempor voluptate.Amharic pariatur exercitation est aliquip deserunt id sit tempor voluptate.Amharic pariatur exercitation est aliquip deserunt id sit tempor voluptate.Amharic pariatur exercitation est aliquip deserunt id sit tempor voluptate.Amharic pariatur exercitation est aliquip deserunt id sit tempor voluptate.Amharic pariatur exercitation est aliquip deserunt id sit tempor voluptate.', 'Beginner', 1, 0, '3.7', 0, 0, 12, 'Abebe Molla', 5, 13, '2023-09-07 23:09:37.000000'),
+('5a0398dc-8998-4409-b9a5-f1adf380f3a1', 'Oromiffa for Beginners', 'Oromiffa pariatur exercitation est aliquip deserunt id sit tempor voluptate.', 'Beginner', 1, 0, '3.7', 0, 0, 345, 'Alemu Tekka', 5, 23, '2023-09-08 00:09:57.000000'),
+('9154f207-9a25-418c-9b87-34257ef565d9', 'Tigrigna for beginners', 'Tigrigna pariatur exercitation est aliquip deserunt id sit tempor voluptate.', 'Beginner', 1, 0, '3.7', 0, 0, 12, 'Solomon Legesse', 5, 13, '2023-09-07 23:22:04.000000'),
+('985af890-025f-4cdb-a425-858d48d9c49a', 'Amharic Intermediate', 'AMH inter pariatur exercitation est aliquip deserunt id sit tempor voluptate.', 'Intermediate', 1, 0, '4.0', 0, 0, 12, 'Abera Gebre', 5, 13, '2023-09-07 23:12:52.000000'),
+('a18537b7-7716-4db6-b21d-598d8843b258', 'Oromiffa Intermediate', 'Minim pariatur exercitation est aliquip deserunt id sit tempor voluptate.', 'Intermediate', 1, 0, '4.0', 0, 0, 345, 'Samuel Hassen', 5, 23, '2023-09-08 00:08:00.000000'),
+('c6bf0b68-0c74-47d6-9320-26a58757c6c6', 'Tigrigna Intermediate', 'Minim pariatur exercitation est aliquip deserunt id sit tempor voluptate.', 'Intermediate', 1, 0, '4.0', 0, 0, 12, 'Natnael Asnake', 5, 13, '2023-09-07 23:11:44.000000'),
+('dac3dedc-5544-44e2-b76f-6a4f67a601aa', 'Ge\'ez', 'Minim pariatur exercitation est aliquip deserunt id sit tempor voluptate.', 'Advanced', 1, 0, '4.5', 0, 0, 12, 'Selam Moges', 5, 13, '2023-09-07 23:20:22.000000');
 
 -- --------------------------------------------------------
 

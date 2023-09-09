@@ -40,7 +40,7 @@ function CourseDetailsPage() {
           <button
             className="text-gray-400"
             onClick={() => {
-              navigate("  /");
+              navigate("/");
             }}>
             Home
           </button>
@@ -48,11 +48,10 @@ function CourseDetailsPage() {
           <button
             className="text-fuchsia-700"
             onClick={() => {
-              navigate("  /courses");
+              navigate("/courses");
             }}>
             Courses
           </button>
-          <span className="text-gray-400"> | </span>
         </div>
         <div className="flex items-center justify-around py-4 flex-wrap-reverse lg:flex-nowrap">
           <>
@@ -75,76 +74,76 @@ function CourseDetailsPage() {
           <p className="whitespace-normal md:whitespace-pre-line mb-4 max-w-full">
             {courseData.course_details}
           </p>
+          {/*
+              <h3 className="font-extrabold text-3xl text-left text-[#0A033C] mb-4">
+                Certification
+              </h3>
 
-          <h3 className="font-extrabold text-3xl text-left text-[#0A033C] mb-4">
-            Certification
-          </h3>
+              <p className="whitespace-normal md:whitespace-pre-line mb-4">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis
+                ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas
+                accumsan lacus vel facilisis consectetur adipiscing elit. Lorem
+                ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua. Quis ipsum
+                suspendisse ultrices gravida. Risus commodo viverra maecenas
+                accumsan lacus vel facilisis consectetur adipiscing elit.
+              </p>
 
-          {/* <p className="whitespace-normal md:whitespace-pre-line mb-4">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis
-            ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas
-            accumsan lacus vel facilisis consectetur adipiscing elit. Lorem
-            ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Quis ipsum
-            suspendisse ultrices gravida. Risus commodo viverra maecenas
-            accumsan lacus vel facilisis consectetur adipiscing elit.
-          </p>
+              <h3 className="font-extrabold text-3xl text-left text-[#0A033C] mb-4">
+                Who this course is for
+              </h3>
 
-          <h3 className="font-extrabold text-3xl text-left text-[#0A033C] mb-4">
-            Who this course is for
-          </h3>
-
-          <p className="whitespace-normal md:whitespace-pre-line mb-4">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis
-            ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas
-            accumsan lacus vel facilisis consectetur adipiscing elit. Lorem
-            ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Quis ipsum
-            suspendisse ultrices gravida. Risus commodo viverra maecenas
-            accumsan lacus vel facilisis consectetur adipiscing elit.
-          </p>
-          <h3 className="font-extrabold text-3xl text-left text-[#0A033C] mb-4">
-            What you'll learn in this course:
-          </h3>
-          <ul className="list-none text-2x">
-            <li>
-              <span className="text-orange-500 text-3xl mr-2">&#9679;</span>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit
-            </li>
-            <li>
-              <span className="text-orange-500 text-3xl mr-2">&#9679;</span>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit
-            </li>
-            <li>
-              <span className="text-orange-500 text-3xl mr-2">&#9679;</span>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit
-            </li>
-            <li>
-              <span className="text-orange-500 text-3xl mr-2">&#9679;</span>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit
-            </li>
-            <li>
-              <span className="text-orange-500 text-3xl mr-2">&#9679;</span>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit
-            </li>
-            <li>
-              <span className="text-orange-500 text-3xl mr-2">&#9679;</span>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit
-            </li>
-          </ul> */}
+              <p className="whitespace-normal md:whitespace-pre-line mb-4">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis
+                ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas
+                accumsan lacus vel facilisis consectetur adipiscing elit. Lorem
+                ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua. Quis ipsum
+                suspendisse ultrices gravida. Risus commodo viverra maecenas
+                accumsan lacus vel facilisis consectetur adipiscing elit.
+              </p>
+              <h3 className="font-extrabold text-3xl text-left text-[#0A033C] mb-4">
+                What you'll learn in this course:
+              </h3>
+              <ul className="list-none text-2x">
+                <li>
+                  <span className="text-orange-500 text-3xl mr-2">&#9679;</span>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit
+                </li>
+                <li>
+                  <span className="text-orange-500 text-3xl mr-2">&#9679;</span>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit
+                </li>
+                <li>
+                  <span className="text-orange-500 text-3xl mr-2">&#9679;</span>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit
+                </li>
+                <li>
+                  <span className="text-orange-500 text-3xl mr-2">&#9679;</span>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit
+                </li>
+                <li>
+                  <span className="text-orange-500 text-3xl mr-2">&#9679;</span>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit
+                </li>
+                <li>
+                  <span className="text-orange-500 text-3xl mr-2">&#9679;</span>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit
+                </li>
+              </ul> 
+          */}
         </div>
         <div className="mx-4 w-4/12">
           <Pricecard
-            course_price="$49.00"
-            course_instructure="WadeWarren"
-            course_rate="4.7"
-            course_total_hour="10 Days"
+            course_price={courseData.course_price}
+            course_instructor={courseData.course_instructor}
+            course_rate={courseData.course_rating}
+            course_total_hour={courseData.course_total_hour}
             course_sections="30"
             course_quizzes="5"
-            course_answer="yes"
-            course_languges="English"
+            course_answer={courseData.course_certificate}
             course_access="Lifetime"
           />
         </div>

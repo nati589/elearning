@@ -6,7 +6,7 @@ import booksIcon from "../assets/booksicon.png";
 function BooksHero() {
   const navigate = useNavigate();
   return (
-    <div className="mx-8 bg-violet-50 rounded-3xl px-8 py-2">
+    <div className="mx-8 bg-white rounded-3xl px-8 py-2 my-8 ">
       <div className="flex items-center justify-around py-4 flex-wrap-reverse lg:flex-nowrap">
         <>
           <span className="flex gap-4">

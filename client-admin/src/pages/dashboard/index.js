@@ -78,7 +78,7 @@ const status = [
 // ==============================|| DASHBOARD - DEFAULT ||============================== //
 const url1 = "http://localhost:8800/api/users/getUsers";
 const url2 = "http://localhost:8800/api/books/getBooks";
-const url3 = "http://localhost:8800/api/courses/getCourses";
+const url3 = "http://localhost:8800/api/courses/getTotalCourses";
 const url4 = "http://localhost:8800/api/purchases/getPurchases";
 const urTl1 = "http://localhost:8800/api/users/getUsersThisYear";
 const urTl2 = "http://localhost:8800/api/books/getBooksThisYear";

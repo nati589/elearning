@@ -13,7 +13,7 @@ const router = express.Router();
 
 router.get("/getBooks", getBooks);
 router.get("/getBooksThisYear", getBooksThisYear);
-router.get("/getBooksThisWeak", getBooksThisWeek);
+router.get("/getBooksThisWeek", getBooksThisWeek);
 router.get("/getBooksThisMonth", getBooksThisMonth);
 // router.put('/updateMember', updateMember);
 // router.delete('/deleteMember', deleteMember);

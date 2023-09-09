@@ -6,7 +6,6 @@ import coursesRoutes from "./routes/courses.js";
 import purchasesRouter from "./routes/purchases.js";
 import webContentRoutes from "./routes/webContent.js";
 import usersRoutes from "./routes/users.js";
-// import coursesRoutes from "./routes/course.js";
 import cookieParser from "cookie-parser";
 
 import cors from "cors";
@@ -15,9 +14,11 @@ import { db } from "./db.js";
 const app = express();
 
 app.use(express.json());
+
+const allowedOrigins = ["http://localhost:3000", "http://localhost:3001"];
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: allowedOrigins,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,

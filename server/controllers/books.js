@@ -28,6 +28,85 @@ export const getBooksThisYear = (req, res) => {
     }
   });
 };
+export const getBooksThisMonth = (req, res) => {
+  const q = `
+  SELECT
+  DATE_FORMAT(book_date_created, '%Y-%m') AS month_value,
+  COUNT(*) AS count
+FROM
+  book
+WHERE
+  book_date_created >= DATE_SUB(CURDATE(), INTERVAL 1 YEAR)
+GROUP BY
+  month_value
+ORDER BY
+  month_value `;
+  db.query(q, (err, data) => {
+    if (err) {
+      res.json(err);
+      console.log(err);
+    } else {
+      // Define an array of month names
+      const months = [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec",
+      ];
+
+      // Create an array to store the result with counts for each month
+      const resultArray = months.map((monthName) => {
+        const matchingRow = data.find((row) => {
+          // Input date in the format "YYYY-MM"
+          const inputDate = row.month_value;
+
+          // Create a JavaScript Date object from the input date
+          const dateParts = inputDate.split("-");
+          const year = parseInt(dateParts[0], 10);
+          const month = parseInt(dateParts[1], 10) - 1; // Months are 0-indexed, so subtract 1
+
+          const jsDate = new Date(year, month);
+
+          // Get the short month name
+          const monthNames = [
+            "Jan",
+            "Feb",
+            "Mar",
+            "Apr",
+            "May",
+            "Jun",
+            "Jul",
+            "Aug",
+            "Sep",
+            "Oct",
+            "Nov",
+            "Dec",
+          ];
+          const shortMonthName = monthNames[jsDate.getMonth()];
+
+          return shortMonthName === monthName;
+        });
+        return {
+          month: monthName,
+          count: matchingRow ? matchingRow.count : 0, // Set count to 0 if no data for the month
+        };
+      });
+
+      // Print or use the resultArray as needed
+      const monthData = resultArray.map((data) => data.count);
+      // console.log(resultArray.count);
+      res.json(monthData);
+    }
+  });
+};
 export const getBooksThisWeek = (req, res) => {
   const q = `
       SELECT DAYNAME(book_date_created) AS day_name, COUNT(*) AS count
@@ -46,13 +125,13 @@ export const getBooksThisWeek = (req, res) => {
 
       // Initialize the array with days and counts
       const daysOfWeek = [
-        "Sunday",
         "Monday",
         "Tuesday",
         "Wednesday",
         "Thursday",
         "Friday",
         "Saturday",
+        "Sunday",
       ];
       console.log(data);
       daysOfWeek.forEach((day) => {
@@ -65,13 +144,10 @@ export const getBooksThisWeek = (req, res) => {
 
       // Print the result array
       const dataOfWeek = resultArray.map((data) => data.count);
-
-      res.json({
-        dataOfWeek,
-      });
+      console.log(resultArray);
+      res.json(dataOfWeek);
     }
   });
-  db.query(q);
 };
 export const getBooksThisMonth = (req, res) => {
   const q = `

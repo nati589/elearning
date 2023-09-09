@@ -23,12 +23,11 @@ function CourseCard({
   const course_image = images(courseImagePath);
   const numbers = [1, 2, 3, 4, 5];
   return (
-    <Link to={`/coursedetails/?id=${courseId}`}>
+    <Link to={`/coursedetails/${courseId}`}>
       <div
         className="relative bg-white rounded-lg border-t-8 border-x-2 min-h-[180px] lg:min-h-[380px] h-fit
      md:w-full border-medium-purple p-2 shadow-md cursor-pointer transition-transform duration-300 ease-in-out
-      hover:scale-[1.04] hover:-translate-y-1 hover:z-10 hover:drop-shadow-[0 35px 35px rgba(0, 0, 0, 1)]"
-      >
+      hover:scale-[1.04] hover:-translate-y-1 hover:z-10 hover:drop-shadow-[0 35px 35px rgba(0, 0, 0, 1)]">
         <div className="flex flex-col px-1 items-center justify-center mb-2">
           <span className="self-start mb-2 text-sm lg:text-xl font-semibold font-sans">
             {course_name}
@@ -89,5 +88,5 @@ function CourseCard({
     </Link>
   );
 }
-
+// export default ;
 export default CourseCard;

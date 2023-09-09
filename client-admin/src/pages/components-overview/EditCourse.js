@@ -8,24 +8,34 @@ import {
   InputLabel,
   Button,
 } from "@mui/material";
-import React 
-// { useEffect, useState } 
-from "react";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import React, {
+  useEffect,
+  useRef,
+  // useState,
+  // useState
+} from "react";
+import { 
+  // Field, ErrorMessage, 
+  useFormik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
-// import { useNavigate, useParams } from "../../../node_modules/react-router/dist/index";
+import {
+  useNavigate,
+  useParams,
+} from "../../../node_modules/react-router/dist/index";
 
 export default function EditCourse() {
-  // const navigate = useNavigate();
-  // const { id } = useParams();
+  const navigate = useNavigate();
+  const { id } = useParams();
+  const idRef = useRef(id);
+
   const initialValues = {
     course_title: "",
     course_details: "",
     course_level: "",
     course_price: "",
     course_instructor: "",
-    course_total_hours: "",
+    course_total_hour: "",
     course_thumbnail: null,
   };
 
@@ -35,159 +45,243 @@ export default function EditCourse() {
     course_level: Yup.string().required("Course Level is required"),
     course_price: Yup.number().required("Course Price is required"),
     course_instructor: Yup.string().required("Course Instructor is required"),
-    course_total_hours: Yup.number().required("Course Total Hours is required"),
-    course_thumbnail: Yup.mixed().required("Course Thumbnail is required"),
+    course_total_hour: Yup.number().required("Course Total Hours is required"),
+    course_thumbnail: Yup.mixed(),
+  });
+  const formik = useFormik({
+    initialValues,
+    validationSchema,
+    onSubmit: (values, 
+      // { setSubmitting }
+      ) => {
+      // console.log(values);
+      const formData = new FormData();
+
+      formData.append("course_title", values.course_title);
+      formData.append("course_details", values.course_details);
+      formData.append("course_level", values.course_level);
+      formData.append("course_price", parseFloat(values.course_price));
+      formData.append("course_instructor", values.course_instructor);
+      formData.append("course_total_hour", parseInt(values.course_total_hour));
+      formData.append("course_thumbnail", values.course_thumbnail);
+      console.log(formData);
+
+      axios
+        .put(`/courses/updateCourse/${id}`, formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        })
+        .then((response) => {
+          console.log(response.data);
+          // setSubmitting(false);
+          navigate('../')
+        })
+        .catch((error) => {
+          console.error(error);
+          // setSubmitting(false);
+        });
+    },
   });
 
-  const handleSubmit = (values, { setSubmitting }) => {
-    console.log(values);
-    const formData = new FormData();
-
-    formData.append("course_title", values.course_title);
-    formData.append("course_details", values.course_details);
-    formData.append("course_level", values.course_level);
-    formData.append("course_price", values.course_price);
-    formData.append("course_instructor", values.course_instructor);
-    formData.append("course_total_hours", values.course_total_hours);
-    formData.append("course_thumbnail", values.course_thumbnail);
-    console.log(formData);
-
+  useEffect(() => {
+    let isMounted = true;
+    const controller = new AbortController();
+    // let course_id = id;
     axios
-      .post("/courses/addCourse", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
+      .get(`/courses/getSingleCourse/${idRef.current}`, {
+        signal: controller.signal,
       })
-      .then((response) => {
-        console.log(response.data);
-        setSubmitting(false);
+      .then((res) => {
+        // console.log(res.data[0]);
+        const fetchedData = res.data[0];
+        const mappedInitialValues = {
+          course_title: fetchedData.course_title || "",
+          course_details: fetchedData.course_details || "",
+          course_level: fetchedData.course_level || "",
+          course_price: fetchedData.course_price || "",
+          course_instructor: fetchedData.course_instructor || "",
+          course_total_hour: fetchedData.course_total_hour || "",
+          course_thumbnail: null,
+        };
+        // console.log(mappedInitialValues);
+        isMounted && formik.setValues(mappedInitialValues);
       })
       .catch((error) => {
         console.error(error);
-        setSubmitting(false);
       });
-  };
+    return () => {
+      isMounted = false;
+      controller.abort();
+    };
+  }, []);
 
   return (
     <>
       <Box sx={{ ml: 2 }}>
         <Typography variant="h4">Edit Course</Typography>
-        <Typography variant="p">
-          This section is to modify a course.
-        </Typography>
+        <Typography variant="p">This section is to modify a course.</Typography>
       </Box>
-      <Formik
-        initialValues={initialValues}
-        validationSchema={validationSchema}
-        onSubmit={handleSubmit}>
-        <Form>
-          <Field
-            as={TextField}
-            required
+
+      <Box component="form" onSubmit={formik.handleSubmit} sx={{ p: 2 }}>
+        <Box mb={2}>
+          <TextField
             fullWidth
             id="course_title"
-            label="Course Title"
             name="course_title"
-            sx={{ my: 2 }}
+            label="Course Title"
+            value={formik.values.course_title}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            error={
+              formik.touched.course_title && Boolean(formik.errors.course_title)
+            }
+            helperText={
+              formik.touched.course_title && formik.errors.course_title
+            }
           />
-          <ErrorMessage name="course_title" component="div" />
+        </Box>
 
-          <Field
-            as={TextField}
-            required
+        <Box mb={2}>
+          <TextField
             fullWidth
             id="course_details"
-            label="Course Details"
             name="course_details"
+            label="Course Details"
             multiline
-            sx={{ my: 2 }}
+            value={formik.values.course_details}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            error={
+              formik.touched.course_details &&
+              Boolean(formik.errors.course_details)
+            }
+            helperText={
+              formik.touched.course_details && formik.errors.course_details
+            }
           />
-          <ErrorMessage name="course_details" component="div" />
+        </Box>
 
-          <FormControl fullWidth sx={{ my: 2 }}>
-            <InputLabel id="course_level_label">Course Level</InputLabel>
-            <Field
-              as={Select}
-              required
+        <Box mb={2}>
+          <FormControl>
+            <InputLabel id="course_level-label">Course Level</InputLabel>
+            <Select
               fullWidth
               id="course_level"
               name="course_level"
-              labelId="course_level_label">
+              labelId="course_level-label"
+              value={formik.values.course_level}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              error={
+                formik.touched.course_level &&
+                Boolean(formik.errors.course_level)
+              }>
+              <MenuItem value="">Select Level</MenuItem>
               <MenuItem value="All">All</MenuItem>
               <MenuItem value="Beginner">Beginner</MenuItem>
               <MenuItem value="Intermediate">Intermediate</MenuItem>
               <MenuItem value="Advanced">Advanced</MenuItem>
-            </Field>
-            <ErrorMessage name="course_level" component="div" />
+            </Select>
           </FormControl>
+        </Box>
 
-          <Field
-            as={TextField}
-            required
+        <Box mb={2}>
+          <TextField
             fullWidth
-            type="number"
             id="course_price"
-            label="Course Price"
             name="course_price"
+            label="Course Price"
+            type="number"
+            value={formik.values.course_price}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            error={
+              formik.touched.course_price && Boolean(formik.errors.course_price)
+            }
+            helperText={
+              formik.touched.course_price && formik.errors.course_price
+            }
           />
-          <ErrorMessage name="course_price" component="div" />
+        </Box>
 
-          <Field
-            as={TextField}
-            required
+        <Box mb={2}>
+          <TextField
             fullWidth
             id="course_instructor"
-            label="Course Instructor"
             name="course_instructor"
-            sx={{ my: 2 }}
+            label="Course Instructor"
+            value={formik.values.course_instructor}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            error={
+              formik.touched.course_instructor &&
+              Boolean(formik.errors.course_instructor)
+            }
+            helperText={
+              formik.touched.course_instructor &&
+              formik.errors.course_instructor
+            }
           />
-          <ErrorMessage name="course_instructor" component="div" />
+        </Box>
 
-          <Field
-            as={TextField}
-            required
+        <Box mb={2}>
+          <TextField
             fullWidth
+            id="course_total_hour"
+            name="course_total_hour"
+            label="Course Total Hour"
             type="number"
-            id="course_total_hours"
-            label="Course Total Hours"
-            name="course_total_hours"
+            value={formik.values.course_total_hour}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            error={
+              formik.touched.course_total_hour &&
+              Boolean(formik.errors.course_total_hour)
+            }
+            helperText={
+              formik.touched.course_total_hour &&
+              formik.errors.course_total_hour
+            }
           />
-          <ErrorMessage name="course_total_hours" component="div" />
+        </Box>
 
-          <Box sx={{ my: 2, ml: 0.2 }}>
-            <Typography>Course Thumbnail</Typography>
-            <Field name="course_thumbnail">
-              {({ field, form }) => (
-                <div>
-                  <input
-                    id="course_thumbnail"
-                    type="file"
-                    onChange={(event) =>
-                      form.setFieldValue(field.name, event.target.files[0])
-                    }
-                  />
-                  <ErrorMessage name="course_thumbnail" component="div" />
-                </div>
-              )}
-            </Field>
-          </Box>
+        <Box mb={2}>
+          <input
+            fullWidth
+            id="course_thumbnail"
+            name="course_thumbnail"
+            type="file"
+            onChange={(event) =>
+              formik.setFieldValue("course_thumbnail", event.target.files[0])
+            }
+            onBlur={formik.handleBlur}
+            error={
+              formik.touched.course_thumbnail &&
+              Boolean(formik.errors.course_thumbnail)
+            }
+          />
+          {formik.touched.course_thumbnail &&
+            formik.errors.course_thumbnail && (
+              <div>{formik.errors.course_thumbnail}</div>
+            )}
+        </Box>
 
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "flex-end",
-              gap: 1.5,
-              mt: 2,
-            }}>
-            <Button variant="outlined" type="submit">
-              Cancel
-            </Button>
-            <Button variant="contained" type="submit">
-              Next
-            </Button>
-          </Box>
-        </Form>
-      </Formik>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "flex-end",
+            gap: 1.5,
+            mt: 2,
+          }}>
+          <Button variant="outlined" type="reset" onClick={() => navigate('../')}>
+            Cancel
+          </Button>
+          <Button variant="contained" type="submit">
+            Next
+          </Button>
+        </Box>
+      </Box>
     </>
   );
 }

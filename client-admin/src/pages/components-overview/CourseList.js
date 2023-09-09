@@ -13,17 +13,19 @@ import { useNavigate } from "../../../node_modules/react-router/dist/index";
 import axios from "axios";
 
 export default function CourseList() {
-  const [productList, setProductList] = useState([]);
+  const [courseList, setCourseList] = useState([]);
+  // const [sectionList, setSectionList] = useState([]);
   useEffect(() => {
     axios
       .get("/courses/getCourses")
       .then((res) => {
-        setProductList(
+        setCourseList(
           res.data.map((item) => [
             item.course_title,
             item.course_instructor,
             item.course_level,
             item.course_price,
+            item.course_id,
             item.course_rating,
             item.course_sections,
             item.course_students,
@@ -49,9 +51,63 @@ export default function CourseList() {
 
   const navigate = useNavigate();
   const options = {
-    // filterType: "checkbox",
-    elevation: 0,
+    filterType: "dropdown",
     selectableRows: "none",
+    responsive: "standard",
+    elevation: 0,
+    expandableRows: true,
+    expandableRowsHeader: false,
+    expandableRowsOnClick: true,
+    renderExpandableRow: (rowData, rowMeta) => {
+      const colSpan = rowData.length + 1;
+      // console.log(rowData[4]);
+      // setSectionList([])
+      let sectionList = fetchSections(rowData[4]);
+      const sectionOptions = {
+        selectableRows: "none",
+        responsive: "standard",
+        elevation: 1,
+      };
+      return (
+        <tr>
+          <td colSpan={colSpan}>
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+                my: 2,
+                mx: 2,
+                alignItems: "center",
+              }}>
+              <Typography variant="h5">Sections</Typography>
+              <Button variant="outlined">Add Section</Button>
+            </Box>
+            <Box sx={{ m: 2 }}>
+              <StyledMUIDataTable
+                title={""}
+                data={sectionList}
+                options={sectionOptions}
+              />
+            </Box>
+          </td>
+        </tr>
+      );
+    },
+  };
+  const fetchSections = (courseId) => {
+    let sections = [];
+    axios
+      .get(`/sections/getCourseSections/${courseId}`)
+      .then((response) => {
+        // setSections(response.data);
+        sections = response.data;
+        console.log(sections);
+        return sections;
+      })
+      .catch((error) => {
+        console.error(error);
+        return [];
+      });
   };
   const StyledMUIDataTable = styled(MUIDataTable)(({ theme }) => ({
     background: theme.palette.background.default,
@@ -79,7 +135,14 @@ export default function CourseList() {
       name: "Price",
       options: {
         filter: false,
-        
+      },
+    },
+    {
+      name: "ID",
+      options: {
+        sort: false,
+        display: false,
+        filter: false,
       },
     },
     {
@@ -115,7 +178,7 @@ export default function CourseList() {
               <Button
                 onClick={() => {
                   // console.log(data);
-                  navigate(`/coursemanagement/editcourse/${data}`)
+                  navigate(`/coursemanagement/editcourse/${data}`);
                 }}>
                 <EditIcon />
               </Button>
@@ -153,7 +216,7 @@ export default function CourseList() {
       <Box>
         <StyledMUIDataTable
           title={""}
-          data={productList}
+          data={courseList}
           columns={columns}
           options={options}
         />

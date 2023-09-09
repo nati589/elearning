@@ -12,15 +12,17 @@ import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
+import { useNavigate } from "../../../node_modules/react-router/dist/index";
 
 export default function AddCourse() {
+  const navigate = useNavigate()
   const initialValues = {
     course_title: "",
     course_details: "",
     course_level: "",
     course_price: "",
     course_instructor: "",
-    course_total_hours: "",
+    course_total_hour: "",
     course_thumbnail: null,
   };
 
@@ -30,7 +32,7 @@ export default function AddCourse() {
     course_level: Yup.string().required("Course Level is required"),
     course_price: Yup.number().required("Course Price is required"),
     course_instructor: Yup.string().required("Course Instructor is required"),
-    course_total_hours: Yup.number().required("Course Total Hours is required"),
+    course_total_hour: Yup.number().required("Course Total Hours is required"),
     course_thumbnail: Yup.mixed().required("Course Thumbnail is required"),
   });
 
@@ -41,9 +43,9 @@ export default function AddCourse() {
     formData.append("course_title", values.course_title);
     formData.append("course_details", values.course_details);
     formData.append("course_level", values.course_level);
-    formData.append("course_price", values.course_price);
+    formData.append("course_price", parseFloat(values.course_price));
     formData.append("course_instructor", values.course_instructor);
-    formData.append("course_total_hours", values.course_total_hours);
+    formData.append("course_total_hour", parseInt(values.course_total_hour));
     formData.append("course_thumbnail", values.course_thumbnail);
     console.log(formData);
 
@@ -56,6 +58,7 @@ export default function AddCourse() {
       .then((response) => {
         console.log(response.data);
         setSubmitting(false);
+        navigate('../')
       })
       .catch((error) => {
         console.error(error);
@@ -143,11 +146,11 @@ export default function AddCourse() {
             required
             fullWidth
             type="number"
-            id="course_total_hours"
-            label="Course Total Hours"
-            name="course_total_hours"
+            id="course_total_hour"
+            label="Course Total Hour"
+            name="course_total_hour"
           />
-          <ErrorMessage name="course_total_hours" component="div" />
+          <ErrorMessage name="course_total_hour" component="div" />
 
           <Box sx={{ my: 2, ml: 0.2 }}>
             <Typography>Course Thumbnail</Typography>
@@ -174,7 +177,7 @@ export default function AddCourse() {
               gap: 1.5,
               mt: 2,
             }}>
-            <Button variant="outlined" type="submit">
+            <Button variant="outlined" type="reset" onClick={() => navigate('../')}>
               Cancel
             </Button>
             <Button variant="contained" type="submit">

@@ -3,7 +3,6 @@ import LandingHero from "../components/LandingHero";
 import OurGoal from "../components/OurGoal";
 import CoursesList from "../components/CourseList";
 import Mentor from "../components/Mentor";
-import Subscription from "../components/Subscription";
 // import CoursesHero from "../components/CoursesHero";
 
 // import Explore from "../components/Explore";

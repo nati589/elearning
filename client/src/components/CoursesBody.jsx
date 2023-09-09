@@ -14,7 +14,6 @@ function CoursesBody() {
       .get("/courses/getTotalCourses")
       .then((res) => {
         setCourses([...res.data]);
-        console.log(res.data, "fetched course data");
       })
       .catch((error) => {
         console.log(error.response.data.message);

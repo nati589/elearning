@@ -18,13 +18,12 @@ function Subscription() {
   ];
 
   return (
-    <div className="mx-8 rounded-3xl relative isolate overflow-hidden gradient-purple py-16 sm:py-24 lg:py-32 flex justify-center ">
+    <div className="mx-8 my-4 rounded-3xl relative isolate overflow-hidden gradient-purple py-16 sm:py-24 lg:py-32 flex justify-center ">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-2">
           <div
             className="absolute left-1/2 top-0 -z-10 -translate-x-1/2 blur-3xl xl:-top-6"
-            aria-hidden="true"
-          >
+            aria-hidden="true">
             {/* <div
               className="aspect-[1155/678] w-[72.1875rem] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30"
               style={{
@@ -70,8 +69,7 @@ function Subscription() {
               /> */}
               <button
                 type="submit"
-                className="flex-none w-3/4 rounded-md bg-medium-purple px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-dark-purple focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
-              >
+                className="flex-none w-3/4 rounded-md bg-medium-purple px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-dark-purple focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
                 Sign up
               </button>
             </div>
@@ -98,8 +96,7 @@ function Subscription() {
       </div>
       <div
         className="absolute left-1/2 top-0 -z-10 -translate-x-1/2 blur-3xl xl:-top-6"
-        aria-hidden="true"
-      >
+        aria-hidden="true">
         {/* <div
           className="aspect-[1155/678] w-[72.1875rem] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30"
           style={{

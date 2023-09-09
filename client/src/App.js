@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "./components/Header";
 import Subscription from "./components/Subscription";
 import Footer from "./components/Footer";
@@ -26,13 +26,15 @@ import MyBooks from "./pages/MyBooks";
 import MyCourses from "./pages/MyCourses";
 
 export default function App() {
+  const [renderSubscription, setRender] = useState(true);
+
   return (
     <div
       className="App"
       style={{ backgroundColor: "#F7F5FA", minHeight: "100vh" }}>
       {/* <Background /> */}
 
-      <Header />
+      <Header subscription={setRender} />
 
       <Routes>
         <Route exact path="/" element={<LandingPage />} />
@@ -63,7 +65,7 @@ export default function App() {
         <Route path="/mycourses" element={<MyCourses />}></Route>
       </Routes>
 
-      {/* <Subscription /> */}
+      {renderSubscription && <Subscription />}
 
       <Footer />
     </div>

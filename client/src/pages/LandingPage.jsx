@@ -30,9 +30,6 @@ function LandingPage() {
         mentor_detail="High-definition video is video of higher resolution and quality than standard-definition. While there is no standardized meaning for high-definition, generally any video."
       />
       {/* <Explore /> */}
-      <div className="p-10">
-        <Subscription />
-      </div>
     </>
   );
 }

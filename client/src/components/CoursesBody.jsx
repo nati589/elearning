@@ -1,15 +1,25 @@
-import { React, useState } from "react";
-import CourseCard from "./CourseCard";
+import { React, useEffect, useState } from "react";
 import PopularCourseCard from "./PopularCourseCard";
 import TrendingCard from "./TrendingCoursesCard";
 import BookImg from "../../src/assets/Image.png";
-import { BiSearch } from "react-icons/bi";
-import SearchComponent from "./search";
 import InputWithSuggestion from "./InputWithSuggestion";
 import courseData from "./courseData";
+import axios from "axios";
 
 function CoursesBody() {
   const [courses, setCourses] = useState([...courseData]);
+
+  useEffect(() => {
+    axios
+      .get("/courses/getTotalCourses")
+      .then((res) => {
+        setCourses([...res.data]);
+      })
+      .catch((error) => {
+        console.log(error.response.data.message);
+        // navigate("/");
+      });
+  }, []);
 
   return (
     <div className="flex flex-col md:flex-row flex-nowrap w-full">
@@ -91,31 +101,12 @@ function CoursesBody() {
           </div>
         </div>
       </div>
-      <div className="w-full md:w-8/12 text-xs md:text-base px-4 md:px-20 my-4 flex flex-col justify-start items-center">
+      <div className="w-full md:w-8/12 text-xs md:text-base px-4 md:px-8 my-4 flex flex-col justify-start items-center">
         <h4 className="text-center text-2xl md:text-4xl font-bold text-writing-dark">
-          Other courses
+          Our Courses
         </h4>
         <div className="flex  w-full m-2 my-3 flex-col sm:flex-row  items-start sm:justify-between">
           <InputWithSuggestion searchData={courses} />
-          <div className="flex flex-row mx-3 items-center justify-center pl-3 mt-8">
-            <label
-              htmlFor="sort"
-              className="mr-2 text-lg font-semibold text-purple-700 opacity-50  "
-            >
-              <pre className="sm:text-[1.5rem]">Sort by : </pre>
-            </label>
-            <select
-              name="sort"
-              id="sort"
-              className="rounded-md p-2 font-semibold bg-transparent pr-12 text-lg "
-            >
-              <option className="" value="a ">
-                Latest
-              </option>
-              <option value="b">Oldest</option>
-              <option value="c">c</option>
-            </select>
-          </div>
         </div>
       </div>
     </div>

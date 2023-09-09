@@ -22,6 +22,7 @@ function CourseCard({
 
   const course_image = images(courseImagePath);
   const numbers = [1, 2, 3, 4, 5];
+  const partialDesc = course_description ? course_description.slice(0, 80) : "";
   return (
     <Link to={`/coursedetails/${courseId}`}>
       <div
@@ -33,7 +34,7 @@ function CourseCard({
             {course_name}
           </span>
           <span className="self-start text-[10px] lg:text-sm font-light font-sans">
-            {course_description}
+            {partialDesc} . . .
           </span>
 
           <img

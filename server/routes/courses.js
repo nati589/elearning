@@ -12,12 +12,12 @@ const upload = multer({ dest: "courses/thumbnails/" });
 
 const router = express.Router();
 
-router.put("/updateCourse", updateCourse);
+router.put("/updateCourse/:id", upload.single("course_thumbnail"), updateCourse);
 router.delete("/deleteCourse", deleteCourse);
 router.post("/addCourse", upload.single("course_thumbnail"), addCourse);
 router.get("/getCourses", getCourses);
-router.get("/getSingleCourse", getSingleCourse);
+router.get("/getSingleCourse/:id", getSingleCourse);
 router.get("/getCoursesThisYear", getCoursesThisYear);
-router.get("/")
+router.get("/");
 
 export default router;

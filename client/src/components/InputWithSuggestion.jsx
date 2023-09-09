@@ -101,12 +101,12 @@ const InputWithSuggestion = ({ searchData }) => {
 
         <label
           htmlFor="sort"
-          className=" w-fit font-semibold text-xs md:text-base text-purple-700 opacity-50 flex flex-row mx-2 items-center justify-center  ">
+          className=" w-fit font-semibold text-xs md:text-base text-medium-purple flex flex-row mx-2 items-center justify-center  ">
           <span className="text-sm md:text-lg">Sort by </span>
           <select
             name="sort"
             id="sort"
-            className=" ml-2 rounded-md border-2 border-writing-dark p-2 bg-transparent text-writing-dark  pr-12 ">
+            className=" ml-2 rounded-md border-2 border-medium-purple p-2 bg-transparent text-medium-purple pr-12 ">
             <option value="a">Latest</option>
             <option value="b">Oldest</option>
             <option value="c">c</option>

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.1.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 09, 2023 at 12:48 PM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 8.1.2
+-- Generation Time: Sep 10, 2023 at 10:49 PM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 7.1.32
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -159,13 +159,15 @@ CREATE TABLE `course` (
 --
 
 INSERT INTO `course` (`course_id`, `course_title`, `course_details`, `course_level`, `course_certificate`, `course_students`, `course_rating`, `course_sections`, `course_archived`, `course_price`, `course_instructor`, `course_max_comments`, `course_total_hour`, `course_date_created`) VALUES
-('19a45b62-6f39-4034-8ca1-85770e6c7193', 'Amharic for Beginners', 'Amharic pariatur exercitation est aliquip deserunt id sit tempor voluptate.Amharic pariatur exercitation est aliquip deserunt id sit tempor voluptate.Amharic pariatur exercitation est aliquip deserunt id sit tempor voluptate.Amharic pariatur exercitation est aliquip deserunt id sit tempor voluptate.Amharic pariatur exercitation est aliquip deserunt id sit tempor voluptate.Amharic pariatur exercitation est aliquip deserunt id sit tempor voluptate.', 'Beginner', 1, 0, '3.7', 0, 0, 12, 'Abebe Molla', 5, 13, '2023-09-07 23:09:37.000000'),
-('5a0398dc-8998-4409-b9a5-f1adf380f3a1', 'Oromiffa for Beginners', 'Oromiffa pariatur exercitation est aliquip deserunt id sit tempor voluptate.', 'Beginner', 1, 0, '3.7', 0, 0, 345, 'Alemu Tekka', 5, 23, '2023-09-08 00:09:57.000000'),
-('9154f207-9a25-418c-9b87-34257ef565d9', 'Tigrigna for beginners', 'Tigrigna pariatur exercitation est aliquip deserunt id sit tempor voluptate.', 'Beginner', 1, 0, '3.7', 0, 0, 12, 'Solomon Legesse', 5, 13, '2023-09-07 23:22:04.000000'),
-('985af890-025f-4cdb-a425-858d48d9c49a', 'Amharic Intermediate', 'AMH inter pariatur exercitation est aliquip deserunt id sit tempor voluptate.', 'Intermediate', 1, 0, '4.0', 0, 0, 12, 'Abera Gebre', 5, 13, '2023-09-07 23:12:52.000000'),
-('a18537b7-7716-4db6-b21d-598d8843b258', 'Oromiffa Intermediate', 'Minim pariatur exercitation est aliquip deserunt id sit tempor voluptate.', 'Intermediate', 1, 0, '4.0', 0, 0, 345, 'Samuel Hassen', 5, 23, '2023-09-08 00:08:00.000000'),
-('c6bf0b68-0c74-47d6-9320-26a58757c6c6', 'Tigrigna Intermediate', 'Minim pariatur exercitation est aliquip deserunt id sit tempor voluptate.', 'Intermediate', 1, 0, '4.0', 0, 0, 12, 'Natnael Asnake', 5, 13, '2023-09-07 23:11:44.000000'),
-('dac3dedc-5544-44e2-b76f-6a4f67a601aa', 'Ge\'ez', 'Minim pariatur exercitation est aliquip deserunt id sit tempor voluptate.', 'Advanced', 1, 0, '4.5', 0, 0, 12, 'Selam Moges', 5, 13, '2023-09-07 23:20:22.000000');
+('19a45b62-6f39-4034-8ca1-85770e6c7193', 'llsdjkfjkdsljflsdkjfsdljfkld', 'klsjfdslkfjsdlkfjsdklfjdslkf', 'Advanced', 1, 0, '0', 5, 0, 78, 'ksljdflfksdjfkldsjfksdlfjdskl', 5, 12345, '2023-09-07 23:09:37.000000'),
+('5a0398dc-8998-4409-b9a5-f1adf380f3a1', 'sdfdsfsdfsd', 'fsdffssssssssss', 'Beginner', 1, 0, '0', 0, 1, 345, 'sdfghjk', 5, 23, '2023-09-08 00:09:57.000000'),
+('9154f207-9a25-418c-9b87-34257ef565d9', 'llsdjkfjkdsljflsdkjfsdljfkld', 'klsjfdslkfjsdlkfjsdklfjdslkf', 'Advanced', 1, 0, '0', 0, 0, 12, 'ksljdflfksdjfkldsjfksdlfjdskl', 5, 13, '2023-09-07 23:22:04.000000'),
+('985af890-025f-4cdb-a425-858d48d9c49a', 'Amharic Lesson 1', 'klsjfdslkfjsdlkfjsdklfjdslkf', 'Advanced', 1, 0, '0', 0, 0, 12, 'ksljdflfksdjfkldsjfksdlfjdskl', 5, 13, '2023-09-07 23:12:52.000000'),
+('a18537b7-7716-4db6-b21d-598d8843b258', 'sdfdsfsdfsd', 'fsdffssssssssss', 'Beginner', 1, 0, '0', 0, 1, 345, 'sdfghjk', 5, 23, '2023-09-08 00:08:00.000000'),
+('acfd41b1-d532-4782-ad46-a008a2f48aec', 'Amharic Lesson 2', 'Lesson details section', 'Beginner', 1, 0, '0', 0, 0, 908, 'Dagim', 5, 21, '2023-09-09 12:00:06.000000'),
+('c6bf0b68-0c74-47d6-9320-26a58757c6c6', 'llsdjkfjkdsljflsdkjfsdljfkld', 'klsjfdslkfjsdlkfjsdklfjdslkf', 'Advanced', 1, 0, '0', 0, 0, 12, 'ksljdflfksdjfkldsjfksdlfjdskl', 5, 13, '2023-09-07 23:11:44.000000'),
+('dac3dedc-5544-44e2-b76f-6a4f67a601aa', 'llsdjkfjkdsljflsdkjfsdljfkld', 'klsjfdslkfjsdlkfjsdklfjdslkf', 'Advanced', 1, 0, '0', 0, 0, 12, 'ksljdflfksdjfkldsjfksdlfjdskl', 5, 13, '2023-09-07 23:20:22.000000'),
+('faa2c699-971d-4394-9db9-edef4df7962c', 'sdfdsfsdfsd', 'fsdffssssssssss', 'Beginner', 1, 0, '0', 0, 0, 345, 'sdfghjk', 5, 23, '2023-09-08 00:21:23.000000');
 
 -- --------------------------------------------------------
 
@@ -234,12 +236,22 @@ CREATE TABLE `section` (
   `section_id` varchar(36) NOT NULL,
   `section_title` varchar(1000) NOT NULL,
   `section_description` varchar(5000) NOT NULL,
-  `section_type` int(10) NOT NULL,
-  `section_roll_number` int(10) NOT NULL,
-  `section_content` varchar(2000) NOT NULL,
-  `section_value` varchar(5000) DEFAULT NULL,
+  `section_type` varchar(10) NOT NULL,
+  `section_content` varchar(2000) DEFAULT NULL,
+  `section_value` int(100) DEFAULT NULL,
   `course_id` varchar(36) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `section`
+--
+
+INSERT INTO `section` (`section_id`, `section_title`, `section_description`, `section_type`, `section_content`, `section_value`, `course_id`) VALUES
+('419fe520-3377-406a-9420-a50e9bc36bb5', 'Amharic section 4', 'deets', 'assignment', '12345', 0, '19a45b62-6f39-4034-8ca1-85770e6c7193'),
+('7586418f-0fcf-4797-bc0c-db498d293c0a', 'Amharic section 6', 'some stufff', 'quiz', 'http::/localhost:3000/smth', 435, '19a45b62-6f39-4034-8ca1-85770e6c7193'),
+('81364bc0-5762-49b7-84c3-601ec6e62a62', 'Amharic section 2', 'smth here', 'quiz', '10', 0, '19a45b62-6f39-4034-8ca1-85770e6c7193'),
+('d282d158-b124-44c0-a301-696962e6ec7c', 'Amharic section 3', 'details', 'video', '0', 0, '19a45b62-6f39-4034-8ca1-85770e6c7193'),
+('dbab244a-d114-473a-84f5-635db9bef7ce', 'Amharic section 1', 'section goes here', 'text', '0', 0, '19a45b62-6f39-4034-8ca1-85770e6c7193');
 
 -- --------------------------------------------------------
 

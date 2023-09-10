@@ -9,6 +9,7 @@ import CourseList from "pages/components-overview/CourseList";
 import AddBook from "pages/components-overview/AddBook";
 import EditBook from "pages/components-overview/EditBook";
 import BookList from "pages/components-overview/BookList";
+import CourseSections from "pages/components-overview/CourseSections";
 
 // render - dashboard
 const DashboardDefault = Loadable(lazy(() => import("pages/dashboard")));
@@ -91,6 +92,10 @@ const MainRoutes = {
         {
           path: "editcourse/:id",
           element: <EditCourse />,
+        },
+        {
+          path: "coursesections/:id",
+          element: <CourseSections />,
         },
         // Update or add more routes here
       ],

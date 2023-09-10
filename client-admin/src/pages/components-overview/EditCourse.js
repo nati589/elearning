@@ -14,9 +14,10 @@ import React, {
   // useState,
   // useState
 } from "react";
-import { 
-  // Field, ErrorMessage, 
-  useFormik } from "formik";
+import {
+  // Field, ErrorMessage,
+  useFormik,
+} from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import {
@@ -51,9 +52,10 @@ export default function EditCourse() {
   const formik = useFormik({
     initialValues,
     validationSchema,
-    onSubmit: (values, 
+    onSubmit: (
+      values
       // { setSubmitting }
-      ) => {
+    ) => {
       // console.log(values);
       const formData = new FormData();
 
@@ -75,7 +77,7 @@ export default function EditCourse() {
         .then((response) => {
           console.log(response.data);
           // setSubmitting(false);
-          navigate('../')
+          navigate("../");
         })
         .catch((error) => {
           console.error(error);
@@ -89,9 +91,13 @@ export default function EditCourse() {
     const controller = new AbortController();
     // let course_id = id;
     axios
-      .get(`/courses/getSingleCourse`,{ params: { courseID: id } }, {
-        signal: controller.signal,
-      })
+      .get(
+        `/courses/getSingleCourse`,
+        { params: { courseID: idRef.current } },
+        {
+          signal: controller.signal,
+        }
+      )
       .then((res) => {
         // console.log(res.data[0]);
         const fetchedData = res.data[0];
@@ -163,10 +169,9 @@ export default function EditCourse() {
         </Box>
 
         <Box mb={2}>
-          <FormControl>
+          <FormControl fullWidth>
             <InputLabel id="course_level-label">Course Level</InputLabel>
             <Select
-              fullWidth
               id="course_level"
               name="course_level"
               labelId="course_level-label"
@@ -177,7 +182,6 @@ export default function EditCourse() {
                 formik.touched.course_level &&
                 Boolean(formik.errors.course_level)
               }>
-              <MenuItem value="">Select Level</MenuItem>
               <MenuItem value="All">All</MenuItem>
               <MenuItem value="Beginner">Beginner</MenuItem>
               <MenuItem value="Intermediate">Intermediate</MenuItem>
@@ -247,6 +251,7 @@ export default function EditCourse() {
         </Box>
 
         <Box mb={2}>
+          <Typography>Course Thumbnail</Typography>
           <input
             id="course_thumbnail"
             name="course_thumbnail"
@@ -273,7 +278,10 @@ export default function EditCourse() {
             gap: 1.5,
             mt: 2,
           }}>
-          <Button variant="outlined" type="reset" onClick={() => navigate('../')}>
+          <Button
+            variant="outlined"
+            type="reset"
+            onClick={() => navigate("../")}>
             Cancel
           </Button>
           <Button variant="contained" type="submit">

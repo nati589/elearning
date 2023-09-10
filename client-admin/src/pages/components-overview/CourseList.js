@@ -14,7 +14,7 @@ import axios from "axios";
 
 export default function CourseList() {
   const [courseList, setCourseList] = useState([]);
-  // const [sectionList, setSectionList] = useState([]);
+  const [sectionList, setSectionList] = useState([]);
   useEffect(() => {
     axios
       .get("/courses/getCourses")
@@ -61,13 +61,41 @@ export default function CourseList() {
     renderExpandableRow: (rowData, rowMeta) => {
       const colSpan = rowData.length + 1;
       // console.log(rowData[4]);
-      // setSectionList([])
-      let sectionList = fetchSections(rowData[4]);
+      fetchSections(rowData[4]);
+      // sectionList.pop();
       const sectionOptions = {
         selectableRows: "none",
         responsive: "standard",
         elevation: 1,
       };
+      const sectionColumns = [
+        {
+          name: "Title",
+          options: {
+            filter: false,
+          },
+        }, 
+        {
+          name: "Type",
+          options: {
+            filter: true,
+          },
+        },
+        {
+          name: "Value",
+          options: {
+            filter: false,
+            sort: false,
+          },
+        },  
+        {
+          name: "Content",
+          options: {
+            filter: false,
+            sort: false,
+          },
+        },  
+      ]
       return (
         <tr>
           <td colSpan={colSpan}>
@@ -80,13 +108,14 @@ export default function CourseList() {
                 alignItems: "center",
               }}>
               <Typography variant="h5">Sections</Typography>
-              <Button variant="outlined">Add Section</Button>
+              <Button variant="outlined" onClick={() => navigate(`/coursemanagement/coursesections/${rowData[4]}`)}>Update</Button>
             </Box>
             <Box sx={{ m: 2 }}>
               <StyledMUIDataTable
                 title={""}
                 data={sectionList}
                 options={sectionOptions}
+                columns={sectionColumns}
               />
             </Box>
           </td>
@@ -102,11 +131,10 @@ export default function CourseList() {
         // setSections(response.data);
         sections = response.data;
         console.log(sections);
-        return sections;
+        setSectionList(response.data?.map(section => [section.section_title, section.section_type, section.section_value, section.section_content]));
       })
       .catch((error) => {
         console.error(error);
-        return [];
       });
   };
   const StyledMUIDataTable = styled(MUIDataTable)(({ theme }) => ({

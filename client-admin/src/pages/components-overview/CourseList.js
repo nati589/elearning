@@ -11,10 +11,10 @@ import {
 } from "@mui/material";
 import { useNavigate } from "../../../node_modules/react-router/dist/index";
 import axios from "axios";
+import SectionTable from "components/SectionTable";
 
 export default function CourseList() {
   const [courseList, setCourseList] = useState([]);
-  const [sectionList, setSectionList] = useState([]);
   useEffect(() => {
     axios
       .get("/courses/getCourses")
@@ -48,6 +48,70 @@ export default function CourseList() {
         console.error(err);
       });
   };
+  // const SectionTable = React.memo(({ courseId }) => {
+  //   const [sectionList, setSectionList] = useState([]);
+  //   useEffect(() => {
+  //     axios
+  //       .get(`/sections/getCourseSections/${courseId}`)
+  //       .then((response) => {
+  //         // setSections(response.data);
+  //         console.log(response.data);
+  //         setSectionList(
+  //           response.data?.map((section) => [
+  //             section.section_title,
+  //             section.section_type,
+  //             section.section_value,
+  //             section.section_content,
+  //           ])
+  //         );
+  //       })
+  //       .catch((error) => {
+  //         console.error(error);
+  //       });
+  //   }, [courseId]);
+  //   // fetchSections(courseId)
+  //   const sectionOptions = {
+  //     selectableRows: "none",
+  //     responsive: "standard",
+  //     elevation: 1,
+  //   };
+  //   const sectionColumns = [
+  //     {
+  //       name: "Title",
+  //       options: {
+  //         filter: false,
+  //       },
+  //     },
+  //     {
+  //       name: "Type",
+  //       options: {
+  //         filter: true,
+  //       },
+  //     },
+  //     {
+  //       name: "Value",
+  //       options: {
+  //         filter: false,
+  //         sort: false,
+  //       },
+  //     },
+  //     {
+  //       name: "Content",
+  //       options: {
+  //         filter: false,
+  //         sort: false,
+  //       },
+  //     },
+  //   ];
+  //   return (
+  //     <StyledMUIDataTable
+  //       title={""}
+  //       data={sectionList}
+  //       options={sectionOptions}
+  //       columns={sectionColumns}
+  //     />
+  //   );
+  // });
 
   const navigate = useNavigate();
   const options = {
@@ -61,41 +125,9 @@ export default function CourseList() {
     renderExpandableRow: (rowData, rowMeta) => {
       const colSpan = rowData.length + 1;
       // console.log(rowData[4]);
-      fetchSections(rowData[4]);
+      // fetchSections(rowData[4]);
       // sectionList.pop();
-      const sectionOptions = {
-        selectableRows: "none",
-        responsive: "standard",
-        elevation: 1,
-      };
-      const sectionColumns = [
-        {
-          name: "Title",
-          options: {
-            filter: false,
-          },
-        }, 
-        {
-          name: "Type",
-          options: {
-            filter: true,
-          },
-        },
-        {
-          name: "Value",
-          options: {
-            filter: false,
-            sort: false,
-          },
-        },  
-        {
-          name: "Content",
-          options: {
-            filter: false,
-            sort: false,
-          },
-        },  
-      ]
+
       return (
         <tr>
           <td colSpan={colSpan}>
@@ -108,35 +140,37 @@ export default function CourseList() {
                 alignItems: "center",
               }}>
               <Typography variant="h5">Sections</Typography>
-              <Button variant="outlined" onClick={() => navigate(`/coursemanagement/coursesections/${rowData[4]}`)}>Update</Button>
+              <Button
+                variant="outlined"
+                onClick={() =>
+                  navigate(`/coursemanagement/coursesections/${rowData[4]}`)
+                }>
+                Update
+              </Button>
             </Box>
             <Box sx={{ m: 2 }}>
-              <StyledMUIDataTable
-                title={""}
-                data={sectionList}
-                options={sectionOptions}
-                columns={sectionColumns}
-              />
+              <SectionTable courseId={rowData[4]} />
             </Box>
           </td>
         </tr>
       );
     },
   };
-  const fetchSections = (courseId) => {
-    let sections = [];
-    axios
-      .get(`/sections/getCourseSections/${courseId}`)
-      .then((response) => {
-        // setSections(response.data);
-        sections = response.data;
-        console.log(sections);
-        setSectionList(response.data?.map(section => [section.section_title, section.section_type, section.section_value, section.section_content]));
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  };
+  // const fetchSections = (courseId) => {
+  //   let sections = [];
+  //   axios
+  //     .get(`/sections/getCourseSections/${courseId}`)
+  //     .then((response) => {
+  //       // setSections(response.data);
+  //       sections = response.data;
+  //       console.log(sections);
+  //       setSectionList(response.data?.map(section => [section.section_title, section.section_type, section.section_value, section.section_content]));
+  //     })
+  //     .catch((error) => {
+  //       console.error(error);
+  //     });
+  // };
+  
   const StyledMUIDataTable = styled(MUIDataTable)(({ theme }) => ({
     background: theme.palette.background.default,
   }));

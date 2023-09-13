@@ -13,6 +13,17 @@ export const getBooks = (req, res) => {
     }
   });
 };
+export const getTotalBooks = (req, res) => {
+  const q = "SELECT * FROM book ";
+  db.query(q, (err, data) => {
+    if (err) {
+      res.json(err);
+      console.log(err);
+    } else {
+      res.json(data);
+    }
+  });
+};
 export const getSingleBook = (req, res) => {
   const bookID = req.params.id;
 

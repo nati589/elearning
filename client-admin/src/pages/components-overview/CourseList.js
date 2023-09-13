@@ -7,6 +7,7 @@ import {
   Typography,
   Box,
   Button,
+  Tooltip,
   // ButtonBase,
 } from "@mui/material";
 import { useNavigate } from "../../../node_modules/react-router/dist/index";
@@ -43,76 +44,31 @@ export default function CourseList() {
       .delete("/courses/deleteCourse", { data: { id: data } })
       .then((res) => {
         console.log(res.data);
+        axios
+        .get("/courses/getCourses")
+        .then((res) => {
+          setCourseList(
+            res.data.map((item) => [
+              item.course_title,
+              item.course_instructor,
+              item.course_level,
+              item.course_price,
+              item.course_id,
+              item.course_rating,
+              item.course_sections,
+              item.course_students,
+              item.course_id,
+            ])
+          );
+        })
+        .catch((error) => {
+          console.error(error);
+        });
       })
       .catch((err) => {
         console.error(err);
       });
   };
-  // const SectionTable = React.memo(({ courseId }) => {
-  //   const [sectionList, setSectionList] = useState([]);
-  //   useEffect(() => {
-  //     axios
-  //       .get(`/sections/getCourseSections/${courseId}`)
-  //       .then((response) => {
-  //         // setSections(response.data);
-  //         console.log(response.data);
-  //         setSectionList(
-  //           response.data?.map((section) => [
-  //             section.section_title,
-  //             section.section_type,
-  //             section.section_value,
-  //             section.section_content,
-  //           ])
-  //         );
-  //       })
-  //       .catch((error) => {
-  //         console.error(error);
-  //       });
-  //   }, [courseId]);
-  //   // fetchSections(courseId)
-  //   const sectionOptions = {
-  //     selectableRows: "none",
-  //     responsive: "standard",
-  //     elevation: 1,
-  //   };
-  //   const sectionColumns = [
-  //     {
-  //       name: "Title",
-  //       options: {
-  //         filter: false,
-  //       },
-  //     },
-  //     {
-  //       name: "Type",
-  //       options: {
-  //         filter: true,
-  //       },
-  //     },
-  //     {
-  //       name: "Value",
-  //       options: {
-  //         filter: false,
-  //         sort: false,
-  //       },
-  //     },
-  //     {
-  //       name: "Content",
-  //       options: {
-  //         filter: false,
-  //         sort: false,
-  //       },
-  //     },
-  //   ];
-  //   return (
-  //     <StyledMUIDataTable
-  //       title={""}
-  //       data={sectionList}
-  //       options={sectionOptions}
-  //       columns={sectionColumns}
-  //     />
-  //   );
-  // });
-
   const navigate = useNavigate();
   const options = {
     filterType: "dropdown",
@@ -170,7 +126,7 @@ export default function CourseList() {
   //       console.error(error);
   //     });
   // };
-  
+
   const StyledMUIDataTable = styled(MUIDataTable)(({ theme }) => ({
     background: theme.palette.background.default,
   }));
@@ -237,20 +193,24 @@ export default function CourseList() {
           let data = value;
           return (
             <>
-              <Button
-                onClick={() => {
-                  // console.log(data);
-                  navigate(`/coursemanagement/editcourse/${data}`);
-                }}>
-                <EditIcon />
-              </Button>
-              <Button
-                color="error"
-                onClick={() => {
-                  deleteCourse(data);
-                }}>
-                <DeleteOutlineIcon />
-              </Button>
+              <Tooltip title="Edit">
+                <Button
+                  onClick={() => {
+                    // console.log(data);
+                    navigate(`/coursemanagement/editcourse/${data}`);
+                  }}>
+                  <EditIcon />
+                </Button>
+              </Tooltip>
+              <Tooltip title="Delete">
+                <Button
+                  color="error"
+                  onClick={() => {
+                    deleteCourse(data);
+                  }}>
+                  <DeleteOutlineIcon />
+                </Button>
+              </Tooltip>
             </>
           );
         },

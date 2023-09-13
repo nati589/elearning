@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import BooksCard from "../components/BooksCard";
-import InputWithSuggestion from "../components/InputWithSuggestion";
+import InputWithSuggestion from "../components/CoursesSearch";
 
 import booksData from "../components/booksData";
 import BookSearch from "../components/BookSearch";
@@ -92,8 +92,7 @@ export default function MyBooks() {
                   isActive("all")
                     ? "bg-medium-purple  text-white"
                     : "bg-white text-gray-700"
-                } px-4 py-2 rounded-md block w-36 h-10 text-center`}
-              >
+                } px-4 py-2 rounded-md block w-36 h-10 text-center`}>
                 All Books
               </NavLink>
             </div>
@@ -105,8 +104,7 @@ export default function MyBooks() {
                   isActive("fiction")
                     ? "bg-white text-gray-700"
                     : "bg-medium-purple  text-white"
-                } px-4 py-2 rounded-md block w-24 h-10 text-center`}
-              >
+                } px-4 py-2 rounded-md block w-24 h-10 text-center`}>
                 Fiction
               </NavLink>
             </div>
@@ -119,8 +117,7 @@ export default function MyBooks() {
                   isActive("journal")
                     ? "bg-white text-gray-700"
                     : "bg-medium-purple  text-white"
-                } px-4 py-2 rounded-md block w-24 h-10 text-center`}
-              >
+                } px-4 py-2 rounded-md block w-24 h-10 text-center`}>
                 Journal
               </NavLink>
             </div>
@@ -133,8 +130,7 @@ export default function MyBooks() {
                   isActive("kids")
                     ? "bg-white text-gray-700"
                     : "bg-medium-purple  text-white"
-                } px-4 py-2 rounded-md block w-24 h-10 text-center`}
-              >
+                } px-4 py-2 rounded-md block w-24 h-10 text-center`}>
                 Kids
               </NavLink>
             </div>
@@ -147,15 +143,13 @@ export default function MyBooks() {
             <div className="flex flex-row mx-3 items-center justify-center pl-3 mt-8">
               <label
                 htmlFor="sort"
-                className="mr-2 text-lg font-semibold text-purple-700 opacity-50  "
-              >
+                className="mr-2 text-lg font-semibold text-purple-700 opacity-50  ">
                 <pre className="sm:text-[1.5rem]">Sort by : </pre>
               </label>
               <select
                 name="sort"
                 id="sort"
-                className="rounded-md p-2 font-semibold bg-transparent pr-12 text-lg "
-              >
+                className="rounded-md p-2 font-semibold bg-transparent pr-12 text-lg ">
                 <option className="" value="a ">
                   Latest
                 </option>

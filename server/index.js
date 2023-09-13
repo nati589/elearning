@@ -5,6 +5,7 @@ import booksRoutes from "./routes/books.js";
 import coursesRoutes from "./routes/courses.js";
 import sectionsRoutes from "./routes/sections.js";
 import purchasesRouter from "./routes/purchases.js";
+import cartRouter from "./routes/cart.js";
 import webContentRoutes from "./routes/webContent.js";
 import usersRoutes from "./routes/users.js";
 import cookieParser from "cookie-parser";
@@ -35,6 +36,7 @@ app.use("/api/users", usersRoutes);
 app.use("/api/courses", coursesRoutes);
 app.use("/api/sections", sectionsRoutes);
 app.use("/api/purchases", purchasesRouter);
+app.use("/api/cart", cartRouter);
 
 app.get("/", (req, res) => {
   res.json("success");

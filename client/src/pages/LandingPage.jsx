@@ -16,7 +16,7 @@ function LandingPage() {
     axios
       .get("/webcontent/getContent")
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         setWebContent({ ...response.data[0] });
       })
       .catch((error) => {

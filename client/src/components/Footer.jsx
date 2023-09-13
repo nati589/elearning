@@ -63,7 +63,7 @@ function Footer() {
                 <img
                   src={linkedinIcon}
                   alt="linkedin_logo"
-                  className="w-7 h-7 mt-2 transform hover:scale-105 transition-transform duration-500 ease-in-out"
+                  className="w-7 h-7 mt-2 transform hover:scale-125 transition-transform duration-500 ease-in-out"
                 />
               </a>
             </li>
@@ -73,7 +73,7 @@ function Footer() {
                 <img
                   src={emailIcon}
                   alt="email_logo"
-                  className="w-7 h-7 mt-2 transform hover:scale-105 transition-transform duration-500 ease-in-out"
+                  className="w-7 h-7 mt-2 transform hover:scale-125 transition-transform duration-500 ease-in-out"
                 />
               </a>
             </li>
@@ -83,7 +83,7 @@ function Footer() {
                 <img
                   src={fbIcon}
                   alt="fb_logo"
-                  className="w-7 h-7 mt-2 transform hover:scale-105 transition-transform duration-500 ease-in-out"
+                  className="w-7 h-7 mt-2 transform hover:scale-125 transition-transform duration-500 ease-in-out"
                 />
               </a>
             </li>
@@ -93,7 +93,7 @@ function Footer() {
                 <img
                   src={instagramIcon}
                   alt="insta_logo"
-                  className="w-7 h-7 mt-2 transform hover:scale-105 transition-transform duration-500 ease-in-out"
+                  className="w-7 h-7 mt-2 transform hover:scale-125 transition-transform duration-500 ease-in-out"
                 />
               </a>
             </li>
@@ -103,7 +103,7 @@ function Footer() {
                 <img
                   src={twitterIcon}
                   alt="twitter_logo"
-                  className="w-7 h-7 mt-2 transform hover:scale-105 transition-transform duration-500 ease-in-out"
+                  className="w-7 h-7 mt-2 transform hover:scale-125 transition-transform duration-500 ease-in-out"
                 />
               </a>
             </li>
@@ -122,7 +122,7 @@ function Footer() {
           <img
             src={emailIcon}
             alt="email_logo"
-            className="w-8 h-8 mt-2 transform hover:bg-white hover:scale-110 transition-transform duration-300  filter hover:brightness-150"
+            className="w-8 h-8 mt-2 transform hover:bg-white hover:scale-125 transition-transform duration-300  filter hover:brightness-150"
           />
           <img
             src={fbIcon}

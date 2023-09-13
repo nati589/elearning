@@ -42,7 +42,7 @@ function LoginModal({ toggle, toggleSignup, toggleForgot }) {
 
         setTimeout(() => {
           setSubmitSuccess(false);
-          navigate("/profile");
+          navigate("/profile/");
           toggle();
         }, 4000);
       })

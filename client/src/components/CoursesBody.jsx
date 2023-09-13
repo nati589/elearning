@@ -2,7 +2,7 @@ import { React, useEffect, useState } from "react";
 import PopularCourseCard from "./PopularCourseCard";
 import TrendingCard from "./TrendingCoursesCard";
 import BookImg from "../../src/assets/Image.png";
-import InputWithSuggestion from "./InputWithSuggestion";
+import CoursesSearch from "./CoursesSearch";
 import courseData from "./courseData";
 import axios from "axios";
 
@@ -106,7 +106,7 @@ function CoursesBody() {
           Our Courses
         </h4>
         <div className="flex  w-full m-2 my-3 flex-col sm:flex-row  items-start sm:justify-between">
-          <InputWithSuggestion searchData={courses} />
+          <CoursesSearch searchData={courses} />
         </div>
       </div>
     </div>

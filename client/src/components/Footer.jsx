@@ -142,13 +142,13 @@ function Footer() {
         </div> */}
         <div className="w-1/2 md:w-1/3 lg:w-1/4 flex flex-col px-4 mb-4  justify-center ">
           <ul className="text-subscribe-purple text-sm md:text-base lg:text-lg ml-10">
-            <li className="mb-1 hover:text-medium-purple font-bold">
+            <li className="mb-1 hover:text-medium-purple hover:font-semibold">
               <a href="/">FAQ & Help</a>
             </li>
-            <li className="mb-1 hover:text-medium-purple">
+            <li className="mb-1 hover:text-medium-purple hover:font-semibold">
               <a href="/">Courses</a>
             </li>
-            <li className="mb-1 hover:text-medium-purple">
+            <li className="mb-1 hover:text-medium-purple hover:font-semibold">
               <a href="/">Books </a>
             </li>
           </ul>

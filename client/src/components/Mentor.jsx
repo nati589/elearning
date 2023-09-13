@@ -65,10 +65,10 @@ const Mentor = ({ mentor_title, mentor_detail }) => {
         />
 
         <div>
-          <h1 className="text-3xl font-bold text-[#0A033C] sm:text-6xl md:text-start text-center">
+          <h1 className="text-3xl h-fit md:leading-snug font-bold text-writing-dark md:text-6xl md:text-start text-center">
             {mentor_title}
           </h1>
-          <p className="mt-6 text-lg leading-8 text-gray-600 md:text-start text-center">
+          <p className="mt-6 text-lg  leading-8 text-gray-600 md:text-start text-center">
             {mentor_detail}
           </p>
           {showForm ? (

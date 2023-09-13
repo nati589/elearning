@@ -1,5 +1,5 @@
 import React from "react";
-import star from "../assets/star.png";
+// import star from "../assets/star.png";
 import FullStar from "../assets/icons/full_star.svg";
 import EmptyStar from "../assets/icons/empty_star.svg";
 

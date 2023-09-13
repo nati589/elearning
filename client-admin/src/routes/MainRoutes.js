@@ -71,7 +71,7 @@ const MainRoutes = {
           element: <AddBook />,
         },
         {
-          path: "edit/:id",
+          path: "editbook/:id",
           element: <EditBook />,
         },
         // Update or add more routes here

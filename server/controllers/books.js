@@ -3,13 +3,29 @@ import fs from "fs";
 import { v4 as uuidv4 } from "uuid";
 
 export const getBooks = (req, res) => {
-  const q = "SELECT * FROM book";
+  const q = "SELECT * FROM book WHERE book_archived = '0'";
   db.query(q, (err, data) => {
     if (err) {
       res.json(err);
       console.log(err);
     } else {
       res.json(data);
+    }
+  });
+};
+export const getSingleBook = (req, res) => {
+  const bookID = req.params.id;
+
+  const q = "SELECT * FROM book WHERE book_id =?";
+  db.query(q, [bookID], (err, data) => {
+    if (err) {
+      return res.status(401).send({ message: "Connection error try again." });
+    } else {
+      if (data.length === 0) {
+        return res.status(404).send({ message: "Data not found!" });
+      }
+
+      res.status(200).json(data);
     }
   });
 };
@@ -157,7 +173,7 @@ export const addBook = (req, res) => {
   const values = Object.values(req.body);
   values.unshift(bookId);
   const q =
-    "INSERT INTO book (book_id, book_title, book_details, book_author, book_price) VALUES (?, ?, ?, ?, ?)";
+    "INSERT INTO book (book_id, book_title, book_author, book_details, book_price, book_date_created) VALUES (?, ?, ?, ?, ?, NOW())";
   db.query(q, values, (err, data) => {
     if (err) {
       res.json(err);
@@ -187,5 +203,55 @@ export const addBook = (req, res) => {
     }
 
     res.json({ message: "Book added successfully" });
+  });
+};
+export const updateBook = (req, res) => {
+  const bookId = req.params.id;
+  console.log(req.params.id)
+  console.log(req.body)
+  const q = `UPDATE book SET book_title = ?, book_author = ?, book_details = ?, book_price = ? WHERE book_id = '${req.params.id}'`;
+  db.query(q, Object.values(req.body), (err, data) => {
+    if (err) {
+      res.json(err);
+      console.log(err);
+    } else {
+      //   res.json(data);
+      console.log(data);
+      // Check if a new file has been uploaded
+      if (req.file) {
+        const bookThumbnail = req.file; // File object
+
+        // Generate a new file name
+        const originalFileName = bookThumbnail.originalname;
+        const fileExtension = originalFileName.split('.').pop();
+        const newFileName = `${bookId}.${fileExtension}`;
+
+        // Construct the new file path
+        const newFilePath = `books/thumbnails/${newFileName}`;
+
+        // Move the file with overwrite option
+        // Rename the file with overwrite option
+        fs.rename(bookThumbnail.path, newFilePath, (renameErr) => {
+          if (renameErr) {
+            console.error(renameErr);
+            return res.status(500).json({ message: 'Error renaming the file' });
+          }
+
+          res.json({ message: 'Course updated successfully' });
+        });
+      } else {
+        res.json({ message: 'Course updated successfully' });
+      }
+    }
+  });
+};
+export const deleteBook = (req, res) => {
+  const q = `UPDATE book SET book_archived = 1 WHERE book_id = '${req.body.id}'`;
+  db.query(q, req.body.id, (err, data) => {
+    if (err) {
+      return res.status(401).send({ message: "Connection error try again." });
+    } else {
+      res.json(data);
+    }
   });
 };

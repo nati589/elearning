@@ -3,8 +3,11 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { Box, Typography, TextField, Button } from "@mui/material";
 import axios from "axios";
+import { useNavigate } from "../../../node_modules/react-router/dist/index";
 
 export default function AddBook() {
+  const navigate = useNavigate()
+
   const initialValues = {
     book_title: "",
     book_author: "",
@@ -48,6 +51,8 @@ export default function AddBook() {
 
         // Reset the form and set submitting state to false
         setSubmitting(false);
+        navigate('../')
+
       })
       .catch((error) => {
         // Handle the error
@@ -129,7 +134,7 @@ export default function AddBook() {
 
         <Box
           sx={{ display: "flex", justifyContent: "flex-end", gap: 1.5, mt: 2 }}>
-          <Button variant="outlined" type="submit">
+          <Button variant="outlined" type="reset" onClick={() => navigate('../')}>
             Cancel
           </Button>
           <Button variant="contained" type="submit">

@@ -1,7 +1,10 @@
 import express from "express";
 import {
   getBooks,
+  getSingleBook,
   addBook,
+  updateBook,
+  deleteBook,
   getBooksThisYear,
   getBooksThisWeek,
   getBooksThisMonth,
@@ -12,6 +15,9 @@ const upload = multer({ dest: "books/thumbnails/" });
 const router = express.Router();
 
 router.get("/getBooks", getBooks);
+router.get("/getSingleBook/:id", getSingleBook);
+router.put("/updateBook/:id", upload.single("book_thumbnail"), updateBook);
+router.delete("/deleteBook", deleteBook);
 router.get("/getBooksThisYear", getBooksThisYear);
 router.get("/getBooksThisWeek", getBooksThisWeek);
 router.get("/getBooksThisMonth", getBooksThisMonth);

@@ -1,17 +1,72 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { styled } from "@mui/system";
 import MUIDataTable from "mui-datatables";
 import {
   Typography,
   Box,
   Button,
+  Tooltip,
   // ButtonBase,
 } from "@mui/material";
 import { useNavigate } from "../../../node_modules/react-router/dist/index";
+import axios from "axios";
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import EditIcon from "@mui/icons-material/Edit";
 
 export default function CourseList() {
   const navigate = useNavigate();
-  const productList = [];
+  const [bookList, setBookList] = useState([]);
+  useEffect(() => {
+    axios
+      .get("/books/getBooks")
+      .then((res) => {
+        console.log(res.data);
+        setBookList(
+          res.data.map((item) => [
+            item.book_title,
+            item.book_author,
+            item.book_purchases,
+            item.book_price,
+            item.book_id,
+            item.book_rating,
+            item.book_id,
+          ])
+        );
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
+  const deleteBook = (data) => {
+    console.log(data);
+    axios
+      .delete("/books/deleteBook", { data: { id: data } })
+      .then((res) => {
+        console.log(res.data);
+        axios
+      .get("/books/getBooks")
+      .then((res) => {
+        console.log(res.data);
+        setBookList(
+          res.data.map((item) => [
+            item.book_title,
+            item.book_author,
+            item.book_purchases,
+            item.book_price,
+            item.book_id,
+            item.book_rating,
+            item.book_id,
+          ])
+        );
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
   const options = {
     // filterType: "checkbox",
     elevation: 0,
@@ -22,25 +77,25 @@ export default function CourseList() {
   }));
   const columns = [
     {
-      name: "Products",
+      name: "Title",
       options: {
         filter: false,
       },
     },
     {
-      name: "Unit",
+      name: "Author",
       options: {
         filter: false,
       },
     },
     {
-      name: "Quantity",
+      name: "Purchases",
       options: {
         filter: false,
       },
     },
     {
-      name: "Unit Price",
+      name: "Price",
       options: {
         filter: false,
       },
@@ -54,44 +109,40 @@ export default function CourseList() {
       },
     },
     {
-      name: "DAY",
+      name: "Rating",
       options: {
-        display: false,
-        filter: true,
-      },
-    },
-    {
-      name: "MONTH",
-      options: {
-        display: false,
-        filter: true,
-      },
-    },
-    {
-      name: "YEAR",
-      options: {
-        display: false,
-        filter: true,
-      },
-    },
-    {
-      name: "Date Added",
-      options: {
+        display: true,
         filter: false,
       },
     },
-    "Category",
     {
       label: "ACTION",
       options: {
         filter: false,
         sort: false,
-        customBodyRender: (value, rowData, tableMeta, updateValue) => {
-          // let data = rowData.rowData;
+        customBodyRender: (value) => {
+          let data = value;
           return (
-            <Button variant="outlined" onClick={() => {}}>
-              Update
-            </Button>
+            <>
+              <Tooltip title="Edit">
+                <Button
+                  onClick={() => {
+                    // console.log(data);
+                    navigate(`/bookmanagement/editbook/${data}`);
+                  }}>
+                  <EditIcon />
+                </Button>
+              </Tooltip>
+              <Tooltip title="Delete">
+                <Button
+                  color="error"
+                  onClick={() => {
+                    deleteBook(data);
+                  }}>
+                  <DeleteOutlineIcon />
+                </Button>
+              </Tooltip>
+            </>
           );
         },
       },
@@ -111,15 +162,14 @@ export default function CourseList() {
           variant="outlined"
           onClick={() => {
             navigate("/bookmanagement/addbook");
-          }}
-        >
+          }}>
           Add Book
         </Button>
       </Box>
       <Box>
         <StyledMUIDataTable
           title={""}
-          data={productList}
+          data={bookList}
           columns={columns}
           options={options}
         />

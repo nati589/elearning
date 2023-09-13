@@ -13,7 +13,7 @@ export const getCart = (req, res) => {
       return res.status(401).send({ message: "Connection error. Try again!" });
     } else {
       if (data.length === 0) {
-        return res.status(200).send({ empty: true });
+        return res.status(200).send({ empty: true, cart: [] });
       } else {
         return res.status(200).send({ empty: false, cart: data });
       }
@@ -44,8 +44,6 @@ export const addToCart = (req, res) => {
 export const checkCourse = (req, res) => {
   const { course_id } = req.body;
   const q = `SELECT * from cart WHERE course_id = ?`;
-  console.log(req.body);
-
   db.query(q, [course_id], (err, data) => {
     if (err) {
       return res.status(401).send({ message: "Error Checking in Cart!" });

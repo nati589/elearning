@@ -1,13 +1,15 @@
 import { Button, Grid, TextField, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import { useFormik } from "formik";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import * as Yup from "yup";
-import axios from 'axios';
+import axios from "axios";
 // import { useNavigate } from "../../../node_modules/react-router/dist/index";
 
 export default function WebContent() {
   // const navigate = useNavigate()
+
+  const [edit, setEdit] = useState(true);
   const updateContent = async (data) => {
     axios
       .post("http://localhost:8800/api/webcontent/changeContent", data)
@@ -64,13 +66,14 @@ export default function WebContent() {
     onSubmit: (values, { resetForm }) => {
       console.log(values);
       updateContent(values);
-      resetForm({ values: "" });
+      // resetForm({ values: "" });
+      setEdit((s) => !s);
     },
   });
   const handleFetchAndSetData = (data) => {
     formik.setValues(data);
   };
-  
+
   useEffect(() => {
     let isMounted = true;
     const controller = new AbortController();
@@ -122,6 +125,7 @@ export default function WebContent() {
             <TextField
               required
               fullWidth
+              disabled={edit}
               id="hero_title"
               label="Hero Title"
               name="hero_title"
@@ -135,6 +139,7 @@ export default function WebContent() {
             />
             <TextField
               required
+              disabled={edit}
               fullWidth
               id="hero_detail"
               label="Hero Detail"
@@ -156,6 +161,7 @@ export default function WebContent() {
               id="goal_title"
               label="Goal Title"
               name="goal_title"
+              disabled={edit}
               sx={{ my: 2 }}
               value={formik.values.goal_title}
               onChange={formik.handleChange}
@@ -171,6 +177,7 @@ export default function WebContent() {
               label="Goal_detail"
               name="goal_detail"
               multiline
+              disabled={edit}
               sx={{ my: 2 }}
               value={formik.values.goal_detail}
               onChange={formik.handleChange}
@@ -187,6 +194,7 @@ export default function WebContent() {
               id="lesson_title"
               label="Lesson Title"
               name="lesson_title"
+              disabled={edit}
               sx={{ my: 2 }}
               value={formik.values.lesson_title}
               onChange={formik.handleChange}
@@ -204,6 +212,7 @@ export default function WebContent() {
               id="lesson_detail"
               label="Lesson Detail"
               name="lesson_detail"
+              disabled={edit}
               multiline
               sx={{ my: 2 }}
               value={formik.values.lesson_detail}
@@ -219,6 +228,7 @@ export default function WebContent() {
             <TextField
               required
               fullWidth
+              disabled={edit}
               id="mentor_title"
               label="Mentor Title"
               name="mentor_title"
@@ -236,6 +246,7 @@ export default function WebContent() {
             <TextField
               required
               fullWidth
+              disabled={edit}
               id="mentor_detail"
               label="Mentor Detail"
               name="mentor_detail"
@@ -254,6 +265,7 @@ export default function WebContent() {
             <TextField
               required
               fullWidth
+              disabled={edit}
               id="action_title"
               label="Action Title"
               name="action_title"
@@ -270,6 +282,7 @@ export default function WebContent() {
             />
             <TextField
               required
+              disabled={edit}
               fullWidth
               id="action_detail"
               label="Action Detail"
@@ -287,15 +300,28 @@ export default function WebContent() {
               }
             />
             <Box sx={{ display: "flex", justifyContent: "flex-end", mt: 2 }}>
-              <Button
-                variant="filled"
-                type="reset"
-                onClick={() => formik.resetForm()}>
-                Cancel
-              </Button>
-              <Button variant="contained" type="submit" sx={{ ml: 2 }}>
-                Register
-              </Button>
+              {edit ? (
+                <Button
+                  onClick={() => setEdit((s) => !s)}
+                  variant="contained"
+                  sx={{ ml: 2 }}
+                >
+                  Edit
+                </Button>
+              ) : (
+                <>
+                  <Button
+                    variant="filled"
+                    type="reset"
+                    onClick={() => formik.resetForm()}
+                  >
+                    Cancel
+                  </Button>
+                  <Button variant="contained" type="submit" sx={{ ml: 2 }}>
+                    Register
+                  </Button>
+                </>
+              )}
             </Box>
           </Box>
         </Grid>

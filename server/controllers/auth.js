@@ -67,7 +67,11 @@ export const checkLogin = (req, res) => {
 
 /////////////////////adim Login adim so Dont Touch/////////////////////
 export const loginAdmin = (req, res) => {
-  const { admin_username, admin_password, signed_checkbox } = req.body;
+  const {
+    username: admin_username,
+    password: admin_password,
+    signed_checkbox,
+  } = req.body;
 
   const q = "SELECT * FROM admin WHERE admin_username=?";
   db.query(q, [admin_username], (err, result) => {
@@ -96,7 +100,7 @@ export const loginAdmin = (req, res) => {
       }
 
       const token = jwt.sign(
-        { username: result[0].admin_password, admin_id: result[0].admin_id },
+        { username: result[0].admin_username, admin_id: result[0].admin_id },
         process.env.JWT_SECRET,
         { expiresIn: "1h" }
       );
@@ -105,7 +109,6 @@ export const loginAdmin = (req, res) => {
         message: `Login successful. Redirecting...`,
         username: result[0].admin_username,
         admin_id: result[0].admin_id,
-        hash,
       });
     }
   });

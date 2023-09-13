@@ -276,21 +276,25 @@ function Header({ subscription }) {
               <div className="mt-6 flow-root">
                 <div className="-my-6 divide-y divide-gray-500/10">
                   <div className="space-y-2 py-6">
-                    <Link
-                      to="/profile"
-                      onClick={() => setMobileMenuOpen(false)}
-                      className=" text-writing-dark hover:text-white font-semibold cursor-default bg-light-purple hover:bg-medium-purple h-14
-                      rounded-sm text-center flex flex-row mx-3 px-3 
-                      flex-nowrap items-center justify-start">
-                      <img
-                        className=" cursor-pointer relative inline-block h-10 w-auto rounded-[50%] object-cover object-center"
-                        alt="avatar placeholder"
-                        src={DefaultProfile}></img>
-                      <span className="mx-2 font-sans">
-                        {localStorage.getItem("username")}
-                      </span>
-                    </Link>
-
+                    {!(
+                      localStorage.getItem("username") === null &&
+                      localStorage.getItem("user_id") === null
+                    ) && (
+                      <Link
+                        to="/profile"
+                        onClick={() => setMobileMenuOpen(false)}
+                        className=" text-writing-dark hover:text-white font-semibold cursor-default bg-light-purple hover:bg-medium-purple h-14
+                          rounded-sm text-center flex flex-row mx-3 px-3 
+                          flex-nowrap items-center justify-start">
+                        <img
+                          className=" cursor-pointer relative inline-block h-10 w-auto rounded-[50%] object-cover object-center"
+                          alt="avatar placeholder"
+                          src={DefaultProfile}></img>
+                        <span className="mx-2 font-sans">
+                          {localStorage.getItem("username")}
+                        </span>
+                      </Link>
+                    )}
                     {navigation.map((item) => (
                       <NavLink
                         key={item.name}

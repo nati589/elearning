@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { BiSearch } from "react-icons/bi";
 import CourseCard from "./CourseCard";
 
-const InputWithSuggestion = ({ searchData }) => {
+const CoursesSearch = ({ searchData }) => {
   // const suggestions = searchData;
   const [suggestions, setSuggestions] = useState(searchData);
   const [inputValue, setInputValue] = useState("");
@@ -44,7 +44,7 @@ const InputWithSuggestion = ({ searchData }) => {
       searchResults.length > 0 ? searchResults : searchData;
 
     return (
-      <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-4 my-8">
+      <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-6 gap-x-8 my-8 px-5">
         {coursesToRender.map((course, index) => (
           <CourseCard
             key={index}
@@ -119,4 +119,4 @@ const InputWithSuggestion = ({ searchData }) => {
   );
 };
 
-export default InputWithSuggestion;
+export default CoursesSearch;

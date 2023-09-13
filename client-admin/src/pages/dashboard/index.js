@@ -85,13 +85,13 @@ const urTl2 = "http://localhost:8800/api/books/getBooksThisYear";
 const urTl3 = "http://localhost:8800/api/purchases/getPurchasesThisYear";
 const urTl4 = "http://localhost:8800/api/courses/getCoursesThisYear";
 const DashboardDefault = () => {
-  const [totalCourse, setTotalCourse] = useState(0);
+  const [totalCourse, setTotalCourse] = useState(1);
   const [totalCourseYear, setTotalCourseYear] = useState(0);
-  const [totalSale, setTotalSale] = useState(0);
+  const [totalSale, setTotalSale] = useState(1);
   const [totalSaleYear, setTotalSaleYear] = useState(0);
-  const [totalBook, setTotalBook] = useState(0);
+  const [totalBook, setTotalBook] = useState(1);
   const [totalBookYear, setTotalBookYear] = useState(0);
-  const [totalUser, setTotalUser] = useState(0);
+  const [totalUser, setTotalUser] = useState(1);
   const [totalUserYear, setTotalUserYear] = useState(0);
   const [value, setValue] = useState("today");
   const [slot, setSlot] = useState("week");

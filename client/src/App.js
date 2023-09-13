@@ -43,7 +43,6 @@ export default function App() {
         <Route path="/progress" element={<ProgressPage />} />
         <Route path="/courses" element={<CoursesPage />} />
         <Route path="/coursedetails/:id" element={<CourseDetailsPage />} />
-        <Route path="/profile" element={<UserProfile />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/learning" element={<LearningPage />}>
           {/* Nested route for sections */}

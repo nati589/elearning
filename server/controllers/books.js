@@ -13,6 +13,31 @@ export const getBooks = (req, res) => {
     }
   });
 };
+export const getDeletedBooks = (req, res) => {
+  const q = "SELECT * FROM book WHERE book_archived = '1'";
+  db.query(q, (err, data) => {
+    if (err) {
+      res.json(err);
+      console.log(err);
+    } else {
+      res.json(data);
+    }
+  });
+};
+export const getUndeletedBooks = (req, res) => {
+  const q = `UPDATE book
+  SET book_archived = 0
+
+  WHERE book_id = '${req.params.id}'`;
+  db.query(q, (err, data) => {
+    if (err) {
+      res.json(err);
+      console.log(err);
+    } else {
+      res.json(data);
+    }
+  });
+};
 export const getTotalBooks = (req, res) => {
   const q = "SELECT * FROM book ";
   db.query(q, (err, data) => {
@@ -218,8 +243,8 @@ export const addBook = (req, res) => {
 };
 export const updateBook = (req, res) => {
   const bookId = req.params.id;
-  console.log(req.params.id)
-  console.log(req.body)
+  console.log(req.params.id);
+  console.log(req.body);
   const q = `UPDATE book SET book_title = ?, book_author = ?, book_details = ?, book_price = ? WHERE book_id = '${req.params.id}'`;
   db.query(q, Object.values(req.body), (err, data) => {
     if (err) {
@@ -234,7 +259,7 @@ export const updateBook = (req, res) => {
 
         // Generate a new file name
         const originalFileName = bookThumbnail.originalname;
-        const fileExtension = originalFileName.split('.').pop();
+        const fileExtension = originalFileName.split(".").pop();
         const newFileName = `${bookId}.${fileExtension}`;
 
         // Construct the new file path
@@ -245,13 +270,13 @@ export const updateBook = (req, res) => {
         fs.rename(bookThumbnail.path, newFilePath, (renameErr) => {
           if (renameErr) {
             console.error(renameErr);
-            return res.status(500).json({ message: 'Error renaming the file' });
+            return res.status(500).json({ message: "Error renaming the file" });
           }
 
-          res.json({ message: 'Course updated successfully' });
+          res.json({ message: "Course updated successfully" });
         });
       } else {
-        res.json({ message: 'Course updated successfully' });
+        res.json({ message: "Course updated successfully" });
       }
     }
   });

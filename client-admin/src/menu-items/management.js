@@ -1,7 +1,7 @@
 // assets
 import {
   AppstoreAddOutlined,
-  AntDesignOutlined,
+  DeleteOutlined,
   BarcodeOutlined,
   BgColorsOutlined,
   FontSizeOutlined,
@@ -15,7 +15,7 @@ const icons = {
   FontSizeOutlined,
   BgColorsOutlined,
   BarcodeOutlined,
-  AntDesignOutlined,
+  DeleteOutlined,
   LoadingOutlined,
   AppstoreAddOutlined,
   SnippetsOutlined,
@@ -51,11 +51,11 @@ const management = {
       icon: icons.BookOutlined,
     },
     {
-      id: "ant-icons",
-      title: "Ant Icons",
+      id: "trash",
+      title: "Trash",
       type: "item",
-      url: "/icons/ant",
-      icon: icons.AntDesignOutlined,
+      url: "/trash",
+      icon: icons.DeleteOutlined,
       breadcrumbs: false,
     },
   ],

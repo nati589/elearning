@@ -9,16 +9,24 @@ import {
   getTotalCourses,
   getCouresThisWeek,
   getCouresThisMonth,
+  getDeletedCourses,
+  getUndeletedCourses,
 } from "../controllers/courses.js";
 import multer from "multer";
 const upload = multer({ dest: "courses/thumbnails/" });
 
 const router = express.Router();
 
-router.put("/updateCourse/:id", upload.single("course_thumbnail"), updateCourse);
+router.put(
+  "/updateCourse/:id",
+  upload.single("course_thumbnail"),
+  updateCourse
+);
 router.delete("/deleteCourse", deleteCourse);
 router.post("/addCourse", upload.single("course_thumbnail"), addCourse);
 router.get("/getCourses", getCourses);
+router.get("/getDeletedCourses", getDeletedCourses);
+router.get("/getUndeletedCourses/:id", getUndeletedCourses);
 router.get("/getTotalCourses", getTotalCourses);
 router.get("/getSingleCourse", getSingleCourse);
 router.get("/getCoursesThisYear", getCoursesThisYear);

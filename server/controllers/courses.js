@@ -12,6 +12,30 @@ export const getCourses = (req, res) => {
     }
   });
 };
+export const getDeletedCourses = (req, res) => {
+  const q = "SELECT * FROM course WHERE course_archived = '1'";
+  db.query(q, (err, data) => {
+    if (err) {
+      return res.status(401).send({ message: "Connection error try again." });
+    } else {
+      res.status(200).json(data);
+    }
+  });
+};
+export const getUndeletedCourses = (req, res) => {
+  const q = `UPDATE course
+  SET course_archived = 0
+
+  WHERE course_id = '${req.params.id}'`;
+  db.query(q, (err, data) => {
+    if (err) {
+      res.json(err);
+      console.log(err);
+    } else {
+      res.json(data);
+    }
+  });
+};
 export const getTotalCourses = (req, res) => {
   const q = "SELECT * FROM course";
   db.query(q, (err, data) => {

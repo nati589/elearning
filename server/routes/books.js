@@ -9,6 +9,8 @@ import {
   getBooksThisWeek,
   getBooksThisMonth,
   getTotalBooks,
+  getDeletedBooks,
+  getUndeletedBooks,
 } from "../controllers/books.js";
 import multer from "multer";
 const upload = multer({ dest: "books/thumbnails/" });
@@ -16,6 +18,8 @@ const upload = multer({ dest: "books/thumbnails/" });
 const router = express.Router();
 
 router.get("/getBooks", getBooks);
+router.get("/getDeletedBooks", getDeletedBooks);
+router.get("/getUndeletedBooks/:id", getUndeletedBooks);
 router.get("/getTotalBooks", getTotalBooks);
 router.get("/getSingleBook/:id", getSingleBook);
 router.put("/updateBook/:id", upload.single("book_thumbnail"), updateBook);

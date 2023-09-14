@@ -34,34 +34,34 @@ export default function WebContent() {
     validationSchema: Yup.object({
       hero_title: Yup.string()
         .required("Required field")
-        .min(10, "Must be at least 10 characters"),
+        .min(8, "Must be at least 8 characters"),
       hero_detail: Yup.string()
         .required("Required field")
-        .min(10, "Must be at least 10 characters"),
+        .min(8, "Must be at least 8 characters"),
       goal_title: Yup.string()
         .required("Required field")
-        .min(10, "Must be at least 10 characters"),
+        .min(8, "Must be at least 8 characters"),
       goal_detail: Yup.string()
         .required("Required field")
-        .min(10, "Must be at least 10 characters"),
+        .min(8, "Must be at least 8 characters"),
       lesson_title: Yup.string()
         .required("Required field")
-        .min(10, "Must be at least 10 characters"),
+        .min(8, "Must be at least 8 characters"),
       lesson_detail: Yup.string()
         .required("Required field")
-        .min(10, "Must be at least 10 characters"),
+        .min(8, "Must be at least 8 characters"),
       mentor_title: Yup.string()
         .required("Required field")
-        .min(10, "Must be at least 10 characters"),
+        .min(8, "Must be at least 8 characters"),
       mentor_detail: Yup.string()
         .required("Required field")
-        .min(10, "Must be at least 10 characters"),
+        .min(8, "Must be at least 8 characters"),
       action_title: Yup.string()
         .required("Required field")
-        .min(10, "Must be at least 10 characters"),
+        .min(8, "Must be at least 8 characters"),
       action_detail: Yup.string()
         .required("Required field")
-        .min(10, "Must be at least 10 characters"),
+        .min(8, "Must be at least 8 characters"),
     }),
     onSubmit: (values, { resetForm }) => {
       console.log(values);
@@ -145,6 +145,7 @@ export default function WebContent() {
               label="Hero Detail"
               name="hero_detail"
               multiline
+              rows={5}
               sx={{ my: 2 }}
               value={formik.values.hero_detail}
               onChange={formik.handleChange}
@@ -177,6 +178,7 @@ export default function WebContent() {
               label="Goal_detail"
               name="goal_detail"
               multiline
+              rows={5}
               disabled={edit}
               sx={{ my: 2 }}
               value={formik.values.goal_detail}
@@ -214,6 +216,7 @@ export default function WebContent() {
               name="lesson_detail"
               disabled={edit}
               multiline
+              rows={5}
               sx={{ my: 2 }}
               value={formik.values.lesson_detail}
               onChange={formik.handleChange}
@@ -251,6 +254,7 @@ export default function WebContent() {
               label="Mentor Detail"
               name="mentor_detail"
               multiline
+              rows={5}
               sx={{ my: 2 }}
               value={formik.values.mentor_detail}
               onChange={formik.handleChange}
@@ -288,6 +292,7 @@ export default function WebContent() {
               label="Action Detail"
               name="action_detail"
               multiline
+              rows={5}
               sx={{ my: 2 }}
               value={formik.values.action_detail}
               onChange={formik.handleChange}

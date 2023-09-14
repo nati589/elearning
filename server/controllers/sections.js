@@ -49,11 +49,11 @@ export const addSection = (req, res) => {
   const section_id = uuidv4();
   const values = Object.values(req.body);
   values.unshift(section_id);
-  if (values[3] === 'quiz') {
+  if (values[3] === "quiz") {
     values.pop();
   }
   values.push(req.params.id);
-  console.log(values)
+  console.log(values);
   // Create the SQL insert query
   const q = `INSERT INTO section (section_id, section_title, section_description, section_type, section_content, section_value, course_id) VALUES (?, ?, ?, ?, ?, ?, ?)`;
   db.query(q, values, (err, data) => {
@@ -62,8 +62,8 @@ export const addSection = (req, res) => {
       console.log(err);
     } else {
       //   res.json(data);
-      const query = `UPDATE course SET course_sections = course_sections + 1 WHERE course_id = '${req.params.id}';`
-      db.query(query)
+      const query = `UPDATE course SET course_sections = course_sections + 1 WHERE course_id = '${req.params.id}';`;
+      db.query(query);
       console.log(data);
       // Check if a new file has been uploaded
       if (req.file) {
@@ -110,8 +110,9 @@ export const addSection = (req, res) => {
   //   });
 };
 export const updateSection = (req, res) => {
-  console.log(req.params.id)
-  console.log(req.body)
+  console.log(req.params.id);
+  console.log(req.body);
+  // res.send(200).json(req.body);
 };
 export const deleteSection = (req, res) => {
   //   const q = `UPDATE course SET course_archived = 1 WHERE course_id = '${req.body.id}'`;

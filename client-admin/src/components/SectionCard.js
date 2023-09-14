@@ -36,7 +36,7 @@ export default function SectionCard({ section, fetchSections }) {
       then: Yup.string().required("Section Content is required"),
       otherwise: Yup.string(),
     }),
-    section_file: Yup.mixed()
+    section_file: Yup.mixed(),
     // .when("section_type", {
     //   is: (value) => ["video", "assignment", "text"].includes(value),
     //   then: Yup.mixed().required("Section File is required"),
@@ -47,7 +47,7 @@ export default function SectionCard({ section, fetchSections }) {
     initialValues,
     validationSchema,
     onSubmit: (values) => {
-      console.log(values);
+      // console.log(values);
       const formData = new FormData();
 
       formData.append("section_title", values.section_title);
@@ -55,25 +55,28 @@ export default function SectionCard({ section, fetchSections }) {
       formData.append("section_type", values.section_type);
       formData.append("section_content", values.section_content);
       formData.append("section_value", Number(values.section_value));
-      formData.append("section_file", values.section_file === null ? null : values.section_file);
-        console.log(formData);
+      formData.append(
+        "section_file",
+        values.section_file === null ? null : values.section_file
+      );
+      console.log(formData);
 
-        axios
-          .put(`/sections/updateSection/${section.section_id}`, {formData, course_id: section.course_id}, {
-            headers: {
-              "Content-Type": "multipart/form-data",
-            },
-          })
-          .then((response) => {
-            console.log(response.data);
-            setEdit(false) 
-            fetchSections()
-            // setSubmitting(false);
-          })
-          .catch((error) => {
-            console.error(error);
-            // setSubmitting(false);
-          });
+      axios
+        .put(`/sections/updateSection/${section.section_id}`, formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        })
+        .then((response) => {
+          console.log(response.data);
+          setEdit(false);
+          fetchSections();
+          // setSubmitting(false);
+        })
+        .catch((error) => {
+          console.error(error);
+          // setSubmitting(false);
+        });
     },
   });
   const handleSectionTypeChange = (e) => {
@@ -84,8 +87,7 @@ export default function SectionCard({ section, fetchSections }) {
       if (["text", "video"].includes(selectedSectionType)) {
         formik.setFieldValue("section_content", ""); // Clear the section_content field
         formik.setFieldValue("section_value", ""); // Clear the section_value field
-      }
-      else if (["assignment"].includes(selectedSectionType)) {
+      } else if (["assignment"].includes(selectedSectionType)) {
         formik.setFieldValue("section_content", ""); // Clear the section_content field
       } else if (["quiz"].includes(selectedSectionType)) {
         formik.setFieldValue("section_file", null); // Clear the section_content field
@@ -137,149 +139,150 @@ export default function SectionCard({ section, fetchSections }) {
       )}
       {edit && (
         <Card sx={{ p: 2, my: 2, w: "100%" }} elevation={0}>
-        <Box component="form" onSubmit={formik.handleSubmit} sx={{ p: 2 }}>
-          <Typography sx={{ mb: 2 }}>Section</Typography>
-          <Box mb={2}>
-            <TextField
-              fullWidth
-              id="section_title"
-              name="section_title"
-              label="Section Title"
-              value={formik.values.section_title}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              error={
-                formik.touched.section_title &&
-                Boolean(formik.errors.section_title)
-              }
-              helperText={
-                formik.touched.section_title && formik.errors.section_title
-              }
-            />
-          </Box>
-          <Box mb={2}>
-            <TextField
-              fullWidth
-              id="section_description"
-              name="section_description"
-              label="Section Description"
-              multiline
-              value={formik.values.section_description}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              error={
-                formik.touched.section_description &&
-                Boolean(formik.errors.section_description)
-              }
-              helperText={
-                formik.touched.section_description &&
-                formik.errors.section_description
-              }
-            />
-          </Box>
-          <Box mb={2}>
-            <FormControl fullWidth>
-              <InputLabel id="section_type-label">Section Type</InputLabel>
-              <Select
-                id="section_type"
-                name="section_type"
-                labelId="section_type-label"
-                value={formik.values.section_type}
-                onChange={handleSectionTypeChange}
-                onBlur={formik.handleBlur}
-                error={
-                  formik.touched.section_type &&
-                  Boolean(formik.errors.section_type)
-                }>
-                <MenuItem value="text">Text</MenuItem>
-                <MenuItem value="video">Video</MenuItem>
-                <MenuItem value="assignment">Assignment</MenuItem>
-                <MenuItem value="quiz">Quiz</MenuItem>
-              </Select>
-            </FormControl>
-          </Box>
-          {/* {formik.values.section_type === "quiz" } */}
-          {["quiz", "assignment"].includes(formik.values.section_type) && (
+          <Box component="form" onSubmit={formik.handleSubmit} sx={{ p: 2 }}>
+            <Typography sx={{ mb: 2 }}>Section</Typography>
             <Box mb={2}>
               <TextField
                 fullWidth
-                id="section_value"
-                name="section_value"
-                label="Section Value"
-                type="number"
-                value={formik.values.section_value}
+                id="section_title"
+                name="section_title"
+                label="Section Title"
+                value={formik.values.section_title}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 error={
-                  formik.touched.section_value &&
-                  Boolean(formik.errors.section_value)
+                  formik.touched.section_title &&
+                  Boolean(formik.errors.section_title)
                 }
                 helperText={
-                  formik.touched.section_value && formik.errors.section_value
+                  formik.touched.section_title && formik.errors.section_title
                 }
               />
             </Box>
-          )}
-          {["video", "assignment", "text"].includes(
-            formik.values.section_type
-          ) && (
-            <Box mb={2}>
-              <Typography>Section File</Typography>
-              <input
-                id="section_file"
-                name="section_file"
-                type="file"
-                onChange={(event) =>
-                  formik.setFieldValue("section_file", event.target.files[0])
-                }
-                onBlur={formik.handleBlur}
-                error={
-                  formik.touched.section_file &&
-                  Boolean(formik.errors.section_file)
-                }
-              />
-              {formik.touched.section_file && formik.errors.section_file && (
-                <div>{formik.errors.section_file}</div>
-              )}
-            </Box>
-          )}
-  
-          {["quiz"].includes(formik.values.section_type) && (
             <Box mb={2}>
               <TextField
                 fullWidth
-                id="section_content"
-                name="section_content"
-                label="Section Content"
-                value={formik.values.section_content}
+                id="section_description"
+                name="section_description"
+                label="Section Description"
+                multiline
+                value={formik.values.section_description}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 error={
-                  formik.touched.section_content &&
-                  Boolean(formik.errors.section_content)
+                  formik.touched.section_description &&
+                  Boolean(formik.errors.section_description)
                 }
                 helperText={
-                  formik.touched.section_content && formik.errors.section_content
+                  formik.touched.section_description &&
+                  formik.errors.section_description
                 }
               />
             </Box>
-          )}
-  
-          <Box sx={{ display: "flex", justifyContent: "flex-end", mt: 4 }}>
-            <Button
-              variant="outlined"
-              sx={{ mr: 2 }}
-              color="error"
-              type="reset"
-              onClick={() => setEdit(false)}>
-              Cancel
-            </Button>
-            <Button variant="contained" color="error" type="submit">
-              Save
-            </Button>
+            <Box mb={2}>
+              <FormControl fullWidth>
+                <InputLabel id="section_type-label">Section Type</InputLabel>
+                <Select
+                  id="section_type"
+                  name="section_type"
+                  labelId="section_type-label"
+                  value={formik.values.section_type}
+                  onChange={handleSectionTypeChange}
+                  onBlur={formik.handleBlur}
+                  error={
+                    formik.touched.section_type &&
+                    Boolean(formik.errors.section_type)
+                  }>
+                  <MenuItem value="text">Text</MenuItem>
+                  <MenuItem value="video">Video</MenuItem>
+                  <MenuItem value="assignment">Assignment</MenuItem>
+                  <MenuItem value="quiz">Quiz</MenuItem>
+                </Select>
+              </FormControl>
+            </Box>
+            {/* {formik.values.section_type === "quiz" } */}
+            {["quiz", "assignment"].includes(formik.values.section_type) && (
+              <Box mb={2}>
+                <TextField
+                  fullWidth
+                  id="section_value"
+                  name="section_value"
+                  label="Section Value"
+                  type="number"
+                  value={formik.values.section_value}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  error={
+                    formik.touched.section_value &&
+                    Boolean(formik.errors.section_value)
+                  }
+                  helperText={
+                    formik.touched.section_value && formik.errors.section_value
+                  }
+                />
+              </Box>
+            )}
+            {["video", "assignment", "text"].includes(
+              formik.values.section_type
+            ) && (
+              <Box mb={2}>
+                <Typography>Section File</Typography>
+                <input
+                  id="section_file"
+                  name="section_file"
+                  type="file"
+                  onChange={(event) =>
+                    formik.setFieldValue("section_file", event.target.files[0])
+                  }
+                  onBlur={formik.handleBlur}
+                  error={
+                    formik.touched.section_file &&
+                    Boolean(formik.errors.section_file)
+                  }
+                />
+                {formik.touched.section_file && formik.errors.section_file && (
+                  <div>{formik.errors.section_file}</div>
+                )}
+              </Box>
+            )}
+
+            {["quiz"].includes(formik.values.section_type) && (
+              <Box mb={2}>
+                <TextField
+                  fullWidth
+                  id="section_content"
+                  name="section_content"
+                  label="Section Content"
+                  value={formik.values.section_content}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  error={
+                    formik.touched.section_content &&
+                    Boolean(formik.errors.section_content)
+                  }
+                  helperText={
+                    formik.touched.section_content &&
+                    formik.errors.section_content
+                  }
+                />
+              </Box>
+            )}
+
+            <Box sx={{ display: "flex", justifyContent: "flex-end", mt: 4 }}>
+              <Button
+                variant="outlined"
+                sx={{ mr: 2 }}
+                color="error"
+                type="reset"
+                onClick={() => setEdit(false)}>
+                Cancel
+              </Button>
+              <Button variant="contained" color="error" type="submit">
+                Save
+              </Button>
+            </Box>
           </Box>
-        </Box>
-      </Card>
+        </Card>
       )}
     </>
   );

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { styled } from "@mui/system";
 import MUIDataTable from "mui-datatables";
-import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+// import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import RestoreFromTrashIcon from "@mui/icons-material/RestoreFromTrash";
-import EditIcon from "@mui/icons-material/Edit";
+// import EditIcon from "@mui/icons-material/Edit";
 import {
   Typography,
   Box,

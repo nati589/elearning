@@ -56,10 +56,10 @@ export default function SectionCard({ section, fetchSections }) {
       formData.append("section_content", values.section_content);
       formData.append("section_value", Number(values.section_value));
       formData.append("section_file", values.section_file);
-      console.log(formData);
+      // console.log(formData);
 
       axios
-        .put('/sections/updateSection', { data: { id: section.section_id, data: formData } }, {
+        .put(`/sections/updateSection/${section.section_id}`, formData, {
           headers: {
             "Content-Type": "multipart/form-data",
           },

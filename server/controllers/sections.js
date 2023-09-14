@@ -43,9 +43,6 @@ export const getCourseSections = (req, res) => {
 };
 
 export const addSection = (req, res) => {
-  // console.log(req.body);
-  // console.log(req.file);
-  // console.log(req.params.id);
   const section_id = uuidv4();
   const values = Object.values(req.body);
   values.unshift(section_id);
@@ -111,9 +108,49 @@ export const addSection = (req, res) => {
 };
 export const updateSection = (req, res) => {
   // console.log(req.params.id);
-  console.log(req.body);
-  res.json({ message: "Section updated successfully" });
-  // res.send(200).json(req.body);
+  // console.log(req.body);
+  const section_id = req.params.id;
+  const values = Object.values(req.body);
+  console.log(values);
+  if (values[2] === "quiz") {
+    values.pop();
+  }
+  values.push(req.params.id);
+  console.log(values);
+  // Create the SQL insert query
+  const q = `UPDATE section SET section_title = ?, section_description = ?, section_type = ?, section_content = ?,section_value = ? WHERE section_id = '${req.params.id}';`;
+  db.query(q, values, (err, data) => {
+    if (err) {
+      res.json(err);
+      console.log(err);
+    } else {
+      // Check if a new file has been uploaded
+      if (req.file) {
+        const sectionFile = req.file; // File object
+
+        // Generate a new file name
+        const originalFileName = sectionFile.originalname;
+        const fileExtension = originalFileName.split(".").pop();
+        const newFileName = `${section_id}.${fileExtension}`;
+
+        // Construct the new file path
+        const newFilePath = `sections/files/${newFileName}`;
+
+        // Move the file with overwrite option
+        // Rename the file with overwrite option
+        fs.rename(sectionFile.path, newFilePath, (renameErr) => {
+          if (renameErr) {
+            console.error(renameErr);
+            return res.status(500).json({ message: "Error renaming the file" });
+          }
+
+          res.json({ message: "Section changed successfully" });
+        });
+      } else {
+        res.json({ message: "Section changed successfully" });
+      }
+    }
+  });
 };
 export const deleteSection = (req, res) => {
   const sectionId = req.body.id;

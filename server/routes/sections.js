@@ -12,7 +12,7 @@ const upload = multer({ dest: "sections/files/" });
 
 const router = express.Router();
 
-router.put("/updateSection", updateSection);
+router.put("/updateSection/:id", upload.single("section_file"), updateSection);
 router.delete("/deleteSection", deleteSection);
 router.post("/addSection/:id", upload.single("section_file"), addSection);
 router.get("/getSections", getSections);

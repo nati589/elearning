@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 14, 2023 at 10:03 AM
+-- Generation Time: Sep 14, 2023 at 11:36 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.1.32
 
@@ -71,9 +71,20 @@ INSERT INTO `book` (`book_id`, `book_title`, `book_details`, `book_author`, `boo
 CREATE TABLE `cart` (
   `cart_id` varchar(36) NOT NULL,
   `user_id` varchar(36) NOT NULL,
-  `book_id` varchar(36) NOT NULL,
-  `course_id` varchar(36) NOT NULL
+  `book_id` varchar(36) DEFAULT NULL,
+  `course_id` varchar(36) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `cart`
+--
+
+INSERT INTO `cart` (`cart_id`, `user_id`, `book_id`, `course_id`) VALUES
+('fbcbb28b-9c59-4781-b906-7b3c3de9d1a8', 'fceeca18-a0f3-4ab4-9ade-06e4d109746c', NULL, '05054689-9bc3-471f-ab6f-970e8f56d05f'),
+('b72b0e1d-d36e-414a-b760-7db8ac432175', 'fceeca18-a0f3-4ab4-9ade-06e4d109746c', NULL, '19a45b62-6f39-4034-8ca1-85770e6c7193'),
+('26969279-6691-4f3b-a1d5-82bbbbdb9dcc', 'fceeca18-a0f3-4ab4-9ade-06e4d109746c', NULL, 'c8c3fa7c-4050-4bf8-9fb1-23ca38cd511f'),
+('74829d6c-aaa1-44e1-a4c7-776f727f64b4', 'fceeca18-a0f3-4ab4-9ade-06e4d109746c', NULL, '00b109c9-ed5c-44ed-9bef-474dd97056d4'),
+('7abafe94-7e5a-4680-b259-76af12653749', 'fceeca18-a0f3-4ab4-9ade-06e4d109746c', NULL, '4c44cc8d-bce2-4ac5-9968-11821296afb4');
 
 -- --------------------------------------------------------
 
@@ -139,6 +150,7 @@ CREATE TABLE `course` (
 --
 
 INSERT INTO `course` (`course_id`, `course_title`, `course_details`, `course_level`, `course_certificate`, `course_students`, `course_rating`, `course_sections`, `course_archived`, `course_price`, `course_instructor`, `course_max_comments`, `course_total_hour`, `course_date_created`) VALUES
+('00b109c9-ed5c-44ed-9bef-474dd97056d4', 'Paul\'s Fallacies', 'details', 'Advanced', 1, 0, '3.5', 1, 0, 2000, 'Paul', 5, 123, '2023-09-14 00:14:03.000000'),
 ('05054689-9bc3-471f-ab6f-970e8f56d05f', 'Psychology', 'psy', 'Intermediate', 1, 0, '0', 1, 0, 5600, 'Dagi', 5, 40, '2023-09-13 03:09:17.000000'),
 ('19a45b62-6f39-4034-8ca1-85770e6c7193', 'Tigrigna course', 'klsjfdslkfjsdlkfjsdklfjdslkf', 'Advanced', 1, 0, '0', 5, 0, 78, 'Kebede', 5, 12345, '2023-09-07 23:09:37.000000'),
 ('4c44cc8d-bce2-4ac5-9968-11821296afb4', 'Advaned Amharic Lesson ', 'Details ', 'Intermediate', 1, 0, '0', 1, 0, 200, 'Dr Abebe', 5, 3, '2023-09-13 04:00:43.000000'),
@@ -231,6 +243,7 @@ CREATE TABLE `section` (
 --
 
 INSERT INTO `section` (`section_id`, `section_title`, `section_description`, `section_type`, `section_content`, `section_value`, `course_id`) VALUES
+('2e216d3d-8132-41bd-acc3-7c4bfdc7fd1e', 'Section 1', 'sec deets', 'quiz', 'http::/localhost:3000/smth', 10, '00b109c9-ed5c-44ed-9bef-474dd97056d4'),
 ('30599a3d-5916-41b5-b3b1-7a5d3b977e10', 'fhku', 'kjkli', 'quiz', 'http::/localhost:3000/smth', 67, '4c44cc8d-bce2-4ac5-9968-11821296afb4'),
 ('419fe520-3377-406a-9420-a50e9bc36bb5', 'Amharic section 4', 'deets', 'assignment', '12345', 0, '19a45b62-6f39-4034-8ca1-85770e6c7193'),
 ('7586418f-0fcf-4797-bc0c-db498d293c0a', 'Amharic section 6', 'some stufff', 'quiz', 'http::/localhost:3000/smth', 435, '19a45b62-6f39-4034-8ca1-85770e6c7193'),
@@ -290,7 +303,7 @@ CREATE TABLE `web_content` (
 --
 
 INSERT INTO `web_content` (`web_content_id`, `goal_title`, `hero_title`, `goal_detail`, `hero_detail`, `lesson_title`, `lesson_detail`, `action_title`, `action_detail`, `mentor_title`, `mentor_detail`) VALUES
-('11f1e0fd-4bea-11ee-9cc4-0a002700000a', 'fkdslaskdjfklskslkdffjjfdkslls', 'hero title woohoo kdslkjsdlfjs', 'fkdslaskdjfklskslkdffjjfdkslls', 'hero details over here', 'lessson title is up here', 'fkdslaskdjfklskslkdffjjfdkslls', 'fkdslaskdjfklskslkdffjjfdkslls', 'fkdslaskdjfklskslkdffjjfdkslls', 'fkdslaskdjfklskslkdffjjfdkslls', 'fkdslaskdjfklskslkdffjjfdkslls');
+('11f1e0fd-4bea-11ee-9cc4-0a002700000a', 'OUR GOAL     ', 'Learn Ethiopian Languages', 'At Logo, we are passionate about promoting Ethiopian languages and bridging the linguistic gap for foreigners. Our team of experienced language experts and native speakers have developed a comprehensive curriculum to make learning Ethiopian languages accessible and enjoyable.', 'Discover the beauty and diversity of Ethiopian languages through our immersive courses, interactive lessons, and cultural insights. Start your language learning journey today!', 'Qualified lessons for students', 'Explore our range of courses designed to suit your language learning needs. Whether you are a beginner or an advanced learner, we have courses that cater to all levels. Choose from Amharic, Oromo, Tigrinya, Somali, and more!', 'Subscribe For Get Update Every New Courses', '20k+ students daily learn with Eduvi. Subscribe for new courses.', 'Want to share your knowledge? Join us a Mentor', 'High-definition video is video of higher resolution and quality than standard-definition. While there is no standardized meaning for high-definition, generally any video.');
 
 --
 -- Indexes for dumped tables
@@ -312,9 +325,9 @@ ALTER TABLE `book`
 -- Indexes for table `cart`
 --
 ALTER TABLE `cart`
-  ADD KEY `book_id` (`book_id`),
-  ADD KEY `course_id` (`course_id`),
-  ADD KEY `user_id` (`user_id`);
+  ADD KEY `cart_ibfk_2` (`book_id`),
+  ADD KEY `cart_ibfk_3` (`course_id`),
+  ADD KEY `cart_ibfk_4` (`user_id`);
 
 --
 -- Indexes for table `category`
@@ -398,9 +411,9 @@ ALTER TABLE `web_content`
 -- Constraints for table `cart`
 --
 ALTER TABLE `cart`
-  ADD CONSTRAINT `cart_ibfk_2` FOREIGN KEY (`book_id`) REFERENCES `book` (`book_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `cart_ibfk_3` FOREIGN KEY (`course_id`) REFERENCES `course` (`course_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `cart_ibfk_4` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `cart_ibfk_2` FOREIGN KEY (`book_id`) REFERENCES `book` (`book_id`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  ADD CONSTRAINT `cart_ibfk_3` FOREIGN KEY (`course_id`) REFERENCES `course` (`course_id`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  ADD CONSTRAINT `cart_ibfk_4` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 --
 -- Constraints for table `category_join`

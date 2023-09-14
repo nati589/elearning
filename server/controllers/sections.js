@@ -49,11 +49,11 @@ export const addSection = (req, res) => {
   const section_id = uuidv4();
   const values = Object.values(req.body);
   values.unshift(section_id);
-  if (values[3] === 'quiz') {
+  if (values[3] === "quiz") {
     values.pop();
   }
   values.push(req.params.id);
-  console.log(values)
+  console.log(values);
   // Create the SQL insert query
   const q = `INSERT INTO section (section_id, section_title, section_description, section_type, section_content, section_value, course_id) VALUES (?, ?, ?, ?, ?, ?, ?)`;
   db.query(q, values, (err, data) => {
@@ -62,8 +62,8 @@ export const addSection = (req, res) => {
       console.log(err);
     } else {
       //   res.json(data);
-      const query = `UPDATE course SET course_sections = course_sections + 1 WHERE course_id = '${req.params.id}';`
-      db.query(query)
+      const query = `UPDATE course SET course_sections = course_sections + 1 WHERE course_id = '${req.params.id}';`;
+      db.query(query);
       console.log(data);
       // Check if a new file has been uploaded
       if (req.file) {
@@ -110,16 +110,48 @@ export const addSection = (req, res) => {
   //   });
 };
 export const updateSection = (req, res) => {
-  console.log(req.params.id)
-  console.log(req.body)
+  // console.log(req.params.id);
+  console.log(req.body);
+  res.json({ message: "Section updated successfully" });
+  // res.send(200).json(req.body);
 };
 export const deleteSection = (req, res) => {
-  //   const q = `UPDATE course SET course_archived = 1 WHERE course_id = '${req.body.id}'`;
-  //   db.query(q, req.body.id, (err, data) => {
-  //     if (err) {
-  //       return res.status(401).send({ message: "Connection error try again." });
-  //     } else {
-  //       res.json(data);
-  //     }
-  //   });
+  const sectionId = req.body.id;
+  const courseId = req.body.course_id;
+
+  db.beginTransaction((err) => {
+    if (err) {
+      return res.status(500).send({ message: 'Transaction error. Please try again.' });
+    }
+
+    // Delete the section
+    const deleteQuery = `DELETE FROM section WHERE section_id = '${sectionId}'`;
+    db.query(deleteQuery, (err, deleteResult) => {
+      if (err) {
+        db.rollback(() => {
+          res.status(500).send({ message: 'Error deleting section. Please try again.' });
+        });
+      } else {
+        // Update the course_sections value
+        const updateQuery = `UPDATE course SET course_sections = course_sections - 1 WHERE course_id = '${courseId}'`;
+        db.query(updateQuery, (err, updateResult) => {
+          if (err) {
+            db.rollback(() => {
+              res.status(500).send({ message: 'Error updating course_sections. Please try again.' });
+            });
+          } else {
+            db.commit((err) => {
+              if (err) {
+                db.rollback(() => {
+                  res.status(500).send({ message: 'Transaction commit error. Please try again.' });
+                });
+              } else {
+                res.json({ message: 'Section deleted successfully.' });
+              }
+            });
+          }
+        });
+      }
+    });
+  });
 };

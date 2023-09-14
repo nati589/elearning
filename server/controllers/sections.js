@@ -109,7 +109,10 @@ export const addSection = (req, res) => {
   //     res.json({ message: "Course added successfully" });
   //   });
 };
-export const updateSection = (req, res) => {};
+export const updateSection = (req, res) => {
+  console.log(req.params.id)
+  console.log(req.body)
+};
 export const deleteSection = (req, res) => {
   //   const q = `UPDATE course SET course_archived = 1 WHERE course_id = '${req.body.id}'`;
   //   db.query(q, req.body.id, (err, data) => {

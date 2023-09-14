@@ -24,7 +24,7 @@ async function undeleteCourseById(itemId) {
 
     // Check if the item was deleted successfully
     if (response.status === 200) {
-      alert(`Item with ID ${itemId} deleted successfully`);
+      //   alert(`Item with ID ${itemId} deleted successfully`);
     } else {
       console.error("Error deleting item");
     }

@@ -1,36 +1,25 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { TiDeleteOutline } from "react-icons/ti";
-function CartItemBook({
-  cart_id,
-  book_id,
-  title,
-  description,
-  hour,
-  level,
-  lecture,
-  rate,
-  price,
-  image,
-}) {
+function CartItemBook({ cart_id, book_id, removeItem }) {
   const [data, setData] = useState({});
 
   useEffect(() => {
-    if (book_id) {
-      axios
-        .get("/course/getSingleCourse", { params: { courseID: book_id } })
-        .then((response) => {
-          setData(response.data[0]);
-        })
-        .catch((error) => {
-          console.log(error.response.data.message);
-        });
-    } else if (book_id) {
-    }
+    axios
+      .get("/books/getSingleBook", { params: { bookID: book_id } })
+      .then((response) => {
+        setData(response.data[0]);
+      })
+      .catch((error) => {
+        console.log(error.response.data.message);
+      });
   }, [book_id]);
+
   return (
     <div className=" relative shadow flex flex-row items-center max-w-max sm:gap-1 lg:gap-6 px-1 md:gap-4 sm:px-2 md:px-4 rounded">
-      <button className=" absolute top-2 right-2 text-2xl md:hidden text-medium-purple">
+      <button
+        onClick={() => removeItem(cart_id)}
+        className=" absolute top-2 right-2 text-2xl md:hidden text-medium-purple">
         <TiDeleteOutline />
       </button>
       <div className=" bg-blue-400  rounded">
@@ -42,23 +31,23 @@ function CartItemBook({
       </div>
       <div className="   sm:min-w-[90px] md:max-w-lg px-2 sm:px-0 py-2">
         <div className="mb-2">
-          <h1 className="text-sm md:text-lg">{title}</h1>
-          <p className="text-[11px] md:text-xs">{description}</p>{" "}
+          <h1 className="text-sm md:text-lg">{data.book_title}</h1>
+          <p className="text-[11px] md:text-xs">{data.book_details}</p>{" "}
         </div>
         <div className="flex flex-row mb-1.5 gap-1">
-          <span className="text-[11px] md:text-xs">{rate}</span>
+          <span className="text-[11px] md:text-xs">{data.book_rating}</span>
           <span className="text-[11px]">XXXXXX</span>
         </div>
         <div className=" text-[11px] md:text-xs flex flex-row gap-5 items-center">
-          <span>{hour} total hours</span>
-          <span>{lecture} lecture</span>
-          <span>{level}</span>
+          <span>Author {data.book_author} </span>
         </div>
       </div>
       <div>
-        <span className="text-medium-purple text-lg">${price}</span>
+        <span className="text-medium-purple text-lg">${data.book_price}</span>
       </div>
-      <button className="bg-medium-purple px-4 hidden md:inline-block py-2 rounded-3xl sm:mx-2  md:mx-10 text-white ">
+      <button
+        onClick={() => removeItem(cart_id)}
+        className="bg-medium-purple px-4 hidden md:inline-block py-2 rounded-3xl sm:mx-2  md:mx-10 text-white ">
         remove
       </button>
     </div>

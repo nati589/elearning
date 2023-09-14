@@ -18,7 +18,17 @@ export const getCart = (req, res) => {
 };
 
 export const deleteFromCart = (req, res) => {
-  console.log(req.body, "delete from cart");
+  const { cart_id } = req.body;
+
+  const q = "DELETE FROM cart WHERE cart_id = ?";
+
+  db.query(q, [cart_id], (err, data) => {
+    if (err) {
+      return res.status(401).send({ message: "Failed to remove. Try again!" });
+    } else {
+      return res.status(200).json(data);
+    }
+  });
 };
 
 export const addToCart = (req, res) => {

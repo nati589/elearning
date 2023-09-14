@@ -8,7 +8,6 @@ function CartItemCourse({ cart_id, course_id, removeItem }) {
     axios
       .get("/courses/getSingleCourse", { params: { courseID: course_id } })
       .then((response) => {
-        console.log(response.data, "cart card");
         setData(response.data[0]);
       })
       .catch((error) => {
@@ -18,7 +17,9 @@ function CartItemCourse({ cart_id, course_id, removeItem }) {
 
   return (
     <div className=" relative shadow flex flex-row items-center max-w-max sm:gap-1 lg:gap-6 px-1 md:gap-4 sm:px-2 md:px-4 md:mx-5 md:my-3 rounded">
-      <button className=" absolute top-2 right-2 text-2xl md:hidden text-medium-purple">
+      <button
+        onClick={() => removeItem(cart_id)}
+        className=" absolute top-2 right-2 text-2xl md:hidden text-medium-purple">
         <TiDeleteOutline />
       </button>
       <div className=" bg-blue-400  rounded">
@@ -46,7 +47,9 @@ function CartItemCourse({ cart_id, course_id, removeItem }) {
       <div>
         <span className="text-medium-purple text-lg">${data.course_price}</span>
       </div>
-      <button className="bg-medium-purple px-4 hidden md:inline-block py-2 rounded-3xl sm:mx-2  md:mx-10 text-white ">
+      <button
+        onClick={() => removeItem(cart_id)}
+        className="bg-medium-purple px-4 hidden md:inline-block py-2 rounded-3xl sm:mx-2  md:mx-10 text-white ">
         remove
       </button>
     </div>

@@ -5,13 +5,10 @@ import { useEffect, useState } from "react";
 import CartImg from "../assets/empty_cart.svg";
 import axios from "axios";
 import CartItemBook from "../components/CartItemBook";
+
 function Cart() {
   const navigate = useNavigate();
-  // const [cartEmpty, setCartEmpty] = useState(false);
   const [cartData, setCartData] = useState([]);
-  // const [courseCartData, setCourseCartData] = useState([]);
-  // const [bookCartData, setBookCartData] = useState([]);
-
   useEffect(() => {
     axios
       .post("/cart/getCart", { user_id: localStorage.getItem("user_id") })
@@ -25,9 +22,13 @@ function Cart() {
 
   const removeItem = (cart_id) => {
     axios
-      .delete("/cart/deleteFromCart", cart_id)
-      .then((response) => {})
-      .catch((error) => {});
+      .delete("/cart/deleteFromCart", { data: { cart_id } })
+      .then((response) => {
+        setCartData(cartData.filter((c) => c.cart_id !== cart_id));
+      })
+      .catch((error) => {
+        console.log(error.response.data.message);
+      });
   };
 
   return (
@@ -67,7 +68,7 @@ function Cart() {
                     key={item.cart_id}
                     cart_id={item.cart_id}
                     book_id={item.course_id}
-                    // removeItem={removeItem}
+                    removeItem={removeItem}
                   />
                 ))}
 
@@ -80,7 +81,7 @@ function Cart() {
                     key={item.cart_id}
                     cart_id={item.cart_id}
                     course_id={item.course_id}
-                    // removeItem={removeItem}
+                    removeItem={removeItem}
                   />
                 ))}
 

@@ -219,8 +219,8 @@ export const addCourse = (req, res) => {
 };
 export const updateCourse = (req, res) => {
   const courseId = req.params.id;
-  console.log(req.params.id)
-  console.log(req.body)
+  console.log(req.params.id);
+  console.log(req.body);
   const q = `UPDATE course SET course_title = ?, course_details = ?, course_level = ?, course_price = ?, course_instructor = ?, course_total_hour = ? WHERE course_id = '${req.params.id}'`;
   db.query(q, Object.values(req.body), (err, data) => {
     if (err) {
@@ -235,7 +235,7 @@ export const updateCourse = (req, res) => {
 
         // Generate a new file name
         const originalFileName = courseThumbnail.originalname;
-        const fileExtension = originalFileName.split('.').pop();
+        const fileExtension = originalFileName.split(".").pop();
         const newFileName = `${courseId}.${fileExtension}`;
 
         // Construct the new file path
@@ -246,13 +246,13 @@ export const updateCourse = (req, res) => {
         fs.rename(courseThumbnail.path, newFilePath, (renameErr) => {
           if (renameErr) {
             console.error(renameErr);
-            return res.status(500).json({ message: 'Error renaming the file' });
+            return res.status(500).json({ message: "Error renaming the file" });
           }
 
-          res.json({ message: 'Course updated successfully' });
+          res.json({ message: "Course updated successfully" });
         });
       } else {
-        res.json({ message: 'Course updated successfully' });
+        res.json({ message: "Course updated successfully" });
       }
     }
   });

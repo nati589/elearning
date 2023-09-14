@@ -55,14 +55,11 @@ export default function SectionCard({ section, fetchSections }) {
       formData.append("section_type", values.section_type);
       formData.append("section_content", values.section_content);
       formData.append("section_value", Number(values.section_value));
-      formData.append(
-        "section_file",
-        values.section_file === null ? null : values.section_file
-      );
+      formData.append("section_file", values.section_file);
       console.log(formData);
 
       axios
-        .put(`/sections/updateSection/${section.section_id}`, formData, {
+        .put('/sections/updateSection', { data: { id: section.section_id, data: formData } }, {
           headers: {
             "Content-Type": "multipart/form-data",
           },
@@ -94,6 +91,38 @@ export default function SectionCard({ section, fetchSections }) {
       }
     }
   };
+  const deleteSection = (data) => {
+    console.log(data);
+    axios
+      .delete("/sections/deleteSection", { data: { id: data, course_id: section.course_id } })
+      .then((res) => {
+        console.log(res.data);
+        fetchSections();
+        // axios
+        // .get("/courses/getCourses")
+        // .then((res) => {
+        //   setCourseList(
+        //     res.data.map((item) => [
+        //       item.course_title,
+        //       item.course_instructor,
+        //       item.course_level,
+        //       item.course_price,
+        //       item.course_id,
+        //       item.course_rating,
+        //       item.course_sections,
+        //       item.course_students,
+        //       item.course_id,
+        //     ])
+        //   );
+        // })
+        // .catch((error) => {
+        //   console.error(error);
+        // });
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
   const [edit, setEdit] = useState(false);
   return (
     <>
@@ -107,7 +136,7 @@ export default function SectionCard({ section, fetchSections }) {
               <Button
                 color="error"
                 onClick={() => {
-                  // deleteCourse(data);
+                  deleteSection(section.section_id);
                 }}>
                 <DeleteOutlineIcon />
               </Button>

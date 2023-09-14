@@ -110,17 +110,48 @@ export const addSection = (req, res) => {
   //   });
 };
 export const updateSection = (req, res) => {
-  console.log(req.params.id);
+  // console.log(req.params.id);
   console.log(req.body);
+  res.json({ message: "Section updated successfully" });
   // res.send(200).json(req.body);
 };
 export const deleteSection = (req, res) => {
-  //   const q = `UPDATE course SET course_archived = 1 WHERE course_id = '${req.body.id}'`;
-  //   db.query(q, req.body.id, (err, data) => {
-  //     if (err) {
-  //       return res.status(401).send({ message: "Connection error try again." });
-  //     } else {
-  //       res.json(data);
-  //     }
-  //   });
+  const sectionId = req.body.id;
+  const courseId = req.body.course_id;
+
+  db.beginTransaction((err) => {
+    if (err) {
+      return res.status(500).send({ message: 'Transaction error. Please try again.' });
+    }
+
+    // Delete the section
+    const deleteQuery = `DELETE FROM section WHERE section_id = '${sectionId}'`;
+    db.query(deleteQuery, (err, deleteResult) => {
+      if (err) {
+        db.rollback(() => {
+          res.status(500).send({ message: 'Error deleting section. Please try again.' });
+        });
+      } else {
+        // Update the course_sections value
+        const updateQuery = `UPDATE course SET course_sections = course_sections - 1 WHERE course_id = '${courseId}'`;
+        db.query(updateQuery, (err, updateResult) => {
+          if (err) {
+            db.rollback(() => {
+              res.status(500).send({ message: 'Error updating course_sections. Please try again.' });
+            });
+          } else {
+            db.commit((err) => {
+              if (err) {
+                db.rollback(() => {
+                  res.status(500).send({ message: 'Transaction commit error. Please try again.' });
+                });
+              } else {
+                res.json({ message: 'Section deleted successfully.' });
+              }
+            });
+          }
+        });
+      }
+    });
+  });
 };

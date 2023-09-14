@@ -31,8 +31,7 @@ function Setting() {
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
+              stroke="currentColor">
               <path
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -63,8 +62,7 @@ function Setting() {
             </div>
             <button
               className="bg-dark-purple text-white p-2 rounded hover:bg-light-purple"
-              onClick={handleChangeName}
-            >
+              onClick={handleChangeName}>
               Change Name
             </button>
             {message && <div className="text-green-500 mt-2">{message}</div>}
@@ -81,8 +79,7 @@ function Setting() {
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
+                    stroke="currentColor">
                     <path
                       stroke-linecap="round"
                       stroke-linejoin="round"
@@ -120,8 +117,7 @@ function Setting() {
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
+                    stroke="currentColor">
                     <path fill="#fff" d="M12 14l9-5-9-5-9 5 9 5z" />
                     <path
                       fill="#fff"

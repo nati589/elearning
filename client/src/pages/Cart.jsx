@@ -7,23 +7,29 @@ import axios from "axios";
 import CartItemBook from "../components/CartItemBook";
 function Cart() {
   const navigate = useNavigate();
-  const [cartEmpty, setCartEmpty] = useState(false);
+  // const [cartEmpty, setCartEmpty] = useState(false);
   const [cartData, setCartData] = useState([]);
-  const [courseCartData, setCourseCartData] = useState([]);
-  const [bookCartData, setBookCartData] = useState([]);
+  // const [courseCartData, setCourseCartData] = useState([]);
+  // const [bookCartData, setBookCartData] = useState([]);
 
   useEffect(() => {
     axios
       .post("/cart/getCart", { user_id: localStorage.getItem("user_id") })
       .then((response) => {
-        setCartEmpty(response.data.empty);
-        console.log(response.data);
-        // setCartData([...response.data.cart]);
+        setCartData([...response.data]);
       })
       .catch((error) => {
         console.log(error.response.data.message);
       });
-  });
+  }, []);
+
+  const removeItem = (cart_id) => {
+    axios
+      .delete("/cart/deleteFromCart", cart_id)
+      .then((response) => {})
+      .catch((error) => {});
+  };
+
   return (
     <div className="w-full flex flex-col flex-nowrap pt-10 pb-2 lg:px-auto lg:px-32 sm:px-2">
       <div className="w-full flex flex-row justify-between items-center ">
@@ -35,56 +41,64 @@ function Cart() {
           Continue shopping
         </button>
       </div>
-      {cartEmpty ? (
-        <div className="w-full flex flex-col flex-nowrap text-center text-3xl font-light mt-12 ">
-          <h1>Your Cart is empty</h1>
-          <img
-            src={CartImg}
-            alt="empty cart"
-            className="w-4/12 h-auto m-auto mb-3 mt-3"
-          />
-        </div>
-      ) : (
-        <>
-          <div className="w-full mt-16">
-            <h2>you have {cartData.length} items in your cart</h2>
+      <>
+        {cartData.length === 0 ? (
+          <div className="w-full flex flex-col flex-nowrap text-center text-3xl font-light mt-12 ">
+            <h1>Your Cart is empty</h1>
+            <img
+              src={CartImg}
+              alt="empty cart"
+              className="w-4/12 h-auto m-auto mb-3 mt-3"
+            />
           </div>
-          {}
-          <div className="w-full flex flex-col gap-2 mb-4  py-1 max-w-max">
-            <h2>Books</h2>
+        ) : (
+          <>
+            <div className="w-full mt-16">
+              <h2>you have {cartData.length} items in your cart</h2>
+            </div>
+            {}
+            <div className="w-full flex flex-col gap-2 mb-4  py-1 max-w-max">
+              <h2>Books</h2>
 
-            {/* {bookCartData.map((item, index) => (
-              <CartItemBook
-                key={item.cart_iddex}
-                cart_id={item.cart_id}
-                book_id={item.course_id}
-              />
-            ))} */}
+              {cartData
+                .filter((item) => item.course_id === null)
+                .map((item) => (
+                  <CartItemBook
+                    key={item.cart_id}
+                    cart_id={item.cart_id}
+                    book_id={item.course_id}
+                    // removeItem={removeItem}
+                  />
+                ))}
 
-            <h2>Courses</h2>
+              <h2>Courses</h2>
 
-            {/* {courseCartData.map((item, index) => (
-              <CartItemCourse
-                key={item.cart_id}
-                cart_id={item.cart_id}
-                course_id={item.course_id}
-              />
-            ))} */}
+              {cartData
+                .filter((item) => item.book_id === null)
+                .map((item) => (
+                  <CartItemCourse
+                    key={item.cart_id}
+                    cart_id={item.cart_id}
+                    course_id={item.course_id}
+                    // removeItem={removeItem}
+                  />
+                ))}
 
-            <div className="flex flex-col gap-1 self-end mt-3">
-              <div className=" bg-purple-100 w-40 p-2 text-xl rounded flex flex-row justify-between">
-                <span>Total</span>
-                <span className="text-medium-purple">$32.12</span>
-              </div>
-              <div>
-                <button className="bg-medium-purple text-white p-2 rounded  w-40">
-                  Checkout
-                </button>
+              <div className="flex flex-col gap-1 self-end mt-3">
+                <div className=" bg-purple-100 w-40 p-2 text-xl rounded flex flex-row justify-between">
+                  <span>Total</span>
+                  <span className="text-medium-purple">$32.12</span>
+                </div>
+                <div>
+                  <button className="bg-medium-purple text-white p-2 rounded  w-40">
+                    Checkout
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
-        </>
-      )}
+          </>
+        )}
+      </>
     </div>
   );
 }

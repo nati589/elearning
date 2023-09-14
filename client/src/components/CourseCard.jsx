@@ -21,6 +21,7 @@ function CourseCard({
   level,
 }) {
   const images = require.context("../assets");
+  // images(`${courseId}.jpg`)
 
   const course_image = images(courseImagePath);
   const numbers = [1, 2, 3, 4, 5];
@@ -34,6 +35,7 @@ function CourseCard({
     axios
       .post("/cart/checkCourse", {
         course_id: courseId,
+        user_id: localStorage.getItem("user_id"),
       })
       .then((res) => {
         if (res.data.message) {

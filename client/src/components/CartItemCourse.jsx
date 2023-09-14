@@ -1,13 +1,14 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { TiDeleteOutline } from "react-icons/ti";
-function CartItemCourse({ cart_id, course_id }) {
+function CartItemCourse({ cart_id, course_id, removeItem }) {
   const [data, setData] = useState({});
 
   useEffect(() => {
     axios
-      .get("/course/getSingleCourse", { params: { courseID: course_id } })
+      .get("/courses/getSingleCourse", { params: { courseID: course_id } })
       .then((response) => {
+        console.log(response.data, "cart card");
         setData(response.data[0]);
       })
       .catch((error) => {

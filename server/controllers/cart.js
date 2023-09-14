@@ -12,16 +12,14 @@ export const getCart = (req, res) => {
     if (err) {
       return res.status(401).send({ message: "Connection error. Try again!" });
     } else {
-      if (data.length === 0) {
-        return res.status(200).send({ empty: true, cart: [] });
-      } else {
-        return res.status(200).send({ empty: false, cart: data });
-      }
+      return res.status(200).json(data);
     }
   });
 };
 
-export const deleteFromCart = (req, res) => {};
+export const deleteFromCart = (req, res) => {
+  console.log(req.body, "delete from cart");
+};
 
 export const addToCart = (req, res) => {
   const { course_id, user_id, book_id } = req.body;
@@ -42,9 +40,9 @@ export const addToCart = (req, res) => {
 };
 
 export const checkCourse = (req, res) => {
-  const { course_id } = req.body;
-  const q = `SELECT * from cart WHERE course_id = ?`;
-  db.query(q, [course_id], (err, data) => {
+  const { course_id, user_id } = req.body;
+  const q = `SELECT * from cart WHERE course_id = ? AND user_id = ? `;
+  db.query(q, [course_id, user_id], (err, data) => {
     if (err) {
       return res.status(401).send({ message: "Error Checking in Cart!" });
     } else {

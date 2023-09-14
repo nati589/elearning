@@ -46,8 +46,8 @@ import axios from "axios";
 // };
 // Calcualte the Percentage
 function getPercentage(ValueYear, ValueTotal) {
-  if(ValueTotal === 0) {
-    return "0"
+  if (ValueTotal === 0) {
+    return "0";
   }
   return ((ValueYear * 100) / ValueTotal).toFixed(1).toString();
 }

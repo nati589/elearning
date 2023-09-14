@@ -2,78 +2,81 @@ import { useEffect, useState } from "react";
 
 // material-ui
 import {
-  Avatar,
-  AvatarGroup,
+  // Avatar,
+  // AvatarGroup,
   Box,
   Button,
   Grid,
-  List,
-  ListItemAvatar,
-  ListItemButton,
-  ListItemSecondaryAction,
-  ListItemText,
-  MenuItem,
+  // List,
+  // ListItemAvatar,
+  // ListItemButton,
+  // ListItemSecondaryAction,
+  // ListItemText,
+  // MenuItem,
   Stack,
-  TextField,
+  // TextField,
   Typography,
 } from "@mui/material";
 
 // project import
-import OrdersTable from "./OrdersTable";
+// import OrdersTable from "./OrdersTable";
 import IncomeAreaChart from "./IncomeAreaChart";
 import MonthlyBarChart from "./MonthlyBarChart";
-import ReportAreaChart from "./ReportAreaChart";
-import SalesColumnChart from "./SalesColumnChart";
+// import ReportAreaChart from "./ReportAreaChart";
+// import SalesColumnChart from "./SalesColumnChart";
 import MainCard from "components/MainCard";
 import AnalyticEcommerce from "components/cards/statistics/AnalyticEcommerce";
 import axios from "axios";
 // assets
-import {
-  GiftOutlined,
-  MessageOutlined,
-  SettingOutlined,
-} from "@ant-design/icons";
-import avatar1 from "assets/images/users/avatar-1.png";
-import avatar2 from "assets/images/users/avatar-2.png";
-import avatar3 from "assets/images/users/avatar-3.png";
-import avatar4 from "assets/images/users/avatar-4.png";
+// import {
+//   GiftOutlined,
+//   MessageOutlined,
+//   SettingOutlined,
+// } from "@ant-design/icons";
+// import avatar1 from "assets/images/users/avatar-1.png";
+// import avatar2 from "assets/images/users/avatar-2.png";
+// import avatar3 from "assets/images/users/avatar-3.png";
+// import avatar4 from "assets/images/users/avatar-4.png";
 
 // avatar style
-const avatarSX = {
-  width: 36,
-  height: 36,
-  fontSize: "1rem",
-};
+// const avatarSX = {
+//   width: 36,
+//   height: 36,
+//   fontSize: "1rem",
+// };
 // Calcualte the Percentage
 function getPercentage(ValueYear, ValueTotal) {
+  if(ValueTotal === 0) {
+    return "0"
+  }
   return ((ValueYear * 100) / ValueTotal).toFixed(1).toString();
 }
 
 // action style
-const actionSX = {
-  mt: 0.75,
-  ml: 1,
-  top: "auto",
-  right: "auto",
-  alignSelf: "flex-start",
-  transform: "none",
-};
+// const actionSX = {
+//   mt: 0.75,
+//   ml: 1,
+//   top: "auto",
+//   right: "auto",
+//   alignSelf: "flex-start",
+//   transform: "none",
+// };
 
-// sales report status
-const status = [
-  {
-    value: "today",
-    label: "Today",
-  },
-  {
-    value: "month",
-    label: "This Month",
-  },
-  {
-    value: "year",
-    label: "This Year",
-  },
-];
+// // sales report status
+// const status = [
+//   {
+//     value: "today",
+//     label: "Today",
+//   },
+//   {
+//     value: "month",
+//     label: "This Month",
+//   },
+//   {
+//     value: "year",
+//     label: "This Year",
+//   },
+// ];
 //==============================||======================||================================||====================
 // ==============================|| DASHBOARD - DEFAULT ||============================== //
 const url1 = "http://localhost:8800/api/users/getUsers";
@@ -93,7 +96,7 @@ const DashboardDefault = () => {
   const [totalBookYear, setTotalBookYear] = useState(0);
   const [totalUser, setTotalUser] = useState(1);
   const [totalUserYear, setTotalUserYear] = useState(0);
-  const [value, setValue] = useState("today");
+  // const [value, setValue] = useState("today");
   const [slot, setSlot] = useState("week");
   useEffect(function () {
     // Make a GET request using Axios

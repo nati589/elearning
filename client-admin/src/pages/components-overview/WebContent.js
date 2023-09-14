@@ -313,7 +313,10 @@ export default function WebContent() {
                   <Button
                     variant="filled"
                     type="reset"
-                    onClick={() => formik.resetForm()}
+                    onClick={() => 
+                      // formik.resetForm()
+                      setEdit(s => !s)
+                    }
                   >
                     Cancel
                   </Button>

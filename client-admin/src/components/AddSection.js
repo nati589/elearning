@@ -96,7 +96,7 @@ export default function AddSection({ handleAddSection, fetchSections, id }) {
   return (
     <Card sx={{ p: 2, my: 2, w: "100%" }} elevation={0}>
       <Box component="form" onSubmit={formik.handleSubmit} sx={{ p: 2 }}>
-        <Typography sx={{ mb: 2 }}>Section 1</Typography>
+        <Typography sx={{ mb: 2 }}>Section</Typography>
         <Box mb={2}>
           <TextField
             fullWidth

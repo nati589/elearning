@@ -58,7 +58,7 @@ export default function CourseSections() {
       </Box>
       <Box>
         {sectionList.map((section) => (
-          <SectionCard key={section?.section_id} section={section} />
+          <SectionCard key={section?.section_id} section={section} fetchSections={() => fetchSections(id)} />
         ))}
         {sectionList.length === 0 && !addSection && (
           <Card elevation={0} sx={{ my: 2, py: 4 }}>

@@ -10,15 +10,34 @@ import {
 } from "@mui/material";
 import { useNavigate } from "../../../node_modules/react-router/dist/index";
 import axios from "axios";
-import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+// import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import RestoreFromTrashIcon from "@mui/icons-material/RestoreFromTrash";
 import EditIcon from "@mui/icons-material/Edit";
+async function undeleteBookById(itemId) {
+  try {
+    // Replace the URL with your API endpoint and the desired item ID
+    const apiUrl = `http://localhost:8800/api/books/getUndeletedBooks/${itemId}`;
 
-export default function CourseList() {
+    // Send a DELETE request to delete the item by ID
+    const response = await axios.get(apiUrl);
+
+    // Check if the item was deleted successfully
+    if (response.status === 200) {
+      alert(`Item with ID ${itemId} deleted successfully`);
+    } else {
+      console.error("Error deleting item");
+    }
+  } catch (error) {
+    console.error("Error:", error.message);
+  }
+}
+export default function BookTrash() {
   const navigate = useNavigate();
   const [bookList, setBookList] = useState([]);
+  const [state, setState] = useState(true);
   useEffect(() => {
     axios
-      .get("/books/getBooks")
+      .get("/books/getDeletedBooks")
       .then((res) => {
         console.log(res.data);
         setBookList(
@@ -36,37 +55,8 @@ export default function CourseList() {
       .catch((error) => {
         console.error(error);
       });
-  }, []);
-  const deleteBook = (data) => {
-    console.log(data);
-    axios
-      .delete("/books/deleteBook", { data: { id: data } })
-      .then((res) => {
-        console.log(res.data);
-        axios
-          .get("/books/getBooks")
-          .then((res) => {
-            console.log(res.data);
-            setBookList(
-              res.data.map((item) => [
-                item.book_title,
-                item.book_author,
-                item.book_purchases,
-                item.book_price,
-                item.book_id,
-                item.book_rating,
-                item.book_id,
-              ])
-            );
-          })
-          .catch((error) => {
-            console.error(error);
-          });
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  };
+  }, [state]);
+
   const options = {
     // filterType: "checkbox",
     elevation: 0,
@@ -124,24 +114,25 @@ export default function CourseList() {
           let data = value;
           return (
             <>
-              <Tooltip title="Edit">
+              {/* <Tooltip title="Edit">
                 <Button
                   onClick={() => {
                     // console.log(data);
                     navigate(`/bookmanagement/editbook/${data}`);
-                  }}
-                >
+                  }}>
                   <EditIcon />
                 </Button>
-              </Tooltip>
+              </Tooltip> */}
               <Tooltip title="Delete">
                 <Button
                   color="error"
                   onClick={() => {
-                    deleteBook(data);
+                    // deleteBook(data);
+                    undeleteBookById(data);
+                    setState((s) => !s);
                   }}
                 >
-                  <DeleteOutlineIcon />
+                  <RestoreFromTrashIcon />
                 </Button>
               </Tooltip>
             </>
@@ -154,12 +145,12 @@ export default function CourseList() {
   return (
     <>
       <Box sx={{ ml: 2 }}>
-        <Typography variant="h4">Books</Typography>
+        {/* <Typography variant="h4">Books</Typography>
         <Typography variant="p">
           This section is to create and modify Books.
-        </Typography>
+        </Typography> */}
       </Box>
-      <Box sx={{ display: "flex", justifyContent: "end", my: 2 }}>
+      {/* <Box sx={{ display: "flex", justifyContent: "end", my: 2 }}>
         <Button
           variant="outlined"
           onClick={() => {
@@ -168,7 +159,7 @@ export default function CourseList() {
         >
           Add Book
         </Button>
-      </Box>
+      </Box> */}
       <Box>
         <StyledMUIDataTable
           title={""}

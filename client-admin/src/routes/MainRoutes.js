@@ -27,9 +27,13 @@ const WebContent = Loadable(
 const BookManagement = Loadable(
   lazy(() => import("pages/components-overview/BookManagement"))
 );
-const AntIcons = Loadable(
-  lazy(() => import("pages/components-overview/AntIcons"))
+const CourseTrash = Loadable(
+  lazy(() => import("pages/components-overview/CourseTrash"))
 );
+const BookTrash = Loadable(
+  lazy(() => import("pages/components-overview/BookTrash"))
+);
+const Trash = Loadable(lazy(() => import("pages/components-overview/Trash")));
 
 // ==============================|| MAIN ROUTING ||============================== //
 
@@ -101,8 +105,18 @@ const MainRoutes = {
       ],
     },
     {
-      path: "icons/ant",
-      element: <AntIcons />,
+      path: "trash",
+      element: <Trash />,
+      children: [
+        {
+          path: "",
+          element: <CourseTrash />,
+        },
+        {
+          path: "book",
+          element: <BookTrash />,
+        },
+      ],
     },
   ],
 };

@@ -12,6 +12,30 @@ export const getCourses = (req, res) => {
     }
   });
 };
+export const getDeletedCourses = (req, res) => {
+  const q = "SELECT * FROM course WHERE course_archived = '1'";
+  db.query(q, (err, data) => {
+    if (err) {
+      return res.status(401).send({ message: "Connection error try again." });
+    } else {
+      res.status(200).json(data);
+    }
+  });
+};
+export const getUndeletedCourses = (req, res) => {
+  const q = `UPDATE course
+  SET course_archived = 0
+
+  WHERE course_id = '${req.params.id}'`;
+  db.query(q, (err, data) => {
+    if (err) {
+      res.json(err);
+      console.log(err);
+    } else {
+      res.json(data);
+    }
+  });
+};
 export const getTotalCourses = (req, res) => {
   const q = "SELECT * FROM course";
   db.query(q, (err, data) => {
@@ -219,8 +243,8 @@ export const addCourse = (req, res) => {
 };
 export const updateCourse = (req, res) => {
   const courseId = req.params.id;
-  console.log(req.params.id)
-  console.log(req.body)
+  console.log(req.params.id);
+  console.log(req.body);
   const q = `UPDATE course SET course_title = ?, course_details = ?, course_level = ?, course_price = ?, course_instructor = ?, course_total_hour = ? WHERE course_id = '${req.params.id}'`;
   db.query(q, Object.values(req.body), (err, data) => {
     if (err) {
@@ -235,7 +259,7 @@ export const updateCourse = (req, res) => {
 
         // Generate a new file name
         const originalFileName = courseThumbnail.originalname;
-        const fileExtension = originalFileName.split('.').pop();
+        const fileExtension = originalFileName.split(".").pop();
         const newFileName = `${courseId}.${fileExtension}`;
 
         // Construct the new file path
@@ -246,13 +270,13 @@ export const updateCourse = (req, res) => {
         fs.rename(courseThumbnail.path, newFilePath, (renameErr) => {
           if (renameErr) {
             console.error(renameErr);
-            return res.status(500).json({ message: 'Error renaming the file' });
+            return res.status(500).json({ message: "Error renaming the file" });
           }
 
-          res.json({ message: 'Course updated successfully' });
+          res.json({ message: "Course updated successfully" });
         });
       } else {
-        res.json({ message: 'Course updated successfully' });
+        res.json({ message: "Course updated successfully" });
       }
     }
   });

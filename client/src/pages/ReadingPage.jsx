@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import ReadingDetails from "../components/BooksComponents/ReadingDetails";
+import ReadingDetails from "../components/ReadingDetails";
 
 const ReadingPage = () => {
   const { bookId } = useParams();

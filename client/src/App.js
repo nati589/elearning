@@ -28,6 +28,7 @@ import MyBooks from "./pages/MyBooks";
 import MyCourses from "./pages/MyCourses";
 import MyBooksPage from "./pages/MyBooksPage";
 import MyCoursesPage from "./pages/MyCoursesPage";
+import ReadingPage from "./pages/ReadingPage";
 
 export default function App() {
   const [renderSubscription, setRender] = useState(
@@ -51,7 +52,8 @@ export default function App() {
   return (
     <div
       className="App"
-      style={{ backgroundColor: "#F7F5FA", minHeight: "100vh" }}>
+      style={{ backgroundColor: "#F7F5FA", minHeight: "100vh" }}
+    >
       {/* <Background /> */}
 
       <Header logoutUpdate={isLoggedOut} />
@@ -61,6 +63,7 @@ export default function App() {
         <Route exact path="/test" element={<TestPage />} />
         <Route path="/books" element={<BooksPage />} />
         <Route path="/booksdetails/:id" element={<BooksDetailsPage />} />
+        <Route path="/readingpage" element={<ReadingPage />} />
 
         <Route path="/progress" element={<ProgressPage />} />
         <Route path="/courses" element={<CoursesPage />} />

@@ -17,7 +17,7 @@ function BooksDetailsPage() {
       navigate("/");
     } else {
       axios
-        .get("/books/getSinglebook", { params: { bookID: id } })
+        .get("/books/getSingleBook", { params: { bookID: id } })
         .then((res) => {
           setBooksData({ ...res.data[0] });
         })

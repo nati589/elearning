@@ -7,56 +7,56 @@ import booksData from "./booksData";
 import BookSearch from "./BookSearch";
 
 export default function BooksBody() {
-  const BooksData = [
-    {
-      title: "Standard One",
-      description:
-        "Standard 1 is a foundation Standard that reflects 7 important concepts...",
-      image: require("../assets/number-1.png"),
-    },
-    {
-      title: "Standard Two",
-      description:
-        "Standard 2 builds on the foundations of Standard 1 and includes requirements...",
-      image: require("../assets/number-2.png"),
-    },
-    {
-      title: "Standard Three",
-      description:
-        "Standard 3 of the Aged Care Quality Standards applies to all services delivering personal...",
-      image: require("../assets/number-3.png"),
-    },
-    {
-      title: "Standard Four",
-      description:
-        "Standard 4 of the Aged Care Quality Standards focuses on services and supports...",
-      image: require("../assets/number-4.png"),
-    },
-    {
-      title: "Standard Five",
-      description:
-        "Standard 5 Learning Resources. Learning Resources ensure that the school has the...",
-      image: require("../assets/number-5.png"),
-    },
-    {
-      title: "Standard Six",
-      description:
-        "Standard 6 requires an organization to have a system to resolve complaints...",
-      image: require("../assets/number-6.png"),
-    },
-    {
-      title: "Standard Seven",
-      description:
-        "Standard 7 Blood Management mandates that leaders of health service organizations...",
-      image: require("../assets/number-7.png"),
-    },
-    {
-      title: "Standard Eight",
-      description:
-        "Standard 8 Course from NCERT Solutions help students to understand...",
-      image: require("../assets/number-8.png"),
-    },
-  ];
+  // const BooksData = [
+  //   {
+  //     title: "Standard One",
+  //     description:
+  //       "Standard 1 is a foundation Standard that reflects 7 important concepts...",
+  //     image: require("../assets/number-1.png"),
+  //   },
+  //   {
+  //     title: "Standard Two",
+  //     description:
+  //       "Standard 2 builds on the foundations of Standard 1 and includes requirements...",
+  //     image: require("../assets/number-2.png"),
+  //   },
+  //   {
+  //     title: "Standard Three",
+  //     description:
+  //       "Standard 3 of the Aged Care Quality Standards applies to all services delivering personal...",
+  //     image: require("../assets/number-3.png"),
+  //   },
+  //   {
+  //     title: "Standard Four",
+  //     description:
+  //       "Standard 4 of the Aged Care Quality Standards focuses on services and supports...",
+  //     image: require("../assets/number-4.png"),
+  //   },
+  //   {
+  //     title: "Standard Five",
+  //     description:
+  //       "Standard 5 Learning Resources. Learning Resources ensure that the school has the...",
+  //     image: require("../assets/number-5.png"),
+  //   },
+  //   {
+  //     title: "Standard Six",
+  //     description:
+  //       "Standard 6 requires an organization to have a system to resolve complaints...",
+  //     image: require("../assets/number-6.png"),
+  //   },
+  //   {
+  //     title: "Standard Seven",
+  //     description:
+  //       "Standard 7 Blood Management mandates that leaders of health service organizations...",
+  //     image: require("../assets/number-7.png"),
+  //   },
+  //   {
+  //     title: "Standard Eight",
+  //     description:
+  //       "Standard 8 Course from NCERT Solutions help students to understand...",
+  //     image: require("../assets/number-8.png"),
+  //   },
+  // ];
   const [filter, setFilter] = useState("all"); // Initial filter value, 'all' or any default value
 
   const handleFilterClick = (event, newFilter) => {
@@ -171,7 +171,8 @@ export default function BooksBody() {
                   isActive("all")
                     ? "bg-medium-purple  text-white"
                     : "bg-white text-gray-700"
-                } px-4 py-2 rounded-md block w-36 h-10 text-center`}>
+                } px-4 py-2 rounded-md block w-36 h-10 text-center`}
+              >
                 All Books
               </NavLink>
             </div>
@@ -183,7 +184,8 @@ export default function BooksBody() {
                   isActive("fiction")
                     ? "bg-white text-gray-700"
                     : "bg-medium-purple  text-white"
-                } px-4 py-2 rounded-md block w-24 h-10 text-center`}>
+                } px-4 py-2 rounded-md block w-24 h-10 text-center`}
+              >
                 Fiction
               </NavLink>
             </div>
@@ -196,7 +198,8 @@ export default function BooksBody() {
                   isActive("journal")
                     ? "bg-white text-gray-700"
                     : "bg-medium-purple  text-white"
-                } px-4 py-2 rounded-md block w-24 h-10 text-center`}>
+                } px-4 py-2 rounded-md block w-24 h-10 text-center`}
+              >
                 Journal
               </NavLink>
             </div>
@@ -209,7 +212,8 @@ export default function BooksBody() {
                   isActive("kids")
                     ? "bg-white text-gray-700"
                     : "bg-medium-purple  text-white"
-                } px-4 py-2 rounded-md block w-24 h-10 text-center`}>
+                } px-4 py-2 rounded-md block w-24 h-10 text-center`}
+              >
                 Kids
               </NavLink>
             </div>
@@ -222,13 +226,15 @@ export default function BooksBody() {
             <div className="flex flex-row mx-3 items-center justify-center pl-3 mt-8">
               <label
                 htmlFor="sort"
-                className="mr-2 text-lg font-semibold text-purple-700 opacity-50  ">
+                className="mr-2 text-lg font-semibold text-purple-700 opacity-50  "
+              >
                 <pre className="sm:text-[1.5rem]">Sort by : </pre>
               </label>
               <select
                 name="sort"
                 id="sort"
-                className="rounded-md p-2 font-semibold bg-transparent pr-12 text-lg ">
+                className="rounded-md p-2 font-semibold bg-transparent pr-12 text-lg "
+              >
                 <option className="" value="a ">
                   Latest
                 </option>

@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image1 from "../assets/Subscription Image.png";
 import Image2 from "../assets/Subscription Image-1.png";
 import Image3 from "../assets/Subscription Image-2.png";
 import Image4 from "../assets/Subscription Image-3.png";
 import Image5 from "../assets/Subscription Image-4.png";
 import Image6 from "../assets/Subscription Image-5.png";
+import axios from "axios";
 
 function Subscription() {
   // // Array of image paths
@@ -16,6 +17,19 @@ function Subscription() {
     require("../assets/Subscription Image-4.png"),
     require("../assets/Subscription Image-5.png"),
   ];
+
+  const [webContent, setWebContent] = useState({});
+  useEffect(() => {
+    axios
+      .get("/webcontent/getContent")
+      .then((response) => {
+        // console.log(response.data);
+        setWebContent({ ...response.data[0] });
+      })
+      .catch((error) => {
+        console.log(error.response.data.message);
+      });
+  }, []);
 
   return (
     <div className="mx-8 my-4 rounded-3xl relative isolate overflow-hidden gradient-purple py-16 sm:py-24 lg:py-32 flex justify-center ">
@@ -49,10 +63,10 @@ function Subscription() {
           </div>
           <div className="max-w-xl lg:max-w-lg">
             <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
-              Subscribe To Get Update Every New Courses
+              {webContent.action_title}
             </h2>
             <p className="mt-4 text-lg leading-8 text-gray-300">
-              20k+ students daily learn with Eduvi. Subscribe for new courses.
+              {webContent.action_detail}
             </p>
             <div className="mt-6 flex max-w-md gap-x-4 items-center">
               {/* <label htmlFor="email-address" className="sr-only">

@@ -19,7 +19,7 @@ function CartItemCourse({ cart_id, course_id, removeItem, addPrice }) {
   return (
     <div className=" relative shadow flex flex-row items-center max-w-max sm:gap-1 lg:gap-6 px-1 md:gap-4 sm:px-2 md:px-4 md:mx-5 md:my-3 rounded">
       <button
-        onClick={() => removeItem(cart_id)}
+        onClick={() => removeItem(cart_id, data.course_price)}
         className=" absolute top-2 right-2 text-2xl md:hidden text-medium-purple">
         <TiDeleteOutline />
       </button>
@@ -49,7 +49,7 @@ function CartItemCourse({ cart_id, course_id, removeItem, addPrice }) {
         <span className="text-medium-purple text-lg">${data.course_price}</span>
       </div>
       <button
-        onClick={() => removeItem(cart_id)}
+        onClick={() => removeItem(cart_id, data.course_price)}
         className="bg-medium-purple px-4 hidden md:inline-block py-2 rounded-3xl sm:mx-2  md:mx-10 text-white ">
         remove
       </button>

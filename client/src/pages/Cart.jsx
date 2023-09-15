@@ -23,11 +23,12 @@ function Cart() {
       });
   }, []);
 
-  const removeItem = (cart_id) => {
+  const removeItem = (cart_id, price) => {
     axios
       .delete("/cart/deleteFromCart", { data: { cart_id } })
       .then((response) => {
         setCartData(cartData.filter((c) => c.cart_id !== cart_id));
+        setTotalPrice((prevTotal) => prevTotal - price);
       })
       .catch((error) => {
         console.log(error.response.data.message);

@@ -35,14 +35,17 @@ const avatarNavigation = [
   { name: "Settings", to: "/profile/setting" },
 ];
 
-function Header({ subscription }) {
+function Header({
+  subscription,
+  // logoutHandler,
+}) {
   subscription(
     !(localStorage.getItem("username") && localStorage.getItem("user_id"))
   );
   // const methods = useForm();
   const navigate = useNavigate();
 
-  // const [submitSuccess, setSubmitSuccess] = useState(false);
+  // const [submitSuccess,   setSubmitSuccess] = useState(false);
   // const [failure, setFailure] = useState(false);
   // const [success_msg, setMsg] = useState("");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);

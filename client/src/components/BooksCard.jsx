@@ -29,7 +29,7 @@ function BooksCard({
   useEffect(() => {
     if (localStorage.getItem("user_id")) {
       axios
-        .post("/cart/checkCourse", {
+        .post("/cart/checkBook", {
           book_id: bookId,
           user_id: localStorage.getItem("user_id"),
         })

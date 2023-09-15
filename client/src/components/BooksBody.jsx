@@ -12,7 +12,7 @@ export default function BooksBody() {
 
   useEffect(() => {
     axios
-      .get("/books/getTotalBooks")
+      .get("/books/getBooks")
       .then((res) => {
         setBooks([...res.data]);
       })

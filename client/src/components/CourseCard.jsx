@@ -32,21 +32,23 @@ function CourseCard({
   const [resMsg, setResMsg] = useState("");
 
   useEffect(() => {
-    axios
-      .post("/cart/checkCourse", {
-        course_id: courseId,
-        user_id: localStorage.getItem("user_id"),
-      })
-      .then((res) => {
-        if (res.data.message) {
-          setAddSuccess(true);
-          setFailure(false);
-          setResMsg("Already in cart");
-        }
-      })
-      .catch((error) => {
-        console.log(error.response.data.message);
-      });
+    if (localStorage.getItem("user_id")) {
+      axios
+        .post("/cart/checkCourse", {
+          course_id: courseId,
+          user_id: localStorage.getItem("user_id"),
+        })
+        .then((res) => {
+          if (res.data.message) {
+            setAddSuccess(true);
+            setFailure(false);
+            setResMsg("Already in cart");
+          }
+        })
+        .catch((error) => {
+          console.log(error.response.data.message);
+        });
+    }
   }, [courseId]);
 
   const addToCart = () => {
@@ -128,13 +130,15 @@ function CourseCard({
       <div className="flex flex-col w-full justify-center items-center mt-4">
         {addSuccess && <ResponseMessage failure={failure} message={resMsg} />}
 
-        {(!addSuccess || failure) && (
-          <button
-            className="button-component-stroke w-fit py-2 px-8 mb-2"
-            onClick={addToCart}>
-            Add to Cart
-          </button>
-        )}
+        {(!addSuccess || failure) &&
+          localStorage.getItem("username") &&
+          localStorage.getItem("user_id") && (
+            <button
+              className="button-component-stroke w-fit py-2 px-8 mb-2"
+              onClick={addToCart}>
+              Add to Cart
+            </button>
+          )}
       </div>
     </div>
   );

@@ -7,7 +7,7 @@ import DetailsHeroImage from "../assets/ourgoal-image.png";
 
 import axios from "axios";
 
-function CourseDetailsPage() {
+function BooksDetailsPage() {
   // const courses = [
   //   { title: "Ha Geez", image: require("../assets/Cardphoto.png") },
   //   { title: "Hu Cabe", image: require("../assets/Cardphoto2.png") },
@@ -182,4 +182,4 @@ function CourseDetailsPage() {
   );
 }
 
-export default CourseDetailsPage;
+export default BooksDetailsPage;

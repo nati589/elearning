@@ -36,6 +36,23 @@ function CourseDetailsPage() {
   return (
     <div className="w-full">
       <div className="mx-8 bg-white rounded-3xl px-8 py-2 my-8 ">
+        <div className="">
+          <button
+            className="text-gray-400"
+            onClick={() => {
+              navigate("/");
+            }}>
+            Home
+          </button>
+          <span className="text-gray-400"> | </span>
+          <button
+            className="text-fuchsia-700"
+            onClick={() => {
+              navigate("/courses");
+            }}>
+            Courses
+          </button>
+        </div>
         <div className="flex items-center justify-around py-4 flex-wrap-reverse lg:flex-nowrap">
           <>
             <span className="flex gap-4">

@@ -7,13 +7,7 @@ import DetailsHeroImage from "../assets/ourgoal-image.png";
 
 import axios from "axios";
 
-function CourseDetailsPage() {
-  // const courses = [
-  //   { title: "Ha Geez", image: require("../assets/Cardphoto.png") },
-  //   { title: "Hu Cabe", image: require("../assets/Cardphoto2.png") },
-  //   { title: "Hei Seles", image: require("../assets/Cardphoto3.png") },
-  //   { title: "Ho Rabe", image: require("../assets/Cardphoto4.png") },
-  // ];
+function BooksDetailsPage() {
   const navigate = useNavigate();
   const [courseData, setCourseData] = useState({});
   const { id } = useParams();
@@ -182,4 +176,4 @@ function CourseDetailsPage() {
   );
 }
 
-export default CourseDetailsPage;
+export default BooksDetailsPage;

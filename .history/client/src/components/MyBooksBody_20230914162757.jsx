@@ -4,7 +4,7 @@ import BooksCard from "./BooksCard";
 import PopularCourseCard from "./PopularCourseCard";
 import BookImg from "../../src/assets/Cardphoto10.png";
 import TrendingCard from "./TrendingCoursesCard";
-import InputWithSuggestion from "../components/CoursesSearch";
+import InputWithSuggestion from "./InputWithSuggestion";
 import booksData from "./booksData";
 import BookSearch from "./BookSearch";
 

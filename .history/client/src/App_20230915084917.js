@@ -9,8 +9,6 @@ import ProgressPage from "./pages/ProgressPage";
 
 import CoursesPage from "./pages/CoursesPage";
 import CourseDetailsPage from "./pages/CourseDetailsPage";
-import BooksDetailsPage from "./pages/BooksDetailsPage";
-
 import TestPage from "./pages/TestPage";
 import UserProfile from "./pages/UserProfile";
 import Support from "./components/Support";

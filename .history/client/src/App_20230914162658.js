@@ -9,8 +9,6 @@ import ProgressPage from "./pages/ProgressPage";
 
 import CoursesPage from "./pages/CoursesPage";
 import CourseDetailsPage from "./pages/CourseDetailsPage";
-import BooksDetailsPage from "./pages/BooksDetailsPage";
-
 import TestPage from "./pages/TestPage";
 import UserProfile from "./pages/UserProfile";
 import Support from "./components/Support";
@@ -27,7 +25,6 @@ import CourseSectionList from "./components/LearningPageComponents/CourseSection
 import MyBooks from "./pages/MyBooks";
 import MyCourses from "./pages/MyCourses";
 import MyBooksPage from "./pages/MyBooksPage";
-import MyCoursesPage from "./pages/MyCoursesPage";
 
 export default function App() {
   const [renderSubscription, setRender] = useState(true);
@@ -45,8 +42,6 @@ export default function App() {
         <Route exact path="/" element={<LandingPage />} />
         <Route exact path="/test" element={<TestPage />} />
         <Route path="/books" element={<BooksPage />} />
-        <Route path="/booksdetails/:id" element={<BooksDetailsPage />} />
-
         <Route path="/progress" element={<ProgressPage />} />
         <Route path="/courses" element={<CoursesPage />} />
         <Route path="/coursedetails/:id" element={<CourseDetailsPage />} />
@@ -68,7 +63,7 @@ export default function App() {
         </Route>
         <Route exact path="password-reset" element={<PasswordResetPage />} />
         <Route path="/mybooks" element={<MyBooksPage />}></Route>
-        <Route path="/mycourses" element={<MyCoursesPage />}></Route>
+        <Route path="/mycourses" element={<MyCourses />}></Route>
       </Routes>
 
       {renderSubscription && <Subscription />}

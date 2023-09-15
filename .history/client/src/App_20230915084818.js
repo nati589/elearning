@@ -9,8 +9,6 @@ import ProgressPage from "./pages/ProgressPage";
 
 import CoursesPage from "./pages/CoursesPage";
 import CourseDetailsPage from "./pages/CourseDetailsPage";
-import BooksDetailsPage from "./pages/BooksDetailsPage";
-
 import TestPage from "./pages/TestPage";
 import UserProfile from "./pages/UserProfile";
 import Support from "./components/Support";
@@ -45,11 +43,9 @@ export default function App() {
         <Route exact path="/" element={<LandingPage />} />
         <Route exact path="/test" element={<TestPage />} />
         <Route path="/books" element={<BooksPage />} />
-        <Route path="/booksdetails/:id" element={<BooksDetailsPage />} />
-
         <Route path="/progress" element={<ProgressPage />} />
         <Route path="/courses" element={<CoursesPage />} />
-        <Route path="/coursedetails/:id" element={<CourseDetailsPage />} />
+        {/* <Route path="/coursedetails/:id" element={<CourseDetailsPage />} /> */}
         <Route path="/cart" element={<Cart />} />
         <Route path="/learning" element={<LearningPage />}>
           {/* Nested route for sections */}

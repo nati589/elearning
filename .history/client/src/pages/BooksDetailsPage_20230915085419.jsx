@@ -7,15 +7,9 @@ import DetailsHeroImage from "../assets/ourgoal-image.png";
 
 import axios from "axios";
 
-function CourseDetailsPage() {
-  // const courses = [
-  //   { title: "Ha Geez", image: require("../assets/Cardphoto.png") },
-  //   { title: "Hu Cabe", image: require("../assets/Cardphoto2.png") },
-  //   { title: "Hei Seles", image: require("../assets/Cardphoto3.png") },
-  //   { title: "Ho Rabe", image: require("../assets/Cardphoto4.png") },
-  // ];
+function BooksDetailsPage() {
   const navigate = useNavigate();
-  const [courseData, setCourseData] = useState({});
+  const [booksData, setBooksData] = useState({});
   const { id } = useParams();
 
   useEffect(() => {
@@ -23,9 +17,9 @@ function CourseDetailsPage() {
       navigate("/");
     } else {
       axios
-        .get("/courses/getSingleCourse", { params: { courseID: id } })
+        .get("/books/getSinglebook", { params: { courseID: id } })
         .then((res) => {
-          setCourseData({ ...res.data[0] });
+          setBooksData({ ...res.data[0] });
         })
         .catch((error) => {
           console.log(error.response.data.message);
@@ -57,66 +51,6 @@ function CourseDetailsPage() {
           <p className="whitespace-normal md:whitespace-pre-line mb-4 max-w-full">
             {courseData.course_details}
           </p>
-          {/*
-              <h3 className="font-extrabold text-3xl text-left text-[#0A033C] mb-4">
-                Certification
-              </h3>
-
-              <p className="whitespace-normal md:whitespace-pre-line mb-4">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis
-                ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas
-                accumsan lacus vel facilisis consectetur adipiscing elit. Lorem
-                ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Quis ipsum
-                suspendisse ultrices gravida. Risus commodo viverra maecenas
-                accumsan lacus vel facilisis consectetur adipiscing elit.
-              </p>
-
-              <h3 className="font-extrabold text-3xl text-left text-[#0A033C] mb-4">
-                Who this course is for
-              </h3>
-
-              <p className="whitespace-normal md:whitespace-pre-line mb-4">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis
-                ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas
-                accumsan lacus vel facilisis consectetur adipiscing elit. Lorem
-                ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Quis ipsum
-                suspendisse ultrices gravida. Risus commodo viverra maecenas
-                accumsan lacus vel facilisis consectetur adipiscing elit.
-              </p>
-              <h3 className="font-extrabold text-3xl text-left text-[#0A033C] mb-4">
-                What you'll learn in this course:
-              </h3>
-              <ul className="list-none text-2x">
-                <li>
-                  <span className="text-orange-500 text-3xl mr-2">&#9679;</span>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                </li>
-                <li>
-                  <span className="text-orange-500 text-3xl mr-2">&#9679;</span>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                </li>
-                <li>
-                  <span className="text-orange-500 text-3xl mr-2">&#9679;</span>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                </li>
-                <li>
-                  <span className="text-orange-500 text-3xl mr-2">&#9679;</span>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                </li>
-                <li>
-                  <span className="text-orange-500 text-3xl mr-2">&#9679;</span>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                </li>
-                <li>
-                  <span className="text-orange-500 text-3xl mr-2">&#9679;</span>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                </li>
-              </ul> 
-          */}
         </div>
         <div className="mx-4 w-4/12">
           <Pricecard
@@ -182,4 +116,4 @@ function CourseDetailsPage() {
   );
 }
 
-export default CourseDetailsPage;
+export default BooksDetailsPage;

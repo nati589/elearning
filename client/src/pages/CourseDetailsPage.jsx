@@ -19,7 +19,7 @@ function CourseDetailsPage() {
   const { id } = useParams();
 
   useEffect(() => {
-    if (id === null) {
+    if (id === null || id === undefined) {
       navigate("/");
     } else {
       axios

@@ -24,8 +24,8 @@ import PasswordResetPage from "./pages/PasswordResetPage";
 import LearningPage from "./pages/LearningPage";
 import SectionContent from "./components/LearningPageComponents/SectionContent";
 import CourseSectionList from "./components/LearningPageComponents/CourseSectionList";
-import MyBooks from "./pages/MyBooks";
-import MyCourses from "./pages/MyCourses";
+// import MyBooks from "./pages/MyBooks";
+// import MyCourses from "./pages/MyCourses";
 import MyBooksPage from "./pages/MyBooksPage";
 import MyCoursesPage from "./pages/MyCoursesPage";
 import ReadingPage from "./pages/ReadingPage";
@@ -35,7 +35,7 @@ export default function App() {
     !(localStorage.getItem("username") && localStorage.getItem("user_id"))
   );
   const isLoggedOut = () => {
-    console.log("logout update");
+    // console.log("logout update");
 
     setRender(
       !(localStorage.getItem("username") && localStorage.getItem("user_id"))
@@ -43,7 +43,7 @@ export default function App() {
   };
 
   useEffect(() => {
-    console.log("renderSubscription");
+    // console.log("renderSubscription");
     setRender(
       !(localStorage.getItem("username") && localStorage.getItem("user_id"))
     );

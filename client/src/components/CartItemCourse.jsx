@@ -14,7 +14,7 @@ function CartItemCourse({ cart_id, course_id, removeItem, addPrice }) {
       .catch((error) => {
         console.log(error.response.data.message);
       });
-  }, [course_id]);
+  }, [course_id, addPrice]);
 
   return (
     <div className=" relative shadow flex flex-row items-center max-w-max sm:gap-1 lg:gap-6 px-1 md:gap-4 sm:px-2 md:px-4 md:mx-5 md:my-3 rounded">

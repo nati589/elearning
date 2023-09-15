@@ -55,7 +55,7 @@ const BookSearch = ({ searchData }) => {
         {booksToRender.map((book, index) => (
           <BooksCard
             key={index}
-            bookId={book.book_Id}
+            bookId={book.book_id}
             book_name={book.book_title}
             book_description={book.book_details}
             bookImagePath="./Image.png"

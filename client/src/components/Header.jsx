@@ -39,7 +39,7 @@ function Header({ subscription }) {
   subscription(
     !(localStorage.getItem("username") && localStorage.getItem("user_id"))
   );
-  const methods = useForm();
+  // const methods = useForm();
   const navigate = useNavigate();
 
   // const [submitSuccess, setSubmitSuccess] = useState(false);

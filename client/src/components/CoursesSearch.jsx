@@ -20,20 +20,31 @@ const CoursesSearch = ({ searchData }) => {
     setShowModal(true);
     setSuggestions(
       searchData.filter((course) =>
-        course.course_title.toLowerCase().includes(value.toLowerCase())
+        course.course_title
+          .toLowerCase()
+          .trim()
+          .includes(value.toLowerCase().trim())
       )
     );
   };
 
-  const handleSuggestionClick = (suggestion) => {
-    setInputValue(suggestion.course_title);
+  const handleSuggestionClick = (title) => {
+    // console.log(title, "suggest");
+
+    setInputValue(title);
     setShowModal(false);
   };
 
   const handleOnclick = () => {
+    // console.log(inputValue, "suggestion");
+
     setShowModal(false);
     const filteredResults = searchData.filter((course) =>
-      course.course_title.toLowerCase().includes(inputValue.toLowerCase())
+      course.course_title
+        .toLowerCase()
+        .trim()
+
+        .includes(inputValue.toLowerCase().trim())
     );
 
     setSearchResults([...filteredResults]);
@@ -65,30 +76,30 @@ const CoursesSearch = ({ searchData }) => {
 
   return (
     <div>
-      <div className=" w-full flex flex-col md:flex-row justify-start items-start md:items-center basis-1/2 my-3 ">
+      <div className=" w-full flex flex-col md:flex-row justify-start items-start md:items-center basis-1/2 my-3 z-0">
         <div className="relative w-5/12">
           <input
             type="text"
             id="search_input"
-            placeholder="Search title"
+            placeholder="Search course name"
             className="w-full rounded-lg bg-transparent p-2 py-3 text-xs md:text-base font-normal border-2 border-purple "
             value={inputValue}
             onChange={handleInputChange}
             onBlur={() => setShowModal(false)}
           />
           {showModal && (
-            <div className="absolute top-10 left-0 w-full bg-purple-50 border rounded shadow-md z-10">
-              <ul>
-                {suggestions.map((suggestion, index) => (
-                  <li
-                    key={index}
-                    className="p-2 cursor-pointer hover:bg-gray-200"
-                    onClick={() => handleSuggestionClick(suggestion)}>
-                    {suggestion.course_title}
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <ul className="absolute  cursor-pointer top-10 left-0 w-full bg-purple-50 border rounded shadow-md z-50">
+              {suggestions.map((suggestion, index) => (
+                <li
+                  key={index}
+                  className="p-2 cursor-pointer hover:bg-gray-200"
+                  onMouseDown={() => {
+                    handleSuggestionClick(suggestion.course_title);
+                  }}>
+                  {suggestion.course_title}
+                </li>
+              ))}
+            </ul>
           )}
         </div>
 
@@ -102,7 +113,11 @@ const CoursesSearch = ({ searchData }) => {
         <label
           htmlFor="sort"
           className=" w-fit font-semibold text-xs md:text-base text-medium-purple flex flex-row mx-2 items-center justify-center  ">
-          <span className="text-sm md:text-lg">Sort by </span>
+          <span
+            className="text-sm md:text-lg"
+            onClick={() => handleSuggestionClick("hello")}>
+            Sort by{" "}
+          </span>
           <select
             name="sort"
             id="sort"

@@ -51,14 +51,15 @@ function Footer() {
   return (
     <footer
       style={{ borderTopLeftRadius: "20px", borderTopRightRadius: "20px" }}
-      className="py-4 px-8 mt-1  bg-light-purple"
-    >
-      <div className="text-sm md:text-base lg:text-base container mx-auto flex flex-wrap items-center">
+      className="py-4 px-8 mt-1  bg-light-purple">
+      <div className="text-sm md:text-base lg:text-base container mx-auto flex flex-wrap items-center justify-center gap-4">
         <div className="w-1/2 md:w-1/3 lg:w-1/4 flex flex-col px-4 mb-5  justify-center ">
-          <ul className="text-subscribe-purple text-sm md:text-base lg:text-lg ml-10">
-            <li className="mb-1 hover:text-medium-purple font-bold">
-              <a href="/">LOGO</a>
-            </li>
+          <a
+            href="/"
+            className="mb-1 hover:text-medium-purple text-dark-purple font-bold text-3xl">
+            LOGO
+          </a>
+          <ul className="text-subscribe-purple text-sm md:text-base lg:text-lg flex gap-2">
             <li className="mb-1 hover:text-medium-purple">
               <a href="/">
                 <img
@@ -191,9 +192,9 @@ function Footer() {
                   <textarea
                     id="description"
                     name="description"
-                    className="w-full font-sans font-thin text-sm bg-opacity-10 border-2 border-gray-200  pt-1 pb-1 pr-3 pl-9 mb-0.1 min-h-[100px] max-h-80 max-w-xl h-28 px-4 py-2 rounded-lg bg-white-700 border-b"
+                    className="w-full font-sans font-thin text-sm bg-opacity-10 border-2 border-gray-200  pt-1 pb-1 pr-3 pl-9 mb-0.1 px-4 py-2 rounded-lg bg-white-700 border-b"
                     placeholder="Enter your description"
-                    rows="4"
+                    rows="2"
                     {...register("description", {
                       required: "required",
                     })}
@@ -201,8 +202,7 @@ function Footer() {
                 </label>
                 <button
                   onClick={handleClick}
-                  className="button-component self-start w-2/12 my-0.1 py-1 px-4"
-                >
+                  className="button-component self-start w-2/12 py-1 px-4 mt-2">
                   Send
                 </button>
               </div>

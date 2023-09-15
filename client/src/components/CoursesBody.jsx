@@ -1,7 +1,7 @@
 import { React, useEffect, useState } from "react";
 import PopularCourseCard from "./PopularCourseCard";
 import TrendingCard from "./TrendingCoursesCard";
-import BookImg from "../../src/assets/Image.png";
+import BookImg from "../assets/Image.png";
 import CoursesSearch from "./CoursesSearch";
 import courseData from "./courseData";
 import axios from "axios";

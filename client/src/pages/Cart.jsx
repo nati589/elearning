@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import CartItemCourse from "../components/CartItemCourse";
 import { BiArrowBack } from "react-icons/bi";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import CartImg from "../assets/empty_cart.svg";
 import axios from "axios";
 import CartItemBook from "../components/CartItemBook";
@@ -9,6 +9,9 @@ import CartItemBook from "../components/CartItemBook";
 function Cart() {
   const navigate = useNavigate();
   const [cartData, setCartData] = useState([]);
+  const [totalPrice, setTotalPrice] = useState(0.0);
+  // let totalPrice = 0;
+
   useEffect(() => {
     axios
       .post("/cart/getCart", { user_id: localStorage.getItem("user_id") })
@@ -30,6 +33,16 @@ function Cart() {
         console.log(error.response.data.message);
       });
   };
+
+  const addPrice = useCallback(
+    (new_price) => {
+      const parsedNumber = parseFloat(new_price / 2);
+      // for non strict mode
+      // const parsedNumber = parseFloat(new_price);
+      setTotalPrice((prevTotal) => prevTotal + parsedNumber);
+    },
+    [cartData]
+  );
 
   return (
     <div className="w-full flex flex-col flex-nowrap pt-10 pb-2 lg:px-auto lg:px-32 sm:px-2">
@@ -54,12 +67,18 @@ function Cart() {
           </div>
         ) : (
           <>
-            <div className="w-full mt-16">
-              <h2>you have {cartData.length} items in your cart</h2>
+            <div className="w-full mt-8">
+              <h2 className="my-4">
+                You have{" "}
+                <span className="text-medium-purple font-semibold">
+                  {cartData.length} items
+                </span>{" "}
+                in your cart
+              </h2>
             </div>
             {}
             <div className="w-full flex flex-col gap-2 mb-4  py-1 max-w-max">
-              <h2>Books</h2>
+              <h2 className="font-bold text-medium-purple text-lg">Books</h2>
 
               {cartData
                 .filter((item) => item.course_id === null)
@@ -67,12 +86,13 @@ function Cart() {
                   <CartItemBook
                     key={item.cart_id}
                     cart_id={item.cart_id}
-                    book_id={item.course_id}
+                    book_id={item.book_id}
                     removeItem={removeItem}
+                    addPrice={addPrice}
                   />
                 ))}
 
-              <h2>Courses</h2>
+              <h2 className="font-bold text-medium-purple text-lg">Courses</h2>
 
               {cartData
                 .filter((item) => item.book_id === null)
@@ -82,13 +102,14 @@ function Cart() {
                     cart_id={item.cart_id}
                     course_id={item.course_id}
                     removeItem={removeItem}
+                    addPrice={addPrice}
                   />
                 ))}
 
               <div className="flex flex-col gap-1 self-end mt-3">
                 <div className=" bg-purple-100 w-40 p-2 text-xl rounded flex flex-row justify-between">
                   <span>Total</span>
-                  <span className="text-medium-purple">$32.12</span>
+                  <span className="text-medium-purple">{totalPrice} $</span>
                 </div>
                 <div>
                   <button className="bg-medium-purple text-white p-2 rounded  w-40">

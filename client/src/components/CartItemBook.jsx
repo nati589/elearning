@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { TiDeleteOutline } from "react-icons/ti";
-function CartItemBook({ cart_id, book_id, removeItem }) {
+function CartItemBook({ cart_id, book_id, removeItem, addPrice }) {
   const [data, setData] = useState({});
 
   useEffect(() => {
@@ -9,6 +9,7 @@ function CartItemBook({ cart_id, book_id, removeItem }) {
       .get("/books/getSingleBook", { params: { bookID: book_id } })
       .then((response) => {
         setData(response.data[0]);
+        addPrice(response.data[0].book_price);
       })
       .catch((error) => {
         console.log(error.response.data.message);

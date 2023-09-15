@@ -39,7 +39,6 @@ function CourseCard({
       })
       .then((res) => {
         if (res.data.message) {
-          console.log("in cart");
           setAddSuccess(true);
           setFailure(false);
           setResMsg("Already in cart");

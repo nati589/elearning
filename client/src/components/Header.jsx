@@ -42,9 +42,9 @@ function Header({ subscription }) {
   const methods = useForm();
   const navigate = useNavigate();
 
-  const [submitSuccess, setSubmitSuccess] = useState(false);
-  const [failure, setFailure] = useState(false);
-  const [success_msg, setMsg] = useState("");
+  // const [submitSuccess, setSubmitSuccess] = useState(false);
+  // const [failure, setFailure] = useState(false);
+  // const [success_msg, setMsg] = useState("");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [signinModal, setSigninModal] = useState(false);
   const [signupModal, setSignupModal] = useState(false);

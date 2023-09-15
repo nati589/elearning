@@ -30,16 +30,31 @@ import MyBooksPage from "./pages/MyBooksPage";
 import MyCoursesPage from "./pages/MyCoursesPage";
 
 export default function App() {
-  const [renderSubscription, setRender] = useState(true);
+  const [renderSubscription, setRender] = useState(
+    !(localStorage.getItem("username") && localStorage.getItem("user_id"))
+  );
+  const isLoggedOut = () => {
+    console.log("logout update");
+
+    setRender(
+      !(localStorage.getItem("username") && localStorage.getItem("user_id"))
+    );
+  };
+
+  useEffect(() => {
+    console.log("renderSubscription");
+    setRender(
+      !(localStorage.getItem("username") && localStorage.getItem("user_id"))
+    );
+  }, []);
 
   return (
     <div
       className="App"
-      style={{ backgroundColor: "#F7F5FA", minHeight: "100vh" }}
-    >
+      style={{ backgroundColor: "#F7F5FA", minHeight: "100vh" }}>
       {/* <Background /> */}
 
-      <Header subscription={setRender} />
+      <Header logoutUpdate={isLoggedOut} />
 
       <Routes>
         <Route exact path="/" element={<LandingPage />} />

@@ -69,7 +69,8 @@ const AuthLogin = () => {
             console.log(values);
             const response = await axios.post(
               "http://localhost:8800/api/auth/loginAdmin",
-              values
+              values,
+              { withCredentials: true }
             );
             console.log("Authentication successful!", response.data);
 
@@ -78,11 +79,11 @@ const AuthLogin = () => {
             // setSubmitSuccess(true);
             setMsg(response.data.message);
             setFailure(false);
-            localStorage.setItem("username", response.data.username);
-            localStorage.setItem("user_id", response.data.admin_id);
-            navigate("/");
+            // localStorage.setItem("username", response.data.username);
+            // localStorage.setItem("user_id", response.data.admin_id);
             setStatus({ success: true });
             setSubmitting(true);
+            navigate("/");
           } catch (err) {
             setStatus({ success: false });
             setErrors({ submit: "Invalid username or password" });

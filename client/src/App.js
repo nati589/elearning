@@ -69,13 +69,13 @@ export default function App() {
         <Route path="/courses" element={<CoursesPage />} />
         <Route path="/coursedetails/:id" element={<CourseDetailsPage />} />
         <Route path="/cart" element={<Cart />} />
-        <Route path="/learning" element={<LearningPage />}>
+        <Route path="/learning/:id" element={<LearningPage />}>
           {/* Nested route for sections */}
-          <Route index element={<CourseSectionList />} />
+          {/* <Route index element={<CourseSectionList />} />
           <Route
             path="/learning/section/:sectionId"
             element={<SectionContent />}
-          />
+          /> */}
         </Route>
         <Route path="/profile" element={<UserProfile />}>
           <Route exact index element={<UserProfileDashboard />} />
@@ -86,7 +86,7 @@ export default function App() {
         <Route exact path="password-reset" element={<PasswordResetPage />} />
         <Route path="/mybooks" element={<MyBooksPage />}></Route>
         <Route path="/mycourses" element={<MyCoursesPage />}></Route>
-        <Route path="/faq-and-help" element={<FaqandHelp/>} />
+        <Route path="/faq-and-help" element={<FaqandHelp />} />
       </Routes>
 
       {renderSubscription && <Subscription />}

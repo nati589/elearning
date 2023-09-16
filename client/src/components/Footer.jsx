@@ -15,14 +15,20 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import FaqandHelp from "../pages/FaqandHelp";
 import { Route } from "react-router-dom";
+import { useEffect } from "react";
 
 function Footer() {
   const methods = useForm();
-  // const Menus = [
-  //   {
-  //     title: "faq-and-help",
-  //     to: "/faq-and-help",
-  //   },]
+  useEffect(() => {
+    // Get the current year
+    const currentYear = new Date().getFullYear();
+
+    // Find the <span> element by its ID and update its content with the current year
+    const yearElement = document.getElementById("get-current-year");
+    if (yearElement) {
+      yearElement.textContent = currentYear;
+    }
+  }, []);
   const {
     register,
     handleSubmit,
@@ -146,14 +152,17 @@ function Footer() {
                       Books{" "}
                     </a>
                   </li>
-                  <li>
-                    <a className="text-blueGray-600 hover:text-blueGray-800 block pb-2 text-sm">
-                      Contact Us
-                    </a>
-                  </li>
+                  
                 </ul>
               </div>
+              <div>
+              <h1 className="text-blueGray-600 font-semibold text-lg pb-2 ">
+                      Contact Us
+                    </h1>
               <FormProvider {...methods}>
+              
+                    
+                
                 <form>
                   <div className="mb-0.1">
                     <InputComponent
@@ -204,32 +213,33 @@ function Footer() {
                 </form>
               </FormProvider>
             </div>
+            </div>
           </div>
         </div>
         <hr className="my-6 border-blueGray-300" />
         <div className="flex flex-wrap items-center md:justify-between justify-center">
           <div className="w-full md:w-4/12 px-4 mx-auto text-center">
-            <div className="text-sm text-blueGray-500 py-1">
-              Copyright © <span id="get-current-year">2021</span>
-              <a
-                href="https://www.creative-tim.com/product/notus-js"
-                className="text-blueGray-500 hover:text-gray-800"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {" "}
-                Notus JS by
-                <a
-                  href="https://www.creative-tim.com?ref=njs-profile"
-                  className="text-blueGray-500 hover:text-blueGray-800"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Creative Tim
-                </a>
-                .
-              </a>
-            </div>
+          <div className="text-sm text-blueGray-500 py-1">
+          Copyright © <span id="get-current-year">2021</span>
+          <a
+            href="https://www.creative-tim.com/product/notus-js"
+            className="text-blueGray-500 hover:text-gray-800"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {" "}
+            Notus JS by
+            <a
+              href="https://www.creative-tim.com?ref=njs-profile"
+              className="text-blueGray-500 hover:text-blueGray-800"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Creative Tim
+            </a>
+            .
+          </a>
+        </div>
           </div>
         </div>
       </div>

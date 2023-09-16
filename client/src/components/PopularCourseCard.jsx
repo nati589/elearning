@@ -11,7 +11,6 @@ import ResponseMessage from "./ResponseMessage";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 
-
 const PopularCourseCard = ({
   courseId,
   course_title,
@@ -23,9 +22,7 @@ const PopularCourseCard = ({
   course_rate,
   course_price,
 }) => {
-  // const images = require.context("../assets");
 
-  // const course_image = images(course_thumbnail);
   const numbers = [1, 2, 3, 4, 5];
   const partialDesc = course_details ? course_details.slice(0, 80) : "";
 
@@ -72,7 +69,8 @@ const PopularCourseCard = ({
       });
   };
   return (
-    <div className="card bg-white border-l-8 border-l-dark-purple rounded-lg shadow-md my-4 p-6 w-80 h-88">
+    <div className="card bg-white border-l-8 border-l-dark-purple rounded-lg shadow-md my-2 p-2 w-96 h-80">
+      {/* <div className="card bg-white border-l-8 border-l-dark-purple rounded-lg shadow-md my-1 p-1 w-80 h-88"></div> */}
       <Link to={`/coursedetails/${courseId}`} className=" cursor-pointer">
         <h1 className="text-xl mb-4 font-bold">{course_title}</h1>
         <div className="grid grid-cols-4 gap-4">
@@ -127,19 +125,20 @@ const PopularCourseCard = ({
         </div>
       </Link>
       <div className="flex flex-row">
-        <div className="flex flex-col w-full justify-center items-center mt-4">
+        <div className="flex flex-col w-full justify-center items-center mt-1">
           {addSuccess && <ResponseMessage failure={failure} message={resMsg} />}
 
           {(!addSuccess || failure) &&
             localStorage.getItem("username") &&
             localStorage.getItem("user_id") && (
               <button
-                className="button-component-stroke w-fit py-2 px-8 mb-2"
+                className="bg-dark-purple hover:bg-purple-500 text-white  font-bold py-3 px-3 my-10 rounded "
+                // className="button-component-stroke  w-fit py-2 px-4 mb-7"
                 onClick={addToCart}
               >
-                <span className="add-to-cart-text">Add to Cart</span>{" "}
+                <span className="add-to-cart-text p-3">Add to Cart</span>
                 &nbsp;&nbsp; &nbsp;
-                <span className="cart-icon w-4 h-4">
+                <span className="cart-icon fa-x p-3">
                   <FontAwesomeIcon icon={faShoppingCart} />
                 </span>
               </button>

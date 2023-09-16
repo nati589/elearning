@@ -1,9 +1,10 @@
 import { db } from "../db.js";
 import fs from "fs";
 import { v4 as uuidv4 } from "uuid";
+import path from 'path';
 
 export const getSections = (req, res) => {
-  const q = "SELECT * FROM section";
+  const q = "SELECT * FROM section ORDER BY section_date_created ASC";
   db.query(q, (err, data) => {
     if (err) {
       return res.status(401).send({ message: "Connection error try again." });
@@ -32,7 +33,7 @@ export const getSingleSection = (req, res) => {
 };
 
 export const getCourseSections = (req, res) => {
-  const q = `SELECT * FROM section WHERE course_id = '${req.params.id}'`;
+  const q = `SELECT * FROM section WHERE course_id = '${req.params.id}' ORDER BY section_date_created ASC`;
   db.query(q, (err, data) => {
     if (err) {
       return res.status(401).send({ message: "Connection error try again." });
@@ -52,7 +53,7 @@ export const addSection = (req, res) => {
   values.push(req.params.id);
   console.log(values);
   // Create the SQL insert query
-  const q = `INSERT INTO section (section_id, section_title, section_description, section_type, section_content, section_value, course_id) VALUES (?, ?, ?, ?, ?, ?, ?)`;
+  const q = `INSERT INTO section (section_id, section_title, section_description, section_type, section_content, section_value, section_date_created, course_id) VALUES (?, ?, ?, ?, ?, ?, NOW(), ?)`;
   db.query(q, values, (err, data) => {
     if (err) {
       res.json(err);
@@ -111,6 +112,7 @@ export const updateSection = (req, res) => {
   // console.log(req.body);
   const section_id = req.params.id;
   const values = Object.values(req.body);
+  const directoryPath = 'sections/files/';
   console.log(values);
   if (values[2] === "quiz") {
     values.pop();
@@ -146,7 +148,37 @@ export const updateSection = (req, res) => {
 
           res.json({ message: "Section changed successfully" });
         });
-      } else {
+      } else if (values[2] === "quiz") {
+        fs.readdir(directoryPath, (err, files) => {
+          if (err) {
+            console.error(err);
+            return res.status(500).json({ message: 'Error reading directory' });
+          }
+      
+          // Find the file with a matching ID
+          const matchingFile = files.find(file => {
+            const fileName = path.parse(file).name;
+            return fileName === section_id;
+          });
+      
+          if (!matchingFile) {
+            return res.status(404).json({ message: 'File not found' });
+          }
+      
+          // Delete the file
+          const filePath = path.join(directoryPath, matchingFile);
+          fs.unlink(filePath, err => {
+            if (err) {
+              console.error(err);
+              res.status(500).json({ message: 'Error deleting file' });
+            } else {
+              // res.status(200).json({ message: 'File deleted successfully' });
+              res.json({ message: 'Section changed successfully.' });
+            }
+          });
+        });
+      }
+      else {
         res.json({ message: "Section changed successfully" });
       }
     }
@@ -155,6 +187,7 @@ export const updateSection = (req, res) => {
 export const deleteSection = (req, res) => {
   const sectionId = req.body.id;
   const courseId = req.body.course_id;
+  const directoryPath = 'sections/files/';
 
   db.beginTransaction((err) => {
     if (err) {
@@ -183,7 +216,49 @@ export const deleteSection = (req, res) => {
                   res.status(500).send({ message: 'Transaction commit error. Please try again.' });
                 });
               } else {
-                res.json({ message: 'Section deleted successfully.' });
+                fs.readdir(directoryPath, (err, files) => {
+                  if (err) {
+                    console.error(err);
+                    return res.status(500).json({ message: 'Error reading directory' });
+                  }
+              
+                  // Find the file with a matching ID
+                  const matchingFile = files.find(file => {
+                    const fileName = path.parse(file).name;
+                    return fileName === req.body.id;
+                  });
+              
+                  if (!matchingFile) {
+                    return res.status(404).json({ message: 'File not found' });
+                  }
+              
+                  // Delete the file
+                  const filePath = path.join(directoryPath, matchingFile);
+                  fs.unlink(filePath, err => {
+                    if (err) {
+                      console.error(err);
+                      res.status(500).json({ message: 'Error deleting file' });
+                    } else {
+                      // res.status(200).json({ message: 'File deleted successfully' });
+                      res.json({ message: 'Section deleted successfully.' });
+                    }
+                  });
+                });
+                // if (fs.existsSync(filePath)) {
+                //   // Delete the file
+                //   fs.unlink(filePath, (err) => {
+                //     if (err) {
+                //       console.error(err);
+                //       res.status(500).json({ message: 'Error deleting file' });
+                //     } else {
+                //       // res.status(200).json({ message: 'File deleted successfully' });
+                //       res.json({ message: 'Section deleted successfully.' });
+                //     }
+                //   });
+                // } else {
+                //   res.json({ message: 'Section deleted successfully.' });
+                //   // res.status(404).json({ message: 'File not found' });
+                // }
               }
             });
           }

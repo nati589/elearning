@@ -33,7 +33,7 @@ function SampleCard() {
 
               <p class="text-gray-400">rating </p>
               <p class="text-gray-400">price </p>
-              <p class="text-gray-400">level </p>
+                            <p class="text-gray-400">rating </p>
 
 
             </div>
@@ -42,7 +42,7 @@ function SampleCard() {
             <div class="flex col-start-2 ml-4 md:col-start-auto md:ml-0 md:justify-end">
               <p class="rounded-lg text-dark-purple font-bold bg-light-purple  py-1 px-3 text-sm w-fit h-fit">
                 {" "}
-                Add to cart{" "}
+                $ 5{" "}
               </p>
             </div>
           </div>

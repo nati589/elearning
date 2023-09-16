@@ -5,6 +5,7 @@ import BookImg from "../assets/Image.png";
 import CoursesSearch from "./CoursesSearch";
 import courseData from "./courseData";
 import axios from "axios";
+import SampleCard from "../components/SampleCard"
 
 function CoursesBody() {
   const [courses, setCourses] = useState([...courseData]);
@@ -19,18 +20,19 @@ function CoursesBody() {
         console.log(error.response.data.message);
         // navigate("/");
       });
-  }, []);
+  }, []); 
 
   return (
     <div className="flex flex-col md:flex-row flex-nowrap w-full">
-      <div className="w-full md:w-4/12 text-xs md:text-sm px-8 md:px-2 pt-2 my-4 flex flex-col justify-start items-center">
+      <div className="w-full md:w-1/5 text-xs md:text-sm px-8 md:px-2 pt-2 my-4 flex flex-col justify-start items-center">
         <div className="flex flex-col flex-nowrap w-full">
           <div className="my-2 shadow-md">
             <h2 className="rounded-tl-lg rounded-tr-lg text-center bg-[#796bd4] px-3.5 py-2.5 font-semibold text-white shadow-sm  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
               Popular Courses
             </h2>
-            <div className="flex flex-col flex-nowrap items-center max-h-[700px] overflow-y-auto pt-5">
-              <PopularCourseCard
+            <div className="flex flex-col flex-nowrap  items-center max-h-[700px] overflow-y-auto pt-5">
+             
+             <SampleCard
                 courseId="1"
                 course_title="interaction"
                 course_details="lorem Ipsum is simply dummy text of the printing and typesetting industry. "
@@ -41,7 +43,7 @@ function CoursesBody() {
                 course_rate="4.7"
                 course_price="price"
               />
-              <PopularCourseCard
+                 <SampleCard
                 courseId="1"
                 course_title="interaction"
                 course_details="lorem Ipsum is simply dummy text of the printing and typesetting industry. "
@@ -52,18 +54,7 @@ function CoursesBody() {
                 course_rate="4.7"
                 course_price="price"
               />
-              <PopularCourseCard
-                courseId="1"
-                course_title="interaction"
-                course_details="lorem Ipsum is simply dummy text of the printing and typesetting industry. "
-                course_thumbnail={BookImg}
-                course_total_hour="3Hours"
-                course_instructure="selam"
-                course_level="level"
-                course_rate="4.7"
-                course_price="price"
-              />
-              <PopularCourseCard
+               <SampleCard
                 courseId="1"
                 course_title="interaction"
                 course_details="lorem Ipsum is simply dummy text of the printing and typesetting industry. "
@@ -105,7 +96,7 @@ function CoursesBody() {
           </div>
         </div>
       </div>
-      <div className="w-full md:w-8/12 text-xs md:text-base px-4 md:px-8 my-4 flex flex-col justify-start items-start">
+      <div className="w-full md:w-4/5 text-xs md:text-base px-4 md:px-8 my-4 flex flex-col justify-start items-start">
         <h4 className="text-center text-2xl md:text-4xl font-bold text-writing-dark">
           Our Courses
         </h4>

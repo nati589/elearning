@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import BooksCard from "../components/BooksCard";
+import MyBooksCard from "../components/MyBooksCard";
 import InputWithSuggestion from "../components/CoursesSearch";
 
 import booksData from "../components/booksData";
@@ -162,7 +162,7 @@ export default function MyBooks() {
         <div>
           <div className="w-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-2 gap-4  my-8">
             {BooksData.map((Book, index) => (
-              <BooksCard
+              <MyBooksCard
                 key={index}
                 Book={Book}
                 Book_name="Amharic For Beginners"

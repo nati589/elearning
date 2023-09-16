@@ -291,3 +291,20 @@ export const deleteBook = (req, res) => {
     }
   });
 };
+
+//////////////////Delete Permamnet//////////////////////////
+export const deletePermanentBook = (req, res) => {
+  const bookId = req.params.book_id;
+
+  const deleteQuery = "DELETE FROM book WHERE book_id = ?";
+
+  db.query(deleteQuery, [bookId], (error, results) => {
+    if (error) {
+      console.error("Error deleting book:", error.message);
+      res.status(500).json({ error: "Error deleting book" });
+    } else {
+      console.log(`Deleted book with ID ${bookId}`);
+      res.status(200).json({ message: `Deleted book with ID ${bookId}` });
+    }
+  });
+};

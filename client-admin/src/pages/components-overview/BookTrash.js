@@ -10,9 +10,10 @@ import {
 } from "@mui/material";
 import { useNavigate } from "../../../node_modules/react-router/dist/index";
 import axios from "axios";
-// import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
-import RestoreFromTrashIcon from "@mui/icons-material/RestoreFromTrash";
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+// import RestoreFromTrashIcon from "@mui/icons-material/RestoreFromTrash";
 import EditIcon from "@mui/icons-material/Edit";
+import RestoreIcon from "@mui/icons-material/Restore";
 async function undeleteBookById(itemId) {
   try {
     // Replace the URL with your API endpoint and the desired item ID
@@ -20,6 +21,24 @@ async function undeleteBookById(itemId) {
 
     // Send a DELETE request to delete the item by ID
     const response = await axios.get(apiUrl);
+
+    // Check if the item was deleted successfully
+    if (response.status === 200) {
+      //   alert(`Item with ID ${itemId} deleted successfully`);
+    } else {
+      console.error("Error deleting item");
+    }
+  } catch (error) {
+    console.error("Error:", error.message);
+  }
+}
+async function deletePermanentBookeById(itemId) {
+  try {
+    // Replace the URL with your API endpoint and the desired item ID
+    const apiUrl = `http://localhost:8800/api/books/deletedPermanentBook/${itemId}`;
+
+    // Send a DELETE request to delete the item by ID
+    const response = await axios.delete(apiUrl);
 
     // Check if the item was deleted successfully
     if (response.status === 200) {
@@ -114,16 +133,17 @@ export default function BookTrash() {
           let data = value;
           return (
             <>
-              {/* <Tooltip title="Edit">
+              <Tooltip title="Delete">
                 <Button
                   onClick={() => {
-                    // console.log(data);
-                    navigate(`/bookmanagement/editbook/${data}`);
-                  }}>
-                  <EditIcon />
+                    deletePermanentBookeById(data);
+                    setState((s) => !s);
+                  }}
+                >
+                  <DeleteOutlineIcon />
                 </Button>
-              </Tooltip> */}
-              <Tooltip title="Delete">
+              </Tooltip>
+              <Tooltip title="restore">
                 <Button
                   color="error"
                   onClick={() => {
@@ -132,7 +152,7 @@ export default function BookTrash() {
                     setState((s) => !s);
                   }}
                 >
-                  <RestoreFromTrashIcon />
+                  <RestoreIcon />
                 </Button>
               </Tooltip>
             </>

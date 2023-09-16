@@ -291,3 +291,19 @@ export const deleteCourse = (req, res) => {
     }
   });
 };
+////////////////////////Deleting Permant/////////////
+export const deletePermanentCousre = (req, res) => {
+  const cousreId = req.params.course_id;
+
+  const deleteQuery = "DELETE FROM course WHERE course_id = ?";
+
+  db.query(deleteQuery, [cousreId], (error, results) => {
+    if (error) {
+      console.error("Error deleting Course:", error.message);
+      res.status(500).json({ error: "Error deleting Course" });
+    } else {
+      console.log(`Deleted book with ID ${cousreId}`);
+      res.status(200).json({ message: `Deleted book with ID ${cousreId}` });
+    }
+  });
+};

@@ -11,6 +11,7 @@ import {
   getCouresThisMonth,
   getDeletedCourses,
   getUndeletedCourses,
+  deletePermanentCousre,
 } from "../controllers/courses.js";
 import multer from "multer";
 const upload = multer({ dest: "courses/thumbnails/" });
@@ -34,5 +35,5 @@ router.get("/");
 ///////////// Get The admin Info Route//////////////////
 router.get("/getCoursesThisWeek", getCouresThisWeek);
 router.get("/getCoursesThisMonth", getCouresThisMonth);
-
+router.delete("/deletedPermanentCourse/:course_id", deletePermanentCousre);
 export default router;

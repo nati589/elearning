@@ -196,7 +196,7 @@ export const getBooksThisWeek = (req, res) => {
 
       // Print the result array
       const dataOfWeek = resultArray.map((data) => data.count);
-      console.log(resultArray);
+
       res.json(dataOfWeek);
     }
   });
@@ -300,10 +300,10 @@ export const deletePermanentBook = (req, res) => {
 
   db.query(deleteQuery, [bookId], (error, results) => {
     if (error) {
-      console.error("Error deleting book:", error.message);
+      // console.error("Error deleting book:", error.message);
       res.status(500).json({ error: "Error deleting book" });
     } else {
-      console.log(`Deleted book with ID ${bookId}`);
+      // console.log(`Deleted book with ID ${bookId}`);
       res.status(200).json({ message: `Deleted book with ID ${bookId}` });
     }
   });

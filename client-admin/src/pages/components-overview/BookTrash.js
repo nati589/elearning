@@ -135,6 +135,7 @@ export default function BookTrash() {
             <>
               <Tooltip title="Delete">
                 <Button
+                  color="error"
                   onClick={() => {
                     deletePermanentBookeById(data);
                     setState((s) => !s);
@@ -145,7 +146,6 @@ export default function BookTrash() {
               </Tooltip>
               <Tooltip title="restore">
                 <Button
-                  color="error"
                   onClick={() => {
                     // deleteBook(data);
                     undeleteBookById(data);

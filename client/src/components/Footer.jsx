@@ -12,10 +12,17 @@ import InputError from "./InputError";
 import { AnimatePresence, motion } from "framer-motion";
 import InputComponent from "./InputComponent";
 import axios from "axios";
+import { Link } from "react-router-dom";
+import FaqandHelp from "../pages/FaqandHelp";
+import { Route } from "react-router-dom";
 
 function Footer() {
   const methods = useForm();
-
+  // const Menus = [
+  //   {
+  //     title: "faq-and-help",
+  //     to: "/faq-and-help",
+  //   },]
   const {
     register,
     handleSubmit,
@@ -49,10 +56,10 @@ function Footer() {
   });
 
   return (
-    <footer className="relative py-8 px-4 bg-light-purple rounded-t-3xl">
-      <div className="container mx-auto px-4 py-4">
+    <footer className="items-center py-8 px-4 bg-light-purple rounded-t-3xl">
+      <div className="container mx-auto px-4 py-4 ">
         <div className="flex flex-wrap text-left lg:text-left">
-          <div className="w-full lg:w-6/12 px-4">
+          <div className="w-full lg:w-4/12 px-4">
             <div className="flex gap-2 items-center pb-3">
               <img src={Logo} alt="Logo" width={40} />
               <a href="/" className="text-3xl text-subscribe-purple font-bold">
@@ -116,7 +123,7 @@ function Footer() {
               </ul>
             </div>
           </div>
-          <div className="w-full lg:w-6/12 px-4">
+          <div className="w-full lg:w-8/12 px-4">
             <div className="flex flex-wrap items-top mb-6">
               <div className="w-full lg:w-4/12 px-4 ml-auto">
                 <span className="block font-semibold text-blueGray-500 text-sm mb-2">
@@ -125,25 +132,22 @@ function Footer() {
                 <ul className="list-unstyled">
                   <li>
                     <a
+                      href="/faq-and-help"
                       className="text-blueGray-600 hover:text-blueGray-800 block pb-2 text-sm"
-                      href="https://www.creative-tim.com/presentation?ref=njs-profile"
                     >
                       FAQ & Help
                     </a>
                   </li>
                   <li>
                     <a
+                      href="/books"
                       className="text-blueGray-600 hover:text-blueGray-800 block pb-2 text-sm"
-                      href="https://blog.creative-tim.com?ref=njs-profile"
                     >
-                      Books
+                      Books{" "}
                     </a>
                   </li>
                   <li>
-                    <a
-                      className="text-blueGray-600 hover:text-blueGray-800 block pb-2 text-sm"
-                      href="https://www.github.com/creativetimofficial?ref=njs-profile"
-                    >
+                    <a className="text-blueGray-600 hover:text-blueGray-800 block pb-2 text-sm">
                       Contact Us
                     </a>
                   </li>

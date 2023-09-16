@@ -140,5 +140,4 @@ function BooksCard({
     </div>
   );
 }
-// export default ;
 export default BooksCard;

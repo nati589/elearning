@@ -29,6 +29,7 @@ import CourseSectionList from "./components/LearningPageComponents/CourseSection
 import MyBooksPage from "./pages/MyBooksPage";
 import MyCoursesPage from "./pages/MyCoursesPage";
 import ReadingPage from "./pages/ReadingPage";
+import FaqandHelp from "./pages/FaqandHelp";
 
 export default function App() {
   const [renderSubscription, setRender] = useState(
@@ -52,7 +53,8 @@ export default function App() {
   return (
     <div
       className="App"
-      style={{ backgroundColor: "#F7F5FA", minHeight: "100vh" }}>
+      style={{ backgroundColor: "#F7F5FA", minHeight: "100vh" }}
+    >
       {/* <Background /> */}
 
       <Header logoutUpdate={isLoggedOut} />
@@ -63,7 +65,6 @@ export default function App() {
         <Route path="/books" element={<BooksPage />} />
         <Route path="/bookdetails/:id" element={<BooksDetailsPage />} />
         <Route path="/readingpage" element={<ReadingPage />} />
-
         <Route path="/progress" element={<ProgressPage />} />
         <Route path="/courses" element={<CoursesPage />} />
         <Route path="/coursedetails/:id" element={<CourseDetailsPage />} />
@@ -76,7 +77,6 @@ export default function App() {
             element={<SectionContent />}
           />
         </Route>
-
         <Route path="/profile" element={<UserProfile />}>
           <Route exact index element={<UserProfileDashboard />} />
           <Route exact path="/profile/privacy" element={<ProfilePrivacy />} />
@@ -86,6 +86,7 @@ export default function App() {
         <Route exact path="password-reset" element={<PasswordResetPage />} />
         <Route path="/mybooks" element={<MyBooksPage />}></Route>
         <Route path="/mycourses" element={<MyCoursesPage />}></Route>
+        <Route path="/faq-and-help" element={<FaqandHelp/>} />
       </Routes>
 
       {renderSubscription && <Subscription />}

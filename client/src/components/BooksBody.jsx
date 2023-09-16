@@ -14,7 +14,8 @@ export default function BooksBody() {
     axios
       .get("/books/getBooks")
       .then((res) => {
-        setBooks([...res.data]);
+        console.log()
+        // setBooks([...res.data]);
       })
       .catch((error) => {
         console.log(error.response.data.message);

@@ -9,7 +9,7 @@ function Recommendations() {
           {[1, 2, 3, 4].map((index) => (
             <div key={index} className="flex flex-col bg-white my-2">
               <a
-                href="  /coursedetails"
+                href="/bookdetails"
                 className="w-full border-2 border-b-4 border-gray-200 rounded-xl hover:bg-gray-50"
               >
                 <div className="grid grid-cols-6 p-5 gap-y-2">
@@ -92,7 +92,7 @@ function Recommendations() {
           {[1, 2, 3, 4].map((index) => (
             <div key={index} className="flex flex-col bg-white my-2">
               <a
-                href="  /coursedetails"
+                href="  /bookdetails"
                 className="w-full border-2 border-b-4 border-gray-200 rounded-xl hover:bg-gray-50"
               >
                 <div className="grid grid-cols-6 p-5 gap-y-2">

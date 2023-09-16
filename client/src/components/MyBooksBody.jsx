@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import BooksCard from "./BooksCard";
-import PopularCourseCard from "./PopularCourseCard";
-import BookImg from "../../src/assets/Cardphoto10.png";
-import TrendingCard from "./TrendingCoursesCard";
-import InputWithSuggestion from "../components/CoursesSearch";
+// import PopularCourseCard from "./PopularCourseCard";
+// import BookImg from "../../src/assets/Cardphoto10.png";
+// import TrendingCard from "./TrendingCoursesCard";
+// import InputWithSuggestion from "../components/CoursesSearch";
 import booksData from "./booksData";
 import BookSearch from "./BookSearch";
 
@@ -73,7 +73,7 @@ export default function MyBooksBody() {
   return (
     <div className="flex flex-col flex-nowrap w-full">
       <div className="flex flex-col md:flex-row flex-nowrap ">
-        <div className="w-full text-xs md:text-sm px-8 md:px-4 pt-2 my-4 flex flex-col justify-start items-center">
+        {/* <div className="w-full text-xs md:text-sm px-8 md:px-4 pt-2 my-4 flex flex-col justify-start items-center">
           <div className="flex flex-col flex-nowrap w-full">
             <div className="flex flex-col flex-nowrap my-3 bg-light-purple rounded-lg shadow-md py-5 w-full justify-center items-center ">
               <h2 className="text-center  text-subscribe-purple text-2xl font-semibold ">
@@ -81,7 +81,7 @@ export default function MyBooksBody() {
               </h2>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
       <div className=" px-6">
         <div className="flex items-center justify-center ">

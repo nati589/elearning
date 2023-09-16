@@ -23,26 +23,25 @@ function Cart() {
       });
   }, []);
 
-  const removeItem = (cart_id) => {
+  const removeItem = (cart_id, price) => {
     axios
       .delete("/cart/deleteFromCart", { data: { cart_id } })
       .then((response) => {
         setCartData(cartData.filter((c) => c.cart_id !== cart_id));
+        setTotalPrice((prevTotal) => prevTotal - price);
       })
       .catch((error) => {
         console.log(error.response.data.message);
       });
   };
 
-  const addPrice = useCallback(
-    (new_price) => {
-      const parsedNumber = parseFloat(new_price / 2);
-      // for non strict mode
-      // const parsedNumber = parseFloat(new_price);
-      setTotalPrice((prevTotal) => prevTotal + parsedNumber);
-    },
-    [cartData]
-  );
+  const addPrice = useCallback((new_price) => {
+    console.log("Adding price", new_price);
+    const parsedNumber = parseFloat(new_price / 2);
+    // for non strict mode
+    // const parsedNumber = parseFloat(new_price);
+    setTotalPrice((prevTotal) => prevTotal + parsedNumber);
+  }, []);
 
   return (
     <div className="w-full flex flex-col flex-nowrap pt-10 pb-2 lg:px-auto lg:px-32 sm:px-2">

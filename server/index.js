@@ -1,3 +1,4 @@
+// const cookieParser = require("cookie-parser");
 import express, { json } from "express";
 import authRoutes from "./routes/auth.js";
 import teamRoutes from "./routes/team.js";
@@ -8,14 +9,14 @@ import purchasesRouter from "./routes/purchases.js";
 import cartRouter from "./routes/cart.js";
 import webContentRoutes from "./routes/webContent.js";
 import usersRoutes from "./routes/users.js";
+// import cookieParser from "cookie-parser";
 import cookieParser from "cookie-parser";
 
 import cors from "cors";
 import { db } from "./db.js";
 
 const app = express();
-
-app.use(express.json());
+app.use(cookieParser());
 
 const allowedOrigins = ["http://localhost:3000", "http://localhost:3001"];
 app.use(
@@ -26,7 +27,7 @@ app.use(
     credentials: true,
   })
 );
-app.use(cookieParser());
+app.use(express.json());
 
 app.use("/api/auth", authRoutes);
 app.use("/api/team", teamRoutes);

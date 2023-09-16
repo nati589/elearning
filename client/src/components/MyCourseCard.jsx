@@ -17,7 +17,6 @@ function MyCourseCard({
   teacherName,
   rating,
   hoursNeeded,
-  price,
   level,
 }) {
   const images = require.context("../assets");
@@ -72,14 +71,7 @@ function MyCourseCard({
             <img src={PersonIcon} alt="icon" className="h-4 w-auto" />
             <span className="ml-2">{teacherName}</span>
           </div>
-          <div className="flex flex-row flex-nowrap items-center justify-start mb-2">
-            <img
-              src={DollarIcon}
-              alt="icon"
-              className="h-4 w-auto fill-current text-writing-dark"
-            />
-            <span className="ml-2">{price}</span>
-          </div>
+          
           <div className="flex flex-row flex-nowrap items-center justify-start mb-2">
             <img src={NoteIcon} alt="icon" className="h-4 w-auto" />
             <span className="ml-2">level {level}</span>

@@ -35,15 +35,13 @@ function Cart() {
       });
   };
 
-  const addPrice = useCallback(
-    (new_price) => {
-      const parsedNumber = parseFloat(new_price / 2);
-      // for non strict mode
-      // const parsedNumber = parseFloat(new_price);
-      setTotalPrice((prevTotal) => prevTotal + parsedNumber);
-    },
-    [cartData]
-  );
+  const addPrice = useCallback((new_price) => {
+    console.log("Adding price", new_price);
+    const parsedNumber = parseFloat(new_price / 2);
+    // for non strict mode
+    // const parsedNumber = parseFloat(new_price);
+    setTotalPrice((prevTotal) => prevTotal + parsedNumber);
+  }, []);
 
   return (
     <div className="w-full flex flex-col flex-nowrap pt-10 pb-2 lg:px-auto lg:px-32 sm:px-2">

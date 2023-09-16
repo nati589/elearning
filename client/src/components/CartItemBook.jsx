@@ -6,7 +6,7 @@ function CartItemBook({ cart_id, book_id, removeItem, addPrice }) {
 
   useEffect(() => {
     axios
-      .get("/books/getSingleBook", { params: { bookID: book_id } })
+      .get(`/books/getSingleBook/${book_id}`)
       .then((response) => {
         setData(response.data[0]);
         addPrice(response.data[0].book_price);
@@ -14,12 +14,12 @@ function CartItemBook({ cart_id, book_id, removeItem, addPrice }) {
       .catch((error) => {
         console.log(error.response.data.message);
       });
-  }, [book_id]);
+  }, [book_id, addPrice]);
 
   return (
     <div className=" relative shadow flex flex-row items-center max-w-max sm:gap-1 lg:gap-6 px-1 md:gap-4 sm:px-2 md:px-4 rounded">
       <button
-        onClick={() => removeItem(cart_id)}
+        onClick={() => removeItem(cart_id, data.book_price)}
         className=" absolute top-2 right-2 text-2xl md:hidden text-medium-purple">
         <TiDeleteOutline />
       </button>
@@ -37,7 +37,7 @@ function CartItemBook({ cart_id, book_id, removeItem, addPrice }) {
         </div>
         <div className="flex flex-row mb-1.5 gap-1">
           <span className="text-[11px] md:text-xs">{data.book_rating}</span>
-          <span className="text-[11px]">XXXXXX</span>
+          {/* <span className="text-[11px]">XXXXXX</span> */}
         </div>
         <div className=" text-[11px] md:text-xs flex flex-row gap-5 items-center">
           <span>Author {data.book_author} </span>
@@ -47,7 +47,7 @@ function CartItemBook({ cart_id, book_id, removeItem, addPrice }) {
         <span className="text-medium-purple text-lg">${data.book_price}</span>
       </div>
       <button
-        onClick={() => removeItem(cart_id)}
+        onClick={() => removeItem(cart_id, data.book_price)}
         className="bg-medium-purple px-4 hidden md:inline-block py-2 rounded-3xl sm:mx-2  md:mx-10 text-white ">
         remove
       </button>

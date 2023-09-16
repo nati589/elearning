@@ -13,15 +13,16 @@ function BooksDetailsPage() {
   const { id } = useParams();
 
   useEffect(() => {
-    if (id === null) {
+    if (id === null || id === undefined) {
       navigate("/");
     } else {
       axios
-        .get("/books/getSinglebook", { params: { bookID: id } })
+        .get(`/books/getSingleBook/${id}`)
         .then((res) => {
           setBooksData({ ...res.data[0] });
         })
         .catch((error) => {
+          console.log(error, "book err");
           console.log(error.response.data.message);
           // navigate("/");
         });
@@ -52,14 +53,14 @@ function BooksDetailsPage() {
         </div>
         <div className="mx-4 w-4/12">
           <Pricecard
-            book_price={booksData.book_price}
-            book_instructor={booksData.book_instructor}
-            book_rate={booksData.book_rating}
-            book_total_hour={booksData.book_total_hour}
-            book_sections="30"
-            book_quizzes="5"
-            book_answer={booksData.book_certificate}
-            book_access="Lifetime"
+            course_price={booksData.book_price}
+            course_instructor={booksData.book_author}
+            course_rate={booksData.book_rating}
+            course_total_hour={booksData.book_total_hour}
+            course_sections="30"
+            course_quizzes="5"
+            course_answer={booksData.book_certificate}
+            course_access="Lifetime"
           />
         </div>
       </div>

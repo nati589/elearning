@@ -1,5 +1,6 @@
 import CoursesHero from "../components/CoursesHero";
 import CoursesBody from "../components/CoursesBody";
+import Subscription from "../components/Subscription";
 //import OtherCourses from "../components/OtherCourses";
 
 function CourseDetailsPage() {
@@ -8,6 +9,7 @@ function CourseDetailsPage() {
       <CoursesHero />
       <CoursesBody />
       {/* <OtherCourses /> */}
+      <Subscription />
     </>
   );
 }

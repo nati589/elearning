@@ -11,7 +11,7 @@ function CoursesBody() {
 
   useEffect(() => {
     axios
-      .get("/courses/getTotalCourses")
+      .get("/courses/getCourses")
       .then((res) => {
         setCourses([...res.data]);
       })

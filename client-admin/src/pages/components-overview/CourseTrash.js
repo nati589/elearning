@@ -165,8 +165,9 @@ export default function CourseList() {
           let data = value;
           return (
             <>
-              <Tooltip title="Edit">
+              <Tooltip title="Delete">
                 <Button
+                  color="error"
                   onClick={() => {
                     deletePermanentCourseById(data);
                     setState((s) => !s);
@@ -175,9 +176,8 @@ export default function CourseList() {
                   <DeleteOutlineIcon />
                 </Button>
               </Tooltip>
-              <Tooltip title="Delete">
+              <Tooltip title="restore">
                 <Button
-                  color="error"
                   onClick={() => {
                     // deleteCourse(data);
 

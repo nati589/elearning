@@ -22,9 +22,7 @@ const PopularCourseCard = ({
   course_rate,
   course_price,
 }) => {
-  // const images = require.context("../assets");
 
-  // const course_image = images(course_thumbnail);
   const numbers = [1, 2, 3, 4, 5];
   const partialDesc = course_details ? course_details.slice(0, 80) : "";
 
@@ -71,7 +69,7 @@ const PopularCourseCard = ({
       });
   };
   return (
-    <div className="card bg-white border-l-8 border-l-dark-purple rounded-lg shadow-md my-2 p-2 w-96 h-96">
+    <div className="card bg-white border-l-8 border-l-dark-purple rounded-lg shadow-md my-2 p-2 w-96 h-80">
       {/* <div className="card bg-white border-l-8 border-l-dark-purple rounded-lg shadow-md my-1 p-1 w-80 h-88"></div> */}
       <Link to={`/coursedetails/${courseId}`} className=" cursor-pointer">
         <h1 className="text-xl mb-4 font-bold">{course_title}</h1>
@@ -134,13 +132,13 @@ const PopularCourseCard = ({
             localStorage.getItem("username") &&
             localStorage.getItem("user_id") && (
               <button
-                className="bg-red-500 hover:bg-purple-700  font-bold py-2 px-2 rounded "
+                className="bg-dark-purple hover:bg-purple-500 text-white  font-bold py-3 px-3 my-10 rounded "
                 // className="button-component-stroke  w-fit py-2 px-4 mb-7"
                 onClick={addToCart}
               >
-                <span className="add-to-cart-text">Add to Cart</span>
+                <span className="add-to-cart-text p-3">Add to Cart</span>
                 &nbsp;&nbsp; &nbsp;
-                <span className="cart-icon text-white fa-x">
+                <span className="cart-icon fa-x p-3">
                   <FontAwesomeIcon icon={faShoppingCart} />
                 </span>
               </button>

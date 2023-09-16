@@ -4,7 +4,7 @@ import PopularBookImg from "../assets/PopularBookImg.jpeg";
 
 import MyCoursesSearch from "./MyCoursesSearch";
 import courseData from "./courseData";
-import axios from "axios";
+import axios from "axios"; 
 
 function MyCourseBody() {
   const [courses, setCourses] = useState([...courseData]);

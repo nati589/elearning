@@ -116,7 +116,7 @@ const BookSearch = ({ searchData }) => {
             className=" ml-2 rounded-md border-2 border-medium-purple p-2 bg-transparent text-medium-purple pr-12 ">
             <option value="a">Latest</option>
             <option value="b">Oldest</option>
-            <option value="c">c</option>
+            <option value="c">Alphabet</option>
           </select>
         </label>
       </div>

@@ -139,7 +139,7 @@ const PopularCourseCard = ({
               >
                 <span className="add-to-cart-text">Add to Cart</span>{" "}
                 &nbsp;&nbsp; &nbsp;
-                <span className="cart-icon">
+                <span className="cart-icon w-4 h-4">
                   <FontAwesomeIcon icon={faShoppingCart} />
                 </span>
               </button>

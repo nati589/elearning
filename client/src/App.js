@@ -24,13 +24,31 @@ import PasswordResetPage from "./pages/PasswordResetPage";
 import LearningPage from "./pages/LearningPage";
 import SectionContent from "./components/LearningPageComponents/SectionContent";
 import CourseSectionList from "./components/LearningPageComponents/CourseSectionList";
-import MyBooks from "./pages/MyBooks";
-import MyCourses from "./pages/MyCourses";
+// import MyBooks from "./pages/MyBooks";
+// import MyCourses from "./pages/MyCourses";
 import MyBooksPage from "./pages/MyBooksPage";
 import MyCoursesPage from "./pages/MyCoursesPage";
+import ReadingPage from "./pages/ReadingPage";
+import FaqandHelp from "./pages/FaqandHelp";
 
 export default function App() {
-  const [renderSubscription, setRender] = useState(true);
+  const [renderSubscription, setRender] = useState(
+    !(localStorage.getItem("username") && localStorage.getItem("user_id"))
+  );
+  const isLoggedOut = () => {
+    // console.log("logout update");
+
+    setRender(
+      !(localStorage.getItem("username") && localStorage.getItem("user_id"))
+    );
+  };
+
+  useEffect(() => {
+    // console.log("renderSubscription");
+    setRender(
+      !(localStorage.getItem("username") && localStorage.getItem("user_id"))
+    );
+  }, []);
 
   return (
     <div
@@ -39,27 +57,26 @@ export default function App() {
     >
       {/* <Background /> */}
 
-      <Header subscription={setRender} />
+      <Header logoutUpdate={isLoggedOut} />
 
       <Routes>
         <Route exact path="/" element={<LandingPage />} />
         <Route exact path="/test" element={<TestPage />} />
         <Route path="/books" element={<BooksPage />} />
-        <Route path="/booksdetails/:id" element={<BooksDetailsPage />} />
-
+        <Route path="/bookdetails/:id" element={<BooksDetailsPage />} />
+        <Route path="/readingpage" element={<ReadingPage />} />
         <Route path="/progress" element={<ProgressPage />} />
         <Route path="/courses" element={<CoursesPage />} />
         <Route path="/coursedetails/:id" element={<CourseDetailsPage />} />
         <Route path="/cart" element={<Cart />} />
-        <Route path="/learning" element={<LearningPage />}>
+        <Route path="/learning/:id" element={<LearningPage />}>
           {/* Nested route for sections */}
-          <Route index element={<CourseSectionList />} />
+          {/* <Route index element={<CourseSectionList />} />
           <Route
             path="/learning/section/:sectionId"
             element={<SectionContent />}
-          />
+          /> */}
         </Route>
-
         <Route path="/profile" element={<UserProfile />}>
           <Route exact index element={<UserProfileDashboard />} />
           <Route exact path="/profile/privacy" element={<ProfilePrivacy />} />
@@ -69,6 +86,7 @@ export default function App() {
         <Route exact path="password-reset" element={<PasswordResetPage />} />
         <Route path="/mybooks" element={<MyBooksPage />}></Route>
         <Route path="/mycourses" element={<MyCoursesPage />}></Route>
+        <Route path="/faq-and-help" element={<FaqandHelp />} />
       </Routes>
 
       {renderSubscription && <Subscription />}

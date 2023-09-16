@@ -35,31 +35,28 @@ const avatarNavigation = [
   { name: "Settings", to: "/profile/setting" },
 ];
 
-function Header({ subscription }) {
-  subscription(
-    !(localStorage.getItem("username") && localStorage.getItem("user_id"))
-  );
+function Header({ logoutUpdate }) {
   // const methods = useForm();
   const navigate = useNavigate();
 
-  // const [submitSuccess, setSubmitSuccess] = useState(false);
+  // const [submitSuccess,   setSubmitSuccess] = useState(false);
   // const [failure, setFailure] = useState(false);
   // const [success_msg, setMsg] = useState("");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [signinModal, setSigninModal] = useState(false);
   const [signupModal, setSignupModal] = useState(false);
   const [forgotpsdModal, setForgotpsdModal] = useState(false);
-  const [resetpsdModal, setResetpsdModal] = useState(false);
-  const [userProfileImg, setUserprofileImg] = useState(
-    "../assets/default_profile.svg"
-  );
+  // const [resetpsdModal, setResetpsdModal] = useState(false);
+  // const [userProfileImg, setUserprofileImg] = useState(
+  //   "../assets/default_profile.svg"
+  // );
   const [avatarState, setAvatarState] = useState(false);
 
   const setModalsArray = [
     setSigninModal,
     setSignupModal,
     setForgotpsdModal,
-    setResetpsdModal,
+    // setResetpsdModal,
     setMobileMenuOpen,
   ];
 
@@ -76,7 +73,7 @@ function Header({ subscription }) {
           alert("Logout Successful");
           setAvatarState(!avatarState);
           setMobileMenuOpen(false);
-
+          logoutUpdate();
           navigate("/");
         }, 2000);
       })
@@ -138,6 +135,7 @@ function Header({ subscription }) {
           toggleForgot={ForgotPassword}
           toggle={toggleSignin}
           toggleSignup={toggleSignup}
+          logUpdate={logoutUpdate}
         />
       )}
       {signupModal && (

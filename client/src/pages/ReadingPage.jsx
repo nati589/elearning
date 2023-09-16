@@ -1,12 +1,12 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import ReadingDetails from "../components/BooksComponents/ReadingDetails";
+import ReadingDetails from "../components/ReadingDetails";
 
 const ReadingPage = () => {
   const { bookId } = useParams();
   return (
     <div className="App">
-      <h1 className="text-3xl font-semibold text-center p-4">
+      <h1 className="text-3xl font-semibold text-center p-4 text-dark-purple">
         Book Reader App
       </h1>
       <ReadingDetails bookId={bookId} />

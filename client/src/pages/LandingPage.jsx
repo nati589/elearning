@@ -4,6 +4,7 @@ import OurGoal from "../components/OurGoal";
 import CoursesList from "../components/TopCourseList";
 import Mentor from "../components/Mentor";
 import axios from "axios";
+import Subscription from "../components/Subscription";
 // import CoursesHero from "../components/CoursesHero";
 
 // import Explore from "../components/Explore";
@@ -42,6 +43,7 @@ function LandingPage() {
         mentor_detail={webContent.mentor_detail}
       />
       {/* <Explore /> */}
+      <Subscription />
     </>
   );
 }

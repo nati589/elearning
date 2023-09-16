@@ -1,7 +1,4 @@
 import { db } from "../db.js";
-import multer from "multer";
-import * as path from "path";
-import bcrypt from "bcryptjs";
 import { v4 as uuidv4 } from "uuid";
 
 export const getCart = (req, res) => {

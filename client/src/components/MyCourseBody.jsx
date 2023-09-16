@@ -1,8 +1,10 @@
 import { React, useEffect, useState } from "react";
 import PopularCourseCard from "./PopularCourseCard";
 import TrendingCard from "./TrendingCoursesCard";
-import BookImg from "../../src/assets/Image.png";
-import CoursesSearch from "./CoursesSearch";
+import PopularBookImg from "../assets/PopularBookImg.jpeg";
+import TrendingBookImg from "../assets/RecomendationsImg.jpeg";
+
+import MyCoursesSearch from "./MyCoursesSearch";
 import courseData from "./courseData";
 import axios from "axios";
 
@@ -33,7 +35,7 @@ function CoursesBody() {
               <PopularCourseCard
                 course_title="interaction"
                 course_details="lorem Ipsum is simply dummy text of the printing and typesetting industry. "
-                course_thumbnail={BookImg}
+                course_thumbnail={PopularBookImg}
                 course_total_hour="3Hours"
                 course_instructure="selam"
                 course_level="level"
@@ -43,7 +45,7 @@ function CoursesBody() {
               <PopularCourseCard
                 course_title="interaction"
                 course_details="lorem Ipsum is simply dummy text of the printing and typesetting industry. "
-                course_thumbnail={BookImg}
+                course_thumbnail={PopularBookImg}
                 course_total_hour="3Hours"
                 course_instructure="selam"
                 course_level="level"
@@ -53,7 +55,7 @@ function CoursesBody() {
               <PopularCourseCard
                 course_title="interaction"
                 course_details="lorem Ipsum is simply dummy text of the printing and typesetting industry. "
-                course_thumbnail={BookImg}
+                course_thumbnail={PopularBookImg}
                 course_total_hour="3Hours"
                 course_instructure="selam"
                 course_level="level"
@@ -63,7 +65,7 @@ function CoursesBody() {
               <PopularCourseCard
                 course_title="interaction"
                 course_details="lorem Ipsum is simply dummy text of the printing and typesetting industry. "
-                course_thumbnail={BookImg}
+                course_thumbnail={PopularBookImg}
                 course_total_hour="3Hours"
                 course_instructure="selam"
                 course_level="level"
@@ -80,22 +82,22 @@ function CoursesBody() {
               <TrendingCard
                 course_title="new course"
                 course_details="lorem Ipsum is simply dummy text of the printing and typesetting industry. "
-                course_thumbnail={BookImg}
+                course_thumbnail={TrendingBookImg}
               />
               <TrendingCard
                 course_title="new course"
                 course_details="lorem Ipsum is simply dummy text of the printing and typesetting industry. "
-                course_thumbnail={BookImg}
+                course_thumbnail={TrendingBookImg}
               />
               <TrendingCard
                 course_title="new course"
                 course_details="lorem Ipsum is simply dummy text of the printing and typesetting industry. "
-                course_thumbnail={BookImg}
+                course_thumbnail={TrendingBookImg}
               />
               <TrendingCard
                 course_title="new course"
                 course_details="lorem Ipsum is simply dummy text of the printing and typesetting industry. "
-                course_thumbnail={BookImg}
+                course_thumbnail={TrendingBookImg}
               />
             </div>
           </div>
@@ -106,7 +108,7 @@ function CoursesBody() {
           Our Courses
         </h4>
         <div className="flex  w-full m-2 my-3 flex-col sm:flex-row  items-start sm:justify-between">
-          <CoursesSearch searchData={courses} />
+          <MyCoursesSearch searchData={courses} />
         </div>
       </div>
     </div>

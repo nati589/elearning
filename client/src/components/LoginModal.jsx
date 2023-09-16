@@ -18,7 +18,7 @@ import ResponseMessage from "./ResponseMessage";
 import { BsFillXSquareFill } from "react-icons/bs";
 import jwt_decode from "jwt-decode";
 
-function LoginModal({ toggle, toggleSignup, toggleForgot }) {
+function LoginModal({ toggle, toggleSignup, toggleForgot, logUpdate }) {
   const methods = useForm();
   const {
     handleSubmit,
@@ -39,7 +39,7 @@ function LoginModal({ toggle, toggleSignup, toggleForgot }) {
         setFailure(false);
         localStorage.setItem("username", res.data.username);
         localStorage.setItem("user_id", res.data.user_id);
-
+        logUpdate();
         setTimeout(() => {
           setSubmitSuccess(false);
           navigate("/profile/");
@@ -69,6 +69,7 @@ function LoginModal({ toggle, toggleSignup, toggleForgot }) {
 
     // Alternatively, you can log the entire object as a JSON string
     console.log("User Object as JSON: " + JSON.stringify(userObject, null, 2));
+    logUpdate();
   }
 
   useEffect(() => {

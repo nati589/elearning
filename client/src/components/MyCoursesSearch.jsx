@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { BiSearch } from "react-icons/bi";
-import CourseCard from "./CourseCard";
+import MyCourseCard from "./MyCourseCard";
 
 const CoursesSearch = ({ searchData }) => {
   // const suggestions = searchData;
@@ -57,12 +57,12 @@ const CoursesSearch = ({ searchData }) => {
     return (
       <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-6 gap-x-8 my-8 px-5">
         {coursesToRender.map((course, index) => (
-          <CourseCard
+          <MyCourseCard
             key={index}
             courseId={course.course_id}
             course_name={course.course_title}
             course_description={course.course_details}
-            courseImagePath="./Image.png"
+            courseImagePath="./MyBookImg.png"
             hoursNeeded={course.course_total_hour}
             teacherName={course.course_instructor}
             rating={course.course_rating}

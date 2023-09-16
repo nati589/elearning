@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 14, 2023 at 11:36 AM
+-- Generation Time: Sep 16, 2023 at 11:32 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.1.32
 
@@ -75,17 +75,6 @@ CREATE TABLE `cart` (
   `course_id` varchar(36) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `cart`
---
-
-INSERT INTO `cart` (`cart_id`, `user_id`, `book_id`, `course_id`) VALUES
-('fbcbb28b-9c59-4781-b906-7b3c3de9d1a8', 'fceeca18-a0f3-4ab4-9ade-06e4d109746c', NULL, '05054689-9bc3-471f-ab6f-970e8f56d05f'),
-('b72b0e1d-d36e-414a-b760-7db8ac432175', 'fceeca18-a0f3-4ab4-9ade-06e4d109746c', NULL, '19a45b62-6f39-4034-8ca1-85770e6c7193'),
-('26969279-6691-4f3b-a1d5-82bbbbdb9dcc', 'fceeca18-a0f3-4ab4-9ade-06e4d109746c', NULL, 'c8c3fa7c-4050-4bf8-9fb1-23ca38cd511f'),
-('74829d6c-aaa1-44e1-a4c7-776f727f64b4', 'fceeca18-a0f3-4ab4-9ade-06e4d109746c', NULL, '00b109c9-ed5c-44ed-9bef-474dd97056d4'),
-('7abafe94-7e5a-4680-b259-76af12653749', 'fceeca18-a0f3-4ab4-9ade-06e4d109746c', NULL, '4c44cc8d-bce2-4ac5-9968-11821296afb4');
-
 -- --------------------------------------------------------
 
 --
@@ -150,18 +139,18 @@ CREATE TABLE `course` (
 --
 
 INSERT INTO `course` (`course_id`, `course_title`, `course_details`, `course_level`, `course_certificate`, `course_students`, `course_rating`, `course_sections`, `course_archived`, `course_price`, `course_instructor`, `course_max_comments`, `course_total_hour`, `course_date_created`) VALUES
-('00b109c9-ed5c-44ed-9bef-474dd97056d4', 'Paul\'s Fallacies', 'details', 'Advanced', 1, 0, '3.5', 1, 0, 2000, 'Paul', 5, 123, '2023-09-14 00:14:03.000000'),
-('05054689-9bc3-471f-ab6f-970e8f56d05f', 'Psychology', 'psy', 'Intermediate', 1, 0, '0', 1, 0, 5600, 'Dagi', 5, 40, '2023-09-13 03:09:17.000000'),
-('19a45b62-6f39-4034-8ca1-85770e6c7193', 'Tigrigna course', 'klsjfdslkfjsdlkfjsdklfjdslkf', 'Advanced', 1, 0, '0', 5, 0, 78, 'Kebede', 5, 12345, '2023-09-07 23:09:37.000000'),
-('4c44cc8d-bce2-4ac5-9968-11821296afb4', 'Advaned Amharic Lesson ', 'Details ', 'Intermediate', 1, 0, '0', 1, 0, 200, 'Dr Abebe', 5, 3, '2023-09-13 04:00:43.000000'),
+('00b109c9-ed5c-44ed-9bef-474dd97056d4', 'Paul\'s Fallacy', 'details', 'Advanced', 1, 0, '3.5', 3, 0, 2000, 'Paul', 5, 123, '2023-09-14 00:14:03.000000'),
+('05054689-9bc3-471f-ab6f-970e8f56d05f', 'Psychology', 'psy', 'Intermediate', 1, 0, '0', 0, 0, 5600, 'Dagi', 5, 40, '2023-09-13 03:09:17.000000'),
+('19a45b62-6f39-4034-8ca1-85770e6c7193', 'Tigrigna course', 'klsjfdslkfjsdlkfjsdklfjdslkf', 'Advanced', 1, 0, '0', 0, 0, 78, 'Kebede', 5, 12345, '2023-09-07 23:09:37.000000'),
+('4c44cc8d-bce2-4ac5-9968-11821296afb4', 'Advaned Amharic Lesson ', 'Details ', 'Intermediate', 1, 0, '0', 0, 0, 200, 'Dr Abebe', 5, 3, '2023-09-13 04:00:43.000000'),
 ('5a0398dc-8998-4409-b9a5-f1adf380f3a1', 'sdfdsfsdfsd', 'fsdffssssssssss', 'Beginner', 1, 0, '0', 0, 1, 345, 'sdfghjk', 5, 23, '2023-09-08 00:09:57.000000'),
-('9154f207-9a25-418c-9b87-34257ef565d9', 'llsdjkfjkdsljflsdkjfsdljfkld', 'klsjfdslkfjsdlkfjsdklfjdslkf', 'Advanced', 1, 0, '0', 1, 0, 12, 'ksljdflfksdjfkldsjfksdlfjdskl', 5, 13, '2023-09-07 23:22:04.000000'),
+('9154f207-9a25-418c-9b87-34257ef565d9', 'llsdjkfjkdsljflsdkjfsdljfkld', 'klsjfdslkfjsdlkfjsdklfjdslkf', 'Advanced', 1, 0, '0', 0, 0, 12, 'ksljdflfksdjfkldsjfksdlfjdskl', 5, 13, '2023-09-07 23:22:04.000000'),
 ('985af890-025f-4cdb-a425-858d48d9c49a', 'Amharic Lesson 1', 'klsjfdslkfjsdlkfjsdklfjdslkf', 'Advanced', 1, 0, '0', 0, 0, 12, 'ksljdflfksdjfkldsjfksdlfjdskl', 5, 13, '2023-09-07 23:12:52.000000'),
 ('a18537b7-7716-4db6-b21d-598d8843b258', 'sdfdsfsdfsd', 'fsdffssssssssss', 'Beginner', 1, 0, '0', 0, 1, 345, 'sdfghjk', 5, 23, '2023-09-08 00:08:00.000000'),
 ('acfd41b1-d532-4782-ad46-a008a2f48aec', 'Amharic Lesson 2', 'Lesson details section', 'Beginner', 1, 0, '0', 0, 0, 908, 'Dagim', 5, 21, '2023-09-09 12:00:06.000000'),
-('c1bdec10-d0f1-4894-8028-cd9803afb749', 'አምህሪች', 'ክድልስፍጅክ ', 'Beginner', 1, 0, '0', 0, 0, 56, 'ዳግም', 5, 123, '2023-09-12 22:12:43.000000'),
+('c1bdec10-d0f1-4894-8028-cd9803afb749', 'አምህሪች', 'ክድልስፍጅክ ', 'Beginner', 1, 0, '0', 0, 1, 56, 'ዳግም', 5, 123, '2023-09-12 22:12:43.000000'),
 ('c6bf0b68-0c74-47d6-9320-26a58757c6c6', 'llsdjkfjkdsljflsdkjfsdljfkld', 'klsjfdslkfjsdlkfjsdklfjdslkf', 'Advanced', 1, 0, '0', 0, 1, 12, 'ksljdflfksdjfkldsjfksdlfjdskl', 5, 13, '2023-09-07 23:11:44.000000'),
-('c8c3fa7c-4050-4bf8-9fb1-23ca38cd511f', 'The nation', 'Dagim\'s personal favourite', 'Advanced', 1, 0, '0', 1, 0, 50000, 'Dagim', 5, 20, '2023-09-12 21:25:34.000000'),
+('c8c3fa7c-4050-4bf8-9fb1-23ca38cd511f', 'The nation', 'Dagim\'s personal favourite', 'Advanced', 1, 0, '0', 0, 0, 50000, 'Dagim', 5, 20, '2023-09-12 21:25:34.000000'),
 ('dac3dedc-5544-44e2-b76f-6a4f67a601aa', 'llsdjkfjkdsljflsdkjfsdljfkld', 'klsjfdslkfjsdlkfjsdklfjdslkf', 'Advanced', 1, 0, '0', 0, 0, 12, 'ksljdflfksdjfkldsjfksdlfjdskl', 5, 13, '2023-09-07 23:20:22.000000'),
 ('faa2c699-971d-4394-9db9-edef4df7962c', 'sdfdsfsdfsd', 'fsdffssssssssss', 'Beginner', 1, 0, '0', 0, 0, 345, 'sdfghjk', 5, 23, '2023-09-08 00:21:23.000000');
 
@@ -189,7 +178,7 @@ CREATE TABLE `enrolled` (
 CREATE TABLE `grade` (
   `grade_id` varchar(36) NOT NULL,
   `section_id` varchar(36) NOT NULL,
-  `enrolled_id` varchar(36) NOT NULL,
+  `user_id` varchar(36) NOT NULL,
   `grade` float DEFAULT NULL,
   `completed` tinyint(1) NOT NULL DEFAULT 0,
   `link` varchar(1000) DEFAULT NULL
@@ -235,24 +224,18 @@ CREATE TABLE `section` (
   `section_type` varchar(10) NOT NULL,
   `section_content` varchar(2000) DEFAULT NULL,
   `section_value` int(100) DEFAULT NULL,
-  `course_id` varchar(36) NOT NULL
+  `course_id` varchar(36) NOT NULL,
+  `section_date_created` datetime(6) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `section`
 --
 
-INSERT INTO `section` (`section_id`, `section_title`, `section_description`, `section_type`, `section_content`, `section_value`, `course_id`) VALUES
-('2e216d3d-8132-41bd-acc3-7c4bfdc7fd1e', 'Section 1', 'sec deets', 'quiz', 'http::/localhost:3000/smth', 10, '00b109c9-ed5c-44ed-9bef-474dd97056d4'),
-('30599a3d-5916-41b5-b3b1-7a5d3b977e10', 'fhku', 'kjkli', 'quiz', 'http::/localhost:3000/smth', 67, '4c44cc8d-bce2-4ac5-9968-11821296afb4'),
-('419fe520-3377-406a-9420-a50e9bc36bb5', 'Amharic section 4', 'deets', 'assignment', '12345', 0, '19a45b62-6f39-4034-8ca1-85770e6c7193'),
-('7586418f-0fcf-4797-bc0c-db498d293c0a', 'Amharic section 6', 'some stufff', 'quiz', 'http::/localhost:3000/smth', 435, '19a45b62-6f39-4034-8ca1-85770e6c7193'),
-('81364bc0-5762-49b7-84c3-601ec6e62a62', 'Amharic section 2', 'smth here', 'quiz', '10', 0, '19a45b62-6f39-4034-8ca1-85770e6c7193'),
-('b93dbeed-b1e2-4a56-b319-4d1222ab448a', 'psy', 'chat', 'video', '', 0, '05054689-9bc3-471f-ab6f-970e8f56d05f'),
-('c08fe0fc-5ac1-4586-ba7d-46c11ef9065b', 'Nation 1', 'This is the nation', 'video', '', 0, 'c8c3fa7c-4050-4bf8-9fb1-23ca38cd511f'),
-('d282d158-b124-44c0-a301-696962e6ec7c', 'Amharic section 3', 'details', 'video', '0', 0, '19a45b62-6f39-4034-8ca1-85770e6c7193'),
-('dbab244a-d114-473a-84f5-635db9bef7ce', 'Amharic section 1', 'section goes here', 'text', '0', 0, '19a45b62-6f39-4034-8ca1-85770e6c7193'),
-('f99cd89b-2c6b-4517-a773-aa25a4593952', 'a section title', 'a section detail', 'text', '', 0, '9154f207-9a25-418c-9b87-34257ef565d9');
+INSERT INTO `section` (`section_id`, `section_title`, `section_description`, `section_type`, `section_content`, `section_value`, `course_id`, `section_date_created`) VALUES
+('5a8a006e-cc45-4cf2-a0b3-643012f42e6c', 'Amharic section 2', 'dlks', 'video', '', 0, '00b109c9-ed5c-44ed-9bef-474dd97056d4', '2023-09-15 02:38:56.000000'),
+('b649dbf9-cf4e-4140-bef7-8ed64f348fbc', 'Amharic section 1', 'deets', 'text', '', 0, '00b109c9-ed5c-44ed-9bef-474dd97056d4', '2023-09-15 02:31:55.000000'),
+('c4c7650b-80aa-4ae6-aeb3-a49378ef357d', 'Amharic section 3', 'deet', 'assignment', '', 23, '00b109c9-ed5c-44ed-9bef-474dd97056d4', '2023-09-15 02:39:42.000000');
 
 -- --------------------------------------------------------
 
@@ -368,7 +351,7 @@ ALTER TABLE `enrolled`
 --
 ALTER TABLE `grade`
   ADD PRIMARY KEY (`grade_id`),
-  ADD KEY `grade_ibfk_1` (`enrolled_id`),
+  ADD KEY `grade_ibfk_1` (`user_id`),
   ADD KEY `grade_ibfk_2` (`section_id`);
 
 --
@@ -434,8 +417,8 @@ ALTER TABLE `enrolled`
 -- Constraints for table `grade`
 --
 ALTER TABLE `grade`
-  ADD CONSTRAINT `grade_ibfk_1` FOREIGN KEY (`enrolled_id`) REFERENCES `enrolled` (`enrolled_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `grade_ibfk_2` FOREIGN KEY (`section_id`) REFERENCES `section` (`section_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `grade_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `grade_ibfk_2` FOREIGN KEY (`section_id`) REFERENCES `section` (`section_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `graduate`

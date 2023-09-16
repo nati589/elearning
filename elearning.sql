@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 16, 2023 at 11:05 AM
+-- Generation Time: Sep 16, 2023 at 11:32 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.1.32
 
@@ -178,7 +178,7 @@ CREATE TABLE `enrolled` (
 CREATE TABLE `grade` (
   `grade_id` varchar(36) NOT NULL,
   `section_id` varchar(36) NOT NULL,
-  `enrolled_id` varchar(36) NOT NULL,
+  `user_id` varchar(36) NOT NULL,
   `grade` float DEFAULT NULL,
   `completed` tinyint(1) NOT NULL DEFAULT 0,
   `link` varchar(1000) DEFAULT NULL
@@ -351,7 +351,7 @@ ALTER TABLE `enrolled`
 --
 ALTER TABLE `grade`
   ADD PRIMARY KEY (`grade_id`),
-  ADD KEY `grade_ibfk_1` (`enrolled_id`),
+  ADD KEY `grade_ibfk_1` (`user_id`),
   ADD KEY `grade_ibfk_2` (`section_id`);
 
 --
@@ -417,8 +417,8 @@ ALTER TABLE `enrolled`
 -- Constraints for table `grade`
 --
 ALTER TABLE `grade`
-  ADD CONSTRAINT `grade_ibfk_1` FOREIGN KEY (`enrolled_id`) REFERENCES `enrolled` (`enrolled_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `grade_ibfk_2` FOREIGN KEY (`section_id`) REFERENCES `section` (`section_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `grade_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `grade_ibfk_2` FOREIGN KEY (`section_id`) REFERENCES `section` (`section_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `graduate`

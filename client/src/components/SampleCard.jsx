@@ -2,22 +2,22 @@ import React from "react";
 import BookImg from "../assets/MyBookImg.png";
 
 function SampleCard() {
-  
   return (
     <div>
       {/* <!-- component --> */}
       <div class=" flex flex-col gap-4 items-center justify-center ">
         {/* <!-- Card 1 --> */}
         <a
-          href="#"
-          class="w-full border-2 border-b-4 bg-white border-medium-purple mt-3 rounded-xl hover:bg-gray-50"
-        >
-        
-
+          href="/"
+          class="w-full border-2 border-b-4 bg-white border-medium-purple mt-3 rounded-xl hover:bg-gray-50">
           <div class="grid grid-cols-6 p-5 gap-y-2">
             {/* <!-- Profile Picture --> */}
             <div>
-              <img src={BookImg} class="max-w-16 max-h-16 rounded-full" />
+              <img
+                src={BookImg}
+                alt="new pic"
+                class="max-w-16 max-h-16 rounded-full"
+              />
             </div>
 
             {/* <!-- Description --> */}

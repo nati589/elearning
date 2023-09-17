@@ -1,8 +1,9 @@
 import express from "express";
-import { enrollStudent } from "../controllers/enroll.js";
+import { enrollStudent, purchaseBook } from "../controllers/enroll.js";
 
 const router = express.Router();
 
 router.post("/enrollStudent", enrollStudent);
+router.post("/purchaseBook", purchaseBook);
 
 export default router;

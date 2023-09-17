@@ -7,7 +7,7 @@ const stripeInstance = stripe(
 );
 
 export const enrollStudent = (req, res) => {
-  console.log("Enrollment");
+  // console.log("Enrollment");
   const currentDate = new Date();
   const { user_id, course_id } = req.body;
 
@@ -24,7 +24,33 @@ export const enrollStudent = (req, res) => {
       });
     } else {
       res.status(200).json({
-        message: "You have Purchased course Successfully! Please login.",
+        message:
+          "You have Purchased Course Successfully! Go to My Courses tab to access it. Happy learning!",
+      });
+    }
+  });
+};
+
+export const purchaseBook = (req, res) => {
+  // console.log("Enrollment");
+  const currentDate = new Date();
+  const { user_id, book_id } = req.body;
+
+  const purchase_id = uuidv4();
+
+  const q =
+    "INSERT INTO purchase (purchase_id,purchase_date, user_id, book_id) VALUES (?,?,?,?)";
+
+  db.query(q, [purchase_id, currentDate, user_id, book_id], (err, data) => {
+    if (err) {
+      console.log(err);
+      res.status(500).json({
+        message: "Oops! Server connection error. Please try again.",
+      });
+    } else {
+      res.status(200).json({
+        message:
+          "You have Purchased Book Successfully! Go to My Books tab to access it. Happy reading!",
       });
     }
   });

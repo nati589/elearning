@@ -6,7 +6,7 @@ import FullStarIcon from "../assets/icons/full_star.svg";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import ResponseMessage from "./ResponseMessage";
-import PopularBookImg from "../assets/PopularBookImg.jpeg";
+import PopularBookImg from "../assets/PopularBookImg.png";
 
 function MyBooksCard({
   bookId,

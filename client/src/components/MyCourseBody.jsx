@@ -1,10 +1,10 @@
 import { React, useEffect, useState } from "react";
-import PopularCourseCard from "./PopularCourseCard";
-import PopularBookImg from "../assets/PopularBookImg.jpeg";
+import CourseRecommendationCard from "./CourseRecommendationCard";
+import PopularBookImg from "../assets/PopularBookImg.png";
 
 import MyCoursesSearch from "./MyCoursesSearch";
 import courseData from "./courseData";
-import axios from "axios"; 
+import axios from "axios";
 
 function MyCourseBody() {
   const [courses, setCourses] = useState([...courseData]);
@@ -30,7 +30,7 @@ function MyCourseBody() {
               Recommended Courses
             </h2>
             <div className="flex flex-col flex-nowrap items-center max-h-[700px] overflow-y-auto pt-5">
-              <PopularCourseCard
+              <CourseRecommendationCard
                 course_title="interaction"
                 course_details="lorem Ipsum is simply dummy text of the printing and typesetting industry. "
                 course_thumbnail={PopularBookImg}
@@ -40,7 +40,7 @@ function MyCourseBody() {
                 course_rate="4.7"
                 course_price="price"
               />
-              <PopularCourseCard
+              <CourseRecommendationCard
                 course_title="interaction"
                 course_details="lorem Ipsum is simply dummy text of the printing and typesetting industry. "
                 course_thumbnail={PopularBookImg}
@@ -50,7 +50,7 @@ function MyCourseBody() {
                 course_rate="4.7"
                 course_price="price"
               />
-              <PopularCourseCard
+              <CourseRecommendationCard
                 course_title="interaction"
                 course_details="lorem Ipsum is simply dummy text of the printing and typesetting industry. "
                 course_thumbnail={PopularBookImg}
@@ -60,7 +60,7 @@ function MyCourseBody() {
                 course_rate="4.7"
                 course_price="price"
               />
-              <PopularCourseCard
+              <CourseRecommendationCard
                 course_title="interaction"
                 course_details="lorem Ipsum is simply dummy text of the printing and typesetting industry. "
                 course_thumbnail={PopularBookImg}

@@ -37,5 +37,5 @@ router.get("/");
 router.get("/getCoursesThisWeek", getCouresThisWeek);
 router.get("/getCoursesThisMonth", getCouresThisMonth);
 router.delete("/deletedPermanentCourse/:course_id", deletePermanentCousre);
-router.get("/courses/getPopularCourse/:limit", getPopularCourse);
+router.get("/getPopularCourse", getPopularCourse);
 export default router;

@@ -1,13 +1,35 @@
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
+import { Link, Outlet, useParams } from "react-router-dom";
+import axios from "axios";
 
 const LearningPage = () => {
   const [selectedSection, setSelectedSection] = useState(null);
-
-  const sections = [
-    { id: 1, title: "Section 1", content: "Content for Section 1" },
-    { id: 2, title: "Section 2", content: "Content for Section 2" },
-    { id: 3, title: "Section 3", content: "Content for Section 3" },
-  ];
+  const { id } = useParams();
+  const [course, setCourse] = useState({});
+  const [sectionList, setSectionList] = useState([]);
+  useEffect(() => {
+    axios
+      .get(`/sections/getCourseSections/${id}`)
+      .then((res) => {
+        console.log(res.data);
+        // setCourse(res.data[0]);
+        setSectionList(res.data);
+      })
+      .catch((error) => {
+        console.log(error.response.data.message);
+        // navigate("/");
+      });
+    axios
+      .get("/courses/getSingleCourse", { params: { courseID: id } })
+      .then((res) => {
+        console.log(res.data);
+        setCourse(res.data[0]);
+      })
+      .catch((error) => {
+        console.log(error.response.data.message);
+        // navigate("/");
+      });
+  }, []);
   const [activeSection, setActiveSection] = useState(null);
 
   const toggleSection = (sectionId) => {
@@ -23,31 +45,16 @@ const LearningPage = () => {
       setSelectedSection(section);
     }
   };
-  const course = {
-    title: "Course Title",
-    details:
-      "Course Details Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    rating: 4.5,
-    students: 5000,
-    totalHours: 10,
-  };
 
   return (
     <div className="">
       {/* Sections  */}
-      <div className="flex my-4 h-screen">
-        <div className="w-3/4 p-4">
+      <div className="flex my-4">
+        <div className="w-3/4 p-4 h-screen">
           {/* Left side content */}
-          <div className="bg-gray-200 p-4">
+          <div className="bg-gray-200 p-4 h-full">
             {/* Content goes here */}
-            {sections.map((section) => (
-              <div key={section.id} className="my-4">
-                <h2 className="text-xl font-semibold">{section.title}</h2>
-                {/* {activeSection === section.id && (
-                  <p className="mt-2">{section.content}</p>
-                )} */}
-              </div>
-            ))}
+            <Outlet />
           </div>
         </div>
         <div className="w-1/4 p-4">
@@ -55,9 +62,17 @@ const LearningPage = () => {
           <div>
             <h3 className="text-lg font-semibold mb-4">Sections</h3>
             <ul>
-              {sections.map((section) => (
-                <li key={section.id} className="cursor-pointer mb-4">
-                  <div className="" onClick={() => toggleSection(section.id)}>
+              {sectionList.map((section) => (
+                <li key={section.section_id} className="cursor-pointer mb-4">
+                  <Link
+                to={`/learning/${id}/${section.section_type}/${section.section_id}`}
+                className="text-blue-500"
+              >
+
+                  <div
+                    className=""
+
+                    onClick={() => toggleSection(section.section_id)}>
                     <div class=" rounded-lg shadow-sm py-2 px-5 border border-dark-purple flex flex-col sm:flex-row justify-between items-center gap-2 sm:gap-0">
                       <div class="flex flex-col sm:flex-row justify-start items-center gap-4">
                         <div class="flex p-2 rounded-md">
@@ -74,14 +89,14 @@ const LearningPage = () => {
                         </div>
                         <div class="text-center sm:text-left">
                           <h1 class="text-dark-purple font-bold tracking-wider">
-                            {section.title}
+                            {section.section_title}
                           </h1>
                         </div>
                       </div>
                       <div>
                         <svg
                           className={`w-6 h-6 transition-transform transform ${
-                            activeSection === section.id
+                            activeSection === section.section_id
                               ? "rotate-180"
                               : "rotate-0"
                           }`}
@@ -95,11 +110,12 @@ const LearningPage = () => {
                       </div>
                     </div>
                   </div>
-                  {activeSection === section.id && (
+                  {activeSection === section.section_id && (
                     <div className="ml-4 mt-2">
-                      <p>{section.content}</p>
+                      <p>{section.section_description}</p>
                     </div>
                   )}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -108,18 +124,31 @@ const LearningPage = () => {
       </div>
       {/* Course Details  */}
       <div className="m-4 rounded-lg bg-white py-2 px-4">
-        <h1 className="text-2xl font-bold mb-2">About this Course</h1>
-        {/* Course details section */}
-        <div className="p-4 mb-4">
-          <h3 className="text-2xl font-bold mb-2">{course.title}</h3>
-          <p className="text-gray-600 mb-2">{course.details}</p>
-          <div className="flex items-center mb-2">
-            <span className="text-yellow-500 mr-1">&#9733;</span>
-            <span className="text-gray-600">{course.rating}</span>
+        {/* <h1 className="text-2xl font-bold mb-2">About this Course</h1> */}
+        <div className="p-4 mb-4 flex">
+          <div className="w-3/4">
+            <h1 className="text-2xl font-bold mb-2">{course?.course_title}</h1>
+            <p className="text-gray-600 mb-2">{course?.course_details}</p>
           </div>
-          <p className="text-gray-600 mb-2">
-            {course.students} students &bull; {course.totalHours} total hours
-          </p>
+          <div className="w-1/4">
+            <div className="flex items-center mb-2 gap-4">
+              <p className="text-gray-600 items-center">Rating</p>
+              <div>
+                <span className="text-yellow-500 mr-1">&#9733;</span>
+                <span className="text-gray-600">{course?.course_rating}</span>
+              </div>
+            </div>
+            <p className="text-gray-600 mb-2">
+              Instructor: {course?.course_instructor}
+            </p>
+
+            <p className="text-gray-600 mb-2">
+              {course?.course_students} students
+            </p>
+            <p className="text-gray-600 mb-2">
+              {course?.course_total_hour} total hours
+            </p>
+          </div>
         </div>
       </div>
     </div>

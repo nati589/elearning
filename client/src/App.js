@@ -30,6 +30,8 @@ import MyBooksPage from "./pages/MyBooksPage";
 import MyCoursesPage from "./pages/MyCoursesPage";
 import ReadingPage from "./pages/ReadingPage";
 import FaqandHelp from "./pages/FaqandHelp";
+import Success from "./components/Success";
+import Cancel from "./components/Cancel";
 
 export default function App() {
   const [renderSubscription, setRender] = useState(
@@ -86,7 +88,8 @@ export default function App() {
         <Route exact path="password-reset" element={<PasswordResetPage />} />
         <Route path="/mybooks" element={<MyBooksPage />}></Route>
         <Route path="/mycourses" element={<MyCoursesPage />}></Route>
-        <Route path="/faq-and-help" element={<FaqandHelp />} />
+        <Route path="/success" element={<Success />} />
+        <Route path="/cancel" element={<Cancel />} />
       </Routes>
 
       {renderSubscription && <Subscription />}

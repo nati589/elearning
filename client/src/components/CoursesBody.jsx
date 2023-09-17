@@ -44,7 +44,7 @@ function CoursesBody() {
             <h2 className="rounded-tl-lg rounded-tr-lg text-center bg-medium-purple px-3 py-2.5 font-semibold text-white shadow-sm  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
               Popular Courses
             </h2>
-            <div className="flex flex-col flex-nowrap  px-4 items-center max-h-[700px] overflow-y-auto pt-5">
+            <div className="flex flex-col flex-nowrap items-center max-h-[700px] overflow-y-auto pt-5">
               {popCourses.map((course, index) => (
                 <PopularCourseCard
                   key={index}

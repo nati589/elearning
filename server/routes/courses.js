@@ -12,6 +12,7 @@ import {
   getDeletedCourses,
   getUndeletedCourses,
   deletePermanentCousre,
+  getPopularCourse,
 } from "../controllers/courses.js";
 import multer from "multer";
 const upload = multer({ dest: "courses/thumbnails/" });
@@ -36,4 +37,5 @@ router.get("/");
 router.get("/getCoursesThisWeek", getCouresThisWeek);
 router.get("/getCoursesThisMonth", getCouresThisMonth);
 router.delete("/deletedPermanentCourse/:course_id", deletePermanentCousre);
+router.get("/courses/getPopularCourse/:limit", getPopularCourse);
 export default router;

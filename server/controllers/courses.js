@@ -12,6 +12,31 @@ export const getCourses = (req, res) => {
     }
   });
 };
+
+export const getPopularCourse = (req, res) => {
+  const { limit } = req.params;
+  const q = "SELECT * FROM course ORDER BY rating DESC LIMIT ?";
+  console.log("first");
+  db.query(q, [limit], (err, data) => {
+    if (err) {
+      return res.status(401).send({ message: "Connection error try again." });
+    } else {
+      res.status(200).json(data);
+    }
+  });
+};
+
+// export const getTrendingCourse = (req, res) => {
+//   const q = "SELECT * FROM course ORDER BY rating DESC LIMIT 4";
+//   db.query(q, (err, data) => {
+//     if (err) {
+//       return res.status(401).send({ message: "Connection error try again." });
+//     } else {
+//       res.status(200).json(data);
+//     }
+//   });
+// };
+
 export const getDeletedCourses = (req, res) => {
   const q = "SELECT * FROM course WHERE course_archived = '1'";
   db.query(q, (err, data) => {

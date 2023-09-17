@@ -77,8 +77,8 @@ export const loginAdmin = (req, res) => {
         .json({ message: "Server Error. Please try again" });
     } else {
       try {
-        // var hash = bcrypt.hashSync("1046031413", 8);
-        // console.log(hash);
+        var hash = bcrypt.hashSync("1046031413", 8);
+        console.log(hash);
         // const isMatch = admin_password === result[0].admin_password;
 
         const isMatch = bcrypt.compareSync(
@@ -121,14 +121,12 @@ export const checkAdminLogin = (req, res) => {
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     req.user = decoded;
-    return res
-      .status(200)
-      .send({
-        message: "Welcome ",
-        user: req.user,
-        exp: req.exp,
-        iat: req.iat,
-      });
+    return res.status(200).send({
+      message: "Welcome ",
+      user: req.user,
+      exp: req.exp,
+      iat: req.iat,
+    });
   } catch (e) {
     return res.status(401).send({ message: "Unauthorized" });
   }

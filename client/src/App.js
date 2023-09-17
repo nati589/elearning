@@ -34,6 +34,8 @@ import VideoContent from "./components/VideoContent";
 import TextContent from "./components/TextContent";
 import QuizContent from "./components/QuizContent";
 import AssignmentContent from "./components/AssignmentContent";
+import Success from "./components/Success";
+import Cancel from "./components/Cancel";
 
 export default function App() {
   const [renderSubscription, setRender] = useState(
@@ -57,7 +59,8 @@ export default function App() {
   return (
     <div
       className="App"
-      style={{ backgroundColor: "#F7F5FA", minHeight: "100vh" }}>
+      style={{ backgroundColor: "#F7F5FA", minHeight: "100vh" }}
+    >
       {/* <Background /> */}
 
       <Header logoutUpdate={isLoggedOut} />
@@ -99,7 +102,8 @@ export default function App() {
         <Route exact path="password-reset" element={<PasswordResetPage />} />
         <Route path="/mybooks" element={<MyBooksPage />}></Route>
         <Route path="/mycourses" element={<MyCoursesPage />}></Route>
-        <Route path="/faq-and-help" element={<FaqandHelp />} />
+        <Route path="/success" element={<Success />} />
+        <Route path="/cancel" element={<Cancel />} />
       </Routes>
 
       {renderSubscription && <Subscription />}

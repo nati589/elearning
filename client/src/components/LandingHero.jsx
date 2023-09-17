@@ -2,7 +2,7 @@ import React from "react";
 import heroimage from "../assets/heroimage.png";
 import backgroundImage from "../assets/hero-bg-1.png";
 
-function LandingHero({hero_title, hero_detail}) {
+function LandingHero({ hero_title, hero_detail }) {
   return (
     <div className="relative isolate over px-4 md:px-6 lg:px-8">
       <div
@@ -28,12 +28,11 @@ function LandingHero({hero_title, hero_detail}) {
             </p>
             <div className="mt-10 flex items-center gap-x-6 lg:justify-start sm:justify-center">
               <div className="mt-0 flex max-w-md gap-x-4">
-                
-                <button
+                {/* <button
                   type="submit"
                   className="button-component bg-dark-purple">
                   Sign Up
-                </button>
+                </button> */}
               </div>
             </div>
           </div>

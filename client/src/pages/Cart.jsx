@@ -10,6 +10,7 @@ function Cart() {
   const navigate = useNavigate();
   const [cartData, setCartData] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0.0);
+
   // let totalPrice = 0;
 
   useEffect(() => {
@@ -22,6 +23,28 @@ function Cart() {
         console.log(error.response.data.message);
       });
   }, []);
+  const checkout = () => {
+    fetch("http://localhost:8800/api/cart/payment", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      mode: "cors",
+      body: JSON.stringify({ user_id: "fceeca18-a0f3-4ab4-9ade-06e4d109746c" }),
+    })
+      .then((res) => {
+        if (res.ok) return res.json();
+        return res.json().then((json) => Promise.reject(json));
+      })
+      .then(({ url }) => {
+        window.location = url;
+        // alert(url);
+      })
+      .catch((e) => {
+        alert(e.error);
+        console.log(e.error);
+      });
+  };
 
   const removeItem = (cart_id, price) => {
     axios
@@ -49,7 +72,8 @@ function Cart() {
         <h1 className="text-2xl md:text-3xl">Shopping cart</h1>
         <button
           onClick={() => navigate(-1)}
-          className="bg-purple-30 gap-1 flex items-center p-1 text-sm md:text-md rounded text-medium-purple">
+          className="bg-purple-30 gap-1 flex items-center p-1 text-sm md:text-md rounded text-medium-purple"
+        >
           <BiArrowBack className="text-lg" />
           Continue shopping
         </button>
@@ -111,7 +135,10 @@ function Cart() {
                   <span className="text-medium-purple">{totalPrice} $</span>
                 </div>
                 <div>
-                  <button className="bg-medium-purple text-white p-2 rounded  w-40">
+                  <button
+                    onClick={() => checkout()}
+                    className="bg-medium-purple text-white p-2 rounded  w-40"
+                  >
                     Checkout
                   </button>
                 </div>
@@ -120,6 +147,12 @@ function Cart() {
           </>
         )}
       </>
+      <button
+        onClick={() => checkout()}
+        className="bg-medium-purple text-white p-2 rounded  w-40"
+      >
+        Checkout
+      </button>
     </div>
   );
 }

@@ -38,10 +38,13 @@ import Book from "../assets/The10XRule.pdf";
 
 const ReadingDetails = () => {
   const pdfContainerStyle = {
-    height: "100vh", // Set the maximum width for the PDF container
-    maxWidth: "800px", // Set the maximum width for the PDF container
-    margin: "0 auto", // Center the container horizontally
-    padding: "20px ", // Add some padding around the PDF
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center", // Center horizontally
+    justifyContent: "center", // Center vertically
+    height: "150vh", // Set the maximum height for the PDF container
+    margin: "40px", // Center the container horizontally
+    padding: "20px", // Add some padding around the PDF
     border: "1px solid #796BD4", // Add a border for visual separation
     boxShadow: "0px 0px 10px #796BD4", // Add a shadow
   };

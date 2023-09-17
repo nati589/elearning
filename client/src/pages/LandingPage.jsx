@@ -43,7 +43,6 @@ function LandingPage() {
         mentor_detail={webContent.mentor_detail}
       />
       {/* <Explore /> */}
-      <Subscription />
     </>
   );
 }

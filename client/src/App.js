@@ -30,6 +30,10 @@ import MyBooksPage from "./pages/MyBooksPage";
 import MyCoursesPage from "./pages/MyCoursesPage";
 import ReadingPage from "./pages/ReadingPage";
 import FaqandHelp from "./pages/FaqandHelp";
+import VideoContent from "./components/VideoContent";
+import TextContent from "./components/TextContent";
+import QuizContent from "./components/QuizContent";
+import AssignmentContent from "./components/AssignmentContent";
 
 export default function App() {
   const [renderSubscription, setRender] = useState(
@@ -53,8 +57,7 @@ export default function App() {
   return (
     <div
       className="App"
-      style={{ backgroundColor: "#F7F5FA", minHeight: "100vh" }}
-    >
+      style={{ backgroundColor: "#F7F5FA", minHeight: "100vh" }}>
       {/* <Background /> */}
 
       <Header logoutUpdate={isLoggedOut} />
@@ -70,13 +73,29 @@ export default function App() {
         <Route path="/coursedetails/:id" element={<CourseDetailsPage />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/learning/:id" element={<LearningPage />}>
-          {/* Nested route for sections */}
-          {/* <Route index element={<CourseSectionList />} />
+          <Route
+            path={`/learning/:id/text/:sectionId`}
+            element={<TextContent />}
+          />
+          <Route
+            path={`/learning/:id/video/:sectionId`}
+            element={<VideoContent />}
+          />
+          <Route
+            path={`/learning/:id/assignment/:sectionId`}
+            element={<AssignmentContent />}
+          />
+          <Route
+            path={`/learning/:id/quiz/:sectionId`}
+            element={<QuizContent />}
+          />
+        </Route>
+        {/* Nested route for sections */}
+        {/* <Route index element={<CourseSectionList />} />
           <Route
             path="/learning/section/:sectionId"
             element={<SectionContent />}
           /> */}
-        </Route>
         <Route path="/profile" element={<UserProfile />}>
           <Route exact index element={<UserProfileDashboard />} />
           <Route exact path="/profile/privacy" element={<ProfilePrivacy />} />

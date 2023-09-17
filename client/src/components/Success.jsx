@@ -11,7 +11,6 @@ const Success = () => {
   // Get the value of param1
   const param1Value = params.get("user_id");
 
-  alert(param1Value);
   useEffect(() => {
     const url = `http://localhost:8800/api/cart/payback`;
     const data = { user_id: param1Value };

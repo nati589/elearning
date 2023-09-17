@@ -126,45 +126,7 @@ export default function BooksBody() {
           Our Books
         </h4>
 
-        <nav className="flex flex-row w-full my-2 items-center justify-center">
-          <div className="px-3">
-            <NavLink
-              to="#"
-              onClick={(e) => handleFilterClick(e, "all")}
-              className={`${
-                isActive("all")
-                  ? "bg-medium-purple  text-white"
-                  : "bg-white text-gray-700"
-              } px-4 py-2 rounded-md block w-36 h-10 text-center`}>
-              All Books
-            </NavLink>
-          </div>
-          <div className="px-3">
-            <NavLink
-              to="#"
-              onClick={(e) => handleFilterClick(e, "fiction")}
-              className={`${
-                isActive("fiction")
-                  ? "bg-white text-gray-700"
-                  : "bg-medium-purple  text-white"
-              } px-4 py-2 rounded-md block w-24 h-10 text-center`}>
-              Grammar
-            </NavLink>
-          </div>
-
-          <div className="px-3">
-            <NavLink
-              to="#"
-              onClick={(e) => handleFilterClick(e, "journal")}
-              className={`${
-                isActive("journal")
-                  ? "bg-white text-gray-700"
-                  : "bg-medium-purple  text-white"
-              } px-4 py-2 rounded-md block w-24 h-10 text-center`}>
-              Idioms
-            </NavLink>
-          </div>
-        </nav>
+      
 
         <div className="flex  w-full m-2 my-3 flex-col sm:flex-row  items-start sm:justify-between">
           <BookSearch searchData={books} />

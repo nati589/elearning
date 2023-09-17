@@ -10,7 +10,7 @@ import AddBook from "pages/components-overview/AddBook";
 import EditBook from "pages/components-overview/EditBook";
 import BookList from "pages/components-overview/BookList";
 import CourseSections from "pages/components-overview/CourseSections";
-
+import withAuth from "./withAuth";
 // render - dashboard
 const DashboardDefault = Loadable(lazy(() => import("pages/dashboard")));
 
@@ -33,13 +33,15 @@ const CourseTrash = Loadable(
 const BookTrash = Loadable(
   lazy(() => import("pages/components-overview/BookTrash"))
 );
+
 const Trash = Loadable(lazy(() => import("pages/components-overview/Trash")));
-
 // ==============================|| MAIN ROUTING ||============================== //
-
+// import withAuth from "./withAuth.js";
+const Auth = withAuth(MainLayout);
+console.log(Auth);
 const MainRoutes = {
   path: "/",
-  element: <MainLayout />,
+  element: <Auth />,
   children: [
     {
       path: "/",
@@ -122,3 +124,4 @@ const MainRoutes = {
 };
 
 export default MainRoutes;
+// export default withAuth(MainRoutes);

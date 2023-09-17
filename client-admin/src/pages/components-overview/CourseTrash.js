@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { styled } from "@mui/system";
 import MUIDataTable from "mui-datatables";
-// import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
-import RestoreFromTrashIcon from "@mui/icons-material/RestoreFromTrash";
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+// import RestoreFromTrashIcon from "@mui/icons-material/RestoreFromTrash";
 // import EditIcon from "@mui/icons-material/Edit";
+import RestoreIcon from "@mui/icons-material/Restore";
 import {
   Typography,
   Box,
@@ -21,6 +22,24 @@ async function undeleteCourseById(itemId) {
 
     // Send a DELETE request to delete the item by ID
     const response = await axios.get(apiUrl);
+
+    // Check if the item was deleted successfully
+    if (response.status === 200) {
+      //   alert(`Item with ID ${itemId} deleted successfully`);
+    } else {
+      console.error("Error deleting item");
+    }
+  } catch (error) {
+    console.error("Error:", error.message);
+  }
+}
+async function deletePermanentCourseById(itemId) {
+  try {
+    // Replace the URL with your API endpoint and the desired item ID
+    const apiUrl = `http://localhost:8800/api/courses/deletedPermanentCourse/${itemId}`;
+
+    // Send a DELETE request to delete the item by ID
+    const response = await axios.delete(apiUrl);
 
     // Check if the item was deleted successfully
     if (response.status === 200) {
@@ -146,19 +165,19 @@ export default function CourseList() {
           let data = value;
           return (
             <>
-              {/* <Tooltip title="Edit">
-                <Button
-                  onClick={() => {
-                    // console.log(data);
-                    navigate(`/coursemanagement/editcourse/${data}`);
-                  }}
-                >
-                  <EditIcon />
-                </Button>
-              </Tooltip> */}
               <Tooltip title="Delete">
                 <Button
                   color="error"
+                  onClick={() => {
+                    deletePermanentCourseById(data);
+                    setState((s) => !s);
+                  }}
+                >
+                  <DeleteOutlineIcon />
+                </Button>
+              </Tooltip>
+              <Tooltip title="restore">
+                <Button
                   onClick={() => {
                     // deleteCourse(data);
 
@@ -166,7 +185,7 @@ export default function CourseList() {
                     setState((s) => !s);
                   }}
                 >
-                  <RestoreFromTrashIcon />
+                  <RestoreIcon />
                 </Button>
               </Tooltip>
             </>

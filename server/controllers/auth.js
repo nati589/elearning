@@ -55,7 +55,7 @@ export const checkLogin = (req, res) => {
   }
 
   try {
-    const decoded = jwt.verify(token, "EthLang1212");
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
     req.user = decoded;
     return res
       .status(200)
@@ -67,11 +67,7 @@ export const checkLogin = (req, res) => {
 
 /////////////////////adim Login adim so Dont Touch/////////////////////
 export const loginAdmin = (req, res) => {
-  const {
-    username: admin_username,
-    password: admin_password,
-    signed_checkbox,
-  } = req.body;
+  const { username: admin_username, password: admin_password } = req.body;
 
   const q = "SELECT * FROM admin WHERE admin_username=?";
   db.query(q, [admin_username], (err, result) => {
@@ -82,6 +78,7 @@ export const loginAdmin = (req, res) => {
     } else {
       try {
         // var hash = bcrypt.hashSync("1046031413", 8);
+        // console.log(hash);
         // const isMatch = admin_password === result[0].admin_password;
 
         const isMatch = bcrypt.compareSync(
@@ -100,11 +97,12 @@ export const loginAdmin = (req, res) => {
       }
 
       const token = jwt.sign(
-        { username: result[0].admin_username, admin_id: result[0].admin_id },
+        { username: result[0].admin_username, user_id: result[0].admin_id },
         process.env.JWT_SECRET,
         { expiresIn: "1h" }
       );
-      res.cookie("token", token, { httpOnly: true });
+
+      res.cookie("token", token, { maxAge: 3600000, httpOnly: true });
       res.status(200).json({
         message: `Login successful. Redirecting...`,
         username: result[0].admin_username,
@@ -113,6 +111,7 @@ export const loginAdmin = (req, res) => {
     }
   });
 };
+
 export const checkAdminLogin = (req, res) => {
   const token = req.cookies.token;
   if (!token) {
@@ -120,12 +119,21 @@ export const checkAdminLogin = (req, res) => {
   }
 
   try {
-    const decoded = jwt.verify(token, "EthLang1212");
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
     req.user = decoded;
     return res
       .status(200)
-      .send({ message: "Welcome", user: req.user, exp: req.exp, iat: req.iat });
+      .send({
+        message: "Welcome ",
+        user: req.user,
+        exp: req.exp,
+        iat: req.iat,
+      });
   } catch (e) {
     return res.status(401).send({ message: "Unauthorized" });
   }
+};
+export const logoutAdmin = (req, res) => {
+  res.clearCookie("token");
+  res.status(200).send({ message: "Logout successful" });
 };

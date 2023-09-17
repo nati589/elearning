@@ -68,9 +68,8 @@ const PopularCourseCard = ({
       });
   };
 
-  console.log(course_title, "in popular");
   return (
-    <div className="card bg-white border-l-8 border-l-dark-purple rounded-lg shadow-md my-2 p-2 w-96 h-80">
+    <div className="card bg-white border-l-8 border-l-dark-purple rounded-lg shadow-md my-2 p-2 w-full h-80">
       {/* <div className="card bg-white border-l-8 border-l-dark-purple rounded-lg shadow-md my-1 p-1 w-80 h-88"></div> */}
       <Link to={`/coursedetails/${courseId}`} className=" cursor-pointer">
         <h1 className="text-xl mb-4 font-bold">{course_title}</h1>

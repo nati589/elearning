@@ -55,11 +55,19 @@
 // // }
 // // export default ProgressPage;
 import React from "react";
+import PopularCourseCard from "../components/PopularCourseCard";
+import BookImage from "../../src/assets/Image.png";
+import TrendingCoursesCard from "../components/TrendingCoursesCard";
 import SampleCard from "../components/SampleCard";
+import Quiz from "../components/Quiz";
 
 function TestPage() {
   return (
-    <div>
+    <div className="flex flex-col flex-nowrap w-full h-fit px-2 py-2 bg-slate-200">
+      <h1 className=" font-bold tracking-tight text-[#0A033C] sm:text-6xl lg:text-start sm:text-center">
+        Welcome to test page
+      </h1>
+      <Quiz />
       <SampleCard />
     </div>
   );

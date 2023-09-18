@@ -106,7 +106,7 @@ function PassChangeModal({ toggle,}) {
                 logo={
                   <GoLock className="relative top-7 left-3  text-gray-500" />
                 }
-                name="user_password"
+                name="new_password"
                 placeholder="New password"
                 type="password"
                 required="required"

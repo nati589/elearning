@@ -176,24 +176,29 @@ export const changeEmail = (req, res) => {
 };
 
 export const changePassword = (req, res) => {
-  const { user_email, new_password } = req.body;
+  const { user_email, user_password } = req.body;
 
   const saltRounds = 10; 
-  bcrypt.hash(new_password, saltRounds, (hashErr, hashedPassword) => {
+  bcrypt.hash(user_password, saltRounds, (hashErr, hashedPassword) => {
     if (hashErr) {
-      return res.status(500).json({ message: 'Server Error. Please try again' });
+      return res
+        .status(500)
+        .json({ message: "Hash Server Error. Please try again" });
     }
 
     // Update the user's password in the database
-    const updatePasswordQuery = 'UPDATE user SET user_password=? WHERE user_email=?';
+    const updatePasswordQuery =
+      "UPDATE user SET user_password=? WHERE user_email=?";
     db.query(updatePasswordQuery, [hashedPassword, user_email], (updateErr) => {
       if (updateErr) {
-        return res.status(500).json({ message: 'Server Error. Please try again' });
+        return res
+          .status(500)
+          .json({ message: "Server Error. Please try again" });
       }
 
       // Return a success message
       res.status(200).json({
-        message: 'Password changed successfully.',
+        message: "Password changed successfully.",
       });
     });
   });

@@ -10,7 +10,8 @@ const SampleCard = ({ course_title, course_details, course_thumbnail }) => {
         {/* <!-- Card 1 --> */}
         <a
           href="/"
-          className="w-full border-2 border-b-4 bg-white border-medium-purple mt-3 rounded-xl hover:bg-gray-50">
+          className="w-full border-2 border-b-4 bg-white border-medium-purple mt-3 rounded-xl hover:bg-gray-50"
+        >
           <div className="grid grid-cols-6 p-5 gap-y-2">
             {/* <!-- Profile Picture --> */}
             <div>

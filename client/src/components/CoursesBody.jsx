@@ -1,7 +1,9 @@
 import { React, useEffect, useState } from "react";
 import PopularCourseCard from "./PopularCourseCard";
-import TrendingCard from "./TrendingCoursesCard";
-import BookImg from "../assets/BookImg2.png";
+import TrendingCoursesCard from "./TrendingCoursesCard";
+import TrendingCourseImg from "../assets/TrendingCourseImg.png";
+
+import PopularCourseImg from "../assets/PopularCourseImg.png";
 
 import CoursesSearch from "./CoursesSearch";
 import courseData from "./courseData";
@@ -62,7 +64,7 @@ function CoursesBody() {
                 courseId="1"
                 course_title="interaction"
                 course_details="lorem Ipsum is simply dummy text of the printing and typesetting industry. "
-                course_thumbnail={BookImg}
+                course_thumbnail={PopularCourseImg}
                 course_total_hour="3Hours"
                 course_instructor="selam"
                 course_level="level"
@@ -73,7 +75,7 @@ function CoursesBody() {
                 courseId="1"
                 course_title="interaction"
                 course_details="lorem Ipsum is simply dummy text of the printing and typesetting industry. "
-                course_thumbnail={BookImg}
+                course_thumbnail={PopularCourseImg}
                 course_total_hour="3Hours"
                 course_instructor="selam"
                 course_level="level"
@@ -84,7 +86,7 @@ function CoursesBody() {
                 courseId="1"
                 course_title="interaction"
                 course_details="lorem Ipsum is simply dummy text of the printing and typesetting industry. "
-                course_thumbnail={BookImg}
+                course_thumbnail={PopularCourseImg}
                 course_total_hour="3Hours"
                 course_instructor="selam"
                 course_level="level"
@@ -99,25 +101,25 @@ function CoursesBody() {
                 Trending Courses
               </h2>
               <div className="flex flex-col items-center flex-nowrap max-h-[700px] overflow-y-auto pt-5">
-                <TrendingCard
+                <TrendingCoursesCard
                   course_title="new course"
                   course_details="lorem Ipsum is simply dummy text of the printing and typesetting industry. "
-                  course_thumbnail={BookImg}
+                  course_thumbnail={TrendingCourseImg}
                 />
-                <TrendingCard
+                <TrendingCoursesCard
                   course_title="new course"
                   course_details="lorem Ipsum is simply dummy text of the printing and typesetting industry. "
-                  course_thumbnail={BookImg}
+                  course_thumbnail={TrendingCourseImg}
                 />
-                <TrendingCard
+                <TrendingCoursesCard
                   course_title="new course"
                   course_details="lorem Ipsum is simply dummy text of the printing and typesetting industry. "
-                  course_thumbnail={BookImg}
+                  course_thumbnail={TrendingCourseImg}
                 />
-                <TrendingCard
+                <TrendingCoursesCard
                   course_title="new course"
                   course_details="lorem Ipsum is simply dummy text of the printing and typesetting industry. "
-                  course_thumbnail={BookImg}
+                  course_thumbnail={TrendingCourseImg}
                 />
               </div>
             </div>

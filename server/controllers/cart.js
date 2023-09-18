@@ -67,9 +67,9 @@ export const checkCourse = (req, res) => {
 };
 
 export const checkBook = (req, res) => {
-  const { book_id } = req.body;
+  const { user_id, book_id } = req.body;
   const q = `SELECT * from cart WHERE book_id = ? and user_id = ? `;
-  console.log(req.body);
+  // console.log(req.body, "Checking");
 
   db.query(q, [book_id, user_id], (err, data) => {
     if (err) {
@@ -83,6 +83,7 @@ export const checkBook = (req, res) => {
     }
   });
 };
+
 ////////////////////////paycheck //////////////////////////////////
 export const payment = (req, res) => {
   const user_id = req.body.user_id;

@@ -1,7 +1,40 @@
 import React from "react";
 import TrendingBooksImg from "../assets/TrendingBooksImg.png";
 
-const TrendingBooksCard = ({ authorName, postDate, joinedDate, description, likes, comments, shares, book_thumbnail }) => {
+const TrendingBooksCard = ({
+  bookId,
+  authorName,
+  postDate,
+  joinedDate,
+  description,
+  likes,
+  comments,
+  shares,
+  book_thumbnail,
+  bookImagePath,
+}) => {
+  const images = require.context("../../../server/books/thumbnails");
+  console.log(bookImagePath, "bookImagePath");
+  let book_image;
+  // console.log(authorName,
+  //   postDate,
+  //   joinedDate,
+  //   description,
+  //   likes,
+  //   comments,
+  //   shares,
+  //   book_thumbnail,
+  //   bookImagePath)
+  try {
+    if (bookImagePath !== null) {
+      // console.log("is not null")
+      book_image = images(`./${bookImagePath}`);
+    } else {
+      book_image = images("./default_book_image.png");
+    }
+  } catch (error) {
+    book_image = images("./default_book_image.png");
+  }
   return (
     <div>
       <div className="flex bg-white border-medium-purple shadow-lg rounded-lg mx-4 md:mx-auto my-2 max-w-md md:max-w-2xl">

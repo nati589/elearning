@@ -1,8 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import BookImg from "../assets/BookImg.png";
-// import BookImg from "../../src/assets/BookImg.png";
+import ResponseMessage from "./ResponseMessage";
 
-const SampleCard = ({ course_title, instructor, time, rating, price, course_thumbnail }) => {  return (
+const SampleCard = ({
+  course_title,
+  instructor,
+  time,
+  rating,
+  price,
+  course_thumbnail,
+}) => {
+  const [failure, setFailure] = useState(false);
+  const [addSuccess, setAddSuccess] = useState(false);
+  const [resMsg, setResMsg] = useState("");
+  return (
     <div>
       {/* <!-- component --> */}
       <div className=" flex flex-col gap-4 items-center justify-center ">
@@ -39,10 +50,22 @@ const SampleCard = ({ course_title, instructor, time, rating, price, course_thum
               </div>
             </div>
           </div>
+
           <div className="flex col-start-2 ml-4 md:col-start-auto md:ml-0 md:justify-center mb-2">
-            <p className="rounded-lg text-dark-purple font-bold bg-light-purple  py-1 px-3 text-sm w-fit h-fit">
-              Add to Cart
-            </p>
+            {addSuccess && (
+              <ResponseMessage failure={failure} message={resMsg} />
+            )}
+
+            {(!addSuccess || failure) &&
+              localStorage.getItem("username") &&
+              localStorage.getItem("user_id") && (
+                <button
+                  className="rounded-lg text-dark-purple font-bold bg-light-purple  py-1 px-3 text-sm w-fit h-fit"
+                  onClick={addToCart}
+                >
+                  Add to Cart
+                </button>
+              )}
           </div>
         </a>
       </div>

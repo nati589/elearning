@@ -47,7 +47,6 @@ function BooksCard({
   }, [bookId]);
 
   const addToCart = () => {
-    console.log(bookId, "cart book id");
     axios
       .post("/cart/addToCart", {
         book_id: bookId,

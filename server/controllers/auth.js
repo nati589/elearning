@@ -55,7 +55,7 @@ export const checkLogin = (req, res) => {
   }
 
   try {
-    const decoded = jwt.verify(token, "EthLang1212");
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
     req.user = decoded;
     return res
       .status(200)
@@ -67,11 +67,7 @@ export const checkLogin = (req, res) => {
 
 /////////////////////adim Login adim so Dont Touch/////////////////////
 export const loginAdmin = (req, res) => {
-  const {
-    username: admin_username,
-    password: admin_password,
-    signed_checkbox,
-  } = req.body;
+  const { username: admin_username, password: admin_password } = req.body;
 
   const q = "SELECT * FROM admin WHERE admin_username=?";
   db.query(q, [admin_username], (err, result) => {
@@ -81,8 +77,8 @@ export const loginAdmin = (req, res) => {
         .json({ message: "Server Error. Please try again" });
     } else {
       try {
-        // var hash = bcrypt.hashSync("1046031413", 8);
-        // console.log(hash);
+        var hash = bcrypt.hashSync("1046031413", 8);
+        console.log(hash);
         // const isMatch = admin_password === result[0].admin_password;
 
         const isMatch = bcrypt.compareSync(
@@ -106,12 +102,6 @@ export const loginAdmin = (req, res) => {
         { expiresIn: "1h" }
       );
 
-      // res.cookie("dodo", token.toString(), {
-      //   maxAge: 3600000,
-      //   httpOnly: true,
-      // });
-
-      // res.cookie("Ahmed", "Ahmed");
       res.cookie("token", token, { maxAge: 3600000, httpOnly: true });
       res.status(200).json({
         message: `Login successful. Redirecting...`,
@@ -129,11 +119,14 @@ export const checkAdminLogin = (req, res) => {
   }
 
   try {
-    const decoded = jwt.verify(token, "EthLang1212");
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
     req.user = decoded;
-    return res
-      .status(200)
-      .send({ message: "Welcome", user: req.user, exp: req.exp, iat: req.iat });
+    return res.status(200).send({
+      message: "Welcome ",
+      user: req.user,
+      exp: req.exp,
+      iat: req.iat,
+    });
   } catch (e) {
     return res.status(401).send({ message: "Unauthorized" });
   }

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { BiSearch } from "react-icons/bi";
-import MyBooksCard from "./MyBooksCard";
+import BooksCard from "./BooksCard";
 
 const BookSearch = ({ searchData }) => {
   // const suggestions = searchData;
@@ -53,7 +53,7 @@ const BookSearch = ({ searchData }) => {
     return (
       <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-6 gap-x-8 my-8 px-5">
         {booksToRender.map((book, index) => (
-          <MyBooksCard
+          <BooksCard
             key={index}
             bookId={book.book_id}
             book_name={book.book_title}

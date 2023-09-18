@@ -1,10 +1,11 @@
 import { React, useEffect, useState } from "react";
 import PopularBooksCard from "./PopularBooksCard";
-import PopularBookImg from "../assets/PopularBookImg.jpeg";
+import PopularBookImg from "../assets/PopularBookImg.png";
 
 import MyBooksSearch from "./MyBookSearch";
 import bookData from "./booksData";
 import axios from "axios";
+import BookRecommendationCard from "./BookRecommendationCard";
 
 function MyBooksBody() {
   const [books, setBooks] = useState([...bookData]);
@@ -24,13 +25,13 @@ function MyBooksBody() {
   return (
     <div className="flex flex-col md:flex-row flex-nowrap w-full">
       <div className="w-full md:w-4/12 text-xs md:text-sm px-8 md:px-2 pt-2 my-4 flex flex-col justify-start items-center">
-        <div className="flex flex-col flex-nowrap w-full">
+        <div className="flex flex-col flex-nowrap">
           <div className="my-2 shadow-md">
             <h2 className="rounded-tl-lg rounded-tr-lg text-center bg-[#796bd4] px-3.5 py-2.5 font-semibold text-white shadow-sm  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
               Recommended books
             </h2>
             <div className="flex flex-col flex-nowrap items-center max-h-[700px] overflow-y-auto pt-5">
-              <PopularBooksCard
+              <BookRecommendationCard
                 book_title="interaction"
                 book_details="lorem Ipsum is simply dummy text of the printing and typesetting industry. "
                 book_thumbnail={PopularBookImg}
@@ -40,7 +41,7 @@ function MyBooksBody() {
                 book_rate="4.7"
                 book_price="price"
               />
-              <PopularBooksCard
+              <BookRecommendationCard
                 book_title="interaction"
                 book_details="lorem Ipsum is simply dummy text of the printing and typesetting industry. "
                 book_thumbnail={PopularBookImg}
@@ -50,7 +51,7 @@ function MyBooksBody() {
                 book_rate="4.7"
                 book_price="price"
               />
-              <PopularBooksCard
+              <BookRecommendationCard
                 book_title="interaction"
                 book_details="lorem Ipsum is simply dummy text of the printing and typesetting industry. "
                 book_thumbnail={PopularBookImg}
@@ -60,7 +61,7 @@ function MyBooksBody() {
                 book_rate="4.7"
                 book_price="price"
               />
-              <PopularBooksCard
+              <BookRecommendationCard
                 book_title="interaction"
                 book_details="lorem Ipsum is simply dummy text of the printing and typesetting industry. "
                 book_thumbnail={PopularBookImg}

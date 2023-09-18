@@ -40,7 +40,14 @@ export default function AddSection({ handleAddSection, fetchSections, id }) {
     }),
     section_file: Yup.mixed().when("section_type", {
       is: (value) => ["video", "assignment", "text"].includes(value),
-      then: Yup.mixed().required("Section File is required"),
+      then: Yup.mixed().test("fileType", "Invalid file type", function (value) {
+        if (["video"].includes(this.parent.section_type)) {
+          return value && value.type.startsWith("video/");
+        } else if (["assignment", "text"].includes(this.parent.section_type)) {
+          return value && value.type === "application/pdf";
+        }
+        return true;
+      }).required("Section File is required"),
       otherwise: Yup.mixed(),
     }),
   });

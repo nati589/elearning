@@ -79,8 +79,8 @@ export default function CourseSections() {
         {addSection && <AddSection fetchSections={() => fetchSections(id)} id={id} handleAddSection={handleAddSection} />}
       </Box>
       <Box sx={{ display: "flex", justifyContent: "flex-end", mt: 4 }}>
-        <Button variant="outlined" sx={{ mr: 2}} onClick={() => navigate('../')}>Cancel</Button>
-        <Button variant="contained">Save</Button>
+        {/* <Button variant="outlined" sx={{ mr: 2}} >Cancel</Button> */}
+        <Button variant="contained" onClick={() => navigate('../')}>Save</Button>
       </Box>
     </Box>
   );

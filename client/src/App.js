@@ -30,6 +30,12 @@ import MyBooksPage from "./pages/MyBooksPage";
 import MyCoursesPage from "./pages/MyCoursesPage";
 import ReadingPage from "./pages/ReadingPage";
 import FaqandHelp from "./pages/FaqandHelp";
+import VideoContent from "./components/VideoContent";
+import TextContent from "./components/TextContent";
+import QuizContent from "./components/QuizContent";
+import AssignmentContent from "./components/AssignmentContent";
+import Success from "./components/Success";
+import Cancel from "./components/Cancel";
 
 export default function App() {
   const [renderSubscription, setRender] = useState(
@@ -70,12 +76,22 @@ export default function App() {
         <Route path="/coursedetails/:id" element={<CourseDetailsPage />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/learning/:id" element={<LearningPage />}>
-          {/* Nested route for sections */}
-          {/* <Route index element={<CourseSectionList />} />
           <Route
-            path="/learning/section/:sectionId"
-            element={<SectionContent />}
-          /> */}
+            path={`/learning/:id/text/:sectionId`}
+            element={<TextContent />}
+          />
+          <Route
+            path={`/learning/:id/video/:sectionId`}
+            element={<VideoContent />}
+          />
+          <Route
+            path={`/learning/:id/assignment/:sectionId`}
+            element={<AssignmentContent />}
+          />
+          <Route
+            path={`/learning/:id/quiz/:sectionId`}
+            element={<QuizContent />}
+          />
         </Route>
         <Route path="/profile" element={<UserProfile />}>
           <Route exact index element={<UserProfileDashboard />} />
@@ -86,7 +102,8 @@ export default function App() {
         <Route exact path="password-reset" element={<PasswordResetPage />} />
         <Route path="/mybooks" element={<MyBooksPage />}></Route>
         <Route path="/mycourses" element={<MyCoursesPage />}></Route>
-        <Route path="/faq-and-help" element={<FaqandHelp />} />
+        <Route path="/success" element={<Success />} />
+        <Route path="/cancel" element={<Cancel />} />
       </Routes>
 
       {renderSubscription && <Subscription />}

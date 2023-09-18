@@ -36,7 +36,18 @@ export default function SectionCard({ section, fetchSections }) {
       then: Yup.string().required("Section Content is required"),
       otherwise: Yup.string(),
     }),
-    section_file: Yup.mixed(),
+    section_file: Yup.mixed().when("section_type", {
+      is: (value) => ["video", "assignment", "text"].includes(value),
+      then: Yup.mixed().test("fileType", "Invalid file type", function (value) {
+        if (["video"].includes(this.parent.section_type)) {
+          return value && value.type.startsWith("video/");
+        } else if (["assignment", "text"].includes(this.parent.section_type)) {
+          return value && value.type === "application/pdf";
+        }
+        return true;
+      }),
+      otherwise: Yup.mixed(),
+    }),
     // .when("section_type", {
     //   is: (value) => ["video", "assignment", "text"].includes(value),
     //   then: Yup.mixed().required("Section File is required"),

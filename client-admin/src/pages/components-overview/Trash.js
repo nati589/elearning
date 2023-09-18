@@ -13,8 +13,10 @@ import { useState } from "react";
 
 function Trash() {
   // return <CourseTrash />;
+
   const navigate = useNavigate();
   const [selected, setSelected] = useState(true);
+
   return (
     <div>
       <Box sx={{ ml: 2 }}>
@@ -48,6 +50,14 @@ function Trash() {
       </Box>
       {/* <CourseTrash /> */}
       {/* <BookTrash /> */}
+      <Button
+        variant="outlined"
+        onClick={() => {
+          // alert("hhg");
+        }}
+      >
+        hhhhhh
+      </Button>
       <Outlet />
     </div>
   );

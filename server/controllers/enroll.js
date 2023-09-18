@@ -5,81 +5,124 @@ import crypto from "crypto";
 const stripeInstance = stripe(
   "sk_test_51Nib8YIUKd3ZrP09eVVwoquDdZ1ALDpLpfRKUb74w5GAISHzLoX7qep4jHRpSpC4hWvuHDoMsa1xMRb8w4rBVfvu00a516DB0L"
 );
-export const getCart = (req, res) => {
+
+export const enrollStudent = (req, res) => {
+  // console.log("Enrollment");
+  const currentDate = new Date();
+  const { user_id, course_id } = req.body;
+
+  const enrolled_id = uuidv4();
+
+  const q =
+    "INSERT INTO enrolled (enrolled_id,enrolled_date, user_id, course_id) VALUES (?,?,?,?)";
+
+  db.query(q, [enrolled_id, currentDate, user_id, course_id], (err, data) => {
+    if (err) {
+      console.log(err);
+      res.status(500).json({
+        message: "Oops! Server connection error. Please try again.",
+      });
+    } else {
+      res.status(200).json({
+        message:
+          "You have Purchased Course Successfully! Go to My Courses tab to access it. Happy learning!",
+      });
+    }
+  });
+};
+
+export const purchaseBook = (req, res) => {
+  // console.log("Enrollment");
+  const currentDate = new Date();
+  const { user_id, book_id } = req.body;
+
+  const purchase_id = uuidv4();
+
+  const q =
+    "INSERT INTO purchase (purchase_id,purchase_date, user_id, book_id) VALUES (?,?,?,?)";
+
+  db.query(q, [purchase_id, currentDate, user_id, book_id], (err, data) => {
+    if (err) {
+      console.log(err);
+      res.status(500).json({
+        message: "Oops! Server connection error. Please try again.",
+      });
+    } else {
+      res.status(200).json({
+        message:
+          "You have Purchased Book Successfully! Go to My Books tab to access it. Happy reading!",
+      });
+    }
+  });
+};
+
+export const fullCheckout = async (req, res) => {
   const { user_id } = req.body;
+  const currentDate = new Date();
   const q = "SELECT * FROM cart WHERE user_id = ?";
 
   db.query(q, [user_id], (err, data) => {
     if (err) {
-      return res.status(401).send({ message: "Connection error. Try again!" });
-    } else {
-      return res.status(200).json(data);
-    }
-  });
-};
-
-export const deleteFromCart = (req, res) => {
-  const { cart_id } = req.body;
-
-  const q = "DELETE FROM cart WHERE cart_id = ?";
-
-  db.query(q, [cart_id], (err, data) => {
-    if (err) {
-      return res.status(401).send({ message: "Failed to remove. Try again!" });
-    } else {
-      return res.status(200).json(data);
-    }
-  });
-};
-
-export const addToCart = (req, res) => {
-  const { course_id, user_id, book_id } = req.body;
-  const cart_id = uuidv4();
-  const q = `INSERT INTO cart (cart_id, course_id, user_id, book_id ) VALUES (?,?,?,?)`;
-
-  db.query(q, [cart_id, course_id, user_id, book_id], (err, data) => {
-    if (err) {
-      // console.log(err, "error");
       return res
         .status(401)
-        .send({ message: "Error adding to cart. Try again!" });
+        .send({ message: "Error checking out ! Please try again." });
     } else {
-      // console.log(data, "data");
-      return res.status(200).send({ message: "Added to cart!" });
-    }
-  });
-};
+      const cartData = data;
 
-export const checkCourse = (req, res) => {
-  const { course_id, user_id } = req.body;
-  const q = `SELECT * from cart WHERE course_id = ? AND user_id = ? `;
-  db.query(q, [course_id, user_id], (err, data) => {
-    if (err) {
-      return res.status(401).send({ message: "Error Checking in Cart!" });
-    } else {
-      if (data.length === 0) {
-        return res.status(200).send({ message: false });
-      } else {
-        return res.status(200).send({ message: true });
-      }
-    }
-  });
-};
+      cartData.map((cartItem) => {
+        if (cartItem.book_id === null) {
+          const enrolled_id = uuidv4();
 
-export const checkBook = (req, res) => {
-  const { user_id, book_id } = req.body;
-  const q = `SELECT * from cart WHERE book_id = ? and user_id = ? `;
-  // console.log(req.body, "Checking");
+          const q2 =
+            "INSERT INTO enrolled (enrolled_id,enrolled_date, user_id, course_id) VALUES (?,?,?,?)";
 
-  db.query(q, [book_id, user_id], (err, data) => {
-    if (err) {
-      return res.status(401).send({ message: "Error Checking in Cart!" });
-    } else {
-      if (data.length === 0) {
-        return res.status(200).send({ message: false });
-      } else {
-        return res.status(200).send({ message: true });
-      }
+          db.query(
+            q2,
+            [enrolled_id, currentDate, user_id, cartItem.course_id],
+            (err, data) => {
+              if (err) {
+                console.log(err);
+                res.status(500).json({
+                  message: "Error checking out course! Please try again.",
+                });
+              }
+            }
+          );
+        } else if (cartItem.course_id === null) {
+          const purchase_id = uuidv4();
+          const q3 =
+            "INSERT INTO purchase (purchase_id,purchase_date, user_id, book_id) VALUES (?,?,?,?)";
+
+          db.query(
+            q3,
+            [purchase_id, currentDate, user_id, cartItem.book_id],
+            (err, data) => {
+              if (err) {
+                console.log(err);
+                res.status(500).json({
+                  message: "Error checking out book! Please try again.",
+                });
+              }
+            }
+          );
+        }
+        const q4 = "DELETE FROM cart WHERE cart_id = ?";
+
+        db.query(q4, [cartItem.cart_id], (err, data) => {
+          if (err) {
+            return res
+              .status(401)
+              .send({
+                message: "Error! Failed to remove from cart. Try again.",
+              });
+          }
+        });
+      });
+
+      return res.status(200).send({
+        message:
+          "Checkout Complete! you can acess your courses and books in the My courses and My books tabs.",
+      });
     }
   });
 };

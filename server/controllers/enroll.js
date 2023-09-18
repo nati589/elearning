@@ -55,6 +55,78 @@ export const purchaseBook = (req, res) => {
     }
   });
 };
+
+export const fullCheckout = async (req, res) => {
+  const { user_id } = req.body;
+  const currentDate = new Date();
+  const q = "SELECT * FROM cart WHERE user_id = ?";
+
+  db.query(q, [user_id], (err, data) => {
+    if (err) {
+      return res
+        .status(401)
+        .send({ message: "Error checking out ! Please try again." });
+    } else {
+      const cartData = data;
+
+      cartData.map((cartItem) => {
+        if (cartItem.book_id === null) {
+          const enrolled_id = uuidv4();
+
+          const q2 =
+            "INSERT INTO enrolled (enrolled_id,enrolled_date, user_id, course_id) VALUES (?,?,?,?)";
+
+          db.query(
+            q2,
+            [enrolled_id, currentDate, user_id, cartItem.course_id],
+            (err, data) => {
+              if (err) {
+                console.log(err);
+                res.status(500).json({
+                  message: "Error checking out course! Please try again.",
+                });
+              }
+            }
+          );
+        } else if (cartItem.course_id === null) {
+          const purchase_id = uuidv4();
+          const q3 =
+            "INSERT INTO purchase (purchase_id,purchase_date, user_id, book_id) VALUES (?,?,?,?)";
+
+          db.query(
+            q3,
+            [purchase_id, currentDate, user_id, cartItem.book_id],
+            (err, data) => {
+              if (err) {
+                console.log(err);
+                res.status(500).json({
+                  message: "Error checking out book! Please try again.",
+                });
+              }
+            }
+          );
+        }
+        const q4 = "DELETE FROM cart WHERE cart_id = ?";
+
+        db.query(q4, [cartItem.cart_id], (err, data) => {
+          if (err) {
+            return res
+              .status(401)
+              .send({
+                message: "Error! Failed to remove from cart. Try again.",
+              });
+          }
+        });
+      });
+
+      return res.status(200).send({
+        message:
+          "Checkout Complete! you can acess your courses and books in the My courses and My books tabs.",
+      });
+    }
+  });
+};
+
 ////////////////////////paycheck //////////////////////////////////
 export const payment = (req, res) => {
   const user_id = req.body.user_id;

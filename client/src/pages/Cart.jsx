@@ -5,11 +5,15 @@ import { useCallback, useEffect, useState } from "react";
 import CartImg from "../assets/empty_cart.svg";
 import axios from "axios";
 import CartItemBook from "../components/CartItemBook";
+import ResponseMessage from "../components/ResponseMessage";
 
 function Cart() {
   const navigate = useNavigate();
   const [cartData, setCartData] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0.0);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [failure, setFailure] = useState(false);
+  const [response_msg, setMsg] = useState("");
 
   // let totalPrice = 0;
 
@@ -66,9 +70,39 @@ function Cart() {
     setTotalPrice((prevTotal) => prevTotal + parsedNumber);
   }, []);
 
+  const fullCheckout = () => {
+    axios
+      .post("/enroll/fullCheckout", {
+        user_id: localStorage.getItem("user_id"),
+      })
+      .then((response) => {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+        setSubmitSuccess(true);
+        setFailure(false);
+        setMsg(response.data.message);
+        setTimeout(() => {
+          setSubmitSuccess(false);
+          setCartData([]);
+        }, 3000);
+      })
+      .catch((error) => {
+        setSubmitSuccess(true);
+        setFailure(true);
+        setMsg(error.response.data.message);
+        setTimeout(() => {
+          setSubmitSuccess(false);
+        }, 4000);
+      });
+  };
+
   return (
     <div className="w-full flex flex-col flex-nowrap pt-10 pb-2 lg:px-auto  px-6 md:px-28 text-xs">
-      <div className="w-full flex flex-row justify-between items-center px-4">
+      <div
+        id="top"
+        className="w-full flex flex-row justify-between items-center px-4">
         <h1 className="text-xl md:text-3xl">Shopping cart</h1>
         <button
           onClick={() => navigate(-1)}
@@ -77,6 +111,9 @@ function Cart() {
           Continue shopping
         </button>
       </div>
+      {submitSuccess && (
+        <ResponseMessage message={response_msg} failure={failure} />
+      )}
       <div className="w-full px-4">
         {cartData.length === 0 ? (
           <div className="w-full flex flex-col flex-nowrap text-center text-3xl font-light mt-12 ">
@@ -137,7 +174,10 @@ function Cart() {
                 </div>
                 <div>
                   <button
-                    onClick={() => checkout()}
+                    onClick={() => {
+                      // checkout();
+                      fullCheckout();
+                    }}
                     className="bg-medium-purple text-white p-2 rounded md:text-xl w-40">
                     Checkout
                   </button>

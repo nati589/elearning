@@ -40,9 +40,9 @@ export default function SectionCard({ section, fetchSections }) {
       is: (value) => ["video", "assignment", "text"].includes(value),
       then: Yup.mixed().test("fileType", "Invalid file type", function (value) {
         if (["video"].includes(this.parent.section_type)) {
-          return value && value.type.startsWith("video/");
+          return !value || (value && value.type.startsWith("video/"));
         } else if (["assignment", "text"].includes(this.parent.section_type)) {
-          return value && value.type === "application/pdf";
+          return !value || (value && value.type === "application/pdf");
         }
         return true;
       }),
@@ -281,7 +281,7 @@ export default function SectionCard({ section, fetchSections }) {
                   }
                 />
                 {formik.touched.section_file && formik.errors.section_file && (
-                  <div>{formik.errors.section_file}</div>
+                  <Typography color='error'>{formik.errors.section_file}</Typography>
                 )}
               </Box>
             )}

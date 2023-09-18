@@ -8,6 +8,7 @@ import {
   LoadingOutlined,
   SnippetsOutlined,
   BookOutlined,
+  UserOutlined,
 } from "@ant-design/icons";
 
 // icons
@@ -20,6 +21,7 @@ const icons = {
   AppstoreAddOutlined,
   SnippetsOutlined,
   BookOutlined,
+  UserOutlined,
 };
 
 // ==============================|| MENU ITEMS - UTILITIES ||============================== //
@@ -30,26 +32,35 @@ const management = {
   type: "group",
   children: [
     {
-      id: "util-typography",
+      id: "course",
       title: "Course Management",
       type: "item",
       url: "/coursemanagement",
       icon: icons.SnippetsOutlined,
     },
     {
-      id: "util-color",
-      title: "Web Content Management",
-      type: "item",
-      url: "/webcontent",
-      icon: icons.BgColorsOutlined,
-    },
-    {
-      id: "util-book",
+      id: "book",
       title: "Book Management",
       type: "item",
       url: "/bookmanagement",
       icon: icons.BookOutlined,
     },
+    {
+      id: "user",
+      title: "User Management",
+      type: "item",
+      url: "/user",
+      icon: icons.UserOutlined,
+    },
+
+    {
+      id: "web",
+      title: "Web Content Management",
+      type: "item",
+      url: "/webcontent",
+      icon: icons.BgColorsOutlined,
+    },
+
     {
       id: "trash",
       title: "Trash",

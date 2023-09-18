@@ -182,6 +182,8 @@ export default function CourseList() {
       name: "Students",
       options: {
         display: true,
+        filter: false,
+
       },
     },
     {

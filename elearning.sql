@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 18, 2023 at 02:56 PM
+-- Generation Time: Sep 18, 2023 at 03:19 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -244,10 +244,8 @@ CREATE TABLE `purchase` (
 --
 
 INSERT INTO `purchase` (`purchase_id`, `user_id`, `book_id`, `purchase_token`, `purchase_date`) VALUES
-('a814e90b-03f0-4096-92b8-fac98f71a5b7', 'c09c4b57-65e5-4e58-8b6c-743c18f57589', '0cb1d33d-78cc-4fef-8a27-3d181573e6f3', '', '2023-09-18 03:11:54.129000'),
-('4c5f8a36-5e70-44a8-908b-3d09ad5ad6dc', 'c09c4b57-65e5-4e58-8b6c-743c18f57589', '0cb1d33d-78cc-4fef-8a27-3d181573e6f3', '', '2023-09-18 03:15:58.256000'),
 ('3f97a3e1-141a-4e32-81ce-eda710a9ee16', 'c09c4b57-65e5-4e58-8b6c-743c18f57589', '200f7364-70c8-40c7-a9fe-347e8172316d', '', '2023-09-18 03:15:58.256000'),
-('8f029227-7ee2-4789-add7-4f578e585830', 'c09c4b57-65e5-4e58-8b6c-743c18f57589', 'd8469824-120d-4222-a4a1-38afa68ea279', '', '2023-09-18 03:15:58.256000');
+('a814e90b-03f0-4096-92b8-fac98f71a5b7', 'c09c4b57-65e5-4e58-8b6c-743c18f57589', '0cb1d33d-78cc-4fef-8a27-3d181573e6f3', '', '2023-09-18 03:11:54.129000');
 
 -- --------------------------------------------------------
 
@@ -405,6 +403,7 @@ ALTER TABLE `graduate`
 -- Indexes for table `purchase`
 --
 ALTER TABLE `purchase`
+  ADD PRIMARY KEY (`purchase_id`),
   ADD KEY `user_id` (`user_id`),
   ADD KEY `book_id` (`book_id`);
 

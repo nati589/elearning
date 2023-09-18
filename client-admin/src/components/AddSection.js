@@ -204,7 +204,9 @@ export default function AddSection({ handleAddSection, fetchSections, id }) {
               }
             />
             {formik.touched.section_file && formik.errors.section_file && (
-              <div>{formik.errors.section_file}</div>
+              // <div>{formik.errors.section_file}</div>
+              <Typography color='error'>{formik.errors.section_file}</Typography>
+
             )}
           </Box>
         )}

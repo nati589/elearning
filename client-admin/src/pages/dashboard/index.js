@@ -123,7 +123,7 @@ const DashboardDefault = () => {
       )
       .catch((error) => {
         // Handle errors
-        console.error("Error:", error);
+        // console.error("Error:", error);
       });
   }, []);
 
@@ -152,7 +152,7 @@ const DashboardDefault = () => {
       )
       .catch((error) => {
         // Handle errors
-        console.error("Error:", error);
+        // console.error("Error:", error);
       });
   }, []);
   const [weekStat, setWeekStat] = useState([0, 32, 0, 0, 0, 0, 0]);
@@ -183,7 +183,7 @@ const DashboardDefault = () => {
       )
       .catch((error) => {
         // Handle errors
-        console.error("Error:", error);
+        // console.error("Error:", error);
       });
   }, []);
 

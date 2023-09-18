@@ -66,7 +66,7 @@ export default function EditCourse() {
       formData.append("course_instructor", values.course_instructor);
       formData.append("course_total_hour", parseInt(values.course_total_hour));
       formData.append("course_thumbnail", values.course_thumbnail);
-      console.log(formData);
+      // console.log(formData);
 
       axios
         .put(`/courses/updateCourse/${id}`, formData, {
@@ -75,12 +75,12 @@ export default function EditCourse() {
           },
         })
         .then((response) => {
-          console.log(response.data);
+          // console.log(response.data);
           // setSubmitting(false);
           navigate("../");
         })
         .catch((error) => {
-          console.error(error);
+          // console.error(error);
           // setSubmitting(false);
         });
     },
@@ -114,7 +114,7 @@ export default function EditCourse() {
         isMounted && formik.setValues(mappedInitialValues);
       })
       .catch((error) => {
-        console.error(error);
+        // console.error(error);
       });
     return () => {
       isMounted = false;

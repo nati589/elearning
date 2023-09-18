@@ -12,7 +12,7 @@ function MyBooksBody() {
 
   useEffect(() => {
     axios
-      .get("books/getBooks")
+      .get("/books/getPurchasedBooks")
       .then((res) => {
         setBooks([...res.data]);
       })

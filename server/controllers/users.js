@@ -141,29 +141,11 @@ export const updateUser = (req, res) => {
 };
 
 export const deleteUser = (req, res) => {
-  const q = " DELETE FROM team WHERE User_id=?";
-  db.query(q, [req.body.User_id], (err, data) => {
+  const q = " DELETE FROM user WHERE user_id=?";
+  db.query(q, req.params.id, (err, data) => {
     if (err) {
-      console.log(err);
-      res.status(500).json({
-        error:
-          "Failed to delete User information in database. Please try again.",
-      });
+      res.json(err);
     } else {
-      if (req.body.old_image !== null) {
-        const filename = req.body.old_image;
-        const directoryPath = "../../client/src/images/profiles/";
-        const filePath = path.join(__dirname, directoryPath, filename);
-
-        unlink(filePath)
-          .then(() => {
-            console.log("File deleted successfully");
-          })
-          .catch((err) => {
-            console.error(err);
-          });
-      }
-
       res.json(data);
     }
   });

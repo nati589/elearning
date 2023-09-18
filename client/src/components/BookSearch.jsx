@@ -58,7 +58,7 @@ const BookSearch = ({ searchData }) => {
             bookId={book.book_id}
             book_name={book.book_title}
             book_description={book.book_details}
-            bookImagePath="./Image.png"
+            bookImagePath={book.book_thumbnail}
             authorName={book.book_author}
             rating={book.book_rating}
             price={book.book_price}

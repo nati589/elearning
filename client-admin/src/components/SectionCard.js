@@ -40,9 +40,9 @@ export default function SectionCard({ section, fetchSections }) {
       is: (value) => ["video", "assignment", "text"].includes(value),
       then: Yup.mixed().test("fileType", "Invalid file type", function (value) {
         if (["video"].includes(this.parent.section_type)) {
-          return value && value.type.startsWith("video/");
+          return !value || (value && value.type.startsWith("video/"));
         } else if (["assignment", "text"].includes(this.parent.section_type)) {
-          return value && value.type === "application/pdf";
+          return !value || (value && value.type === "application/pdf");
         }
         return true;
       }),
@@ -76,13 +76,13 @@ export default function SectionCard({ section, fetchSections }) {
           },
         })
         .then((response) => {
-          console.log(response.data);
+          // console.log(response.data);
           setEdit(false);
           fetchSections();
           // setSubmitting(false);
         })
         .catch((error) => {
-          console.error(error);
+          // console.error(error);
           // setSubmitting(false);
         });
     },
@@ -103,11 +103,11 @@ export default function SectionCard({ section, fetchSections }) {
     }
   };
   const deleteSection = (data) => {
-    console.log(data);
+    // console.log(data);
     axios
       .delete("/sections/deleteSection", { data: { id: data, course_id: section.course_id } })
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         fetchSections();
         // axios
         // .get("/courses/getCourses")
@@ -131,7 +131,7 @@ export default function SectionCard({ section, fetchSections }) {
         // });
       })
       .catch((err) => {
-        console.error(err);
+        // console.error(err);
       });
   };
   const [edit, setEdit] = useState(false);
@@ -281,7 +281,7 @@ export default function SectionCard({ section, fetchSections }) {
                   }
                 />
                 {formik.touched.section_file && formik.errors.section_file && (
-                  <div>{formik.errors.section_file}</div>
+                  <Typography color='error'>{formik.errors.section_file}</Typography>
                 )}
               </Box>
             )}

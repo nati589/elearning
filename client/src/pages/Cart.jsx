@@ -34,9 +34,11 @@ function Cart() {
         "Content-Type": "application/json",
       },
       mode: "cors",
-      body: JSON.stringify({ user_id: "fceeca18-a0f3-4ab4-9ade-06e4d109746c" }),
+      body: JSON.stringify({ user_id: localStorage.getItem("user_id") }),
     })
       .then((res) => {
+        localStorage.getItem("user_id");
+        // "fceeca18-a0f3-4ab4-9ade-06e4d109746c"
         if (res.ok) return res.json();
         return res.json().then((json) => Promise.reject(json));
       })
@@ -102,11 +104,13 @@ function Cart() {
     <div className="w-full flex flex-col flex-nowrap pt-10 pb-2 lg:px-auto  px-6 md:px-28 text-xs">
       <div
         id="top"
-        className="w-full flex flex-row justify-between items-center px-4">
+        className="w-full flex flex-row justify-between items-center px-4"
+      >
         <h1 className="text-xl md:text-3xl">Shopping cart</h1>
         <button
           onClick={() => navigate(-1)}
-          className=" gap-1 flex items-center p-1 text-xs md:text-md rounded text-medium-purple">
+          className=" gap-1 flex items-center p-1 text-xs md:text-md rounded text-medium-purple"
+        >
           <BiArrowBack className="text-sm md:text-lg" />
           Continue shopping
         </button>
@@ -175,10 +179,11 @@ function Cart() {
                 <div>
                   <button
                     onClick={() => {
-                      // checkout();
-                      fullCheckout();
+                      checkout();
+                      // fullCheckout();
                     }}
-                    className="bg-medium-purple text-white p-2 rounded md:text-xl w-40">
+                    className="bg-medium-purple text-white p-2 rounded md:text-xl w-40"
+                  >
                     Checkout
                   </button>
                 </div>

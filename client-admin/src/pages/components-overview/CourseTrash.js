@@ -27,10 +27,10 @@ async function undeleteCourseById(itemId) {
     if (response.status === 200) {
       //   alert(`Item with ID ${itemId} deleted successfully`);
     } else {
-      console.error("Error deleting item");
+      // console.error("Error deleting item");
     }
   } catch (error) {
-    console.error("Error:", error.message);
+    // console.error("Error:", error.message);
   }
 }
 async function deletePermanentCourseById(itemId) {
@@ -45,10 +45,10 @@ async function deletePermanentCourseById(itemId) {
     if (response.status === 200) {
       //   alert(`Item with ID ${itemId} deleted successfully`);
     } else {
-      console.error("Error deleting item");
+      // console.error("Error deleting item");
     }
   } catch (error) {
-    console.error("Error:", error.message);
+    // console.error("Error:", error.message);
   }
 }
 
@@ -74,7 +74,7 @@ export default function CourseList() {
         );
       })
       .catch((error) => {
-        console.error(error);
+        // console.error(error);
       });
   }, [state]);
 

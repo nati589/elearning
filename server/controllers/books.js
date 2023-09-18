@@ -13,6 +13,20 @@ export const getBooks = (req, res) => {
     }
   });
 };
+
+export const getPurchasedBooks = (req, res) => {
+  const q =
+    "SELECT * FROM book INNER JOIN purchase WHERE book.book_archived = '0' AND book.book_id = purchase.book_id";
+  db.query(q, (err, data) => {
+    if (err) {
+      res.json(err);
+      console.log(err);
+    } else {
+      res.json(data);
+    }
+  });
+};
+
 export const getDeletedBooks = (req, res) => {
   const q = "SELECT * FROM book WHERE book_archived = '1'";
   db.query(q, (err, data) => {
@@ -208,17 +222,6 @@ export const addBook = (req, res) => {
   const bookId = uuidv4();
   const values = Object.values(req.body);
   values.unshift(bookId);
-  const q =
-    "INSERT INTO book (book_id, book_title, book_author, book_details, book_price, book_date_created) VALUES (?, ?, ?, ?, ?, NOW())";
-  db.query(q, values, (err, data) => {
-    if (err) {
-      res.json(err);
-      console.log(err);
-    } else {
-      //   res.json(data);
-      console.log(data);
-    }
-  });
 
   const book_thumbnail = req.file; // File object
 
@@ -229,6 +232,18 @@ export const addBook = (req, res) => {
 
   // Construct the new file path
   const newFilePath = `books/thumbnails/${newFileName}`;
+
+  const q =
+    "INSERT INTO book (book_id, book_title, book_author, book_details, book_price, book_date_created,book_thumbnail) VALUES (?, ?, ?, ?, ?, NOW(),?)";
+  db.query(q, [...values, newFileName], (err, data) => {
+    if (err) {
+      res.json(err);
+      console.log(err);
+    } else {
+      //   res.json(data);
+      console.log(data);
+    }
+  });
 
   // Rename the file
   fs.rename(book_thumbnail.path, newFilePath, (err) => {
@@ -245,8 +260,20 @@ export const updateBook = (req, res) => {
   const bookId = req.params.id;
   console.log(req.params.id);
   console.log(req.body);
-  const q = `UPDATE book SET book_title = ?, book_author = ?, book_details = ?, book_price = ? WHERE book_id = '${req.params.id}'`;
-  db.query(q, Object.values(req.body), (err, data) => {
+
+  const bookThumbnail = req.file; // File object
+
+  // Generate a new file name
+  const originalFileName = bookThumbnail.originalname;
+  const fileExtension = originalFileName.split(".").pop();
+  const newFileName = `${bookId}.${fileExtension}`;
+
+  // Construct the new file path
+  const newFilePath = `books/thumbnails/${newFileName}`;
+
+  const values = Object.values(req.body);
+  const q = `UPDATE book SET book_title = ?, book_author = ?, book_details = ?, book_price = ?,book_thumbnail = ? WHERE book_id = '${req.params.id}'`;
+  db.query(q, [...values, newFileName], (err, data) => {
     if (err) {
       res.json(err);
       console.log(err);
@@ -255,16 +282,6 @@ export const updateBook = (req, res) => {
       console.log(data);
       // Check if a new file has been uploaded
       if (req.file) {
-        const bookThumbnail = req.file; // File object
-
-        // Generate a new file name
-        const originalFileName = bookThumbnail.originalname;
-        const fileExtension = originalFileName.split(".").pop();
-        const newFileName = `${bookId}.${fileExtension}`;
-
-        // Construct the new file path
-        const newFilePath = `books/thumbnails/${newFileName}`;
-
         // Move the file with overwrite option
         // Rename the file with overwrite option
         fs.rename(bookThumbnail.path, newFilePath, (renameErr) => {

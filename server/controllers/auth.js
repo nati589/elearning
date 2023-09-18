@@ -31,7 +31,7 @@ export const login = (req, res) => {
       const token = jwt.sign(
         { username: result[0].user_full_name, user_id: result[0].user_id },
         process.env.JWT_SECRET,
-        { expiresIn: "1h" }
+        { expiresIn: "1d" }
       );
       res.cookie("token", token, { httpOnly: true });
       res.status(200).json({
@@ -239,7 +239,7 @@ export const loginAdmin = (req, res) => {
       const token = jwt.sign(
         { username: result[0].admin_username, user_id: result[0].admin_id },
         process.env.JWT_SECRET,
-        { expiresIn: "1h" }
+        { expiresIn: "1d" }
       );
 
       res.cookie("token", token, { maxAge: 3600000, httpOnly: true });

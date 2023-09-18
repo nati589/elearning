@@ -16,8 +16,19 @@ function BooksCard({
   rating,
   price,
 }) {
-  const images = require.context("../assets");
-  const book_image = images(bookImagePath);
+  const images = require.context("../../../server/books/thumbnails");
+  console.log(bookImagePath, "bookImagePath");
+  let book_image;
+  try {
+    if (bookImagePath !== null) {
+      // console.log("is not null")
+      book_image = images(`./${bookImagePath}`);
+    } else {
+      book_image = images("./default_book_image.png");
+    }
+  } catch (error) {
+    book_image = images("./default_book_image.png");
+  }
   const numbers = [1, 2, 3, 4, 5];
 
   const partialDesc = book_description ? book_description.slice(0, 80) : "";

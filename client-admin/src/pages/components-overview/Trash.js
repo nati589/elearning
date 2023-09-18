@@ -29,7 +29,7 @@ function Trash() {
         </Typography>
       </Box>
       <Box sx={{ display: "flex", justifyContent: "start", my: 2 }}>
-        <Tabs value={selected} onChange={e => setSelected(e.target.value)}>
+        <Tabs value={selected} onChange={(e) => setSelected(e.target.value)}>
           <Tab
             value="Course"
             label="Course"

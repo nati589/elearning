@@ -62,7 +62,7 @@ const CoursesSearch = ({ searchData }) => {
             courseId={course.course_id}
             course_name={course.course_title}
             course_description={course.course_details}
-            courseImagePath="./Image.png"
+            courseImagePath={course.course_thumbnail}
             hoursNeeded={course.course_total_hour}
             teacherName={course.course_instructor}
             rating={course.course_rating}

@@ -20,10 +20,21 @@ function CourseCard({
   price,
   level,
 }) {
-  const images = require.context("../assets");
-  // images(`${courseId}.jpg`)
+  const images = require.context("../../../server/courses/thumbnails");
+  let course_image;
+  try {
+    if (courseImagePath !== null) {
+      // console.log("is not null")
+      course_image = images(`./${courseImagePath}`);
+    } else {
+      course_image = images("./default_course_image.png");
+    }
+  } catch (error) {
+    course_image = images("./default_course_image.png");
+  }
 
-  const course_image = images(courseImagePath);
+  console.log(courseId, " id  ", courseImagePath);
+
   const numbers = [1, 2, 3, 4, 5];
   const partialDesc = course_description ? course_description.slice(0, 80) : "";
 
@@ -73,8 +84,7 @@ function CourseCard({
     <div
       className="relative bg-white rounded-lg border-t-8 border-x-2 min-h-[180px] lg:min-h-[380px] h-fit
          md:w-full border-medium-purple p-2 shadow-md transition-transform duration-300 ease-in-out
-         hover:scale-[1.04] hover:-translate-y-1 hover:z-10 hover:drop-shadow-[0 35px 35px rgba(0, 0, 0, 1)]"
-    >
+         hover:scale-[1.04] hover:-translate-y-1 hover:z-10 hover:drop-shadow-[0 35px 35px rgba(0, 0, 0, 1)]">
       <Link to={`/coursedetails/${courseId}`} className=" cursor-pointer">
         <div className="flex flex-col px-1 items-center justify-center mb-2">
           <span className="self-start mb-2 text-sm lg:text-xl font-semibold font-sans">
@@ -136,8 +146,7 @@ function CourseCard({
           localStorage.getItem("user_id") && (
             <button
               className="button-component-stroke w-fit py-2 px-8 mb-2"
-              onClick={addToCart}
-            >
+              onClick={addToCart}>
               Add to Cart
             </button>
           )}

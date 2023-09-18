@@ -234,18 +234,6 @@ export const addCourse = (req, res) => {
   const course_id = uuidv4();
   const values = Object.values(req.body);
   values.unshift(course_id);
-
-  // Create the SQL insert query
-  const q = `INSERT INTO course (course_id, course_title, course_details,course_level,course_price,course_instructor, course_total_hour, course_date_created ) VALUES (?,?,?,?,?,?,?,NOW())`;
-  db.query(q, values, (err, data) => {
-    if (err) {
-      res.json(err);
-      console.log(err);
-    } else {
-      //   res.json(data);
-      console.log(data);
-    }
-  });
   const course_thumbnail = req.file; // File object
 
   // Generate a new file name
@@ -255,6 +243,18 @@ export const addCourse = (req, res) => {
 
   // Construct the new file path
   const newFilePath = `courses/thumbnails/${newFileName}`;
+  // Create the SQL insert query
+  console.log(values, "values");
+  const q = `INSERT INTO course (course_id, course_title, course_details,course_level,course_price,course_instructor, course_total_hour, course_date_created, course_thumbnail ) VALUES (?,?,?,?,?,?,?,NOW(),?)`;
+  db.query(q, [...values, newFileName], (err, data) => {
+    if (err) {
+      res.json(err);
+      console.log(err);
+    } else {
+      //   res.json(data);
+      console.log(data);
+    }
+  });
 
   // Rename the file
   fs.rename(course_thumbnail.path, newFilePath, (err) => {
@@ -271,6 +271,16 @@ export const updateCourse = (req, res) => {
   const courseId = req.params.id;
   console.log(req.params.id);
   console.log(req.body);
+  const courseThumbnail = req.file; // File object
+
+  // Generate a new file name
+  const originalFileName = courseThumbnail.originalname;
+  const fileExtension = originalFileName.split(".").pop();
+  const newFileName = `${courseId}.${fileExtension}`;
+
+  // Construct the new file path
+  const newFilePath = `courses/thumbnails/${newFileName}`;
+
   const q = `UPDATE course SET course_title = ?, course_details = ?, course_level = ?, course_price = ?, course_instructor = ?, course_total_hour = ? WHERE course_id = '${req.params.id}'`;
   db.query(q, Object.values(req.body), (err, data) => {
     if (err) {
@@ -281,16 +291,6 @@ export const updateCourse = (req, res) => {
       console.log(data);
       // Check if a new file has been uploaded
       if (req.file) {
-        const courseThumbnail = req.file; // File object
-
-        // Generate a new file name
-        const originalFileName = courseThumbnail.originalname;
-        const fileExtension = originalFileName.split(".").pop();
-        const newFileName = `${courseId}.${fileExtension}`;
-
-        // Construct the new file path
-        const newFilePath = `courses/thumbnails/${newFileName}`;
-
         // Move the file with overwrite option
         // Rename the file with overwrite option
         fs.rename(courseThumbnail.path, newFilePath, (renameErr) => {

@@ -17,7 +17,7 @@ function BooksCard({
   price,
 }) {
   const images = require.context("../../../server/books/thumbnails");
-
+  console.log(bookImagePath, "bookImagePath");
   let book_image;
   try {
     if (bookImagePath !== null) {

@@ -3,10 +3,7 @@ import PersonIcon from "../assets/icons/person.svg";
 import DollarIcon from "../assets/icons/dollar.svg";
 import EmptyStarIcon from "../assets/icons/empty_star.svg";
 import FullStarIcon from "../assets/icons/full_star.svg";
-import axios from "axios";
 import { Link } from "react-router-dom";
-import ResponseMessage from "./ResponseMessage";
-import PopularBookImg from "../assets/PopularBookImg.png";
 
 function MyBooksCard({
   bookId,
@@ -18,7 +15,7 @@ function MyBooksCard({
   price,
 }) {
   const images = require.context("../../../server/books/thumbnails");
-
+  // console.log(bookImagePath, "bookImagePath");
   let book_image;
   try {
     if (bookImagePath !== null) {

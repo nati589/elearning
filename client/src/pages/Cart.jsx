@@ -34,9 +34,11 @@ function Cart() {
         "Content-Type": "application/json",
       },
       mode: "cors",
-      body: JSON.stringify({ user_id: "fceeca18-a0f3-4ab4-9ade-06e4d109746c" }),
+      body: JSON.stringify({ user_id: localStorage.getItem("user_id") }),
     })
       .then((res) => {
+        localStorage.getItem("user_id");
+        // "fceeca18-a0f3-4ab4-9ade-06e4d109746c"
         if (res.ok) return res.json();
         return res.json().then((json) => Promise.reject(json));
       })
@@ -177,8 +179,8 @@ function Cart() {
                 <div>
                   <button
                     onClick={() => {
-                      // checkout();
-                      fullCheckout();
+                      checkout();
+                      // fullCheckout();
                     }}
                     className="bg-medium-purple text-white p-2 rounded md:text-xl w-40"
                   >

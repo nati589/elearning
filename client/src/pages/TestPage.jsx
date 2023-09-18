@@ -56,11 +56,23 @@
 // // export default ProgressPage;
 import React from "react";
 import SampleCard from "../components/SampleCard";
+import TrendingCoursesCard from "../components/TrendingCoursesCard";
+import BookImg from "../assets/MyBookImg.png";
 
 function TestPage() {
   return (
     <div>
-      <SampleCard />
+      <TrendingCoursesCard
+        courseId="1"
+        course_title="interaction"
+        course_details="orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book"
+        course_thumbnail={BookImg}
+        course_total_hour="3Hours"
+        course_instructure="Wadew Warren"
+        course_level="level"
+        course_rate="4.7"
+        course_price="price"
+      />
     </div>
   );
 }

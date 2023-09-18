@@ -22,7 +22,10 @@ const PopularCourseCard = ({
   course_rate,
   course_price,
 }) => {
+  // const images = require.context("../assets");
+  // images(`${courseId}.jpg`)
 
+  // const course_image = images(course_thumbnail);
   const numbers = [1, 2, 3, 4, 5];
   const partialDesc = course_details ? course_details.slice(0, 80) : "";
 

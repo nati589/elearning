@@ -24,7 +24,7 @@ const SectionTable = React.memo(({ courseId }) => {
           );
         })
         .catch((error) => {
-          console.error(error);
+          // console.error(error);
         });
     }, [courseId]);
     // fetchSections(courseId)

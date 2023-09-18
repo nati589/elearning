@@ -4,6 +4,8 @@ import {
   addSection,
   updateSection,
   deleteSection,
+  getSectionFile,
+  getSectionVideo,
   getSingleSection,
   getCourseSections
 } from "../controllers/sections.js";
@@ -16,6 +18,8 @@ router.put("/updateSection/:id", upload.single("section_file"), updateSection);
 router.delete("/deleteSection", deleteSection);
 router.post("/addSection/:id", upload.single("section_file"), addSection);
 router.get("/getSections", getSections);
+router.get("/getSectionFile/:id", getSectionFile);
+router.get("/getSectionVideo/:id", getSectionVideo);
 router.get("/getSingleSection/:id", getSingleSection);
 router.get("/getCourseSections/:id", getCourseSections);
 router.get("/");

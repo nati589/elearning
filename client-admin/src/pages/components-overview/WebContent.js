@@ -15,7 +15,7 @@ export default function WebContent() {
       .post("http://localhost:8800/api/webcontent/changeContent", data)
       // .then(navigate('../'))
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
       });
   };
   const formik = useFormik({
@@ -64,7 +64,7 @@ export default function WebContent() {
         .min(8, "Must be at least 8 characters"),
     }),
     onSubmit: (values, { resetForm }) => {
-      console.log(values);
+      // console.log(values);
       updateContent(values);
       // resetForm({ values: "" });
       setEdit((s) => !s);

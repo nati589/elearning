@@ -133,10 +133,10 @@ const IncomeAreaChart = ({ slot }) => {
         axios.spread(
           (weekBookData, monthBookData, weekCoursekData, monthCourseData) => {
             // Handle the responses here
-            console.log(weekBookData.data);
-            console.log(monthBookData.data);
-            console.log(weekCoursekData.data);
-            console.log(monthCourseData.data);
+            // console.log(weekBookData.data);
+            // console.log(monthBookData.data);
+            // console.log(weekCoursekData.data);
+            // console.log(monthCourseData.data);
             setSeries([
               {
                 name: "Courses",
@@ -158,7 +158,7 @@ const IncomeAreaChart = ({ slot }) => {
       )
       .catch((error) => {
         // Handle errors
-        console.error("Error:", error);
+        // console.error("Error:", error);
       });
   }, [slot]);
 

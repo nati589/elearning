@@ -37,7 +37,7 @@ export default function AddCourse() {
   });
 
   const handleSubmit = (values, { setSubmitting }) => {
-    console.log(values);
+    // console.log(values);
     const formData = new FormData();
 
     formData.append("course_title", values.course_title);
@@ -47,7 +47,7 @@ export default function AddCourse() {
     formData.append("course_instructor", values.course_instructor);
     formData.append("course_total_hour", parseInt(values.course_total_hour));
     formData.append("course_thumbnail", values.course_thumbnail);
-    console.log(formData);
+    // console.log(formData);
 
     axios
       .post("/courses/addCourse", formData, {
@@ -56,12 +56,12 @@ export default function AddCourse() {
         },
       })
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         setSubmitting(false);
         navigate('../')
       })
       .catch((error) => {
-        console.error(error);
+        // console.error(error);
         setSubmitting(false);
       });
   };

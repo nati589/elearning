@@ -41,7 +41,7 @@ export default function EditCourse() {
       formData.append("book_price", values.book_price);
       formData.append("book_thumbnail", values.book_thumbnail); // Assuming it's a File object
       // Make an API call using Axios
-      console.log(formData)
+      // console.log(formData)
       axios
         .put(`/books/updateBook/${id}`, values, {
           headers: {
@@ -51,7 +51,7 @@ export default function EditCourse() {
         }) // Replace with your API endpoint
         .then((response) => {
           // Handle the response
-          console.log(response.data);
+          // console.log(response.data);
 
           // Reset the form and set submitting state to false
           navigate('../')
@@ -59,7 +59,7 @@ export default function EditCourse() {
         })
         .catch((error) => {
           // Handle the error
-          console.error(error);
+          // console.error(error);
 
           // Reset the submitting state to false
         });
@@ -82,11 +82,11 @@ export default function EditCourse() {
           book_price: fetchedData.book_price || "",
           book_thumbnail: null,
         };
-        console.log(mappedInitialValues);
+        // console.log(mappedInitialValues);
         isMounted && formik.setValues(mappedInitialValues);
       })
       .catch((error) => {
-        console.error(error);
+        // console.error(error);
       });
     return () => {
       isMounted = false;

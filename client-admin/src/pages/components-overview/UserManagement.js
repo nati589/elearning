@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { styled } from "@mui/system";
 import MUIDataTable from "mui-datatables";
 import {
@@ -13,23 +13,20 @@ import axios from "axios";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import EditIcon from "@mui/icons-material/Edit";
 
-export default function CourseList() {
+export default function UserManagement() {
   const navigate = useNavigate();
-  const [bookList, setBookList] = useState([]);
+  const [userList, setUserList] = useState([]);
   useEffect(() => {
     axios
-      .get("/books/getBooks")
+      .get("/users/getUsers")
       .then((res) => {
         // console.log(res.data);
-        setBookList(
+        setUserList(
           res.data.map((item) => [
-            item.book_title,
-            item.book_author,
-            item.book_purchases,
-            item.book_price,
-            item.book_id,
-            item.book_rating,
-            item.book_id,
+            item.user_full_name,
+            item.user_email,
+            item.user_id,
+            item.user_id,
           ])
         );
       })
@@ -40,22 +37,19 @@ export default function CourseList() {
   const deleteBook = (data) => {
     // console.log(data);
     axios
-      .delete("/books/deleteBook", { data: { id: data } })
+      .delete(`/users/deleteUser/${data}`)
       .then((res) => {
         // console.log(res.data);
         axios
-          .get("/books/getBooks")
+          .get("/users/getUsers")
           .then((res) => {
             // console.log(res.data);
-            setBookList(
+            setUserList(
               res.data.map((item) => [
-                item.book_title,
-                item.book_author,
-                item.book_purchases,
-                item.book_price,
-                item.book_id,
-                item.book_rating,
-                item.book_id,
+                item.user_full_name,
+                item.user_email,
+                item.user_id,
+                item.user_id,
               ])
             );
           })
@@ -77,25 +71,13 @@ export default function CourseList() {
   }));
   const columns = [
     {
-      name: "Title",
+      name: "Name",
       options: {
         filter: false,
       },
     },
     {
-      name: "Author",
-      options: {
-        filter: false,
-      },
-    },
-    {
-      name: "Purchases",
-      options: {
-        filter: false,
-      },
-    },
-    {
-      name: "Price",
+      name: "Email",
       options: {
         filter: false,
       },
@@ -109,13 +91,6 @@ export default function CourseList() {
       },
     },
     {
-      name: "Rating",
-      options: {
-        display: true,
-        filter: false,
-      },
-    },
-    {
       label: "ACTION",
       options: {
         filter: false,
@@ -124,23 +99,12 @@ export default function CourseList() {
           let data = value;
           return (
             <>
-              <Tooltip title="Edit">
-                <Button
-                  onClick={() => {
-                    // console.log(data);
-                    navigate(`/bookmanagement/editbook/${data}`);
-                  }}
-                >
-                  <EditIcon />
-                </Button>
-              </Tooltip>
               <Tooltip title="Delete">
                 <Button
                   color="error"
                   onClick={() => {
                     deleteBook(data);
-                  }}
-                >
+                  }}>
                   <DeleteOutlineIcon />
                 </Button>
               </Tooltip>
@@ -154,25 +118,13 @@ export default function CourseList() {
   return (
     <>
       <Box sx={{ ml: 2 }}>
-        <Typography variant="h4">Books</Typography>
-        <Typography variant="p">
-          This section is to create and modify Books.
-        </Typography>
-      </Box>
-      <Box sx={{ display: "flex", justifyContent: "end", my: 2 }}>
-        <Button
-          variant="outlined"
-          onClick={() => {
-            navigate("/bookmanagement/addbook");
-          }}
-        >
-          Add Book
-        </Button>
+        <Typography variant="h4">Users</Typography>
+        <Typography variant="p">This section is to delete users.</Typography>
       </Box>
       <Box>
         <StyledMUIDataTable
           title={""}
-          data={bookList}
+          data={userList}
           columns={columns}
           options={options}
         />

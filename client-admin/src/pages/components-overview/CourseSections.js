@@ -24,11 +24,11 @@ export default function CourseSections() {
         signal: controller.signal,
       })
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         isMounted && setSectionList(response.data);
       })
       .catch((error) => {
-        console.error(error);
+        // console.error(error);
       });
     return () => {
       isMounted = false;
@@ -40,11 +40,11 @@ export default function CourseSections() {
     axios
       .get(`/sections/getCourseSections/${courseId}`)
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         setSectionList(response.data);
       })
       .catch((error) => {
-        console.error(error);
+        // console.error(error);
       });
   };
 
@@ -79,8 +79,8 @@ export default function CourseSections() {
         {addSection && <AddSection fetchSections={() => fetchSections(id)} id={id} handleAddSection={handleAddSection} />}
       </Box>
       <Box sx={{ display: "flex", justifyContent: "flex-end", mt: 4 }}>
-        <Button variant="outlined" sx={{ mr: 2}} onClick={() => navigate('../')}>Cancel</Button>
-        <Button variant="contained">Save</Button>
+        {/* <Button variant="outlined" sx={{ mr: 2}} >Cancel</Button> */}
+        <Button variant="contained" onClick={() => navigate('../')}>Save</Button>
       </Box>
     </Box>
   );

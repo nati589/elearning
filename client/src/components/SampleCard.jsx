@@ -1,8 +1,8 @@
 import React from "react";
-import BookImg from "../assets/MyBookImg.png";
+import BookImg from "../assets/BookImg.png"
+// import BookImg from "../../src/assets/BookImg.png";
 
-function SampleCard() {
-  
+const SampleCard = ({ course_title, course_details, course_thumbnail }) => {
   return (
     <div>
       {/* <!-- component --> */}
@@ -12,8 +12,6 @@ function SampleCard() {
           href="#"
           class="w-full border-2 border-b-4 bg-white border-medium-purple mt-3 rounded-xl hover:bg-gray-50"
         >
-        
-
           <div class="grid grid-cols-6 p-5 gap-y-2">
             {/* <!-- Profile Picture --> */}
             <div>
@@ -47,6 +45,6 @@ function SampleCard() {
       </div>
     </div>
   );
-}
+};
 
 export default SampleCard;

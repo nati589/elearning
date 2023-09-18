@@ -93,12 +93,6 @@ export default function App() {
             element={<QuizContent />}
           />
         </Route>
-        {/* Nested route for sections */}
-        {/* <Route index element={<CourseSectionList />} />
-          <Route
-            path="/learning/section/:sectionId"
-            element={<SectionContent />}
-          /> */}
         <Route path="/profile" element={<UserProfile />}>
           <Route exact index element={<UserProfileDashboard />} />
           <Route exact path="/profile/privacy" element={<ProfilePrivacy />} />

@@ -5,11 +5,15 @@ import { useCallback, useEffect, useState } from "react";
 import CartImg from "../assets/empty_cart.svg";
 import axios from "axios";
 import CartItemBook from "../components/CartItemBook";
+import ResponseMessage from "../components/ResponseMessage";
 
 function Cart() {
   const navigate = useNavigate();
   const [cartData, setCartData] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0.0);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [failure, setFailure] = useState(false);
+  const [response_msg, setMsg] = useState("");
 
   // let totalPrice = 0;
 
@@ -66,19 +70,53 @@ function Cart() {
     setTotalPrice((prevTotal) => prevTotal + parsedNumber);
   }, []);
 
+  const fullCheckout = () => {
+    axios
+      .post("/enroll/fullCheckout", {
+        user_id: localStorage.getItem("user_id"),
+      })
+      .then((response) => {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+        setSubmitSuccess(true);
+        setFailure(false);
+        setMsg(response.data.message);
+        setTimeout(() => {
+          setSubmitSuccess(false);
+          setCartData([]);
+        }, 3000);
+      })
+      .catch((error) => {
+        setSubmitSuccess(true);
+        setFailure(true);
+        setMsg(error.response.data.message);
+        setTimeout(() => {
+          setSubmitSuccess(false);
+        }, 4000);
+      });
+  };
+
   return (
-    <div className="w-full flex flex-col flex-nowrap pt-10 pb-2 lg:px-auto lg:px-32 sm:px-2">
-      <div className="w-full flex flex-row justify-between items-center ">
-        <h1 className="text-2xl md:text-3xl">Shopping cart</h1>
+    <div className="w-full flex flex-col flex-nowrap pt-10 pb-2 lg:px-auto  px-6 md:px-28 text-xs">
+      <div
+        id="top"
+        className="w-full flex flex-row justify-between items-center px-4"
+      >
+        <h1 className="text-xl md:text-3xl">Shopping cart</h1>
         <button
           onClick={() => navigate(-1)}
-          className="bg-purple-30 gap-1 flex items-center p-1 text-sm md:text-md rounded text-medium-purple"
+          className=" gap-1 flex items-center p-1 text-xs md:text-md rounded text-medium-purple"
         >
-          <BiArrowBack className="text-lg" />
+          <BiArrowBack className="text-sm md:text-lg" />
           Continue shopping
         </button>
       </div>
-      <>
+      {submitSuccess && (
+        <ResponseMessage message={response_msg} failure={failure} />
+      )}
+      <div className="w-full px-4">
         {cartData.length === 0 ? (
           <div className="w-full flex flex-col flex-nowrap text-center text-3xl font-light mt-12 ">
             <h1>Your Cart is empty</h1>
@@ -101,7 +139,7 @@ function Cart() {
             </div>
             {}
             <div className="w-full flex flex-col gap-2 mb-4  py-1 max-w-max">
-              <h2 className="font-bold text-medium-purple text-lg">Books</h2>
+              <h2 className="font-bold text-medium-purple md:text-lg">Books</h2>
 
               {cartData
                 .filter((item) => item.course_id === null)
@@ -115,7 +153,9 @@ function Cart() {
                   />
                 ))}
 
-              <h2 className="font-bold text-medium-purple text-lg">Courses</h2>
+              <h2 className="font-bold text-medium-purple md:text-lg">
+                Courses
+              </h2>
 
               {cartData
                 .filter((item) => item.book_id === null)
@@ -130,14 +170,17 @@ function Cart() {
                 ))}
 
               <div className="flex flex-col gap-1 self-end mt-3">
-                <div className=" bg-purple-100 w-40 p-2 text-xl rounded flex flex-row justify-between">
+                <div className=" bg-purple-100 w-40 p-2 md:text-xl rounded flex flex-row justify-between">
                   <span>Total</span>
                   <span className="text-medium-purple">{totalPrice} $</span>
                 </div>
                 <div>
                   <button
-                    onClick={() => checkout()}
-                    className="bg-medium-purple text-white p-2 rounded  w-40"
+                    onClick={() => {
+                      // checkout();
+                      fullCheckout();
+                    }}
+                    className="bg-medium-purple text-white p-2 rounded md:text-xl w-40"
                   >
                     Checkout
                   </button>
@@ -146,7 +189,7 @@ function Cart() {
             </div>
           </>
         )}
-      </>
+      </div>
     </div>
   );
 }

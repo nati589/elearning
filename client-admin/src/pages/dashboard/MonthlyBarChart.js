@@ -61,7 +61,7 @@ const MonthlyBarChart = ({ weekStat }) => {
     ]);
   }, [weekStat]);
 
-  console.log(series, "----------------");
+  // console.log(series, "----------------");
   const [options, setOptions] = useState(barChartOptions);
 
   useEffect(() => {

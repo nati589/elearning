@@ -63,10 +63,10 @@ function Footer() {
 
   return (
     <footer className="items-center py-8 px-4 bg-light-purple rounded-t-3xl">
-      <div className="container mx-auto px-4 py-4 ">
-        <div className="flex flex-wrap text-left lg:text-left">
-          <div className="w-full lg:w-4/12 px-4">
-            <div className="flex gap-2 items-center pb-3">
+      <div className="container mx-auto px-4 py-4  flex-wrap  ">
+        <div className=" flex  justify-center items-center ">
+          <div className="w-full lg:w-1/3  ">
+            <div className="flex gap-1 items-center pb-3">
               <img src={Logo} alt="Logo" width={40} />
               <a href="/" className="text-3xl text-subscribe-purple font-bold">
                 Logo
@@ -129,9 +129,9 @@ function Footer() {
               </ul>
             </div>
           </div>
-          <div className="w-full lg:w-8/12 px-4">
+          <div className="w-full lg:w-2/3 px-4">
             <div className="flex flex-wrap items-top mb-6">
-              <div className="w-full lg:w-4/12 px-4 ml-auto">
+              <div className="w-full lg:w-1/3  ml-auto">
                 <span className="block font-semibold text-blueGray-500 text-sm mb-2">
                   Useful Links
                 </span>
@@ -139,107 +139,101 @@ function Footer() {
                   <li>
                     <a
                       href="/faq-and-help"
-                      className="text-blueGray-600 hover:text-blueGray-800 block pb-2 text-sm"
-                    >
+                      className="text-blueGray-600 hover:text-blueGray-800 block pb-2 text-sm">
                       FAQ & Help
                     </a>
                   </li>
                   <li>
                     <a
                       href="/books"
-                      className="text-blueGray-600 hover:text-blueGray-800 block pb-2 text-sm"
-                    >
+                      className="text-blueGray-600 hover:text-blueGray-800 block pb-2 text-sm">
                       Books{" "}
                     </a>
                   </li>
-                  
                 </ul>
               </div>
-              <div>
-              <h1 className="text-blueGray-600 font-semibold text-lg pb-2 ">
-                      Contact Us
-                    </h1>
-              <FormProvider {...methods}>
-              
-                    
-                
-                <form>
-                  <div className="mb-0.1">
-                    <InputComponent
-                      logo={
-                        <GoMail className="relative top-7 left-3 text-gray-500" />
-                      }
-                      label="Email"
-                      name="login_email"
-                      placeholder="Enter your email"
-                      type="email"
-                      required="required"
-                      submitClicked={handleClick}
-                      {...email_validation}
-                    />
-                  </div>
-                  <div className="flex flex-col flex-nowrap w-10/12 m-auto mb-1 mt-0.1">
-                    <AnimatePresence mode="wait" initial={false}>
-                      {errors.description && (
-                        <InputError
-                          message={errors.description.message}
-                          key={errors.description.message}
-                        />
-                      )}
-                    </AnimatePresence>
-                    <label
-                      htmlFor="description"
-                      className="text-subscribe-purple"
-                    >
-                      Description
-                      <textarea
-                        id="description"
-                        name="description"
-                        className="w-full font-sans font-thin text-sm bg-opacity-10 border-2 border-gray-200 pt-1 pb-1 pr-3 pl-9 mb-0.1 px-4 py-2 rounded-lg bg-white-700 border-b"
-                        placeholder="Enter your description"
-                        rows="2"
-                        {...register("description", {
-                          required: "required",
-                        })}
+              <div className="w-full lg:w-1/3 ml-auto">
+                <h1 className="text-blueGray-600 font-semibold text-lg pb-2 ">
+                  Contact Us
+                </h1>
+                <FormProvider {...methods}>
+                  <form>
+                    <div className="mb-0.1">
+                      <InputComponent
+                        logo={
+                          <GoMail className="relative top-7 left-3 text-gray-500" />
+                        }
+                        label="Email"
+                        name="login_email"
+                        placeholder="Enter your email"
+                        type="email"
+                        required="required"
+                        submitClicked={handleClick}
+                        {...email_validation}
                       />
-                    </label>
-                    <button
-                      onClick={handleClick}
-                      className="button-component mt-3 self-start w-2/12 my-0.1 py-1 px-4"
-                    >
-                      Send
-                    </button>
-                  </div>
-                </form>
-              </FormProvider>
-            </div>
+                    </div>
+                    <div className="flex flex-col flex-nowrap w-10/12 m-auto mb-1 mt-0.1">
+                      <AnimatePresence mode="wait" initial={false}>
+                        {errors.description && (
+                          <InputError
+                            message={errors.description.message}
+                            key={errors.description.message}
+                          />
+                        )}
+                      </AnimatePresence>
+                      <label
+                        htmlFor="description"
+                        className="text-subscribe-purple"
+                      >
+                        Description
+                        <textarea
+                          id="description"
+                          name="description"
+                          className="w-full font-sans font-thin text-sm bg-opacity-10 border-2 border-gray-200 pt-1 pb-1 pr-3 pl-9 mb-0.1 px-4 py-2 rounded-lg bg-white-700 border-b"
+                          placeholder="Enter your description"
+                          rows="2"
+                          {...register("description", {
+                            required: "required",
+                          })}
+                        />
+                      </label>
+                      <button
+                        onClick={handleClick}
+                        className="button-component mt-3 self-start w-2/12 my-0.1 py-1 px-4"
+                      >
+                        Send
+                      </button>
+                    </div>
+                  </form>
+                </FormProvider>
+              </div>
             </div>
           </div>
         </div>
         <hr className="my-6 border-blueGray-300" />
         <div className="flex flex-wrap items-center md:justify-between justify-center">
           <div className="w-full md:w-4/12 px-4 mx-auto text-center">
-          <div className="text-sm text-blueGray-500 py-1">
-          Copyright © <span id="get-current-year">2021</span>
-          <a
-            href="https://www.creative-tim.com/product/notus-js"
-            className="text-blueGray-500 hover:text-gray-800"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {" "}
-            Notus JS by
-            <a
-              href="https://www.creative-tim.com?ref=njs-profile"
-              className="text-blueGray-500 hover:text-blueGray-800"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Creative Tim
-            </a>
-            .
-          </a>
-        </div>
+            <div className="text-sm text-blueGray-500 py-1">
+              Copyright © <span id="get-current-year">2021</span>
+              <a
+                href="https://www.creative-tim.com/product/notus-js"
+                className="text-blueGray-500 hover:text-gray-800"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {" "}
+                Notus JS by
+                <a
+                  href="https://www.creative-tim.com?ref=njs-profile"
+                  className="text-blueGray-500 hover:text-blueGray-800"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Creative Tim
+                </a>
+                .
+              </a>
+            </div>
           </div>
         </div>
       </div>

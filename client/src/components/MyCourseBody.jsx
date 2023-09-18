@@ -22,7 +22,7 @@ function MyCourseBody() {
   }, []);
 
   return (
-    <div className="flex flex-col md:flex-row flex-nowrap w-full">
+    <div className="flex flex-col md:flex-row flex-nowrap w-full px-">
       <div className="w-full md:w-1/4 text-xs md:text-sm px-8 md:px-2 pt-2 my-4 flex flex-col justify-start items-center">
         <div className="flex flex-col flex-nowrap ">
           <div className="my-2 shadow-md">
@@ -35,7 +35,7 @@ function MyCourseBody() {
                 course_details="lorem Ipsum is simply dummy text of the printing and typesetting industry. "
                 course_thumbnail={PopularBookImg}
                 course_total_hour="3Hours"
-                course_instructure="selam"
+                course_instructor="selam"
                 course_level="level"
                 course_rate="4.7"
                 course_price="price"
@@ -45,7 +45,7 @@ function MyCourseBody() {
                 course_details="lorem Ipsum is simply dummy text of the printing and typesetting industry. "
                 course_thumbnail={PopularBookImg}
                 course_total_hour="3Hours"
-                course_instructure="selam"
+                course_instructor="selam"
                 course_level="level"
                 course_rate="4.7"
                 course_price="price"
@@ -55,7 +55,7 @@ function MyCourseBody() {
                 course_details="lorem Ipsum is simply dummy text of the printing and typesetting industry. "
                 course_thumbnail={PopularBookImg}
                 course_total_hour="3Hours"
-                course_instructure="selam"
+                course_instructor="selam"
                 course_level="level"
                 course_rate="4.7"
                 course_price="price"
@@ -65,7 +65,7 @@ function MyCourseBody() {
                 course_details="lorem Ipsum is simply dummy text of the printing and typesetting industry. "
                 course_thumbnail={PopularBookImg}
                 course_total_hour="3Hours"
-                course_instructure="selam"
+                course_instructor="selam"
                 course_level="level"
                 course_rate="4.7"
                 course_price="price"

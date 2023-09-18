@@ -26,10 +26,10 @@ async function undeleteBookById(itemId) {
     if (response.status === 200) {
       //   alert(`Item with ID ${itemId} deleted successfully`);
     } else {
-      console.error("Error deleting item");
+      // console.error("Error deleting item");
     }
   } catch (error) {
-    console.error("Error:", error.message);
+    // console.error("Error:", error.message);
   }
 }
 async function deletePermanentBookeById(itemId) {
@@ -44,10 +44,10 @@ async function deletePermanentBookeById(itemId) {
     if (response.status === 200) {
       //   alert(`Item with ID ${itemId} deleted successfully`);
     } else {
-      console.error("Error deleting item");
+      // console.error("Error deleting item");
     }
   } catch (error) {
-    console.error("Error:", error.message);
+    // console.error("Error:", error.message);
   }
 }
 export default function BookTrash() {
@@ -58,7 +58,7 @@ export default function BookTrash() {
     axios
       .get("/books/getDeletedBooks")
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setBookList(
           res.data.map((item) => [
             item.book_title,
@@ -72,7 +72,7 @@ export default function BookTrash() {
         );
       })
       .catch((error) => {
-        console.error(error);
+        // console.error(error);
       });
   }, [state]);
 

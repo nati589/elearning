@@ -17,21 +17,17 @@ function UserProfile() {
     },
     { title: "Privacy & Security", icon: <FaLock />, to: "/profile/privacy" },
     { title: "Setting", icon: <FaCog />, to: "/profile/setting" },
-    // { title: "Support", icon: <FaLifeRing />, to: "/profile/support" },
-    // { title: "Report", icon: <FaFlag /> },
-    // { title: "Notifications", icon: <FaBell /> },
   ];
 
   return (
     <div className="flex w-full flex-row flex-nowrap h-screen ">
-      {" "}
       <div
-        className={`h-full flex flex-col flex-nowrap items-center bg-gradient-to-b from-dark-purple via-medium-purple to-light-purple px-2 pt-8 ${
+        className={`h-full flex flex-col flex-nowrap items-center bg-gradient-to-b from-light-purple via-dark-purple to-light-purple px-2 pt-8 ${
           open ? "w-3/12" : "w-1/12"
         } duration-300 relative`}
       >
         <BsArrowLeftShort
-          className={`bg-white text-purple-800 text-3xl rounded-full absolute -right-3 top-9 border border-purple-800 cursor-pointer ${
+          className={`bg-white text-dark-purple text-3xl rounded-full absolute -right-3 top-9 border border-dark-purple cursor-pointer ${
             !open && "rotate-180"
           }`}
           onClick={() => setOpen(!open)}
@@ -44,7 +40,7 @@ function UserProfile() {
         />
 
         <h1
-          className={`inline-flex font-bold ${
+          className={`inline-flex font-bold text-off-white ${
             open ? "text-xl" : "text-sm"
           } px-10`}
         >

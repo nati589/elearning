@@ -11,6 +11,7 @@ import BookImg from "../../src/assets/BookImg.png"; // Adjust the path as needed
 
 export default function BooksBody() {
   const [books, setBooks] = useState([...booksData]);
+  const [popularBooks, setPopularBooks] = useState([...booksData]);
 
   useEffect(() => {
     axios
@@ -22,6 +23,18 @@ export default function BooksBody() {
       .catch((error) => {
         console.log(error.response.data.message);
         // navigate("/");
+      });
+  }, []);
+
+  useEffect(() => {
+    // console.log("sec");
+    axios
+      .get(`/books/getPopularBook`)
+      .then((res) => {
+        setPopularBooks([...res.data]);
+      })
+      .catch((error) => {
+        console.log(error.response.data.message);
       });
   }, []);
 
@@ -45,50 +58,16 @@ export default function BooksBody() {
               Trending Books
             </h2>
             <div className="flex flex-col items-center flex-nowrap max-h-[700px] overflow-y-auto pt-5">
-              <PopularBooksCard
-                bookId="1"
-                book_title="interaction"
-                book_details="lorem Ipsum is simply dummy text of the printing and typesetting industry. "
-                book_thumbnail={PopularBooksImg}
-                book_total_hour="3Hours"
-                book_instructure="selam"
-                book_level="level"
-                book_rate="4.7"
-                book_price="price"
-              />
-              <PopularBooksCard
-                bookId="1"
-                book_title="interaction"
-                book_details="lorem Ipsum is simply dummy text of the printing and typesetting industry. "
-                book_thumbnail={PopularBooksImg}
-                book_total_hour="3Hours"
-                book_instructure="selam"
-                book_level="level"
-                book_rate="4.7"
-                book_price="price"
-              />
-              <PopularBooksCard
-                bookId="1"
-                book_title="interaction"
-                book_details="lorem Ipsum is simply dummy text of the printing and typesetting industry. "
-                book_thumbnail={PopularBooksImg}
-                book_total_hour="3Hours"
-                book_instructure="selam"
-                book_level="level"
-                book_rate="4.7"
-                book_price="price"
-              />
-              <PopularBooksCard
-                bookId="1"
-                book_title="interaction"
-                book_details="lorem Ipsum is simply dummy text of the printing and typesetting industry. "
-                book_thumbnail={PopularBooksImg}
-                book_total_hour="3Hours"
-                book_instructure="selam"
-                book_level="level"
-                book_rate="4.7"
-                book_price="price"
-              />
+              {popularBooks.map((book) => (
+                <PopularBooksCard
+                  bookId={book.bookId}
+                  title={book.book_title}
+                  instructor={book.book_author}
+                  rating={book.book_rating}
+                  price={book.book_price}
+                  bookImagePath={book.book_thumbnail}
+                />
+              ))}
             </div>
 
             <div className="flex flex-col flex-nowrap ">

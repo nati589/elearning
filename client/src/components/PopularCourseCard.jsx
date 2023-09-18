@@ -22,13 +22,10 @@ const PopularCourseCard = ({
   course_rate,
   course_price,
 }) => {
-<<<<<<< HEAD
   // const images = require.context("../assets");
   // images(`${courseId}.jpg`)
 
   // const course_image = images(course_thumbnail);
-=======
->>>>>>> 40544cbff33f02fe483df564bdfcd2aa7d070dce
   const numbers = [1, 2, 3, 4, 5];
   const partialDesc = course_details ? course_details.slice(0, 80) : "";
 
@@ -141,7 +138,8 @@ const PopularCourseCard = ({
               <button
                 className="bg-dark-purple hover:bg-purple-500 text-white  font-bold py-3 px-3 my-10 rounded "
                 // className="button-component-stroke  w-fit py-2 px-4 mb-7"
-                onClick={addToCart}>
+                onClick={addToCart}
+              >
                 <span className="add-to-cart-text p-3">Add to Cart</span>
                 &nbsp;&nbsp; &nbsp;
                 <span className="cart-icon fa-x p-3">

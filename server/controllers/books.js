@@ -13,6 +13,20 @@ export const getBooks = (req, res) => {
     }
   });
 };
+
+export const getPurchasedBooks = (req, res) => {
+  const q =
+    "SELECT * FROM book INNER JOIN purchase WHERE book.book_archived = '0' AND book.book_id = purchase.book_id";
+  db.query(q, (err, data) => {
+    if (err) {
+      res.json(err);
+      console.log(err);
+    } else {
+      res.json(data);
+    }
+  });
+};
+
 export const getDeletedBooks = (req, res) => {
   const q = "SELECT * FROM book WHERE book_archived = '1'";
   db.query(q, (err, data) => {

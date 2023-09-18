@@ -12,6 +12,7 @@ import {
   getDeletedBooks,
   getUndeletedBooks,
   deletePermanentBook,
+  getPurchasedBooks,
 } from "../controllers/books.js";
 import multer from "multer";
 const upload = multer({ dest: "books/thumbnails/" });
@@ -19,6 +20,7 @@ const upload = multer({ dest: "books/thumbnails/" });
 const router = express.Router();
 
 router.get("/getBooks", getBooks);
+router.get("/getPurchasedBooks", getPurchasedBooks);
 router.get("/getDeletedBooks", getDeletedBooks);
 router.get("/getUndeletedBooks/:id", getUndeletedBooks);
 router.get("/getTotalBooks", getTotalBooks);

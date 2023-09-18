@@ -11,6 +11,7 @@ import EditBook from "pages/components-overview/EditBook";
 import BookList from "pages/components-overview/BookList";
 import CourseSections from "pages/components-overview/CourseSections";
 import withAuth from "./withAuth";
+import Logout from "pages/components-overview/Logout";
 // render - dashboard
 const DashboardDefault = Loadable(lazy(() => import("pages/dashboard")));
 
@@ -119,6 +120,10 @@ const MainRoutes = {
           element: <BookTrash />,
         },
       ],
+    },
+    {
+      path: "logout",
+      element: <Logout />,
     },
   ],
 };

@@ -50,14 +50,7 @@ function Trash() {
       </Box>
       {/* <CourseTrash /> */}
       {/* <BookTrash /> */}
-      <Button
-        variant="outlined"
-        onClick={() => {
-          // alert("hhg");
-        }}
-      >
-        hhhhhh
-      </Button>
+
       <Outlet />
     </div>
   );

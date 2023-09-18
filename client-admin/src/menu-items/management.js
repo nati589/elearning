@@ -8,6 +8,7 @@ import {
   LoadingOutlined,
   SnippetsOutlined,
   BookOutlined,
+  LoginOutlined,
 } from "@ant-design/icons";
 
 // icons
@@ -20,6 +21,7 @@ const icons = {
   AppstoreAddOutlined,
   SnippetsOutlined,
   BookOutlined,
+  LoginOutlined,
 };
 
 // ==============================|| MENU ITEMS - UTILITIES ||============================== //
@@ -56,6 +58,14 @@ const management = {
       type: "item",
       url: "/trash",
       icon: icons.DeleteOutlined,
+      breadcrumbs: false,
+    },
+    {
+      id: "logout",
+      title: "Logout",
+      type: "item",
+      url: "/logout",
+      icon: icons.LoginOutlined,
       breadcrumbs: false,
     },
   ],

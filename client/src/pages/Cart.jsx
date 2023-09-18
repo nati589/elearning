@@ -147,12 +147,6 @@ function Cart() {
           </>
         )}
       </>
-      <button
-        onClick={() => checkout()}
-        className="bg-medium-purple text-white p-2 rounded  w-40"
-      >
-        Checkout
-      </button>
     </div>
   );
 }

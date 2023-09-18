@@ -20,7 +20,7 @@ export default function UserManagement() {
     axios
       .get("/users/getUsers")
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setUserList(
           res.data.map((item) => [
             item.user_full_name,
@@ -31,19 +31,19 @@ export default function UserManagement() {
         );
       })
       .catch((error) => {
-        console.error(error);
+        // console.error(error);
       });
   }, []);
   const deleteBook = (data) => {
-    console.log(data);
+    // console.log(data);
     axios
       .delete(`/users/deleteUser/${data}`)
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         axios
           .get("/users/getUsers")
           .then((res) => {
-            console.log(res.data);
+            // console.log(res.data);
             setUserList(
               res.data.map((item) => [
                 item.user_full_name,
@@ -54,11 +54,11 @@ export default function UserManagement() {
             );
           })
           .catch((error) => {
-            console.error(error);
+            // console.error(error);
           });
       })
       .catch((err) => {
-        console.error(err);
+        // console.error(err);
       });
   };
   const options = {

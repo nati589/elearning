@@ -24,11 +24,11 @@ export default function CourseSections() {
         signal: controller.signal,
       })
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         isMounted && setSectionList(response.data);
       })
       .catch((error) => {
-        console.error(error);
+        // console.error(error);
       });
     return () => {
       isMounted = false;
@@ -40,11 +40,11 @@ export default function CourseSections() {
     axios
       .get(`/sections/getCourseSections/${courseId}`)
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         setSectionList(response.data);
       })
       .catch((error) => {
-        console.error(error);
+        // console.error(error);
       });
   };
 

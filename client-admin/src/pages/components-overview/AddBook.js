@@ -26,7 +26,7 @@ export default function AddBook() {
 
   const handleSubmit = (values, { setSubmitting }) => {
     // Perform form submission logic here
-    console.log(values);
+    // console.log(values);
     // Create a new FormData object
     const formData = new FormData();
 
@@ -47,7 +47,7 @@ export default function AddBook() {
       }) // Replace with your API endpoint
       .then((response) => {
         // Handle the response
-        console.log(response.data);
+        // console.log(response.data);
 
         // Reset the form and set submitting state to false
         setSubmitting(false);
@@ -56,7 +56,7 @@ export default function AddBook() {
       })
       .catch((error) => {
         // Handle the error
-        console.error(error);
+        // console.error(error);
 
         // Reset the submitting state to false
         setSubmitting(false);

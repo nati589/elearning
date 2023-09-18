@@ -64,7 +64,7 @@ export default function AddSection({ handleAddSection, fetchSections, id }) {
       formData.append("section_content", values.section_content);
       formData.append("section_value", Number(values.section_value));
       formData.append("section_file", values.section_file === null ? null : values.section_file);
-        console.log(formData);
+        // console.log(formData);
 
         axios
           .post(`/sections/addSection/${id}`, formData, {
@@ -73,13 +73,13 @@ export default function AddSection({ handleAddSection, fetchSections, id }) {
             },
           })
           .then((response) => {
-            console.log(response.data);
+            // console.log(response.data);
             handleAddSection(false) 
             fetchSections()
             // setSubmitting(false);
           })
           .catch((error) => {
-            console.error(error);
+            // console.error(error);
             // setSubmitting(false);
           });
     },

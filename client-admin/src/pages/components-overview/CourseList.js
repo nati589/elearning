@@ -35,15 +35,15 @@ export default function CourseList() {
         );
       })
       .catch((error) => {
-        console.error(error);
+        // console.error(error);
       });
   }, []);
   const deleteCourse = (data) => {
-    console.log(data);
+    // console.log(data);
     axios
       .delete("/courses/deleteCourse", { data: { id: data } })
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         axios
         .get("/courses/getCourses")
         .then((res) => {
@@ -62,11 +62,11 @@ export default function CourseList() {
           );
         })
         .catch((error) => {
-          console.error(error);
+          // console.error(error);
         });
       })
       .catch((err) => {
-        console.error(err);
+        // console.error(err);
       });
   };
   const navigate = useNavigate();

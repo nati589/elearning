@@ -20,7 +20,7 @@ export default function CourseList() {
     axios
       .get("/books/getBooks")
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setBookList(
           res.data.map((item) => [
             item.book_title,
@@ -34,19 +34,19 @@ export default function CourseList() {
         );
       })
       .catch((error) => {
-        console.error(error);
+        // console.error(error);
       });
   }, []);
   const deleteBook = (data) => {
-    console.log(data);
+    // console.log(data);
     axios
       .delete("/books/deleteBook", { data: { id: data } })
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         axios
           .get("/books/getBooks")
           .then((res) => {
-            console.log(res.data);
+            // console.log(res.data);
             setBookList(
               res.data.map((item) => [
                 item.book_title,
@@ -60,11 +60,11 @@ export default function CourseList() {
             );
           })
           .catch((error) => {
-            console.error(error);
+            // console.error(error);
           });
       })
       .catch((err) => {
-        console.error(err);
+        // console.error(err);
       });
   };
   const options = {

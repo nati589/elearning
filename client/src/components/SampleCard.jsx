@@ -1,23 +1,33 @@
 import React from "react";
-import BookImg from "../assets/MyBookImg.png";
 
-function SampleCard() {
-  
+const SampleCard = ({ course_title, course_details, course_thumbnail }) => {
   return (
+<<<<<<< HEAD
+    <div className="card bg-white border-l-8 border-light-purple rounded-lg shadow-md my-4 p-6 h-88 w-80">
+      <h1 className=" text-lg md:text-xl mb-4 font-bold">{course_title}</h1>
+      <div className="grid grid-cols-4 gap-4">
+        <div className="col-span-1">
+          <img className="w-32 h-16 " src={course_thumbnail} alt="books" />
+        </div>
+        <div className="col-span-3">
+          <p className="text-xs md:text-sm">{course_details}</p>
+        </div>
+=======
     <div>
       {/* <!-- component --> */}
       <div class=" flex flex-col gap-4 items-center justify-center ">
         {/* <!-- Card 1 --> */}
         <a
-          href="#"
-          class="w-full border-2 border-b-4 bg-white border-medium-purple mt-3 rounded-xl hover:bg-gray-50"
-        >
-        
-
+          href="/"
+          class="w-full border-2 border-b-4 bg-white border-medium-purple mt-3 rounded-xl hover:bg-gray-50">
           <div class="grid grid-cols-6 p-5 gap-y-2">
             {/* <!-- Profile Picture --> */}
             <div>
-              <img src={BookImg} class="max-w-16 max-h-16 rounded-full" />
+              <img
+                src={BookImg}
+                alt="new pic"
+                class="max-w-16 max-h-16 rounded-full"
+              />
             </div>
 
             {/* <!-- Description --> */}
@@ -44,9 +54,20 @@ function SampleCard() {
             </p>
           </div>
         </a>
+>>>>>>> 40544cbff33f02fe483df564bdfcd2aa7d070dce
       </div>
     </div>
   );
-}
+};
 
 export default SampleCard;
+
+{
+  /* <div className="card bg-white border-l-8 rounded-lg shadow-md my-4 p-6">
+<h1 className="text-4xl mb-4 font-bold">{course_title}</h1>
+ <div  className="grid grid-cols-4 gap-4"> 
+     <div className="col-span-1"><img className="w-60 h-13 " src={course_thumbnail} alt="books" /></div><div className="col-span-3"><p className="text-lg">{course_details}</p></div></div>
+   
+   
+</div> */
+}

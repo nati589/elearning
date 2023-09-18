@@ -35,7 +35,7 @@ function MyCourseBody() {
                 course_details="lorem Ipsum is simply dummy text of the printing and typesetting industry. "
                 course_thumbnail={PopularBookImg}
                 course_total_hour="3Hours"
-                course_instructure="selam"
+                course_instructor="selam"
                 course_level="level"
                 course_rate="4.7"
                 course_price="price"
@@ -45,7 +45,7 @@ function MyCourseBody() {
                 course_details="lorem Ipsum is simply dummy text of the printing and typesetting industry. "
                 course_thumbnail={PopularBookImg}
                 course_total_hour="3Hours"
-                course_instructure="selam"
+                course_instructor="selam"
                 course_level="level"
                 course_rate="4.7"
                 course_price="price"
@@ -55,7 +55,7 @@ function MyCourseBody() {
                 course_details="lorem Ipsum is simply dummy text of the printing and typesetting industry. "
                 course_thumbnail={PopularBookImg}
                 course_total_hour="3Hours"
-                course_instructure="selam"
+                course_instructor="selam"
                 course_level="level"
                 course_rate="4.7"
                 course_price="price"
@@ -65,7 +65,7 @@ function MyCourseBody() {
                 course_details="lorem Ipsum is simply dummy text of the printing and typesetting industry. "
                 course_thumbnail={PopularBookImg}
                 course_total_hour="3Hours"
-                course_instructure="selam"
+                course_instructor="selam"
                 course_level="level"
                 course_rate="4.7"
                 course_price="price"

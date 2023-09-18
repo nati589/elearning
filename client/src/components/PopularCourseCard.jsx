@@ -17,12 +17,18 @@ const PopularCourseCard = ({
   course_details,
   course_thumbnail,
   course_total_hour,
-  course_instructure,
+  course_instructor,
   course_level,
   course_rate,
   course_price,
 }) => {
+<<<<<<< HEAD
+  // const images = require.context("../assets");
+  // images(`${courseId}.jpg`)
 
+  // const course_image = images(course_thumbnail);
+=======
+>>>>>>> 40544cbff33f02fe483df564bdfcd2aa7d070dce
   const numbers = [1, 2, 3, 4, 5];
   const partialDesc = course_details ? course_details.slice(0, 80) : "";
 
@@ -68,8 +74,9 @@ const PopularCourseCard = ({
         setFailure(true);
       });
   };
+
   return (
-    <div className="card bg-white border-l-8 border-l-dark-purple rounded-lg shadow-md my-2 p-2 w-96 h-80">
+    <div className="card bg-white border-l-8 border-l-dark-purple rounded-lg shadow-md my-2 p-2 w-full h-80">
       {/* <div className="card bg-white border-l-8 border-l-dark-purple rounded-lg shadow-md my-1 p-1 w-80 h-88"></div> */}
       <Link to={`/coursedetails/${courseId}`} className=" cursor-pointer">
         <h1 className="text-xl mb-4 font-bold">{course_title}</h1>
@@ -78,7 +85,7 @@ const PopularCourseCard = ({
             <img className="w-32 h-12 " src={course_thumbnail} alt="books" />
           </div>
           <div className="col-span-3">
-            <p className="text-sm">{course_details}</p>
+            <p className="text-sm">{partialDesc}</p>
           </div>
         </div>
 
@@ -91,7 +98,7 @@ const PopularCourseCard = ({
               </div>
               <div className="flex flex-row">
                 <img className="w-4 h-4" src={person} alt="" />
-                <p className="ml-2 text-sm">{course_instructure}</p>
+                <p className="ml-2 text-sm">{course_instructor}</p>
               </div>
               <div className="flex flex-row">
                 <img className="w-4 h-4" src={stickynote} alt="" />
@@ -134,8 +141,7 @@ const PopularCourseCard = ({
               <button
                 className="bg-dark-purple hover:bg-purple-500 text-white  font-bold py-3 px-3 my-10 rounded "
                 // className="button-component-stroke  w-fit py-2 px-4 mb-7"
-                onClick={addToCart}
-              >
+                onClick={addToCart}>
                 <span className="add-to-cart-text p-3">Add to Cart</span>
                 &nbsp;&nbsp; &nbsp;
                 <span className="cart-icon fa-x p-3">

@@ -1,40 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PaVerificationModal from "./PaVerificationModal";
 import ChangeEmailModal from "./changeEmailModal";
 import PassChangeModal from "./passChangeModal";
+import axios from "axios";
 
 function ProfilePrivacy() {
-  const [newEmail, setNewEmail] = useState("");
+  const [currentEmail, setCurrnetEmail] = useState(
+    localStorage.getItem("email")
+  );
   const [confirmation, setConfirmation] = useState("");
   const [message, setMessage] = useState("");
-  const [currentPassword, setCurrentPassword] = useState("");
+  const [currentPassword, setCurrentPassword] = useState(
+    localStorage.getItem("password")
+  );
   const [newPassword, setNewPassword] = useState("");
   const [paModal, setPaModal] = useState(false);
   const [emailModal, setEmailModal] = useState(false);
   const [passModal, setPassModal] = useState(false);
   const [toggleThis, setToggleThis] = useState("");
-
-  // const handleChangeEmail = () => {
-  //   if (newEmail === confirmation) {
-  //     // Send a request to change the email on the server here
-  //     // You can use Axios or any other HTTP library for this
-  //     // After successful change, update the message state
-  //     setMessage("Email changed successfully.");
-  //   } else {
-  //     setMessage("Emails do not match. Please confirm your new email.");
-  //   }
-  // };
-
-  const handleChangePassword = () => {
-    if (newPassword === confirmation) {
-      // Send a request to change the password on the server here
-      // You can use Axios or any other HTTP library for this
-      // After successful change, update the message state
-      setMessage("Password changed successfully.");
-    } else {
-      setMessage("Passwords do not match. Please confirm your new password.");
-    }
-  };
 
   const toggleModal = () => {
     setPaModal(!paModal);
@@ -45,6 +28,24 @@ function ProfilePrivacy() {
   const togglePassModal = () => {
     setPassModal(!passModal);
   };
+
+  useEffect(() => {
+    const userId = localStorage.getItem("user_id");
+    const apiUrl = `/users/getUserById/${userId}`;
+
+    axios
+      .get(apiUrl)
+      .then((response) => {
+        const { user_email, user_password } = response.data[0];
+
+        // Set user email and password in state
+        setCurrentPassword(user_password);
+        setCurrnetEmail(user_email);
+      })
+      .catch((error) => {
+        console.error("Error fetching user data:", error);
+      });
+  }, []);
   return (
     <div>
       {paModal && (
@@ -70,8 +71,8 @@ function ProfilePrivacy() {
           <input
             type="email"
             className="w-full p-2 border rounded"
-            placeholder={localStorage.getItem("email")}
-            value={localStorage.getItem("email")}
+            placeholder="Your Email"
+            value={currentEmail}
             readOnly={true}
           />
         </div>
@@ -93,28 +94,10 @@ function ProfilePrivacy() {
             type="password"
             className="w-full p-2 border rounded"
             placeholder="Current Password"
-            value={localStorage.getItem("password")}
+            value={currentPassword}
             onChange={(e) => setCurrentPassword(e.target.value)}
           />
         </div>
-        {/* <div className="mb-4">
-          <input
-            type="password"
-            className="w-full p-2 border rounded"
-            placeholder="New Password"
-            value={newPassword}
-            onChange={(e) => setNewPassword(e.target.value)}
-          />
-        </div>
-        <div className="mb-4">
-          <input
-            type="password"
-            className="w-full p-2 border rounded"
-            placeholder="Confirm New Password"
-            value={confirmation}
-            onChange={(e) => setConfirmation(e.target.value)}
-          />
-        </div> */}
         <button
           className="bg-dark-purple text-white p-2 rounded hover:bg-light-purple"
           onClick={() => {

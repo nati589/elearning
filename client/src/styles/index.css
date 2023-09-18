@@ -40,9 +40,9 @@ code {
 }
 
 .button-component:hover {
-  @apply gradient-purple font-bold;
+  @apply gradient-purple;
 }
 
 .button-component-stroke:hover {
-  @apply bg-light-purple font-bold;
+  @apply bg-light-purple ;
 }

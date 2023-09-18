@@ -23,6 +23,17 @@ export const enrollStudent = (req, res) => {
         message: "Oops! Server connection error. Please try again.",
       });
     } else {
+      const q2 =
+        "UPDATE course SET course_students = course_students + 1 WHERE course_id = ?";
+
+      db.query(q2, [course_id], (err, data) => {
+        if (err) {
+          res.status(401).json({
+            message: "Error updating enrollment number!",
+          });
+        }
+      });
+
       res.status(200).json({
         message:
           "You have Purchased Course Successfully! Go to My Courses tab to access it. Happy learning!",
@@ -48,6 +59,17 @@ export const purchaseBook = (req, res) => {
         message: "Oops! Server connection error. Please try again.",
       });
     } else {
+      const q2 =
+        "UPDATE book SET book_purchases = book_purchases + 1 WHERE book_id = ?";
+
+      db.query(q2, [book_id], (err, data) => {
+        if (err) {
+          res.status(401).json({
+            message: "Error updating purchase number!",
+          });
+        }
+      });
+
       res.status(200).json({
         message:
           "You have Purchased Book Successfully! Go to My Books tab to access it. Happy reading!",
@@ -110,11 +132,9 @@ export const fullCheckout = async (req, res) => {
 
         db.query(q4, [cartItem.cart_id], (err, data) => {
           if (err) {
-            return res
-              .status(401)
-              .send({
-                message: "Error! Failed to remove from cart. Try again.",
-              });
+            return res.status(401).send({
+              message: "Error! Failed to remove from cart. Try again.",
+            });
           }
         });
       });

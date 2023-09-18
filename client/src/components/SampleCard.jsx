@@ -1,5 +1,6 @@
 import React from "react";
 import BookImg from "../assets/BookImg.png"
+// import BookImg from "../../src/assets/BookImg.png";
 
 const SampleCard = ({ course_title, course_details, course_thumbnail }) => {
   return (
@@ -8,16 +9,13 @@ const SampleCard = ({ course_title, course_details, course_thumbnail }) => {
       <div class=" flex flex-col gap-4 items-center justify-center ">
         {/* <!-- Card 1 --> */}
         <a
-          href="/"
-          class="w-full border-2 border-b-4 bg-white border-medium-purple mt-3 rounded-xl hover:bg-gray-50">
+          href="#"
+          class="w-full border-2 border-b-4 bg-white border-medium-purple mt-3 rounded-xl hover:bg-gray-50"
+        >
           <div class="grid grid-cols-6 p-5 gap-y-2">
             {/* <!-- Profile Picture --> */}
             <div>
-              <img
-                src={BookImg}
-                alt="new pic"
-                class="max-w-16 max-h-16 rounded-full"
-              />
+              <img src={BookImg} class="max-w-16 max-h-16 rounded-full" />
             </div>
 
             {/* <!-- Description --> */}
@@ -50,13 +48,3 @@ const SampleCard = ({ course_title, course_details, course_thumbnail }) => {
 };
 
 export default SampleCard;
-
-// {
-//   /* <div className="card bg-white border-l-8 rounded-lg shadow-md my-4 p-6">
-// <h1 className="text-4xl mb-4 font-bold">{course_title}</h1>
-//  <div  className="grid grid-cols-4 gap-4"> 
-//      <div className="col-span-1"><img className="w-60 h-13 " src={course_thumbnail} alt="books" /></div><div className="col-span-3"><p className="text-lg">{course_details}</p></div></div>
-   
-   
-// </div> */
-// }

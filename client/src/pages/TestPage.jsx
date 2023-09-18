@@ -1,6 +1,5 @@
 // import React from "react";
 // import PopularCourseCard from "../components/PopularCourseCard";
-// import BookImage  from "../../src/assets/Image.png";
 // import TrendingCoursesCard from "../components/TrendingCoursesCard";
 
 // function TestPage() {
@@ -59,6 +58,8 @@ import SampleCard from "../components/SampleCard";
 import axios from "axios";
 import PopularCourseCard from "../components/PopularCourseCard";
 import Quiz from "../components/LearningPageComponents/Quiz";
+import BookImg  from "../../src/assets/BookImg.png";
+
 
 function TestPage() {
   const [courses, setCourses] = useState([]);

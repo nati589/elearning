@@ -1,5 +1,5 @@
 import React from "react";
-import RecommendedCourseImg from "../assets/RecommendedCourseImg.png"
+import RecommendedCourseImg from "../assets/RecommendedCourseImg.png";
 
 function CourseRecommendationCard() {
   return (
@@ -7,10 +7,10 @@ function CourseRecommendationCard() {
       <div className="font-bold">
         <div className="flex flex-wrap my-4">
           {[1, 2, 3, 4].map((index) => (
-            <div key={index} className="flex flex-col bg-white my-2">
+            <div key={index} className="flex flex-col my-2">
               <a
                 href="/bookdetails"
-                className="w-full border-2 border-b-4 border-gray-200 rounded-xl hover:bg-gray-50"
+                className="w-full border-2 border-b-4 border-gray-200 rounded-xl hover:bg-gray-50  bg-white"
               >
                 <div className="grid grid-cols-6 p-5 gap-y-2">
                   {/* <!-- Profile Picture --> */}
@@ -74,22 +74,19 @@ function CourseRecommendationCard() {
                   </div>
 
                   {/* <!-- Price --> */}
-                
                 </div>
                 <div className="flex col-start-2 ml-4 md:col-start-auto md:ml-0 md:justify-center mb-2">
-                    <p className="rounded-lg text-dark-purple font-bold bg-light-purple  py-1 px-3 text-sm w-fit h-fit">
-                      {" "}
-                      Add to cart{" "}
-                    </p>
-                  </div>
+                  <p className="rounded-lg text-dark-purple font-bold bg-light-purple  py-1 px-3 text-sm w-fit h-fit">
+                    {" "}
+                    Add to cart{" "}
+                  </p>
+                </div>
               </a>
             </div>
           ))}
         </div>
       </div>
-   
-      </div>
-    
+    </div>
   );
 }
 

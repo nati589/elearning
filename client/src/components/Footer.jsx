@@ -63,10 +63,10 @@ function Footer() {
 
   return (
     <footer className="items-center py-8 px-4 bg-light-purple rounded-t-3xl">
-      <div className="container mx-auto px-4 py-4 ">
-        <div className="flex flex-wrap text-left lg:text-left">
-          <div className="w-full lg:w-4/12 px-4">
-            <div className="flex gap-2 items-center pb-3">
+      <div className="container mx-auto px-4 py-4  flex-wrap  ">
+        <div className=" flex  justify-center items-center ">
+          <div className="w-full lg:w-1/3  ">
+            <div className="flex gap-1 items-center pb-3">
               <img src={Logo} alt="Logo" width={40} />
               <a href="/" className="text-3xl text-subscribe-purple font-bold">
                 Logo
@@ -129,9 +129,9 @@ function Footer() {
               </ul>
             </div>
           </div>
-          <div className="w-full lg:w-8/12 px-4">
+          <div className="w-full lg:w-2/3 px-4">
             <div className="flex flex-wrap items-top mb-6">
-              <div className="w-full lg:w-4/12 px-4 ml-auto">
+              <div className="w-full lg:w-1/3  ml-auto">
                 <span className="block font-semibold text-blueGray-500 text-sm mb-2">
                   Useful Links
                 </span>
@@ -152,7 +152,7 @@ function Footer() {
                   </li>
                 </ul>
               </div>
-              <div>
+              <div className="w-full lg:w-1/3 ml-auto">
                 <h1 className="text-blueGray-600 font-semibold text-lg pb-2 ">
                   Contact Us
                 </h1>
@@ -183,7 +183,8 @@ function Footer() {
                       </AnimatePresence>
                       <label
                         htmlFor="description"
-                        className="text-subscribe-purple">
+                        className="text-subscribe-purple"
+                      >
                         Description
                         <textarea
                           id="description"
@@ -198,7 +199,8 @@ function Footer() {
                       </label>
                       <button
                         onClick={handleClick}
-                        className="button-component mt-3 self-start w-2/12 my-0.1 py-1 px-4">
+                        className="button-component mt-3 self-start w-2/12 my-0.1 py-1 px-4"
+                      >
                         Send
                       </button>
                     </div>
@@ -217,16 +219,19 @@ function Footer() {
                 href="https://www.creative-tim.com/product/notus-js"
                 className="text-blueGray-500 hover:text-gray-800"
                 target="_blank"
-                rel="noopener noreferrer">
+                rel="noopener noreferrer"
+              >
                 {" "}
-                Notus JS by .
-              </a>
-              <a
-                href="https://www.creative-tim.com?ref=njs-profile"
-                className="text-blueGray-500 hover:text-blueGray-800"
-                target="_blank"
-                rel="noopener noreferrer">
-                Creative Tim
+                Notus JS by
+                <a
+                  href="https://www.creative-tim.com?ref=njs-profile"
+                  className="text-blueGray-500 hover:text-blueGray-800"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Creative Tim
+                </a>
+                .
               </a>
             </div>
           </div>

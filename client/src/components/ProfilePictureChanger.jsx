@@ -43,9 +43,15 @@ const ProfilePicture = () => {
       </div>
       <button
         onClick={handleSubmit}
-        className="bg-dark-purple hover:bg-medium-purple text-white py-2 px-4 rounded-lg"
+        className="bg-dark-purple hover:bg-medium-purple text-white py-2 px-4 rounded-lg "
       >
-        Upload Profile Picture
+        Upload
+      </button>
+      <button
+        onClick={handleSubmit}
+        className="bg-light-purple hover:bg-medium-purple text-black py-2 px-4 rounded-lg"
+      >
+        Cancel
       </button>
     </div>
   );

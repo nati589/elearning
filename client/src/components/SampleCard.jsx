@@ -2,8 +2,7 @@ import React from "react";
 import BookImg from "../assets/BookImg.png";
 // import BookImg from "../../src/assets/BookImg.png";
 
-const SampleCard = ({ course_title, course_details, course_thumbnail }) => {
-  return (
+const SampleCard = ({ course_title, instructor, time, rating, price, course_thumbnail }) => {  return (
     <div>
       {/* <!-- component --> */}
       <div className=" flex flex-col gap-4 items-center justify-center ">

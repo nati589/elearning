@@ -9,7 +9,7 @@ function BooksPage() {
       <BooksHero />
 
       <BooksBody />
-      <Subscription />
+      {/* <Subscription /> */}
     </>
   );
 }

@@ -19,7 +19,7 @@ export default function VideoContent() {
           }
         );
         console.log(response.data);
-        const videoBlob = new Blob([response.data.size], { type: 'video/mp4' });
+        const videoBlob = new Blob([response.data], { type: 'video/mp4' });
         const videoUrl = URL.createObjectURL(videoBlob);
         setVideoUrl(videoUrl);
         
@@ -41,6 +41,7 @@ export default function VideoContent() {
       {videoUrl ? (
         <ReactPlayer
           url={videoUrl}
+          playing={true}
           controls={true}
           width="100%"
           height="auto"
@@ -51,3 +52,8 @@ export default function VideoContent() {
     </div>
   );
 }
+// {/* <video width='320' height='240' controls autoPlay>
+
+// <source src={`http://localhost:8800/api/sections/getSectionVideo/${sectionId}`} type='video/mp4'></source>
+// </video> */}
+// {/* <video src={videoUrl} controls className="w-full"/> */}

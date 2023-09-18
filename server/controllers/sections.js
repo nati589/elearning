@@ -83,49 +83,75 @@ export const getSectionFile = (req, res) => {
 export const getSectionVideo = (req, res) => {
   const { id } = req.params;
   const directoryPath = "sections/files/";
+  const fileNameWithoutExtension = id;
 
-  fs.readdir(directoryPath, (error, files) => {
-    if (error) {
-      console.error("Error reading directory:", error);
-      res.status(500).send("Error reading directory");
-      return;
-    }
 
-    const fileNameWithoutExtension = id;
-    const file = files.find((file) => {
-      const fileWithoutExtension = path.parse(file).name;
-      return fileWithoutExtension === fileNameWithoutExtension;
+  const searchFile = (directoryPath, fileNameWithoutExtension, callback) => {
+    fs.readdir(directoryPath, (error, files) => {
+      if (error) {
+        console.error('Error reading directory:', error);
+        callback(null); // Pass null to indicate file not found
+        return;
+      }
+  
+      const file = files.find((file) => {
+        const fileWithoutExtension = path.parse(file).name;
+        return fileWithoutExtension.toLowerCase() === fileNameWithoutExtension.toLowerCase();
+      });
+  
+      if (file) {
+        const filePath = path.join(directoryPath, file);
+        callback(filePath); // Pass the absolute file path to the callback
+      } else {
+        callback(null); // Pass null to indicate file not found
+      }
     });
+  };
+  
+  // Usage example
+  
+  searchFile(directoryPath, fileNameWithoutExtension, (filePath) => {
+    if (filePath) {
+      console.log('File found:', filePath);
+      // Store the absolute file path in a variable or perform further operations with the file
+      // get video stats (about 11MB)
+     const stat = fs.statSync(filePath);
+     const fileSize = stat.size;
+     const range = req.headers.range;
+ 
+     if(range){
+         const parts = range.replace(/bytes=/, '').split('-')
+         const start = parseInt(parts[0], 10);
+         const end = parts[1] ? parseInt(parts[1], 10) : fileSize - 1;
+ 
+         const chunksize = end - start + 1;
+         const file = fs.createReadStream(filePath, {start, end});
+         const head = {
+             'Content-Range': `bytes ${start}-${end}/${fileSize}`,
+             'Accept-Ranges': 'bytes',
+             'Content-Length': chunksize,
+             'Content-Type': 'video/mp4'
+         };
+         res.writeHead(206, head);
+         file.pipe(res);
+     }
+     else{
+         const head = {
+             'Content-Length': fileSize,
+             'Content-Type': 'video/mp4'
+         };
+         res.writeHead(200, head);
+         fs.createReadStream(filePath).pipe(res)
+     }
 
-    if (!file) {
-      console.error("File not found:", fileNameWithoutExtension);
-      res.status(404).send("File not found");
-      return;
+    } else {
+      console.log('File not found:', fileNameWithoutExtension);
     }
-
-    const filePath = path.join(directoryPath, file);
-    const contentType = getContentType(filePath);
-
-    if (!contentType) {
-      console.error("Unknown file type:", filePath);
-      res.status(500).send("Unknown file type");
-      return;
-    }
-
-    // const options = {
-    //   root: path.join("./"),
-    //   headers: {
-    //     // "Content-Type": contentType,
-    //     "Content-Type": 'video/mp4',
-    //   },
-    // };
-    
-    // res.writeHead(200, options);
-    res.setHeader("Content-Type", contentType);
-
-    const fileStream = fs.createReadStream(filePath);
-    fileStream.pipe(res);
   });
+
+    // videoPath = path.join(directoryPath, file);
+
+    
 };
 function getContentType(filePath) {
   const fileExtension = path.extname(filePath).toLowerCase();

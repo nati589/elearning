@@ -82,116 +82,27 @@ export const getSectionFile = (req, res) => {
 };
 export const getSectionVideo = (req, res) => {
   const { id } = req.params;
-  const filePath = `sections/files/${id}.mp4`; // Adjust the file path based on your backend file storage
-
-  fs.stat(filePath, (error, stat) => {
-    if (error) {
-      console.error('Error reading video file:', error);
-      res.sendStatus(404); // Send a 404 status code to indicate file not found
-      return;
-    }
-
-    const fileSize = stat.size;
-    const range = req.headers.range;
-
-    if (range) {
-      const parts = range.replace(/bytes=/, '').split('-');
-      const start = parseInt(parts[0], 10);
-      const end = parts[1] ? parseInt(parts[1], 10) : fileSize - 1;
-
-      const chunksize = end - start + 1;
-      const file = fs.createReadStream(filePath, { start, end });
-      const head = {
-        'Content-Range': `bytes ${start}-${end}/${fileSize}`,
-        'Accept-Ranges': 'bytes',
-        'Content-Length': chunksize,
-        'Content-Type': 'video/mp4',
-      };
-      res.writeHead(206, head);
-      file.pipe(res);
-    } else {
-      const head = {
-        'Content-Length': fileSize,
-        'Content-Type': 'video/mp4',
-      };
-      res.writeHead(200, head);
-      fs.createReadStream(filePath).pipe(res);
-    }
-  });
+  // const filePath = `sections/files/${id}.mp4`; // Adjust the file path based on your backend file storage
+  const range = req.headers.range;
+  if (!range) {
+    res.status(400).send("Requires Range header");
+  }
+  const videoPath = `sections/files/${id}.mp4`;
+  const videoSize = fs.statSync(`sections/files/${id}.mp4`).size;
+  const CHUNK_SIZE = 10 ** 6;
+  const start = Number(range.replace(/\D/g, ""));
+  const end = Math.min(start + CHUNK_SIZE, videoSize - 1);
+  const contentLength = end - start + 1;
+  const headers = {
+    "Content-Range": `bytes ${start}-${end}/${videoSize}`,
+    "Accept-Ranges": "bytes",
+    "Content-Length": contentLength,
+    "Content-Type": "video/mp4",
+  };
+  res.writeHead(206, headers);
+  const videoStream = fs.createReadStream(videoPath, { start, end });
+  videoStream.pipe(res);
 };
-// export const getSectionVideo = (req, res) => {
-//   const { id } = req.params;
-//   const directoryPath = "sections/files/";
-//   const fileNameWithoutExtension = id;
-
-
-//   const searchFile = (directoryPath, fileNameWithoutExtension, callback) => {
-//     fs.readdir(directoryPath, (error, files) => {
-//       if (error) {
-//         console.error('Error reading directory:', error);
-//         callback(null); // Pass null to indicate file not found
-//         return;
-//       }
-  
-//       const file = files.find((file) => {
-//         const fileWithoutExtension = path.parse(file).name;
-//         return fileWithoutExtension.toLowerCase() === fileNameWithoutExtension.toLowerCase();
-//       });
-  
-//       if (file) {
-//         const filePath = path.join(directoryPath, file);
-//         callback(filePath); // Pass the absolute file path to the callback
-//       } else {
-//         callback(null); // Pass null to indicate file not found
-//       }
-//     });
-//   };
-  
-//   // Usage example
-  
-//   searchFile(directoryPath, fileNameWithoutExtension, (filePath) => {
-//     if (filePath) {
-//       console.log('File found:', filePath);
-//       // Store the absolute file path in a variable or perform further operations with the file
-//       // get video stats (about 11MB)
-//      const stat = fs.statSync(filePath);
-//      const fileSize = stat.size;
-//      const range = req.headers.range;
- 
-//      if(range){
-//          const parts = range.replace(/bytes=/, '').split('-')
-//          const start = parseInt(parts[0], 10);
-//          const end = parts[1] ? parseInt(parts[1], 10) : fileSize - 1;
- 
-//          const chunksize = end - start + 1;
-//          const file = fs.createReadStream(filePath, {start, end});
-//          const head = {
-//              'Content-Range': `bytes ${start}-${end}/${fileSize}`,
-//              'Accept-Ranges': 'bytes',
-//              'Content-Length': chunksize,
-//              'Content-Type': 'video/mp4'
-//          };
-//          res.writeHead(206, head);
-//          file.pipe(res);
-//      }
-//      else{
-//          const head = {
-//              'Content-Length': fileSize,
-//              'Content-Type': 'video/mp4'
-//          };
-//          res.writeHead(200, head);
-//          fs.createReadStream(filePath).pipe(res)
-//      }
-
-//     } else {
-//       console.log('File not found:', fileNameWithoutExtension);
-//     }
-//   });
-
-//     // videoPath = path.join(directoryPath, file);
-
-    
-// };
 function getContentType(filePath) {
   const fileExtension = path.extname(filePath).toLowerCase();
 
@@ -208,7 +119,6 @@ function getContentType(filePath) {
       return null;
   }
 }
-
 export const getCourseSections = (req, res) => {
   const q = `SELECT * FROM section WHERE course_id = '${req.params.id}' ORDER BY section_date_created ASC`;
   db.query(q, (err, data) => {
@@ -453,3 +363,75 @@ export const deleteSection = (req, res) => {
     });
   });
 };
+
+// export const getSectionVideo = (req, res) => {
+//   const { id } = req.params;
+//   const directoryPath = "sections/files/";
+//   const fileNameWithoutExtension = id;
+
+//   const searchFile = (directoryPath, fileNameWithoutExtension, callback) => {
+//     fs.readdir(directoryPath, (error, files) => {
+//       if (error) {
+//         console.error('Error reading directory:', error);
+//         callback(null); // Pass null to indicate file not found
+//         return;
+//       }
+
+//       const file = files.find((file) => {
+//         const fileWithoutExtension = path.parse(file).name;
+//         return fileWithoutExtension.toLowerCase() === fileNameWithoutExtension.toLowerCase();
+//       });
+
+//       if (file) {
+//         const filePath = path.join(directoryPath, file);
+//         callback(filePath); // Pass the absolute file path to the callback
+//       } else {
+//         callback(null); // Pass null to indicate file not found
+//       }
+//     });
+//   };
+
+//   // Usage example
+
+//   searchFile(directoryPath, fileNameWithoutExtension, (filePath) => {
+//     if (filePath) {
+//       console.log('File found:', filePath);
+//       // Store the absolute file path in a variable or perform further operations with the file
+//       // get video stats (about 11MB)
+//      const stat = fs.statSync(filePath);
+//      const fileSize = stat.size;
+//      const range = req.headers.range;
+
+//      if(range){
+//          const parts = range.replace(/bytes=/, '').split('-')
+//          const start = parseInt(parts[0], 10);
+//          const end = parts[1] ? parseInt(parts[1], 10) : fileSize - 1;
+
+//          const chunksize = end - start + 1;
+//          const file = fs.createReadStream(filePath, {start, end});
+//          const head = {
+//              'Content-Range': `bytes ${start}-${end}/${fileSize}`,
+//              'Accept-Ranges': 'bytes',
+//              'Content-Length': chunksize,
+//              'Content-Type': 'video/mp4'
+//          };
+//          res.writeHead(206, head);
+//          file.pipe(res);
+//      }
+//      else{
+//          const head = {
+//              'Content-Length': fileSize,
+//              'Content-Type': 'video/mp4'
+//          };
+//          res.writeHead(200, head);
+//          fs.createReadStream(filePath).pipe(res)
+//      }
+
+//     } else {
+//       console.log('File not found:', fileNameWithoutExtension);
+//     }
+//   });
+
+//     // videoPath = path.join(directoryPath, file);
+
+// };

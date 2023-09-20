@@ -16,8 +16,19 @@ function BooksCard({
   rating,
   price,
 }) {
-  const images = require.context("../assets");
-  const book_image = images(bookImagePath);
+  const images = require.context("../../../server/books/thumbnails");
+  // console.log(bookImagePath, "bookImagePath");
+  let book_image;
+  try {
+    if (bookImagePath !== null) {
+      // console.log("is not null")
+      book_image = images(`./${bookImagePath}`);
+    } else {
+      book_image = images("./default_book_image.png");
+    }
+  } catch (error) {
+    book_image = images("./default_book_image.png");
+  }
   const numbers = [1, 2, 3, 4, 5];
 
   const partialDesc = book_description ? book_description.slice(0, 80) : "";
@@ -68,7 +79,8 @@ function BooksCard({
     <div
       className="relative bg-white rounded-lg border-t-8 border-x-2 min-h-[180px] lg:min-h-[380px] h-fit
          w-full border-medium-purple p-2 shadow-md transition-transform duration-300 ease-in-out
-         hover:scale-[1.04] hover:-translate-y-1 hover:z-10 hover:drop-shadow-[0 35px 35px rgba(0, 0, 0, 1)]">
+         hover:scale-[1.04] hover:-translate-y-1 hover:z-10 hover:drop-shadow-[0 35px 35px rgba(0, 0, 0, 1)]"
+    >
       <Link to={`/bookdetails/${bookId}`} className="w-full cursor-pointer">
         <div className="flex flex-col w-full px-1 items-center justify-center mb-2">
           <span className="w-full self-start mb-2 text-sm lg:text-xl font-semibold font-sans">
@@ -131,7 +143,8 @@ function BooksCard({
           localStorage.getItem("user_id") && (
             <button
               className="button-component-stroke w-fit py-2 px-8 mb-2"
-              onClick={addToCart}>
+              onClick={addToCart}
+            >
               Add to Cart
             </button>
           )}

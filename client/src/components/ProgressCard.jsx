@@ -1,12 +1,53 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 function ProgressCard(props) {
-  const { courseName, final, mid, quiz, assignment } = props;
+  const { courseId } = props;
+  const [quiz, setQuiz] = useState([]);
+  const [assignment, setAssignment] = useState([]);
+  const [mid, setMid] = useState("");
+  const [final, setFinal] = useState("");
+  const [courseData, setCourseData] = useState(null);
+ 
+  useEffect(() => {
+    // Make a GET request to fetch course progress data from the database
+    axios
+      .get(`/api/courseProgress/${courseId}`) // Replace with your API endpoint
+      .then((response) => {
+        setCourseData(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching course progress data:", error);
+      });
+  }, [courseId]);
 
-  // Convert values to numbers and calculate the total score
+  useEffect(() => {
+    if (courseData) {
+      // Make a GET request to fetch data from the database
+      axios
+        .get(`/api/courseData/${courseId}`) // Replace with your API endpoint
+        .then((response) => {
+          const courseData = response.data;
+
+          // Extract data from the response and set it in the component state
+          setQuiz(courseData.quiz);
+          setAssignment(courseData.assignment);
+          setMid(courseData.mid);
+          setFinal(courseData.final);
+        })
+        .catch((error) => {
+          console.error("Error fetching course data:", error);
+        });
+    }
+  }, [courseData, courseId]);
+
+// Calculate the total as you did before
   const quizSum = quiz.map(Number).reduce((a, b) => a + b, 0);
   const assignSum = assignment.map(Number).reduce((a, b) => a + b, 0);
   const total = quizSum + Number(mid) + Number(final) + assignSum;
 
+  if (quiz.length === 0 || assignment.length === 0 || !mid || !final) {
+    return <div>Loading...</div>;
+  }
   return (
     <div className="bg-white rounded-lg p-4   w-[580px] shadow-xl">
       <div className="flex items-center justify-between mb-4">
@@ -14,7 +55,7 @@ function ProgressCard(props) {
           <div className="bg-purple-500 rounded-full h-8 w-8 flex items-center justify-center text-white font-bold text-lg">
             CN
           </div>
-          <h2 className="text-xl font-bold ml-2">{courseName}</h2>
+          <h2 className="text-xl font-bold ml-2">{courseId}</h2>
         </div>
       </div>
       <div className="mb-4">

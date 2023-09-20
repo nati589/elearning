@@ -20,10 +20,7 @@ import { useEffect } from "react";
 function Footer() {
   const methods = useForm();
   useEffect(() => {
-    // Get the current year
     const currentYear = new Date().getFullYear();
-
-    // Find the <span> element by its ID and update its content with the current year
     const yearElement = document.getElementById("get-current-year");
     if (yearElement) {
       yearElement.textContent = currentYear;

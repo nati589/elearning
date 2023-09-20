@@ -281,8 +281,10 @@ export const updateCourse = (req, res) => {
   // Construct the new file path
   const newFilePath = `courses/thumbnails/${newFileName}`;
 
-  const q = `UPDATE course SET course_title = ?, course_details = ?, course_level = ?, course_price = ?, course_instructor = ?, course_total_hour = ? WHERE course_id = '${req.params.id}'`;
-  db.query(q, Object.values(req.body), (err, data) => {
+  const objValues = Object.values(req.body);
+
+  const q = `UPDATE course SET course_title = ?, course_details = ?, course_level = ?, course_price = ?, course_instructor = ?, course_total_hour = ?, course_thumbnail = ? WHERE course_id = '${req.params.id}'`;
+  db.query(q, [...objValues, newFileName], (err, data) => {
     if (err) {
       res.json(err);
       console.log(err);
@@ -307,6 +309,7 @@ export const updateCourse = (req, res) => {
     }
   });
 };
+
 export const deleteCourse = (req, res) => {
   const q = `UPDATE course SET course_archived = 1 WHERE course_id = '${req.body.id}'`;
   db.query(q, req.body.id, (err, data) => {

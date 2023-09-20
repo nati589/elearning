@@ -9,7 +9,7 @@ function CourseDetailsPage() {
       <CoursesHero />
       <CoursesBody />
       {/* <OtherCourses /> */}
-      <Subscription />
+      {/* <Subscription /> */}
     </>
   );
 }

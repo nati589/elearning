@@ -16,6 +16,20 @@ export const getUsers = (req, res) => {
   });
 };
 
+export const getUserById = (req, res) => {
+  const userId = req.params.userId; 
+
+  const q = "SELECT * FROM user WHERE user_id=?";
+
+  db.query(q, [userId], (err, data) => {
+    if (err) {
+      res.status(500).json(err);
+    } else {
+      res.status(200).json(data);
+    }
+  });
+};
+
 export const getUsersThisYear = (req, res) => {
   const q = `
     SELECT *

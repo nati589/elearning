@@ -34,7 +34,7 @@
 
 // export default ReadingDetails;
 import React from "react";
-import Book from "../assets/The10XRule.pdf";
+import Book from "../assets/AmharicCourse1.pdf";
 
 const ReadingDetails = () => {
   const pdfContainerStyle = {

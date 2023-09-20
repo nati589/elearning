@@ -54,12 +54,11 @@
 // // }
 // // export default ProgressPage;
 import React, { useEffect, useState } from "react";
-import SampleCard from "../components/SampleCard";
+// import SampleCard from "../components/SampleCard";
 import axios from "axios";
 import PopularCourseCard from "../components/PopularCourseCard";
 import Quiz from "../components/LearningPageComponents/Quiz";
-import BookImg  from "../../src/assets/BookImg.png";
-
+import BookImg from "../../src/assets/BookImg.png";
 
 function TestPage() {
   const [courses, setCourses] = useState([]);
@@ -84,7 +83,7 @@ function TestPage() {
         Welcome to test page
       </h1>
       <Quiz />
-      <SampleCard />
+      {/* <SampleCard /> */}
       <div className="my-2 shadow-md flex flex-col">
         <h2 className="rounded-tl-lg rounded-tr-lg text-center bg-[#796bd4] px-3.5 py-2.5 font-semibold text-white shadow-sm  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
           Popular Courses

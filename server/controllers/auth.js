@@ -65,6 +65,151 @@ export const checkLogin = (req, res) => {
   }
 };
 
+export const checkPassword = (req, res) => {
+  const {user_password,} = req.body;
+
+  const q = "SELECT * FROM user ";
+  db.query(q,  (err, result) => {
+    if (err) {
+      return res
+        .status(401)
+        .json({ message: "Server Error. Please try again" });
+    } else {
+      try {
+        const isMatch = bcrypt.compareSync(
+          user_password,
+          result[0].user_password
+        );
+        if (!isMatch) {
+          return res
+            .status(401)
+            .json({ message: "Invalid  password" });
+        }
+      } catch (err) {
+        return res
+          .status(401)
+          .json({ message: "Invalid password" });
+      }
+
+      const token = jwt.sign(
+        { username: result[0].user_full_name, user_id: result[0].user_id },
+        process.env.JWT_SECRET,
+        { expiresIn: "1h" }
+      );
+      res.cookie("token", token, { httpOnly: true });
+      res.status(200).json({
+        message: `Login successful. Redirecting...`,
+        username: result[0].user_full_name,
+        user_id: result[0].user_id,
+      });
+    }
+  });
+};
+export const changeEmail = (req, res) => {
+  const { user_email, user_new_email } = req.body;
+
+  const checkEmailQuery = "SELECT * FROM user WHERE user_email=?";
+  db.query(checkEmailQuery, [user_email], (err, result) => {
+    if (err) {
+      return res
+        .status(500)
+        .json({ message: "Server Error. Please try again" });
+    }
+
+  
+    if (result.length === 0) {
+      return res.status(401).json({ message: "Current email not found" });
+    }
+
+    // Check if the new email already exists in the database
+    const checkNewEmailQuery = "SELECT * FROM user WHERE user_email=?";
+    db.query(
+      checkNewEmailQuery,
+      [user_new_email],
+      (newEmailErr, newEmailResult) => {
+        if (newEmailErr) {
+          return res
+            .status(500)
+            .json({ message: "Server Error. Please try again" });
+        }
+
+       
+        if (newEmailResult.length > 0) {
+          return res.status(400).json({ message: "New email already in use" });
+        }
+
+        const updateEmailQuery =
+          "UPDATE user SET user_email=? WHERE user_email=?";
+        db.query(
+          updateEmailQuery,
+          [user_new_email, user_email],
+          (updateErr) => {
+            if (updateErr) {
+              return res
+                .status(500)
+                .json({ message: "Server Error. Please try again" });
+            }
+
+            const token = jwt.sign(
+              {
+                username: result[0].user_full_name,
+                user_id: result[0].user_id,
+                user_email: user_new_email,
+              },
+              process.env.JWT_SECRET,
+              { expiresIn: "1h" }
+            );
+
+            res.cookie("token", token, { httpOnly: true });
+
+            res.status(200).json({
+              message: "Email changed successfully.",
+              username: result[0].user_full_name,
+              user_id: result[0].user_id,
+              user_email: user_new_email,
+            });
+          }
+        );
+      }
+    );
+  });
+};
+
+export const changePassword = (req, res) => {
+  const { user_email, user_password } = req.body;
+
+  const saltRounds = 10; 
+  bcrypt.hash(user_password, saltRounds, (hashErr, hashedPassword) => {
+    if (hashErr) {
+      return res
+        .status(500)
+        .json({ message: "Hash Server Error. Please try again" });
+    }
+
+    // Update the user's password in the database
+    const updatePasswordQuery =
+      "UPDATE user SET user_password=? WHERE user_email=?";
+    db.query(updatePasswordQuery, [hashedPassword, user_email], (updateErr) => {
+      if (updateErr) {
+        return res
+          .status(500)
+          .json({ message: "Server Error. Please try again" });
+      }
+
+      // Return a success message
+      res.status(200).json({
+        message: "Password changed successfully.",
+      });
+    });
+  });
+};
+
+
+
+
+
+
+
 /////////////////////adim Login adim so Dont Touch/////////////////////
 export const loginAdmin = (req, res) => {
   const { username: admin_username, password: admin_password } = req.body;

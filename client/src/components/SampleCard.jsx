@@ -1,8 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import BookImg from "../assets/BookImg.png";
-// import BookImg from "../../src/assets/BookImg.png";
+import ResponseMessage from "./ResponseMessage";
 
-const SampleCard = ({ course_title, course_details, course_thumbnail }) => {
+const SampleCard = ({
+  course_title,
+  instructor,
+  time,
+  rating,
+  price,
+  course_thumbnail,
+}) => {
+  const [failure, setFailure] = useState(false);
+  const [addSuccess, setAddSuccess] = useState(false);
+  const [resMsg, setResMsg] = useState("");
   return (
     <div>
       {/* <!-- component --> */}
@@ -10,7 +20,8 @@ const SampleCard = ({ course_title, course_details, course_thumbnail }) => {
         {/* <!-- Card 1 --> */}
         <a
           href="/"
-          className="w-full border-2 border-b-4 bg-white border-medium-purple mt-3 rounded-xl hover:bg-gray-50">
+          className="w-full border-2 border-b-4 bg-white border-medium-purple mt-3 rounded-xl hover:bg-gray-50"
+        >
           <div className="grid grid-cols-6 p-5 gap-y-2">
             {/* <!-- Profile Picture --> */}
             <div>
@@ -39,10 +50,22 @@ const SampleCard = ({ course_title, course_details, course_thumbnail }) => {
               </div>
             </div>
           </div>
+
           <div className="flex col-start-2 ml-4 md:col-start-auto md:ml-0 md:justify-center mb-2">
-            <p className="rounded-lg text-dark-purple font-bold bg-light-purple  py-1 px-3 text-sm w-fit h-fit">
-              Add to Cart
-            </p>
+            {addSuccess && (
+              <ResponseMessage failure={failure} message={resMsg} />
+            )}
+
+            {(!addSuccess || failure) &&
+              localStorage.getItem("username") &&
+              localStorage.getItem("user_id") && (
+                <button
+                  className="rounded-lg text-dark-purple font-bold bg-light-purple  py-1 px-3 text-sm w-fit h-fit"
+                  onClick={addToCart}
+                >
+                  Add to Cart
+                </button>
+              )}
           </div>
         </a>
       </div>

@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import axios from "axios"; // Add this import
 import "alpinejs";
 import ProfilePictureChanger from "./ProfilePictureChanger";
 import "tailwindcss/tailwind.css";
+
 
 function Setting() {
   const [open, setOpen] = useState(true);
@@ -9,12 +11,30 @@ function Setting() {
   const [newName, setNewName] = useState("");
   const [message, setMessage] = useState("");
 
+
   const handleChangeName = () => {
-    // Send a request to change the name on the server here
-    // You can use Axios or any other HTTP library for this
-    // After successful change, update the message state
-    setMessage("Name changed successfully.");
+    // Replace /* Add user_id here */ with the actual user_id
+    const user_id = {}
+  
+    // Send a request to change the name on the server
+    axios
+      .post("/api/changeName", {
+        user_id: user_id,
+        new_Name: newName,
+      })
+      .then((response) => {
+        // Handle success
+        setMessage("Name changed successfully.");
+      })
+        .catch((error) => {
+          // An error occurred during the request, and you can handle the error here.
+          setMessage("Error changing name: " + error.message);
+          console.error(error);
+        });
+      
   };
+  
+
   return (
     <div className="bg-off-white">
       <div className="flex flex-col flex-nowrap my-3 bg-white rounded-lg shadow-md py-5 w-full justify-center items-center ">

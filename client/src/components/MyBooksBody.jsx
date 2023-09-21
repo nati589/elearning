@@ -31,46 +31,14 @@ function MyBooksBody() {
               Recommended books
             </h2>
             <div className="flex flex-col flex-nowrap items-center max-h-[700px] overflow-y-auto pt-5">
-              <BookRecommendationCard
-                book_title="interaction"
-                book_details="lorem Ipsum is simply dummy text of the printing and typesetting industry. "
-                book_thumbnail={PopularBookImg}
-                book_total_hour="3Hours"
-                book_author="selam"
-                book_level="level"
-                book_rate="4.7"
-                book_price="price"
-              />
-              <BookRecommendationCard
-                book_title="interaction"
-                book_details="lorem Ipsum is simply dummy text of the printing and typesetting industry. "
-                book_thumbnail={PopularBookImg}
-                book_total_hour="3Hours"
-                book_author="selam"
-                book_level="level"
-                book_rate="4.7"
-                book_price="price"
-              />
-              <BookRecommendationCard
-                book_title="interaction"
-                book_details="lorem Ipsum is simply dummy text of the printing and typesetting industry. "
-                book_thumbnail={PopularBookImg}
-                book_total_hour="3Hours"
-                book_author="selam"
-                book_level="level"
-                book_rate="4.7"
-                book_price="price"
-              />
-              <BookRecommendationCard
-                book_title="interaction"
-                book_details="lorem Ipsum is simply dummy text of the printing and typesetting industry. "
-                book_thumbnail={PopularBookImg}
-                book_total_hour="3Hours"
-                book_author="selam"
-                book_level="level"
-                book_rate="4.7"
-                book_price="price"
-              />
+          {books.map((book, index) => (
+            <BookRecommendationCard
+              key={index}
+              title={book.title}
+              rating={book.rating}
+              price={book.price}
+            />
+          ))}
             </div>
           </div>
         </div>

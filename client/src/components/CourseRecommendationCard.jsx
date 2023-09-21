@@ -1,37 +1,44 @@
-import React from "react";
-import RecommendedCourseImg from "../assets/RecommendedCourseImg.png";
+import React, { useState, useEffect } from "react";
+import RecommendedBookImg from "../assets/RecommendedBookImg.png";
 
-function CourseRecommendationCard({ title, rating, price }) {
+function BookRecommendationCard() {
+  const [books, setBooks] = useState([]);
+
+  useEffect(() => {
+    // Fetch data from your API or database here
+    // Replace the URL with your actual API endpoint
+    fetch("https://example.com/api/books")
+      .then((response) => response.json())
+      .then((data) => setBooks(data))
+      .catch((error) => console.error("Error fetching data:", error));
+  }, []);
+
   return (
     <div>
       <div className="font-bold">
         <div className="flex flex-wrap my-4">
-          {[1, 2, 3, 4].map((index) => (
+          {books.map((book, index) => (
             <div key={index} className="flex flex-col bg-white my-2">
               <a
-                href="/bookdetails"
+                href={`/bookdetails/${book.id}`} // Assuming each book has a unique identifier like 'id'
                 className="w-full border-2 border-b-4 border-gray-200 rounded-xl hover:bg-gray-50"
               >
                 <div className="grid grid-cols-6 p-5 gap-y-2">
-                  {/* <!-- Profile Picture --> */}
                   <div>
                     <img
-                      src={RecommendedCourseImg}
+                      src={RecommendedBookImg}
                       className="max-w-16 max-h-16"
-                      alt="Course Thumbnail"
+                      alt="Book Thumbnail"
                     />
                   </div>
-
-                  {/* <!-- Description --> */}
                   <div className="col-span-5 md:col-span-4 ml-4">
-                    <p className="text-gray-600 font-bold">{title}</p>
-
+                    <p className="text-gray-600 font-bold">{book.title}</p>
                     <div className="flex items-center w-16">
                       {[1, 2, 3, 4, 5].map((starIndex) => (
                         <svg
                           key={starIndex}
                           className={`w-5 h-5 ${
-                            starIndex <= rating
+                            starIndex <= book.rating
                               ? "text-yellow-400"
                               : "text-gray-300 dark:text-gray-500"
                           }`}
@@ -44,11 +51,9 @@ function CourseRecommendationCard({ title, rating, price }) {
                       ))}
                     </div>
                   </div>
-
-                  {/* <!-- Price --> */}
                   <div className="flex col-start-2 ml-4 md:col-start-auto md:ml-0 md:justify-center mb-2">
-                    <p className="rounded-lg text-dark-purple font-bold bg-light-purple  py-1 px-3 text-sm w-fit h-fit">
-                      {price}
+                    <p className="rounded-lg text-dark-purple font-bold bg-light-purple py-1 px-3 text-sm w-fit h-fit">
+                      {book.price}
                     </p>
                   </div>
                 </div>
@@ -61,4 +66,4 @@ function CourseRecommendationCard({ title, rating, price }) {
   );
 }
 
-export default CourseRecommendationCard;
+export default BookRecommendationCard;

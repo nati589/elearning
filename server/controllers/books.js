@@ -42,6 +42,20 @@ export const getTrendingBook = (req, res) => {
   });
 };
 
+export const getRecommendedBook = (req, res) => {
+  const limit = 5;
+  const q = "SELECT * FROM book ORDER BY book_purchases DESC LIMIT ?";
+  // console.log("first");
+  db.query(q, [limit], (err, data) => {
+    if (err) {
+      console.log(err);
+      return res.status(401).send({ message: "Connection error try again." });
+    } else {
+      res.status(200).json(data);
+    }
+  });
+};
+
 export const getPurchasedBooks = (req, res) => {
   const q =
     "SELECT * FROM book INNER JOIN purchase WHERE book.book_archived = '0' AND book.book_id = purchase.book_id";

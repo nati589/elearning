@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import BookImg from "../assets/BookImg.png";
 import ResponseMessage from "./ResponseMessage";
+import axios from "axios";
+
 
 const SampleCard = ({
+  courseId,
   course_title,
   instructor,
   time,
@@ -13,6 +16,25 @@ const SampleCard = ({
   const [failure, setFailure] = useState(false);
   const [addSuccess, setAddSuccess] = useState(false);
   const [resMsg, setResMsg] = useState("");
+  
+  const addToCart = () => {
+    axios
+      .post("/cart/addToCart", {
+        course_id: courseId,
+        user_id: localStorage.getItem("user_id"),
+        book_id: null,
+      })
+      .then((res) => {
+        setAddSuccess(true);
+        setFailure(false);
+        setResMsg(res.data.message);
+      })
+      .catch((error) => {
+        setResMsg(error.response.data.message);
+        setAddSuccess(true);
+        setFailure(true);
+      });
+  };
   return (
     <div>
       {/* <!-- component --> */}

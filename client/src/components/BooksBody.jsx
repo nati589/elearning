@@ -9,7 +9,16 @@ import BookSearch from "./BookSearch";
 import axios from "axios";
 import BookImg from "../../src/assets/BookImg.png"; // Adjust the path as needed
 
-export default function BooksBody() {
+export default function BooksBody( bookId,
+  authorName,
+  postDate,
+  joinedDate,
+  description,
+  likes,
+  comments,
+  shares,
+  book_thumbnail,
+  bookImagePath,) {
   const [books, setBooks] = useState([...booksData]);
   const [popularBooks, setPopularBooks] = useState([...booksData]);
 
@@ -55,10 +64,10 @@ export default function BooksBody() {
         <div className="flex flex-col flex-nowrap ">
           <div className="my-2 shadow-md">
             <h2 className="rounded-tl-lg rounded-tr-lg text-center bg-medium-purple px-3.5 py-2.5 font-semibold text-white shadow-sm  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
-              Trending Books
+              Popular Books
             </h2>
             <div className="flex flex-col items-center flex-nowrap max-h-[700px] overflow-y-auto pt-5">
-              {popularBooks.map((book) => (
+              {popularBooks.map((book,index) => (
                 <PopularBooksCard
                   bookId={book.bookId}
                   title={book.book_title}
@@ -76,26 +85,19 @@ export default function BooksBody() {
                   Trending Books
                 </h2>
                 <div className="flex flex-col items-center flex-nowrap max-h-[700px] overflow-y-auto pt-5">
+                {popularBooks.map((book,index) => (
+
                   <TrendingBooksCard
-                    course_title="new course"
-                    course_details="lorem Ipsum is simply dummy text of the printing and typesetting industry. "
-                    course_thumbnail={TrendingBookImg}
+                   bookId={book.bookId}
+                   authorName={book.book_author}
+                   joinedDate={book.book_date}
+                   description={book.book_description}
+                   likes={book.book_rating}
+                   book_thumbnail={book.book_thumbnail}
+                   bookImagePath={book.book_thumbnail}
                   />
-                  <TrendingBooksCard
-                    course_title="new course"
-                    course_details="lorem Ipsum is simply dummy text of the printing and typesetting industry. "
-                    course_thumbnail={TrendingBookImg}
-                  />
-                  <TrendingBooksCard
-                    course_title="new course"
-                    course_details="lorem Ipsum is simply dummy text of the printing and typesetting industry. "
-                    course_thumbnail={TrendingBookImg}
-                  />
-                  <TrendingBooksCard
-                    course_title="new course"
-                    course_details="lorem Ipsum is simply dummy text of the printing and typesetting industry. "
-                    course_thumbnail={TrendingBookImg}
-                  />
+                  ))}
+
                 </div>
               </div>
             </div>

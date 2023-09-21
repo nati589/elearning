@@ -60,39 +60,8 @@ function CoursesBody() {
                   course_level={course.course_level}
                 />
               ))}
-              <SampleCard
-                courseId="1"
-                course_title="interaction"
-                course_details="lorem Ipsum is simply dummy text of the printing and typesetting industry. "
-                course_thumbnail={PopularCourseImg}
-                course_total_hour="3Hours"
-                course_instructor="selam"
-                course_level="level"
-                course_rate="4.7"
-                course_price="price"
-              />
-              <SampleCard
-                courseId="1"
-                course_title="interaction"
-                course_details="lorem Ipsum is simply dummy text of the printing and typesetting industry. "
-                course_thumbnail={PopularCourseImg}
-                course_total_hour="3Hours"
-                course_instructor="selam"
-                course_level="level"
-                course_rate="4.7"
-                course_price="price"
-              />
-              <SampleCard
-                courseId="1"
-                course_title="interaction"
-                course_details="lorem Ipsum is simply dummy text of the printing and typesetting industry. "
-                course_thumbnail={PopularCourseImg}
-                course_total_hour="3Hours"
-                course_instructor="selam"
-                course_level="level"
-                course_rate="4.7"
-                course_price="price"
-              />
+         
+             
             </div>
           </div>
           <div className="flex flex-col flex-nowrap ">

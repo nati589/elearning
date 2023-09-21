@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, Outlet, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import withAuth from "../utils/withAuth";
 
 const LearningPage = () => {
   const [selectedSection, setSelectedSection] = useState(null);
@@ -205,4 +206,4 @@ const LearningPage = () => {
   );
 };
 
-export default LearningPage;
+export default withAuth(LearningPage);

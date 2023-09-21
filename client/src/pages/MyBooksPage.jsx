@@ -1,6 +1,7 @@
 import React from "react";
 import MyBooksHero from "../components/MyBooksHero";
 import MyBooksBody from "../components/MyBooksBody";
+import withAuth from "../utils/withAuth";
 
 function MyBooksPage() {
   return (
@@ -12,4 +13,4 @@ function MyBooksPage() {
   );
 }
 
-export default MyBooksPage;
+export default withAuth(MyBooksPage);

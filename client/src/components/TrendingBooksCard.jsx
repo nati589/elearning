@@ -1,9 +1,7 @@
 import React from "react";
 import TrendingBooksImg from "../assets/TrendingBooksImg.png";
 
-
 const TrendingBooksCard = ({
-  
   bookId,
   authorName,
   joinedDate,
@@ -28,7 +26,8 @@ const TrendingBooksCard = ({
   }
   return (
     <div>
-      <div className="flex bg-white border-medium-purple shadow-lg rounded-lg mx-4 md:mx-auto my-2 max-w-md md:max-w-2xl">
+      <div>
+        {/* <div className="flex bg-white border-medium-purple shadow-lg rounded-lg mx-4 md:mx-auto my-2 max-w-md md:max-w-2xl"> */}
         <div className="flex items-start px-4 py-6">
           <img
             className="w-12 h-12 rounded-full object-cover mr-4 shadow"
@@ -36,8 +35,7 @@ const TrendingBooksCard = ({
             alt="author"
           />
           <div>
-         
-            <p className="text-gray-700">Joined {joinedDate}.</p>
+            <p className="text-gray-700"> {joinedDate}.</p>
             <p className="mt-3 text-gray-700 text-sm">{description}</p>
             <div className="mt-4 flex items-center">
               <div className="flex mr-2 text-gray-700 text-sm">
@@ -56,8 +54,6 @@ const TrendingBooksCard = ({
                 </svg>
                 <span>{likes}</span>
               </div>
-            
-          
             </div>
           </div>
         </div>

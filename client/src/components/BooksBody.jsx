@@ -3,13 +3,14 @@ import { NavLink } from "react-router-dom";
 import PopularBooksCard from "./PopularBooksCard";
 import PopularBooksImg from "../../src/assets/PopularBookImg.png";
 import TrendingBookImg from "../../src/assets/TrendingBooksImg.png";
-import TrendingBooksCard from "./TrendingBooksCard";
+import TrendingBooksCardCopy from "./TrendingBooksCardCopy";
 import booksData from "./booksData";
 import BookSearch from "./BookSearch";
 import axios from "axios";
 import BookImg from "../../src/assets/BookImg.png"; // Adjust the path as needed
 
-export default function BooksBody( bookId,
+export default function BooksBody(
+  bookId,
   authorName,
   postDate,
   joinedDate,
@@ -18,9 +19,11 @@ export default function BooksBody( bookId,
   comments,
   shares,
   book_thumbnail,
-  bookImagePath,) {
+  bookImagePath
+) {
   const [books, setBooks] = useState([...booksData]);
   const [popularBooks, setPopularBooks] = useState([...booksData]);
+  const [trendingBooks, setTrendingBooks] = useState([...booksData]);
 
   useEffect(() => {
     axios
@@ -41,6 +44,17 @@ export default function BooksBody( bookId,
       .get(`/books/getPopularBook`)
       .then((res) => {
         setPopularBooks([...res.data]);
+      })
+      .catch((error) => {
+        console.log(error.response.data.message);
+      });
+  }, []);
+  useEffect(() => {
+    // console.log("sec");
+    axios
+      .get(`/books/getTrendingBook`)
+      .then((res) => {
+        setTrendingBooks([...res.data]);
       })
       .catch((error) => {
         console.log(error.response.data.message);
@@ -67,39 +81,38 @@ export default function BooksBody( bookId,
               Popular Books
             </h2>
             <div className="flex flex-col items-center flex-nowrap max-h-[700px] overflow-y-auto pt-5">
-              {popularBooks.map((book,index) => (
+              {popularBooks.map((book, index) => (
                 <PopularBooksCard
                   bookId={book.book_id}
                   title={book.book_title}
-                  instructor={book.book_author}
-                  rating={book.book_rating}
-                  price={book.book_price}
-                  bookImagePath={book.book_thumbnail}
+                  authorName={book.book_author}
+                  likes={book.book_rating}
+                  book_thumbnail={book.book_thumbnail}
+                  bookImagePath={bookImagePath}
                 />
               ))}
             </div>
 
-            <div className="flex flex-col flex-nowrap ">
-              <div className="my-2 shadow-md">
-                <h2 className="rounded-tl-lg rounded-tr-lg text-center bg-medium-purple px-3.5 py-2.5 font-semibold text-white shadow-sm  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
-                  Trending Books
-                </h2>
-                <div className="flex flex-col items-center flex-nowrap max-h-[700px] overflow-y-auto pt-5">
-                {popularBooks.map((book,index) => (
-
-                  <TrendingBooksCard
-                   bookId={book.book_id}
-                   authorName={book.book_author}
-                   joinedDate={book.book_date_created}
-                   description={book.book_details}
-                   likes={book.book_rating}
-                   book_thumbnail={book.book_thumbnail}
-                   bookImagePath={book.book_thumbnail}
+            <div className="my-2 shadow-md">
+              <h2 className="rounded-tl-lg rounded-tr-lg text-center bg-medium-purple px-3.5 py-2.5 font-semibold text-white shadow-sm  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
+                {" "}
+                Trending Books
+              </h2>
+              <div className="flex flex-col items-center flex-nowrap max-h-[700px] overflow-y-auto pt-5">
+                {trendingBooks.map((book, index) => (
+                  <TrendingBooksCardCopy
+                    bookId={book.book_id}
+                    book_name={book.book_title}
+                    authorName={book.book_author}
+                    book_description={book.book_details}
+                    rating={book.book_rating}
+                    price={book.book_price}
+                    book_thumbnail={book.book_thumbnail}
+                    bookImagePath={bookImagePath}
                   />
-                  ))}
-
-                </div>
+                ))}
               </div>
+             
             </div>
           </div>
         </div>

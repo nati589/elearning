@@ -6,6 +6,7 @@ import CartImg from "../assets/empty_cart.svg";
 import axios from "axios";
 import CartItemBook from "../components/CartItemBook";
 import ResponseMessage from "../components/ResponseMessage";
+import withAuth from "../utils/withAuth";
 
 function Cart() {
   const navigate = useNavigate();
@@ -104,13 +105,11 @@ function Cart() {
     <div className="w-full flex flex-col flex-nowrap pt-10 pb-2 lg:px-auto  px-6 md:px-28 text-xs">
       <div
         id="top"
-        className="w-full flex flex-row justify-between items-center px-4"
-      >
+        className="w-full flex flex-row justify-between items-center px-4">
         <h1 className="text-xl md:text-3xl">Shopping cart</h1>
         <button
           onClick={() => navigate(-1)}
-          className=" gap-1 flex items-center p-1 text-xs md:text-md rounded text-medium-purple"
-        >
+          className=" gap-1 flex items-center p-1 text-xs md:text-md rounded text-medium-purple">
           <BiArrowBack className="text-sm md:text-lg" />
           Continue shopping
         </button>
@@ -182,8 +181,7 @@ function Cart() {
                       checkout();
                       // fullCheckout();
                     }}
-                    className="bg-medium-purple text-white p-2 rounded md:text-xl w-40"
-                  >
+                    className="bg-medium-purple text-white p-2 rounded md:text-xl w-40">
                     Checkout
                   </button>
                 </div>
@@ -196,4 +194,4 @@ function Cart() {
   );
 }
 
-export default Cart;
+export default withAuth(Cart);

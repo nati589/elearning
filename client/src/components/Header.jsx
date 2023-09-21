@@ -149,8 +149,7 @@ function Header({ logoutUpdate }) {
         <div>
           <div
             className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
-            aria-hidden="true"
-          >
+            aria-hidden="true">
             <div
               className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg]  bg-gradient-to-tr from-[#ff80b5] to-[#9089fc]"
               style={{
@@ -161,8 +160,7 @@ function Header({ logoutUpdate }) {
           </div>
           <nav
             className=" text-writing-dark flex items-center justify-between px-6 py-3 lg:px-8"
-            aria-label="Global"
-          >
+            aria-label="Global">
             <div className="flex lg:flex-1">
               <Link to="/" className="-m-1.5 p-1.5">
                 <img className="h-8 w-auto" src={logo} alt="company logo" />
@@ -173,8 +171,7 @@ function Header({ logoutUpdate }) {
               <button
                 type="button"
                 className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
-                onClick={() => setMobileMenuOpen(true)}
-              >
+                onClick={() => setMobileMenuOpen(true)}>
                 <Bars3Icon className="h-6 w-6" aria-hidden="true" />
               </button>
             </div>
@@ -184,8 +181,7 @@ function Header({ logoutUpdate }) {
                 <NavLink
                   key={item.name}
                   to={item.to}
-                  className="text-writing-dark"
-                >
+                  className="text-writing-dark">
                   {item.name}
                 </NavLink>
               ))}
@@ -200,8 +196,7 @@ function Header({ logoutUpdate }) {
                   </div>
                   <div
                     onClick={toggleSignup}
-                    className="button-component-stroke h-12"
-                  >
+                    className="button-component-stroke h-12">
                     Sign Up
                   </div>
                 </>
@@ -212,8 +207,7 @@ function Header({ logoutUpdate }) {
                   <button
                     id="dropdownDefaultButton"
                     className="text-white min-w-[40%] cursor-default bg-light-purple h-14 font-medium  rounded-[32px] text-center flex flex-row flex-nowrap items-center justify-center "
-                    type="button"
-                  >
+                    type="button">
                     <span className="min-w-[50%] mx-2 font-sans text-sm text-dark-purple justify-self-start">
                       {localStorage.getItem("username")}
                     </span>
@@ -221,8 +215,7 @@ function Header({ logoutUpdate }) {
                       <img
                         className="self-right cursor-pointer mr-2 relative hover:scale-105 inline-block h-10 w-auto rounded-[50%] object-cover object-center"
                         alt="avatar placeholder"
-                        src={DefaultProfile}
-                      ></img>
+                        src={DefaultProfile}></img>
                     </Link>
                     <FontAwesomeIcon
                       onClick={openAvatar}
@@ -234,14 +227,12 @@ function Header({ logoutUpdate }) {
                   <div id="dropdown" className={avatarMenu}>
                     <ul
                       className="py-2 text-sm text-writing-dark bg-light-purple"
-                      aria-labelledby="dropdownDefaultButton"
-                    >
+                      aria-labelledby="dropdownDefaultButton">
                       {avatarNavigation.map((item) => (
                         <li key={item.name}>
                           <a
                             href={item.to}
-                            className="block px-3 py-2 hover:bg-medium-purple hover:text-white hover:font-bold"
-                          >
+                            className="block px-3 py-2 hover:bg-medium-purple hover:text-white hover:font-bold">
                             {item.name}
                           </a>
                         </li>
@@ -249,8 +240,7 @@ function Header({ logoutUpdate }) {
                       <li>
                         <button
                           className="block w-full text-left px-3 py-2 hover:bg-medium-purple hover:text-white hover:font-bold"
-                          onClick={logoutHandler}
-                        >
+                          onClick={logoutHandler}>
                           Logout
                         </button>
                       </li>
@@ -265,8 +255,7 @@ function Header({ logoutUpdate }) {
             as="div"
             className="lg:hidden"
             open={mobileMenuOpen}
-            onClose={setMobileMenuOpen}
-          >
+            onClose={setMobileMenuOpen}>
             <div className="fixed inset-0 z-50" />
 
             <Dialog.Panel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
@@ -277,8 +266,7 @@ function Header({ logoutUpdate }) {
                 <button
                   type="button"
                   className="-m-2.5 rounded-md p-2.5 text-gray-700"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
+                  onClick={() => setMobileMenuOpen(false)}>
                   <XMarkIcon className="h-6 w-6" aria-hidden="true" />
                 </button>
               </div>
@@ -295,13 +283,11 @@ function Header({ logoutUpdate }) {
                         onClick={() => setMobileMenuOpen(false)}
                         className=" text-writing-dark hover:text-white font-semibold cursor-default bg-light-purple hover:bg-medium-purple h-14
                           rounded-sm text-center flex flex-row mx-3 px-3 
-                          flex-nowrap items-center justify-start"
-                      >
+                          flex-nowrap items-center justify-start">
                         <img
                           className=" cursor-pointer relative inline-block h-10 w-auto rounded-[50%] object-cover object-center"
                           alt="avatar placeholder"
-                          src={DefaultProfile}
-                        ></img>
+                          src={DefaultProfile}></img>
                         <span className="mx-2 font-sans">
                           {localStorage.getItem("username")}
                         </span>
@@ -312,8 +298,7 @@ function Header({ logoutUpdate }) {
                         key={item.name}
                         to={item.to}
                         onClick={() => setMobileMenuOpen(false)}
-                        className="mx-3 px-3 block rounded-lg py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                      >
+                        className="mx-3 px-3 block rounded-lg py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
                         {item.name}
                       </NavLink>
                     ))}
@@ -327,22 +312,19 @@ function Header({ logoutUpdate }) {
                       <>
                         <div
                           onClick={toggleSignin}
-                          className="button-component my-2"
-                        >
+                          className="button-component my-2">
                           Log in{" "}
                         </div>
                         <div
                           onClick={toggleSignup}
-                          className="button-component-stroke my-2"
-                        >
+                          className="button-component-stroke my-2">
                           Sign Up
                         </div>
                       </>
                     ) : (
                       <button
                         className="button-component my-2"
-                        onClick={logoutHandler}
-                      >
+                        onClick={logoutHandler}>
                         {" "}
                         Logout
                       </button>
@@ -367,8 +349,7 @@ function Header({ logoutUpdate }) {
                   exact="true"
                   key={item.name}
                   to={item.to}
-                  className="sub-navs"
-                >
+                  className="sub-navs">
                   {item.name}
                 </NavLink>
               ))}

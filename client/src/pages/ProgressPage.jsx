@@ -3,6 +3,7 @@ import ProgressCard from "../components/ProgressCard";
 
 import selam from "../../src/assets/Cardphoto10.png";
 import PopularCourseCard from "../components/PopularCourseCard";
+import withAuth from "../utils/withAuth";
 
 function ProgressPage() {
   const assignArray = [5, 4, 10, 8];
@@ -20,8 +21,7 @@ function ProgressPage() {
           <div
             className={`h-12 w-24 bg-dark-purple pt-3 py-10 ${
               open ? "w-80" : "w-20"
-            } duration-300 relative rounded-lg`}
-          >
+            } duration-300 relative rounded-lg`}>
             <h1 className="text-xl font-semibold text-white text-center p-0">
               Recommendations{" "}
             </h1>
@@ -97,4 +97,4 @@ function ProgressPage() {
     </>
   );
 }
-export default ProgressPage;
+export default withAuth(ProgressPage);

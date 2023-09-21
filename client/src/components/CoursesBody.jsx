@@ -1,5 +1,5 @@
 import { React, useEffect, useState } from "react";
-import PopularCourseCard from "./PopularCourseCard";
+import PopularCoursesCard from "./PopularCourseCard";
 import TrendingCoursesCard from "./TrendingCoursesCard";
 import TrendingCourseImg from "../assets/TrendingCourseImg.png";
 
@@ -11,7 +11,7 @@ import axios from "axios";
 import SampleCard from "../components/SampleCard";
 
 function CoursesBody() {
-  const [courses, setCourses] = useState([...courseData]);
+  const [course, setCourses] = useState([...courseData]);
   const [popCourses, setPopCourses] = useState([...courseData]);
 
   useEffect(() => {
@@ -48,20 +48,17 @@ function CoursesBody() {
             </h2>
             <div className="flex flex-col flex-nowrap items-center max-h-[700px] overflow-y-auto pt-5">
               {popCourses.map((course, index) => (
-                <PopularCourseCard
-                  key={index}
+                <PopularCoursesCard
+                  key={course.course_id}
                   courseId={course.course_id}
-                  course_title={course.course_title}
-                  course_details={course.course_details}
-                  course_total_hour={course.course_total_hour}
-                  course_instructor={course.course_instructor}
-                  course_rate={course.course_rating}
-                  course_price={course.course_price}
-                  course_level={course.course_level}
+                  title={course.course_title}
+                  instructor={course.course_instructor}
+                  time={course.course_total_hour}
+                  rating={course.course_rating}
+                  price={course.course_price}
+                  courseImagePath={course.courseImagePath}
                 />
               ))}
-         
-             
             </div>
           </div>
           <div className="flex flex-col flex-nowrap ">
@@ -70,26 +67,13 @@ function CoursesBody() {
                 Trending Courses
               </h2>
               <div className="flex flex-col items-center flex-nowrap max-h-[700px] overflow-y-auto pt-5">
-                <TrendingCoursesCard
-                  course_title="new course"
-                  course_details="lorem Ipsum is simply dummy text of the printing and typesetting industry. "
-                  course_thumbnail={TrendingCourseImg}
-                />
-                <TrendingCoursesCard
-                  course_title="new course"
-                  course_details="lorem Ipsum is simply dummy text of the printing and typesetting industry. "
-                  course_thumbnail={TrendingCourseImg}
-                />
-                <TrendingCoursesCard
-                  course_title="new course"
-                  course_details="lorem Ipsum is simply dummy text of the printing and typesetting industry. "
-                  course_thumbnail={TrendingCourseImg}
-                />
-                <TrendingCoursesCard
-                  course_title="new course"
-                  course_details="lorem Ipsum is simply dummy text of the printing and typesetting industry. "
-                  course_thumbnail={TrendingCourseImg}
-                />
+                {popCourses.map((course, index) => (
+                  <TrendingCoursesCard
+                    course_title={course.course_title}
+                    course_details={course.course_details}
+                    course_thumbnail={TrendingCourseImg}
+                  />
+                ))}
               </div>
             </div>
           </div>
@@ -101,7 +85,7 @@ function CoursesBody() {
         </h4>
 
         <div className="flex  w-full m-2 my-3 flex-col sm:flex-row  items-start sm:justify-between">
-          <CoursesSearch searchData={courses} />
+          <CoursesSearch searchData={course} />
         </div>
       </div>
     </div>

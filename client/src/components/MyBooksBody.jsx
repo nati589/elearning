@@ -8,13 +8,14 @@ import axios from "axios";
 import BookRecommendationCard from "./BookRecommendationCard";
 
 function MyBooksBody() {
-  const [books, setBooks] = useState([...bookData]);
+  const [book, setBooks] = useState([...bookData]);
+  const [popularBooks, setPopBooks] = useState([...bookData]);
 
   useEffect(() => {
     axios
       .get("/books/getPurchasedBooks")
       .then((res) => {
-        setBooks([...res.data]);
+        setPopBooks([...res.data]);
       })
       .catch((error) => {
         console.log(error.response.data.message);
@@ -31,21 +32,33 @@ function MyBooksBody() {
               Recommended books
             </h2>
             <div className="flex flex-col flex-nowrap items-center max-h-[700px] overflow-y-auto pt-5">
-          {books.map((book, index) => (
+              {/* {books.map((book, index) => (
             <BookRecommendationCard
               key={index}
-              title={book.title}
-              rating={book.rating}
-              price={book.price}
+              title={book.book_title}
+              author={book.book_author}
+              rating={book.book_rating}
+              price={book.book_price}
+              thumbnail={book.book_thumbnail}
             />
-          ))}
+          ))} */}
+              {popularBooks.map((book, index) => (
+                <PopularBooksCard
+                  bookId={book.book_id}
+                  title={book.book_title}
+                  instructor={book.book_author}
+                  rating={book.book_rating}
+                  price={book.book_price}
+                  bookImagePath={book.book_thumbnail}
+                />
+              ))}
             </div>
           </div>
         </div>
       </div>
       <div className="w-full md:w-3/4 text-xs md:text-base px-4 md:px-8 my-4 flex flex-col justify-start items-center">
         <div className="flex  w-full m-2 my-3 flex-col sm:flex-row  items-start sm:justify-between">
-          <MyBooksSearch searchData={books} />
+          <MyBooksSearch searchData={book} />
         </div>
       </div>
     </div>

@@ -1,8 +1,29 @@
 import React from "react";
-import PopularCourseImg from "../assets/PopularCourseImg.png"
-import BookImg from "../../src/assets/BookImg.png"; // Adjust the path as needed
+import PopularCourseImg from "../assets/PopularCourseImg.png";
+// import courseImg from "../assets/courseImg.png"; // Adjust the path as needed
 
-function PopularCourseCard({ title, instructor, time, rating, price }) {
+function PopularCoursesCard({
+  courseId,
+  title,
+  instructor,
+  time,
+  rating,
+  price,
+  courseImagePath,
+}) {
+  const images = require.context("../../../server/courses/thumbnails");
+  console.log(courseImagePath, "courseImagePath");
+  let course_image;
+  try {
+    if (courseImagePath !== null) {
+      // console.log("is not null")
+      course_image = images(`./${courseImagePath}`);
+    } else {
+      course_image = images("./default_course_image.png");
+    }
+  } catch (error) {
+    course_image = images("./default_course_image.png");
+  }
   return (
     <div>
       {/* <!-- component --> */}
@@ -16,9 +37,9 @@ function PopularCourseCard({ title, instructor, time, rating, price }) {
             {/* <!-- Profile Picture --> */}
             <div>
               <img
-                src={PopularCourseImg}
+                src={course_image}
                 className="max-w-16 max-h-16 rounded-full"
-                alt="Book Thumbnail"
+                alt="course Thumbnail"
               />
             </div>
 
@@ -50,4 +71,4 @@ function PopularCourseCard({ title, instructor, time, rating, price }) {
   );
 }
 
-export default PopularCourseCard;
+export default PopularCoursesCard;

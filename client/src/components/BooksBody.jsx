@@ -69,7 +69,7 @@ export default function BooksBody( bookId,
             <div className="flex flex-col items-center flex-nowrap max-h-[700px] overflow-y-auto pt-5">
               {popularBooks.map((book,index) => (
                 <PopularBooksCard
-                  bookId={book.bookId}
+                  bookId={book.book_id}
                   title={book.book_title}
                   instructor={book.book_author}
                   rating={book.book_rating}
@@ -88,10 +88,10 @@ export default function BooksBody( bookId,
                 {popularBooks.map((book,index) => (
 
                   <TrendingBooksCard
-                   bookId={book.bookId}
+                   bookId={book.book_id}
                    authorName={book.book_author}
-                   joinedDate={book.book_date}
-                   description={book.book_description}
+                   joinedDate={book.book_date_created}
+                   description={book.book_details}
                    likes={book.book_rating}
                    book_thumbnail={book.book_thumbnail}
                    bookImagePath={book.book_thumbnail}

@@ -25,7 +25,7 @@ export const getPopularCourse = (req, res) => {
       res.status(200).json(data);
     }
   });
-};
+}; 
 
 export const getTrendingCourse = (req, res) => {
   const limit = 5;

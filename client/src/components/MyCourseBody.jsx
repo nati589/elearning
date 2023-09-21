@@ -16,6 +16,7 @@ function MyCourseBody() {
       .get("/courses/getCourses")
       .then((res) => {
         setPopCourses([...res.data]);
+        setCourses([...res.data]);
       })
       .catch((error) => {
         console.log(error.response.data.message);

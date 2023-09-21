@@ -1,6 +1,7 @@
 import { React, useEffect, useState } from "react";
 import CourseRecommendationCard from "./CourseRecommendationCard";
 import PopularBookImg from "../assets/PopularBookImg.png";
+import PopularCoursesCard from "./PopularCourseCard";
 
 import MyCoursesSearch from "./MyCoursesSearch";
 import courseData from "./courseData";
@@ -8,12 +9,13 @@ import axios from "axios";
 
 function MyCourseBody() {
   const [courses, setCourses] = useState([...courseData]);
+  const [popCourses, setPopCourses] = useState([...courseData]);
 
   useEffect(() => {
     axios
       .get("/courses/getCourses")
       .then((res) => {
-        setCourses([...res.data]);
+        setPopCourses([...res.data]);
       })
       .catch((error) => {
         console.log(error.response.data.message);
@@ -30,46 +32,19 @@ function MyCourseBody() {
               Recommended Courses
             </h2>
             <div className="flex flex-col flex-nowrap items-center max-h-[700px] overflow-y-auto pt-5">
-              <CourseRecommendationCard
-                course_title="interaction"
-                course_details="lorem Ipsum is simply dummy text of the printing and typesetting industry. "
-                course_thumbnail={PopularBookImg}
-                course_total_hour="3Hours"
-                course_instructor="selam"
-                course_level="level"
-                course_rate="4.7"
-                course_price="price"
-              />
-              <CourseRecommendationCard
-                course_title="interaction"
-                course_details="lorem Ipsum is simply dummy text of the printing and typesetting industry. "
-                course_thumbnail={PopularBookImg}
-                course_total_hour="3Hours"
-                course_instructor="selam"
-                course_level="level"
-                course_rate="4.7"
-                course_price="price"
-              />
-              <CourseRecommendationCard
-                course_title="interaction"
-                course_details="lorem Ipsum is simply dummy text of the printing and typesetting industry. "
-                course_thumbnail={PopularBookImg}
-                course_total_hour="3Hours"
-                course_instructor="selam"
-                course_level="level"
-                course_rate="4.7"
-                course_price="price"
-              />
-              <CourseRecommendationCard
-                course_title="interaction"
-                course_details="lorem Ipsum is simply dummy text of the printing and typesetting industry. "
-                course_thumbnail={PopularBookImg}
-                course_total_hour="3Hours"
-                course_instructor="selam"
-                course_level="level"
-                course_rate="4.7"
-                course_price="price"
-              />
+            {popCourses.map((course, index) => (
+                <PopularCoursesCard
+                  key={course.course_id}
+                  courseId={course.course_id}
+                  title={course.course_title}
+                  instructor={course.course_instructor}
+                  time={course.course_total_hour}
+                  rating={course.course_rating}
+                  price={course.course_price}
+                  courseImagePath={course.courseImagePath}
+                />
+              ))}
+             
             </div>
           </div>
         </div>

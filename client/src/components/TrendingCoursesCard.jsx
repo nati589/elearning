@@ -1,28 +1,28 @@
 import React from "react";
-import TrendingBooksImg from "../assets/TrendingBooksImg.png";
+import TrendingCoursesImg from "../assets/TrendingCourseImg.png";
 
-const TrendingBooksCard = ({
-  bookId,
+const TrendingCourseCard = ({
+  courseId,
   authorName,
   joinedDate,
   description,
   likes,
-  book_thumbnail,
-  bookImagePath,
+  course_thumbnail,
+  courseImagePath,
 }) => {
-  const images = require.context("../../../server/books/thumbnails");
-  console.log(bookImagePath, "bookImagePath");
-  let book_image;
+  const images = require.context("../../../server/courses/thumbnails");
+  console.log(courseImagePath, "courseImagePath");
+  let course_image;
 
   try {
-    if (bookImagePath !== null) {
+    if (courseImagePath !== null) {
       // console.log("is not null")
-      book_image = images(`./${bookImagePath}`);
+      course_image = images(`./${courseImagePath}`);
     } else {
-      book_image = images("./default_book_image.png");
+      course_image = images("./default_course_image.png");
     }
   } catch (error) {
-    book_image = images("./default_book_image.png");
+    course_image = images("./default_course_image.png");
   }
   return (
     <div>
@@ -30,7 +30,7 @@ const TrendingBooksCard = ({
         <div className="flex items-start px-4 py-6">
           <img
             className="w-12 h-12 rounded-full object-cover mr-4 shadow"
-            src={book_thumbnail}
+            src={course_thumbnail}
             alt="author"
           />
           <div>
@@ -54,7 +54,21 @@ const TrendingBooksCard = ({
                 <span>{likes}</span>
               </div>
 
-      
+              {/* <div className="flex mr-2 text-gray-700 text-sm mr-4">
+                <svg
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  className="w-4 h-4 mr-1"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"
+                  />
+                </svg>
+              </div> */}
             </div>
           </div>
         </div>
@@ -63,4 +77,4 @@ const TrendingBooksCard = ({
   );
 };
 
-export default TrendingBooksCard;
+export default TrendingCourseCard;

@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
-import RecommendedBookImg from "../assets/RecommendedBookImg.png";
+import RecommendedCourseImg from "../assets/RecommendedCourseImg.png";
 
-function BookRecommendationCard() {
-  const [books, setBooks] = useState([]);
+function CourseRecommendationCard() {
+  const [course, setCourse] = useState([]);
 
   useEffect(() => {
     // Fetch data from your API or database here
     // Replace the URL with your actual API endpoint
-    fetch("https://example.com/api/books")
+    fetch("https://example.com/api/course")
       .then((response) => response.json())
-      .then((data) => setBooks(data))
+      .then((data) => setCourse(data))
       .catch((error) => console.error("Error fetching data:", error));
   }, []);
 
@@ -17,7 +17,7 @@ function BookRecommendationCard() {
     <div>
       <div className="font-bold">
         <div className="flex flex-wrap my-4">
-          {books.map((book, index) => (
+          {course.map((book, index) => (
             <div key={index} className="flex flex-col bg-white my-2">
               <a
                 href={`/bookdetails/${book.id}`} // Assuming each book has a unique identifier like 'id'
@@ -26,7 +26,7 @@ function BookRecommendationCard() {
                 <div className="grid grid-cols-6 p-5 gap-y-2">
                   <div>
                     <img
-                      src={RecommendedBookImg}
+                      src={RecommendedCourseImg}
                       className="max-w-16 max-h-16"
                       alt="Book Thumbnail"
                     />
@@ -66,4 +66,4 @@ function BookRecommendationCard() {
   );
 }
 
-export default BookRecommendationCard;
+export default CourseRecommendationCard;

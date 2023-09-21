@@ -1,6 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import ReadingDetails from "../components/ReadingDetails";
+import withAuth from "../utils/withAuth";
 
 const ReadingPage = () => {
   const { bookId } = useParams();
@@ -14,4 +15,4 @@ const ReadingPage = () => {
   );
 };
 
-export default ReadingPage;
+export default withAuth(ReadingPage);

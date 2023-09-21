@@ -59,8 +59,7 @@ export default function App() {
   return (
     <div
       className="App"
-      style={{ backgroundColor: "#F7F5FA", minHeight: "100vh" }}
-    >
+      style={{ backgroundColor: "#F7F5FA", minHeight: "100vh" }}>
       {/* <Background /> */}
 
       <Header logoutUpdate={isLoggedOut} />
@@ -100,8 +99,8 @@ export default function App() {
           <Route exact path="/profile/support" element={<Support />} />
         </Route>
         <Route exact path="password-reset" element={<PasswordResetPage />} />
-        <Route path="/mybooks" element={<MyBooksPage />}></Route>
-        <Route path="/mycourses" element={<MyCoursesPage />}></Route>
+        <Route path="/mybooks" element={<MyBooksPage />} />
+        <Route path="/mycourses" element={<MyCoursesPage />} />
         <Route path="/success" element={<Success />} />
         <Route path="/cancel" element={<Cancel />} />
       </Routes>

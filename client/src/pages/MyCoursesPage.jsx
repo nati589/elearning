@@ -1,5 +1,6 @@
 import MyCoursesHero from "../components/MyCoursesHero";
 import MyCourseBody from "../components/MyCourseBody";
+import withAuth from "../utils/withAuth";
 //import OtherCourses from "../components/OtherCourses";
 
 function MyCoursesPage() {
@@ -12,4 +13,4 @@ function MyCoursesPage() {
   );
 }
 
-export default MyCoursesPage;
+export default withAuth(MyCoursesPage);

@@ -72,10 +72,10 @@ const TrendingCoursesCardCopy = ({
   };
   return (
     <div>
-      <div class="h-screen flex flex-col gap-4 items-center justify-center bg-white">
+      <div class="py-1 flex flex-col gap-4 items-center justify-center bg-white">
         <a
           href="#"
-          class="w-[30rem] border-2 border-b-4 border-gray-200 rounded-xl hover:bg-gray-50"
+          class="w-[30rem] border-2 border-b-4 border-medium-purple rounded-xl hover:bg-white"
         >
           <div class="grid grid-cols-6 p-5 gap-y-2">
             <div>

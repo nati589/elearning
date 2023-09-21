@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { Link, Outlet, useParams } from "react-router-dom";
+import { Link, Outlet, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
 const LearningPage = () => {
   const [selectedSection, setSelectedSection] = useState(null);
   const { id } = useParams();
+  const navigate = useNavigate();
   const [course, setCourse] = useState({});
   const [sectionList, setSectionList] = useState([]);
   useEffect(() => {
@@ -45,6 +46,36 @@ const LearningPage = () => {
       setSelectedSection(section);
     }
   };
+  const handlePrevSection = () => {
+    const currentIndex = sectionList.findIndex(
+      (section) => section.section_id === activeSection
+    );
+    if (currentIndex > 0) {
+      navigate(
+        `/learning/${id}/${sectionList[currentIndex - 1].section_type}/${
+          sectionList[currentIndex - 1].section_id
+        }`
+      );
+      setActiveSection(sectionList[currentIndex - 1].section_id);
+    }
+  };
+
+  const handleNextSection = () => {
+    const currentIndex = sectionList.findIndex(
+      (section) => section.section_id === activeSection
+    );
+    if (currentIndex < sectionList.length - 1) {
+      navigate(
+        `/learning/${id}/${sectionList[currentIndex + 1].section_type}/${
+          sectionList[currentIndex + 1].section_id
+        }`
+      );
+      setActiveSection(sectionList[currentIndex + 1].section_id);
+    }
+  };
+  const isFirstSection = activeSection === sectionList[0]?.section_id;
+  const isLastSection =
+    activeSection === sectionList[sectionList.length - 1]?.section_id;
 
   return (
     <div className="">
@@ -55,6 +86,28 @@ const LearningPage = () => {
           <div className="bg-gray-100 p-4 h-full">
             {/* Content goes here */}
             <Outlet />
+            {activeSection && (
+              <div className=" w-full my-4">
+                <div className="flex justify-between w-full items-center">
+                  <button
+                    className={`rounded-lg border border-medium-purple py-2 px-4 text-medium-purple hover:text-dark-purple hover:border-dark-purple  ${
+                      isFirstSection ? "opacity-50 cursor-not-allowed" : ""
+                    }`}
+                    onClick={handlePrevSection}
+                    disabled={isFirstSection}>
+                    Previous
+                  </button>
+                  <button
+                    className={`rounded-lg border border-medium-purple py-2 px-4 text-medium-purple hover:text-dark-purple hover:border-dark-purple ${
+                      isLastSection ? "opacity-50 cursor-not-allowed" : ""
+                    }`}
+                    onClick={handleNextSection}
+                    disabled={isLastSection}>
+                    Next
+                  </button>
+                </div>
+              </div>
+            )}
           </div>
         </div>
         <div className="lg:w-1/4 w-full p-4">

@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import PopularCourseImg from "../assets/PopularCourseImg.png";
 // import courseImg from "../assets/courseImg.png"; // Adjust the path as needed
+import ResponseMessage from "./ResponseMessage";
+import axios from "axios";
 
 function PopularCoursesCard({
   courseId,
   title,
+  course_description,
   instructor,
   time,
   rating,
@@ -24,6 +27,29 @@ function PopularCoursesCard({
   } catch (error) {
     course_image = images("./default_course_image.png");
   }
+  const partialDesc = course_description ? course_description.slice(0, 80) : "";
+
+  const [failure, setFailure] = useState(false);
+  const [addSuccess, setAddSuccess] = useState(false);
+  const [resMsg, setResMsg] = useState("");
+  const addToCart = () => {
+    axios
+      .post("/cart/addToCart", {
+        book_id: courseId,
+        user_id: localStorage.getItem("user_id"),
+        course_id: null,
+      })
+      .then((res) => {
+        setAddSuccess(true);
+        setFailure(false);
+        setResMsg(res.data.message);
+      })
+      .catch((error) => {
+        setResMsg(error.response.data.message);
+        setAddSuccess(true);
+        setFailure(true);
+      });
+  };
   return (
     <div>
       {/* <!-- component --> */}
@@ -60,10 +86,21 @@ function PopularCoursesCard({
               </div>
             </div>
           </div>
-          <div className="flex col-start-2 ml-4 md:col-start-auto md:ml-0 md:justify-center mb-2">
-            <p className="rounded-lg text-dark-purple font-bold bg-light-purple py-1 px-3 text-sm w-fit h-fit">
-              Add to Cart
-            </p>
+          <div class="flex col-start-2 ml-4 md:col-start-auto md:ml-0 md:justify-center">
+            {addSuccess && (
+              <ResponseMessage failure={failure} message={resMsg} />
+            )}
+
+            {(!addSuccess || failure) &&
+              localStorage.getItem("username") &&
+              localStorage.getItem("user_id") && (
+                <button
+                  className="rounded-lg text-dark-purple font-bold bg-light-purple  py-1 px-3 text-sm w-fit h-fit mb-3"
+                  onClick={addToCart}
+                >
+                  Add to Cart
+                </button>
+              )}
           </div>
         </a>
       </div>

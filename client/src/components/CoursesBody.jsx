@@ -72,6 +72,10 @@ function CoursesBody() {
                     course_title={course.course_title}
                     course_details={course.course_details}
                     course_thumbnail={TrendingCourseImg}
+                    joinedDate={course.course_date_added}
+                    description={course.course_details}
+                    likes={course.course_rating}
+                    courseImagePath={course.courseImagePath}
                   />
                 ))}
               </div>

@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import PopularBooksCard from "./PopularBooksCard";
 import PopularBooksImg from "../../src/assets/PopularBookImg.png";
 import TrendingBookImg from "../../src/assets/TrendingBooksImg.png";
-import TrendingBooksCard from "./TrendingBooksCard";
+import TrendingBooksCardCopy from "./TrendingBooksCardCopy";
 import booksData from "./booksData";
 import BookSearch from "./BookSearch";
 import axios from "axios";
@@ -21,6 +21,7 @@ export default function BooksBody( bookId,
   bookImagePath,) {
   const [books, setBooks] = useState([...booksData]);
   const [popularBooks, setPopularBooks] = useState([...booksData]);
+  const [trendingBooks, setTrendingBooks] = useState([...booksData]);
 
   useEffect(() => {
     axios
@@ -41,6 +42,17 @@ export default function BooksBody( bookId,
       .get(`/books/getPopularBook`)
       .then((res) => {
         setPopularBooks([...res.data]);
+      })
+      .catch((error) => {
+        console.log(error.response.data.message);
+      });
+  }, []);
+  useEffect(() => {
+    // console.log("sec");
+    axios
+      .get(`/books/getTrendingBook`)
+      .then((res) => {
+        setTrendingBooks([...res.data]);
       })
       .catch((error) => {
         console.log(error.response.data.message);
@@ -71,10 +83,10 @@ export default function BooksBody( bookId,
                 <PopularBooksCard
                   bookId={book.book_id}
                   title={book.book_title}
-                  instructor={book.book_author}
-                  rating={book.book_rating}
-                  price={book.book_price}
-                  bookImagePath={book.book_thumbnail}
+                  authorName={book.book_author}
+                  likes={book.book_rating}
+                  book_thumbnail={book.book_thumbnail}
+                  bookImagePath={bookImagePath}
                 />
               ))}
             </div>
@@ -85,16 +97,18 @@ export default function BooksBody( bookId,
                   Trending Books
                 </h2>
                 <div className="flex flex-col items-center flex-nowrap max-h-[700px] overflow-y-auto pt-5">
-                {popularBooks.map((book,index) => (
+                {trendingBooks.map((book,index) => (
 
-                  <TrendingBooksCard
+                  <TrendingBooksCardCopy
                    bookId={book.book_id}
+                   book_name={book.book_title}
                    authorName={book.book_author}
-                   joinedDate={book.book_date_created}
-                   description={book.book_details}
-                   likes={book.book_rating}
+                   book_description={book.book_details}
+                   rating={book.book_rating}
+                   price={book.book_price}
                    book_thumbnail={book.book_thumbnail}
-                   bookImagePath={book.book_thumbnail}
+                   bookImagePath={bookImagePath}
+
                   />
                   ))}
 

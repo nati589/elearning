@@ -1,20 +1,18 @@
 import React, { useEffect, useState } from "react";
-import PopularBookImg from "../assets/PopularBookImg.png";
-import BookImg from "../../src/assets/BookImg.png"; // Adjust the path as needed
 import axios from "axios";
 import ResponseMessage from "./ResponseMessage";
-function PopularBooksCard({
+
+const TrendingBooksCardCopy = ({
   bookId,
-  title,
+  book_name,
   book_description,
-  instructor,
-  time,
+  bookImagePath,
+  authorName,
   rating,
   price,
-  bookImagePath,
-}) {
+}) => {
   const images = require.context("../../../server/books/thumbnails");
-  console.log(bookImagePath, "bookImagePath");
+  // console.log(bookImagePath, "bookImagePath");
   let book_image;
   try {
     if (bookImagePath !== null) {
@@ -26,11 +24,34 @@ function PopularBooksCard({
   } catch (error) {
     book_image = images("./default_book_image.png");
   }
+  const numbers = [1, 2, 3, 4, 5];
+
   const partialDesc = book_description ? book_description.slice(0, 80) : "";
 
   const [failure, setFailure] = useState(false);
   const [addSuccess, setAddSuccess] = useState(false);
   const [resMsg, setResMsg] = useState("");
+
+  useEffect(() => {
+    if (localStorage.getItem("user_id")) {
+      axios
+        .post("/cart/checkBook", {
+          book_id: bookId,
+          user_id: localStorage.getItem("user_id"),
+        })
+        .then((res) => {
+          if (res.data.message) {
+            setAddSuccess(true);
+            setFailure(false);
+            setResMsg("Already in cart");
+          }
+        })
+        .catch((error) => {
+          console.log(error.response.data.message);
+        });
+    }
+  }, [bookId]);
+
   const addToCart = () => {
     axios
       .post("/cart/addToCart", {
@@ -51,38 +72,28 @@ function PopularBooksCard({
   };
   return (
     <div>
-      {/* <!-- component --> */}
-      <div className="flex flex-col gap-4 items-center justify-center">
-        {/* <!-- Card 1 --> */}
+      <div class="h-screen flex flex-col gap-4 items-center justify-center bg-white">
         <a
           href="#"
-          className="w-full border-2 border-b-4 bg-white border-medium-purple mt-3 rounded-xl hover:bg-gray-50"
+          class="w-[30rem] border-2 border-b-4 border-gray-200 rounded-xl hover:bg-gray-50"
         >
-          <div className="grid grid-cols-6 p-5 gap-y-2">
-            {/* <!-- Profile Picture --> */}
+          <div class="grid grid-cols-6 p-5 gap-y-2">
             <div>
               <img
-                src={book_image}
-                className="max-w-16 max-h-16 rounded-full"
-                alt="Book Thumbnail"
+                src="https://picsum.photos/seed/2/200/200"
+                class="max-w-16 max-h-16 rounded-full"
               />
             </div>
 
-            {/* <!-- Description --> */}
-            <div className="col-span-5 md:col-span-4 ml-4">
-              <p className="text-dark-purple font-bold text-sm">{title}</p>
+            <div class="col-span-5 md:col-span-4 ml-4">
+              <p class="text-gray-600 font-bold">Title: {book_name}</p>
+              <p class="text-dark-purple font-bold text-xs">
+                {" "}
+                Author: {authorName}{" "}
+              </p>
+              <p class="text-gray-400"> Rating: {rating} </p>
 
-              <p className="text-gray-600 font-bold text-xs">{instructor}</p>
-              <div className="grid grid-cols-2">
-                <div className="grid grid-cols-1">
-                  <p className="text-gray-400">Time: {time}</p>
-                  <p className="text-gray-400">Rating: {rating}</p>
-                </div>
-                <div className="grid grid-cols-1">
-                  <p className="text-gray-400">Price: {price}</p>
-                  <p className="text-gray-400">Rating: {rating}</p>
-                </div>
-              </div>
+              <p class="text-gray-400"> Price: {price} </p>
             </div>
           </div>
           <div class="flex col-start-2 ml-4 md:col-start-auto md:ml-0 md:justify-center">
@@ -105,6 +116,6 @@ function PopularBooksCard({
       </div>
     </div>
   );
-}
+};
 
-export default PopularBooksCard;
+export default TrendingBooksCardCopy;

@@ -1,19 +1,19 @@
-import React from "react";
-import TrendingCoursesImg from "../assets/TrendingCourseImg.png";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import ResponseMessage from "./ResponseMessage";
 
-const TrendingCourseCard = ({
+const TrendingCoursesCardCopy = ({
   courseId,
-  authorName,
-  joinedDate,
-  description,
-  likes,
-  course_thumbnail,
+  course_name,
+  course_description,
   courseImagePath,
+  authorName,
+  rating,
+  price,
 }) => {
   const images = require.context("../../../server/courses/thumbnails");
-  console.log(courseImagePath, "courseImagePath");
+  // console.log(courseImagePath, "courseImagePath");
   let course_image;
-
   try {
     if (courseImagePath !== null) {
       // console.log("is not null")
@@ -24,57 +24,98 @@ const TrendingCourseCard = ({
   } catch (error) {
     course_image = images("./default_course_image.png");
   }
+  const numbers = [1, 2, 3, 4, 5];
+
+  const partialDesc = course_description ? course_description.slice(0, 80) : "";
+
+  const [failure, setFailure] = useState(false);
+  const [addSuccess, setAddSuccess] = useState(false);
+  const [resMsg, setResMsg] = useState("");
+
+  useEffect(() => {
+    if (localStorage.getItem("user_id")) {
+      axios
+        .post("/cart/checkcourse", {
+          course_id: courseId,
+          user_id: localStorage.getItem("user_id"),
+        })
+        .then((res) => {
+          if (res.data.message) {
+            setAddSuccess(true);
+            setFailure(false);
+            setResMsg("Already in cart");
+          }
+        })
+        .catch((error) => {
+          console.log(error.response.data.message);
+        });
+    }
+  }, [courseId]);
+
+  const addToCart = () => {
+    axios
+      .post("/cart/addToCart", {
+        course_id: courseId,
+        user_id: localStorage.getItem("user_id"),
+        course_id: null,
+      })
+      .then((res) => {
+        setAddSuccess(true);
+        setFailure(false);
+        setResMsg(res.data.message);
+      })
+      .catch((error) => {
+        setResMsg(error.response.data.message);
+        setAddSuccess(true);
+        setFailure(true);
+      });
+  };
   return (
     <div>
-      <div className="flex bg-white border-medium-purple shadow-lg rounded-lg mx-4 md:mx-auto my-2 max-w-md md:max-w-2xl">
-        <div className="flex items-start px-4 py-6">
-          <img
-            className="w-12 h-12 rounded-full object-cover mr-4 shadow"
-            src={course_thumbnail}
-            alt="author"
-          />
-          <div>
-            <p className="text-gray-700">Joined {joinedDate}.</p>
-            <p className="mt-3 text-gray-700 text-sm">{description}</p>
-            <div className="mt-4 flex items-center">
-              <div className="flex mr-2 text-gray-700 text-sm">
-                <svg
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  className="w-4 h-4 mr-1"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-                  />
-                </svg>
-                <span>{likes}</span>
-              </div>
+      <div class="h-screen flex flex-col gap-4 items-center justify-center bg-white">
+        <a
+          href="#"
+          class="w-[30rem] border-2 border-b-4 border-gray-200 rounded-xl hover:bg-gray-50"
+        >
+          <div class="grid grid-cols-6 p-5 gap-y-2">
+            <div>
+              <img
+                src="https://picsum.photos/seed/2/200/200"
+                class="max-w-16 max-h-16 rounded-full"
+              />
+            </div>
 
-              {/* <div className="flex mr-2 text-gray-700 text-sm mr-4">
-                <svg
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  className="w-4 h-4 mr-1"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"
-                  />
-                </svg>
-              </div> */}
+            <div class="col-span-5 md:col-span-4 ml-4">
+              <p class="text-gray-600 font-bold">Title: {course_name}</p>
+              <p class="text-dark-purple font-bold text-xs">
+                {" "}
+                Author: {authorName}{" "}
+              </p>
+              <p class="text-gray-400"> Rating: {rating} </p>
+
+              <p class="text-gray-400"> Price: {price} </p>
             </div>
           </div>
-        </div>
+          <div class="flex col-start-2 ml-4 md:col-start-auto md:ml-0 md:justify-center">
+            {addSuccess && (
+              <ResponseMessage failure={failure} message={resMsg} />
+            )}
+
+            {(!addSuccess || failure) &&
+              localStorage.getItem("username") &&
+              localStorage.getItem("user_id") && (
+                <button
+                  className="rounded-lg text-dark-purple font-bold bg-light-purple  py-1 px-3 text-sm w-fit h-fit mb-3"
+                  onClick={addToCart}
+                >
+                  Add to Cart
+                </button>
+              )}
+          </div>
+        </a>
       </div>
     </div>
   );
 };
 
-export default TrendingCourseCard;
+export default TrendingCoursesCardCopy;

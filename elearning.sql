@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.1.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 18, 2023 at 03:19 PM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 8.1.2
+-- Generation Time: Sep 25, 2023 at 02:18 PM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 7.1.32
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -39,7 +39,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`admin_id`, `admin_username`, `admin_password`, `admin_token`) VALUES
-('9a999a16-ecd2-4d43-abc5-2703baccc98f', 'ahmed', '$2a$08$GRGnIkqzIkP8AlzWgrFw8un1qEmA4E1zgvDdESn1QY2qlIB1qvAKG', NULL);
+('9a999a16-ecd2-4d43-abc5-2703baccc98f', 'nm', '$2a$10$hVZzmemnf20uWzMP0HWBxuQSFNhlJn6kgYzggpSi5T6woif5EQxbO', NULL);
 
 -- --------------------------------------------------------
 
@@ -149,7 +149,7 @@ CREATE TABLE `course` (
 --
 
 INSERT INTO `course` (`course_id`, `course_title`, `course_details`, `course_level`, `course_certificate`, `course_students`, `course_rating`, `course_sections`, `course_archived`, `course_price`, `course_instructor`, `course_max_comments`, `course_total_hour`, `course_date_created`, `course_thumbnail`) VALUES
-('00b109c9-ed5c-44ed-9bef-474dd97056d4', 'new name', 'details', 'Advanced', 1, 0, '3.5', 3, 0, 2000, 'Paul', 5, 123, '2023-09-14 00:14:03.000000', NULL),
+('00b109c9-ed5c-44ed-9bef-474dd97056d4', 'new name', 'details', 'Advanced', 1, 0, '3.5', 4, 0, 2000, 'Paul', 5, 123, '2023-09-14 00:14:03.000000', NULL),
 ('05054689-9bc3-471f-ab6f-970e8f56d05f', 'Psychology', 'psy', 'Intermediate', 1, 0, '0', 0, 0, 5600, 'Dagi', 5, 40, '2023-09-13 03:09:17.000000', NULL),
 ('19a45b62-6f39-4034-8ca1-85770e6c7193', 'Tigrigna course', 'klsjfdslkfjsdlkfjsdklfjdslkf', 'Advanced', 1, 0, '0', 0, 0, 78, 'Kebede', 5, 12345, '2023-09-07 23:09:37.000000', NULL),
 ('4c44cc8d-bce2-4ac5-9968-11821296afb4', 'Advaned Amharic Lesson ', 'Details ', 'Intermediate', 1, 0, '0', 0, 0, 200, 'Dr Abebe', 5, 3, '2023-09-13 04:00:43.000000', NULL),
@@ -250,6 +250,27 @@ INSERT INTO `purchase` (`purchase_id`, `user_id`, `book_id`, `purchase_token`, `
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `question`
+--
+
+CREATE TABLE `question` (
+  `question_id` varchar(36) NOT NULL,
+  `question_name` varchar(2000) NOT NULL,
+  `question_options` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL CHECK (json_valid(`question_options`)),
+  `section_id` varchar(36) NOT NULL,
+  `question_date_created` datetime(6) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `question`
+--
+
+INSERT INTO `question` (`question_id`, `question_name`, `question_options`, `section_id`, `question_date_created`) VALUES
+('c7540527-0e82-4a14-9fe1-fb4009bf2ea5', 'ques 1', '[{\"text\":\"ch 1\",\"isCorrect\":false},{\"text\":\"ch 2\",\"isCorrect\":true}]', 'c217aae1-beeb-4e01-9496-c63ea3bb85f6', '2023-09-25 03:17:54.000000');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `section`
 --
 
@@ -271,6 +292,7 @@ CREATE TABLE `section` (
 INSERT INTO `section` (`section_id`, `section_title`, `section_description`, `section_type`, `section_content`, `section_value`, `course_id`, `section_date_created`) VALUES
 ('5a8a006e-cc45-4cf2-a0b3-643012f42e6c', 'Amharic section 2', 'dlks', 'video', '', 0, '00b109c9-ed5c-44ed-9bef-474dd97056d4', '2023-09-15 02:38:56.000000'),
 ('b649dbf9-cf4e-4140-bef7-8ed64f348fbc', 'Amharic section 1', 'deets', 'text', '', 0, '00b109c9-ed5c-44ed-9bef-474dd97056d4', '2023-09-15 02:31:55.000000'),
+('c217aae1-beeb-4e01-9496-c63ea3bb85f6', 'section stuff', 'desc', 'quiz', 'http::/localhost:3000/smth', 12, '00b109c9-ed5c-44ed-9bef-474dd97056d4', '2023-09-25 03:17:25.000000'),
 ('c4c7650b-80aa-4ae6-aeb3-a49378ef357d', 'Amharic section 3', 'deet', 'assignment', '', 23, '00b109c9-ed5c-44ed-9bef-474dd97056d4', '2023-09-15 02:39:42.000000');
 
 -- --------------------------------------------------------
@@ -297,7 +319,7 @@ INSERT INTO `user` (`user_id`, `user_email`, `user_password`, `user_photo`, `use
 ('9a999a16-ecd2-4d43-abc5-2703baccc98f', 'pt3@gmail.com', '$2a$10$phHISPm5esQS5QveZqV9KOfeqzjL0VEukaP/c8TUOtaUik4eGWmxK', NULL, NULL, 'Paulos Teshome', '2023-09-16 17:38:22.046000'),
 ('c09c4b57-65e5-4e58-8b6c-743c18f57589', 'pt4@gmail.com', '$2a$10$dGbAJXJh6orFEOYPcpDureen6kvetqw1TgSStDH3jy13KDzDtYLFS', NULL, NULL, 'Paulos Teshome', '2023-09-18 00:27:14.432000'),
 ('ef8202ae-2188-44d7-8bb1-da4b2ee4a3a3', 'haileyabsera3@gmail.com', '$2a$10$/TmjzMTEsE06YqcLE/uRj.WVsoGSP2Wxd5ieH/8ydu0OwefVzAoa6', NULL, NULL, 'Natan Mekebib', '2023-09-07 21:52:13.984000'),
-('fceeca18-a0f3-4ab4-9ade-06e4d109746c', 'nm@gmail.com', '$2a$10$hVZzmemnf20uWzMP0HWBxuQSFNhlJn6kgYzggpSi5T6woif5EQxbO', NULL, NULL, 'Natan Mekebib', '2023-09-13 02:51:37.284000');
+('fceeca18-a0f3-4ab4-9ade-06e4d109746c', 'nm', '$2a$10$hVZzmemnf20uWzMP0HWBxuQSFNhlJn6kgYzggpSi5T6woif5EQxbO', NULL, NULL, 'Natan Mekebib', '2023-09-13 02:51:37.284000');
 
 -- --------------------------------------------------------
 
@@ -408,6 +430,13 @@ ALTER TABLE `purchase`
   ADD KEY `book_id` (`book_id`);
 
 --
+-- Indexes for table `question`
+--
+ALTER TABLE `question`
+  ADD PRIMARY KEY (`question_id`),
+  ADD KEY `section_id` (`section_id`);
+
+--
 -- Indexes for table `section`
 --
 ALTER TABLE `section`
@@ -472,6 +501,12 @@ ALTER TABLE `graduate`
 ALTER TABLE `purchase`
   ADD CONSTRAINT `purchase_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `purchase_ibfk_2` FOREIGN KEY (`book_id`) REFERENCES `book` (`book_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `question`
+--
+ALTER TABLE `question`
+  ADD CONSTRAINT `question_ibfk_1` FOREIGN KEY (`section_id`) REFERENCES `section` (`section_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

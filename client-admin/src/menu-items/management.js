@@ -62,7 +62,13 @@ const management = {
       url: "/webcontent",
       icon: icons.BgColorsOutlined,
     },
-
+    {
+      id: "quizquestions",
+      title: "Quiz Management",
+      type: "item",
+      url: "/quizquestions",
+      icon: icons.SnippetsOutlined,
+    },
     {
       id: "trash",
       title: "Trash",

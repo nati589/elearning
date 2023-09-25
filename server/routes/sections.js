@@ -7,7 +7,8 @@ import {
   getSectionFile,
   getSectionVideo,
   getSingleSection,
-  getCourseSections
+  getCourseSections,
+  getQuizSections
 } from "../controllers/sections.js";
 import multer from "multer";
 const upload = multer({ dest: "sections/files/" });
@@ -22,6 +23,7 @@ router.get("/getSectionFile/:id", getSectionFile);
 router.get("/getSectionVideo/:id", getSectionVideo);
 router.get("/getSingleSection/:id", getSingleSection);
 router.get("/getCourseSections/:id", getCourseSections);
+router.get("/getQuizSections", getQuizSections);
 router.get("/");
 
 export default router;

@@ -13,6 +13,9 @@ import CourseSections from "pages/components-overview/CourseSections";
 import withAuth from "./withAuth";
 import UserManagement from "pages/components-overview/UserManagement";
 import Logout from "pages/components-overview/Logout";
+import QuizQuestions from "pages/components-overview/QuizQuestions";
+import QuizList from "pages/components-overview/QuizList";
+import QuizManagement from "pages/components-overview/QuizManagement";
 // render - dashboard
 const DashboardDefault = Loadable(lazy(() => import("pages/dashboard")));
 
@@ -111,6 +114,20 @@ const MainRoutes = {
     {
       path: "user",
       element: <UserManagement />,
+    },
+    {
+      path: "quizquestions",
+      element: <QuizManagement />,
+      children: [
+        {
+          path: "",
+          element: <QuizList />,
+        },
+        {
+          path: "questions/:id",
+          element: <QuizQuestions />,
+        },
+      ],
     },
     {
       path: "trash",

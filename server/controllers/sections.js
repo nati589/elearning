@@ -363,6 +363,16 @@ export const deleteSection = (req, res) => {
     });
   });
 };
+export const getQuizSections = (req, res) => {
+  const q = "SELECT course.course_title, course.course_level, section.section_id, section.section_title, section.section_value FROM course INNER JOIN section ON course.course_id = section.course_id WHERE section.section_type = 'quiz'";
+  db.query(q, (err, data) => {
+    if (err) {
+      return res.status(401).send({ message: "Connection error try again." });
+    } else {
+      res.status(200).json(data);
+    }
+  });
+};
 
 // export const getSectionVideo = (req, res) => {
 //   const { id } = req.params;

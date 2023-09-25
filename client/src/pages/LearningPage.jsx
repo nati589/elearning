@@ -82,37 +82,15 @@ const LearningPage = () => {
     <div className="">
       {/* Sections  */}
       <div className="flex my-4 flex-wrap">
-        <div className="lg:w-3/4 w-full p-4 h-screen">
           {/* Left side content */}
+        <div className="lg:w-3/4 w-full p-4 h-full">
           <div className="bg-gray-100 p-4 h-full">
             {/* Content goes here */}
-            <Outlet />
-            {activeSection && (
-              <div className=" w-full my-4">
-                <div className="flex justify-between w-full items-center">
-                  <button
-                    className={`rounded-lg border border-medium-purple py-2 px-4 text-medium-purple hover:text-dark-purple hover:border-dark-purple  ${
-                      isFirstSection ? "opacity-50 cursor-not-allowed" : ""
-                    }`}
-                    onClick={handlePrevSection}
-                    disabled={isFirstSection}>
-                    Previous
-                  </button>
-                  <button
-                    className={`rounded-lg border border-medium-purple py-2 px-4 text-medium-purple hover:text-dark-purple hover:border-dark-purple ${
-                      isLastSection ? "opacity-50 cursor-not-allowed" : ""
-                    }`}
-                    onClick={handleNextSection}
-                    disabled={isLastSection}>
-                    Next
-                  </button>
-                </div>
-              </div>
-            )}
+            <Outlet context={{ isFirstSection, isLastSection, handlePrevSection, handleNextSection}}/>
           </div>
         </div>
-        <div className="lg:w-1/4 w-full p-4">
           {/* Right side sections */}
+        <div className="lg:w-1/4 w-full p-4">
           <div>
             <h3 className="text-lg font-semibold mb-4">Sections</h3>
             <ul>

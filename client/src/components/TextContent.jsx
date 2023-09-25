@@ -5,6 +5,7 @@ import { useOutletContext } from "react-router-dom";
 
 export default function TextContent() {
   const { sectionId } = useParams();
+  const user_id = localStorage.getItem("user_id");
   const [pdfUrl, setPdfUrl] = useState("");
   const {
     isFirstSection,
@@ -12,6 +13,23 @@ export default function TextContent() {
     handlePrevSection,
     handleNextSection,
   } = useOutletContext();
+  const markComplete = () => {
+    axios.post("/grades/addGrade", {
+      section_id: sectionId,
+      user_id,
+      grade: null,
+      completed: 1,
+      link: null,
+    }).then((res) => {
+      console.log(res.data);
+      // setCourse(res.data[0]);
+      // setSectionList(res.data);
+    })
+    .catch((error) => {
+      console.log(error.response.data.message);
+      // navigate("/");
+    });;
+  };
 
   useEffect(() => {
     const fetchPdfFile = async () => {
@@ -67,7 +85,10 @@ export default function TextContent() {
             className={`rounded-lg border border-medium-purple py-2 px-4 text-medium-purple hover:text-dark-purple hover:border-dark-purple ${
               isLastSection ? "opacity-50 cursor-not-allowed" : ""
             }`}
-            onClick={handleNextSection}
+            onClick={() => {
+              markComplete()
+              handleNextSection()
+            }}
             disabled={isLastSection}>
             Next
           </button>

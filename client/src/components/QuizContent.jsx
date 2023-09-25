@@ -10,6 +10,9 @@ export default function QuizContent() {
   } = useOutletContext();
   return (
     <>
+      <div>
+        Quiz
+      </div>
       <div className=" w-full my-4">
         <div className="flex justify-between w-full items-center">
           <button

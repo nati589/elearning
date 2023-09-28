@@ -15,13 +15,13 @@ export const getGrades = (req, res) => {
     }
   });
 };
-
-// export const getUserById = (req, res) => {};
-
 export const addGrade = (req, res) => {
-    console.log(req.body)
-    const q = "";
-  db.query(q, req.params.id, (err, data) => {
+  const grade_id = uuidv4();
+  const values = Object.values(req.body);
+  values.unshift(grade_id);
+  const q =
+    "INSERT INTO `grade` (`grade_id`, `section_id`, `user_id`, `grade`, `completed`, `link`) VALUES (?, ?, ?, ?, ?, ?);";
+  db.query(q, values, (err, data) => {
     if (err) {
       res.json(err);
     } else {
@@ -29,9 +29,7 @@ export const addGrade = (req, res) => {
     }
   });
 };
-
 export const updateGrade = (req, res) => {};
-
 export const deleteGrade = (req, res) => {
   const q = " DELETE FROM grade WHERE grade_id=?";
   db.query(q, req.params.id, (err, data) => {

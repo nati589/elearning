@@ -75,7 +75,7 @@ export const getSectionFile = (req, res) => {
         console.error("Error sending file:", err);
         res.status(500).send("Error sending file");
       } else {
-        console.log("Sent:", filePath);
+        // console.log("Sent:", filePath);
       }
     });
   });
@@ -121,6 +121,16 @@ function getContentType(filePath) {
 }
 export const getCourseSections = (req, res) => {
   const q = `SELECT * FROM section WHERE course_id = '${req.params.id}' ORDER BY section_date_created ASC`;
+  db.query(q, (err, data) => {
+    if (err) {
+      return res.status(401).send({ message: "Connection error try again." });
+    } else {
+      res.status(200).json(data);
+    }
+  });
+};
+export const getCompleteSections = (req, res) => {
+  const q = `SELECT section.section_id, section.course_id, grade.grade_id, grade.grade, grade.completed FROM section INNER JOIN grade ON section.section_id = grade.section_id WHERE section.course_id = '${req.params.id}';`;
   db.query(q, (err, data) => {
     if (err) {
       return res.status(401).send({ message: "Connection error try again." });

@@ -8,6 +8,7 @@ import {
   getSectionVideo,
   getSingleSection,
   getCourseSections,
+  getCompleteSections,
   getQuizSections
 } from "../controllers/sections.js";
 import multer from "multer";
@@ -23,6 +24,7 @@ router.get("/getSectionFile/:id", getSectionFile);
 router.get("/getSectionVideo/:id", getSectionVideo);
 router.get("/getSingleSection/:id", getSingleSection);
 router.get("/getCourseSections/:id", getCourseSections);
+router.get("/getCompleteSections/:id", getCompleteSections);
 router.get("/getQuizSections", getQuizSections);
 router.get("/");
 

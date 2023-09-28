@@ -8,13 +8,35 @@ import { useOutletContext } from "react-router-dom";
 export default function VideoContent() {
   const { sectionId } = useParams();
   const [videoUrl, setVideoUrl] = useState("");
+  const user_id = localStorage.getItem("user_id");
+
   const {
     isFirstSection,
     isLastSection,
+    completed,
+    fetchCompleted,
     handlePrevSection,
     handleNextSection,
   } = useOutletContext();
-
+  const markComplete = () => {
+    if (!completed.includes(sectionId)) {
+      axios
+        .post("/grades/addGrade", {
+          section_id: sectionId,
+          user_id,
+          grade: null,
+          completed: 1,
+          link: null,
+        })
+        .then((res) => {
+          // console.log(res.data);
+          fetchCompleted();
+        })
+        .catch((error) => {
+          console.log(error.response.data.message);
+        });
+    }
+  };
   // useEffect(() => {
   //   let videoBlobUrl;
 
@@ -46,7 +68,7 @@ export default function VideoContent() {
   return (
     <>
       <div>
-        <video id="videoPlayer" width="100%" controls autoplay>
+        <video id="videoPlayer" width="100%" controls autoPlay>
           <source
             src={`/sections/getSectionVideo/${sectionId}`}
             type="video/mp4"
@@ -63,14 +85,33 @@ export default function VideoContent() {
             disabled={isFirstSection}>
             Previous
           </button>
-          <button
-            className={`rounded-lg border border-medium-purple py-2 px-4 text-medium-purple hover:text-dark-purple hover:border-dark-purple ${
-              isLastSection ? "opacity-50 cursor-not-allowed" : ""
-            }`}
-            onClick={handleNextSection}
-            disabled={isLastSection}>
-            Next
-          </button>
+          {!isLastSection && (
+            <button
+              className={`rounded-lg border border-medium-purple py-2 px-4 text-medium-purple hover:text-dark-purple hover:border-dark-purple ${
+                isLastSection ? "opacity-50 cursor-not-allowed" : ""
+              }`}
+              onClick={() => {
+                markComplete();
+                handleNextSection();
+              }}
+              disabled={isLastSection}>
+              Next
+            </button>
+          )}
+          {isLastSection && (
+            <button
+              className={`rounded-lg border border-medium-purple py-2 px-4 bg-dark-purple text-white hover:border-dark-purple 
+            
+            `}
+              onClick={() => {
+                markComplete();
+                // navigate('/mycourses')
+              }}
+              // disabled={isLastSection}
+            >
+              Complete
+            </button>
+          )}
         </div>
       </div>
     </>
